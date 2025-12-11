@@ -1,0 +1,707 @@
+# 投资人结构化索引 (Investor Structured Index)
+# 供 RAG 检索、LLM 决策路由使用
+# Version: 1.0
+
+metadata:
+  version: "1.0"
+  last_updated: "2024-12"
+  description: "投资大师索引，包含风格标签、适用场景、决策权重矩阵"
+
+# ============================================
+# 投资人列表
+# ============================================
+investors:
+
+  # ----- 价值投资派 -----
+  - id: warren_buffett
+    full_name: Warren Buffett
+    chinese_name: 沃伦·巴菲特
+    fund: Berkshire Hathaway
+    aum: "$900B+"
+    active_years: "1965-present"
+    style:
+      - value_investing
+      - long_term_hold
+      - moat_focus
+      - capital_allocation
+    best_for:
+      - stock_selection
+      - valuation
+      - margin_of_safety
+      - business_analysis
+    key_concepts:
+      - moat (护城河)
+      - margin_of_safety (安全边际)
+      - owner_earnings (股东盈余)
+      - intrinsic_value (内在价值)
+      - circle_of_competence (能力圈)
+    market_conditions:
+      bullish: neutral
+      bearish: high
+      high_volatility: high
+      recession: high
+      high_rates: high
+      low_rates: neutral
+    decision_weight:
+      stock_pick: 0.95
+      macro_timing: 0.2
+      risk_check: 0.7
+      portfolio: 0.5
+    tags_zh:
+      - 护城河
+      - 安全边际
+      - 现金流
+      - 长期持有
+      - 内在价值
+      - 资本配置
+    related_doc: warren_buffett.md
+
+  - id: charlie_munger
+    full_name: Charlie Munger
+    chinese_name: 查理·芒格
+    fund: Berkshire Hathaway / Daily Journal
+    aum: "N/A (Partner)"
+    active_years: "1978-2023"
+    style:
+      - mental_models
+      - contrarian
+      - avoid_stupidity
+      - concentrated
+    best_for:
+      - decision_quality
+      - bias_check
+      - error_avoidance
+      - mental_models
+    key_concepts:
+      - inversion (逆向思考)
+      - mental_models (思维模型)
+      - circle_of_competence (能力圈)
+      - incentives (激励检验)
+      - lollapalooza_effect (合力效应)
+    market_conditions:
+      bullish: neutral
+      bearish: high
+      high_volatility: high
+      bubble: critical  # 泡沫期特别重要
+    decision_weight:
+      stock_pick: 0.8
+      macro_timing: 0.3
+      risk_check: 0.95
+      portfolio: 0.4
+    tags_zh:
+      - 逆向思考
+      - 心理偏误
+      - 能力圈
+      - 激励检验
+      - 避免愚蠢
+    related_doc: charlie_munger.md
+
+  - id: peter_lynch
+    full_name: Peter Lynch
+    chinese_name: 彼得·林奇
+    fund: Fidelity Magellan Fund
+    aum: "Peak $14B (1990)"
+    active_years: "1977-1990"
+    style:
+      - growth_at_reasonable_price
+      - bottom_up
+      - everyday_observation
+    best_for:
+      - growth_stock_selection
+      - peg_valuation
+      - stock_classification
+    key_concepts:
+      - peg_ratio (PEG估值)
+      - tenbagger (十倍股)
+      - six_categories (六类股票分类)
+      - know_what_you_own (了解你持有的)
+    market_conditions:
+      bullish: high
+      bearish: neutral
+      expansion: high
+    decision_weight:
+      stock_pick: 0.9
+      macro_timing: 0.3
+      risk_check: 0.5
+      portfolio: 0.4
+    tags_zh:
+      - PEG估值
+      - 成长股
+      - 十倍股
+      - 股票分类
+    related_doc: peter_lynch.md
+
+  - id: seth_klarman
+    full_name: Seth Klarman
+    chinese_name: 塞斯·卡拉曼
+    fund: Baupost Group
+    aum: "$27B"
+    active_years: "1982-present"
+    style:
+      - deep_value
+      - distressed
+      - extreme_patience
+      - high_cash
+    best_for:
+      - special_situations
+      - distressed_debt
+      - contrarian_opportunities
+      - margin_of_safety
+    key_concepts:
+      - margin_of_safety (安全边际)
+      - absolute_return (绝对回报)
+      - forced_selling (被迫抛售)
+      - catalyst (催化剂)
+    market_conditions:
+      bullish: low
+      bearish: critical
+      crisis: critical
+      panic: critical
+    decision_weight:
+      stock_pick: 0.85
+      macro_timing: 0.3
+      risk_check: 0.8
+      portfolio: 0.6
+    tags_zh:
+      - 深度价值
+      - 困境债
+      - 特殊情况
+      - 高现金比例
+      - 耐心
+    related_doc: seth_klarman.md
+
+  # ----- 宏观/择时派 -----
+  - id: ray_dalio
+    full_name: Ray Dalio
+    chinese_name: 雷·达利奥
+    fund: Bridgewater Associates
+    aum: "$120B"
+    active_years: "1975-present"
+    style:
+      - macro
+      - systematic
+      - risk_parity
+      - all_weather
+    best_for:
+      - asset_allocation
+      - cycle_positioning
+      - risk_parity
+      - debt_cycle_analysis
+    key_concepts:
+      - all_weather (全天候配置)
+      - debt_cycle (债务周期)
+      - risk_parity (风险平价)
+      - economic_machine (经济机器)
+      - four_quadrants (经济四象限)
+    market_conditions:
+      all_conditions: high  # 全天候适用
+    decision_weight:
+      stock_pick: 0.3
+      macro_timing: 0.9
+      risk_check: 0.7
+      portfolio: 0.95
+    tags_zh:
+      - 经济周期
+      - 资产配置
+      - 风险平价
+      - 债务周期
+      - 全天候
+    related_doc: ray_dalio.md
+
+  - id: stanley_druckenmiller
+    full_name: Stanley Druckenmiller
+    chinese_name: 斯坦利·德鲁肯米勒
+    fund: Duquesne Capital (Closed) / Quantum Fund
+    aum: "Peak $12B"
+    active_years: "1981-2010 (fund), present (family office)"
+    style:
+      - macro
+      - liquidity_focused
+      - concentrated_bets
+      - flexible
+    best_for:
+      - macro_timing
+      - liquidity_analysis
+      - trend_following
+      - fed_watching
+    key_concepts:
+      - liquidity_drives_markets (流动性推动市场)
+      - fed_balance_sheet (Fed资产负债表)
+      - net_liquidity (净流动性)
+      - conviction_sizing (确信度仓位)
+    market_conditions:
+      fed_pivot: critical
+      liquidity_shift: critical
+      trend_market: high
+    decision_weight:
+      stock_pick: 0.4
+      macro_timing: 0.95
+      risk_check: 0.6
+      portfolio: 0.7
+    tags_zh:
+      - 流动性
+      - 宏观择时
+      - Fed观察
+      - 集中下注
+    related_doc: stanley_druckenmiller.md
+
+  - id: george_soros
+    full_name: George Soros
+    chinese_name: 乔治·索罗斯
+    fund: Quantum Fund
+    aum: "Peak $25B"
+    active_years: "1973-2011"
+    style:
+      - macro
+      - reflexivity
+      - currency_attack
+      - leverage
+    best_for:
+      - currency_trading
+      - macro_imbalances
+      - reflexivity_analysis
+      - crisis_trading
+    key_concepts:
+      - reflexivity (反身性)
+      - boom_bust_cycle (繁荣-萧条周期)
+      - policy_imbalance (政策失衡)
+      - survival_first (生存优先)
+    market_conditions:
+      currency_crisis: critical
+      policy_divergence: critical
+      bubble: high
+    decision_weight:
+      stock_pick: 0.3
+      macro_timing: 0.9
+      risk_check: 0.7
+      portfolio: 0.5
+    tags_zh:
+      - 反身性
+      - 货币交易
+      - 政策失衡
+      - 杠杆
+    related_doc: george_soros.md
+
+  # ----- 周期/逆向派 -----
+  - id: howard_marks
+    full_name: Howard Marks
+    chinese_name: 霍华德·马克斯
+    fund: Oaktree Capital
+    aum: "$190B"
+    active_years: "1995-present"
+    style:
+      - credit_cycle
+      - contrarian
+      - risk_control
+      - second_level_thinking
+    best_for:
+      - cycle_positioning
+      - credit_analysis
+      - risk_assessment
+      - contrarian_timing
+    key_concepts:
+      - cycle_awareness (周期意识)
+      - second_level_thinking (第二层思考)
+      - risk_not_volatility (风险≠波动)
+      - asymmetric_returns (非对称回报)
+    market_conditions:
+      cycle_extreme: critical
+      credit_crisis: critical
+      panic: high
+    decision_weight:
+      stock_pick: 0.5
+      macro_timing: 0.7
+      risk_check: 0.9
+      portfolio: 0.7
+    tags_zh:
+      - 周期
+      - 信用
+      - 逆向
+      - 风险控制
+    related_doc: howard_marks.md
+
+  - id: michael_burry
+    full_name: Michael Burry
+    chinese_name: 迈克尔·伯里
+    fund: Scion Asset Management
+    aum: "~$250M"
+    active_years: "2000-2008, 2013-present"
+    style:
+      - deep_value
+      - contrarian_extreme
+      - concentrated
+      - short_selling
+    best_for:
+      - contrarian_analysis
+      - bubble_identification
+      - short_opportunities
+      - special_situations
+    key_concepts:
+      - independent_research (独立研究)
+      - consensus_error (共识错误)
+      - liquidation_value (清算价值)
+      - timing_patience (时机耐心)
+    market_conditions:
+      bubble: critical
+      overvaluation: high
+      credit_excess: critical
+    decision_weight:
+      stock_pick: 0.7
+      macro_timing: 0.6
+      risk_check: 0.8
+      portfolio: 0.3
+    tags_zh:
+      - 逆向
+      - 做空
+      - 泡沫
+      - 独立研究
+    related_doc: michael_burry.md
+
+  # ----- 激进/事件驱动派 -----
+  - id: carl_icahn
+    full_name: Carl Icahn
+    chinese_name: 卡尔·伊坎
+    fund: Icahn Enterprises
+    aum: "$15B+"
+    active_years: "1968-present"
+    style:
+      - activist
+      - event_driven
+      - corporate_governance
+      - value_unlock
+    best_for:
+      - activist_investing
+      - governance_arbitrage
+      - value_unlock
+      - corporate_action
+    key_concepts:
+      - shareholder_activism (股东行动主义)
+      - governance_issues (治理问题)
+      - value_unlock (价值释放)
+      - proxy_fight (委托书战)
+    market_conditions:
+      undervaluation: high
+      governance_issues: critical
+    decision_weight:
+      stock_pick: 0.7
+      macro_timing: 0.2
+      risk_check: 0.5
+      portfolio: 0.3
+    tags_zh:
+      - 激进投资
+      - 公司治理
+      - 价值释放
+    related_doc: carl_icahn.md
+
+  # ----- 量化派 -----
+  - id: james_simons
+    full_name: James Simons
+    chinese_name: 詹姆斯·西蒙斯
+    fund: Renaissance Technologies
+    aum: "$130B"
+    active_years: "1982-2010 (active), 2010-present (emeritus)"
+    style:
+      - quantitative
+      - systematic
+      - high_frequency
+      - data_driven
+    best_for:
+      - quant_strategy_design
+      - systematic_trading
+      - backtesting_principles
+      - risk_management
+    key_concepts:
+      - statistical_arbitrage (统计套利)
+      - model_iteration (模型迭代)
+      - overfitting_avoidance (避免过拟合)
+      - capacity_limits (容量限制)
+    market_conditions:
+      all_conditions: neutral  # 策略与市场条件解耦
+    decision_weight:
+      stock_pick: 0.2
+      macro_timing: 0.2
+      risk_check: 0.6
+      portfolio: 0.4
+    tags_zh:
+      - 量化
+      - 统计套利
+      - 数据驱动
+      - 系统化
+    related_doc: james_simons.md
+
+  - id: ed_thorp
+    full_name: Ed Thorp
+    chinese_name: 爱德华·索普
+    fund: Princeton Newport Partners
+    aum: "Peak ~$270M (1988)"
+    active_years: "1969-1988"
+    style:
+      - quantitative
+      - arbitrage
+      - risk_management
+      - mathematical
+    best_for:
+      - options_pricing
+      - statistical_arbitrage
+      - risk_management
+      - kelly_criterion
+    key_concepts:
+      - kelly_criterion (凯利公式)
+      - convertible_arbitrage (可转债套利)
+      - risk_first (风险优先)
+      - mathematical_edge (数学优势)
+    market_conditions:
+      all_conditions: neutral
+    decision_weight:
+      stock_pick: 0.3
+      macro_timing: 0.2
+      risk_check: 0.8
+      portfolio: 0.7
+    tags_zh:
+      - 量化先驱
+      - 凯利公式
+      - 期权定价
+      - 套利
+    related_doc: ed_thorp.md
+
+  - id: cliff_asness
+    full_name: Cliff Asness
+    chinese_name: 克利夫·阿斯内斯
+    fund: AQR Capital Management
+    aum: "$100B+"
+    active_years: "1998-present"
+    style:
+      - quantitative
+      - factor_investing
+      - value_momentum
+      - systematic
+    best_for:
+      - factor_investing
+      - portfolio_construction
+      - risk_premium_harvesting
+      - style_rotation
+    key_concepts:
+      - factor_investing (因子投资)
+      - value_momentum (价值+动量)
+      - risk_premia (风险溢价)
+      - systematic_execution (系统化执行)
+    market_conditions:
+      all_conditions: neutral
+    decision_weight:
+      stock_pick: 0.4
+      macro_timing: 0.3
+      risk_check: 0.7
+      portfolio: 0.8
+    tags_zh:
+      - 因子投资
+      - 价值因子
+      - 动量因子
+      - 系统化
+    related_doc: cliff_asness.md
+
+  # ----- Berkshire 接班人 -----
+  - id: greg_abel
+    full_name: Greg Abel
+    chinese_name: 格雷格·阿贝尔
+    fund: Berkshire Hathaway Energy
+    aum: "$140B+ (BHE assets)"
+    active_years: "2000-present"
+    style:
+      - long_term_capital_allocation
+      - regulated_industries
+      - energy_transition
+      - operational_excellence
+    best_for:
+      - utility_valuation
+      - infrastructure_investing
+      - regulated_return_analysis
+    key_concepts:
+      - rate_base (受管制资产基础)
+      - long_duration_assets (长周期资产)
+      - regulatory_relationship (监管关系)
+    market_conditions:
+      all_conditions: neutral
+    decision_weight:
+      stock_pick: 0.6
+      macro_timing: 0.3
+      risk_check: 0.5
+      portfolio: 0.5
+    tags_zh:
+      - 公用事业
+      - 能源
+      - 长期资本配置
+      - 监管行业
+    related_doc: greg_abel.md
+
+# ============================================
+# 决策矩阵 (Decision Matrix)
+# ============================================
+decision_matrix:
+
+  # 选股决策
+  stock_selection:
+    护城河评估:
+      primary: [warren_buffett, charlie_munger]
+      secondary: [seth_klarman]
+    成长股估值:
+      primary: [peter_lynch]
+      secondary: [warren_buffett]
+    深度价值:
+      primary: [seth_klarman, michael_burry]
+      secondary: [warren_buffett]
+    困境/冷门:
+      primary: [seth_klarman, michael_burry]
+      secondary: [howard_marks]
+    价值陷阱排除:
+      primary: [charlie_munger]
+      secondary: [warren_buffett, seth_klarman]
+    公用事业/基建:
+      primary: [greg_abel]
+      secondary: [warren_buffett]
+
+  # 宏观/择时
+  macro_timing:
+    经济周期定位:
+      primary: [ray_dalio]
+      secondary: [howard_marks, stanley_druckenmiller]
+    流动性趋势:
+      primary: [stanley_druckenmiller]
+      secondary: [ray_dalio]
+    货币/汇率:
+      primary: [george_soros]
+      secondary: [stanley_druckenmiller]
+    利率转向:
+      primary: [stanley_druckenmiller, ray_dalio]
+      secondary: [howard_marks]
+    Fed政策:
+      primary: [stanley_druckenmiller]
+      secondary: [ray_dalio]
+
+  # 风险检查
+  risk_check:
+    心理偏误:
+      primary: [charlie_munger]
+      secondary: []
+    周期位置:
+      primary: [howard_marks]
+      secondary: [ray_dalio]
+    极端风险/泡沫:
+      primary: [michael_burry, charlie_munger]
+      secondary: [howard_marks]
+    决策质量:
+      primary: [charlie_munger]
+      secondary: [warren_buffett]
+    止损决策:
+      primary: [george_soros]
+      secondary: [stanley_druckenmiller]
+
+  # 组合配置
+  portfolio:
+    资产配置:
+      primary: [ray_dalio]
+      secondary: [howard_marks]
+    风险平价:
+      primary: [ray_dalio]
+      secondary: []
+    集中vs分散:
+      concentrated: [warren_buffett, stanley_druckenmiller]
+      diversified: [ray_dalio]
+    现金比例:
+      primary: [seth_klarman, howard_marks]
+      secondary: [warren_buffett]
+    仓位管理:
+      primary: [stanley_druckenmiller]
+      secondary: [george_soros]
+
+  # 特殊策略
+  special_strategies:
+    困境债:
+      primary: [seth_klarman, howard_marks]
+    并购套利:
+      primary: [seth_klarman]
+    分拆套利:
+      primary: [peter_lynch, seth_klarman]
+    股东行动:
+      primary: [carl_icahn]
+    做空泡沫:
+      primary: [michael_burry, george_soros]
+    量化策略:
+      primary: [james_simons]
+    波动率交易:
+      primary: [michael_burry]
+    宏观对冲:
+      primary: [george_soros, stanley_druckenmiller]
+
+# ============================================
+# 情境路由 (Scenario Routing)
+# ============================================
+scenario_routing:
+
+  市场恐慌:
+    consult_order: [howard_marks, seth_klarman, warren_buffett, stanley_druckenmiller]
+    key_questions:
+      - "这是流动性危机还是偿付危机？"
+      - "央行有救市意愿和能力吗？"
+      - "哪些资产被无差别抛售？"
+
+  市场狂热:
+    consult_order: [charlie_munger, howard_marks, michael_burry, seth_klarman]
+    key_questions:
+      - "我是不是在FOMO？"
+      - "估值用什么逻辑都合理化了吗？"
+      - "新手大量进场了吗？"
+
+  经济衰退:
+    consult_order: [ray_dalio, howard_marks, seth_klarman, warren_buffett]
+    key_questions:
+      - "增长↓ + 通膨？处于哪个象限？"
+      - "违约开始了吗？"
+      - "央行政策空间如何？"
+
+  利率转向:
+    consult_order: [stanley_druckenmiller, ray_dalio, peter_lynch, howard_marks]
+    key_questions:
+      - "Fed转向信号确认了吗？"
+      - "是预防性降息还是衰退式降息？"
+      - "市场定价了多少降息？"
+
+  流动性收紧:
+    consult_order: [stanley_druckenmiller, ray_dalio, michael_burry]
+    key_questions:
+      - "净流动性方向？3个月变化？"
+      - "高杠杆公司是否开始承压？"
+      - "TGA、RRP 的影响？"
+
+  估值泡沫:
+    consult_order: [charlie_munger, michael_burry, howard_marks, george_soros]
+    key_questions:
+      - "估值需要'信仰'吗？"
+      - "反身性在哪个阶段？"
+      - "泡沫破裂的催化剂是什么？"
+
+# ============================================
+# 快速查询映射
+# ============================================
+quick_lookup:
+
+  by_question:
+    "这个股票值得买吗": [warren_buffett, charlie_munger, peter_lynch]
+    "现在该加仓还是减仓": [howard_marks, stanley_druckenmiller]
+    "市场是不是泡沫": [charlie_munger, michael_burry, howard_marks]
+    "该持有多少现金": [seth_klarman, howard_marks, warren_buffett]
+    "周期在哪个位置": [ray_dalio, howard_marks]
+    "流动性怎么样": [stanley_druckenmiller]
+    "我的决策有偏误吗": [charlie_munger]
+    "该如何做资产配置": [ray_dalio]
+    "这是价值陷阱吗": [charlie_munger, seth_klarman]
+    "该不该止损": [george_soros, stanley_druckenmiller]
+
+  by_metric:
+    PEG: peter_lynch
+    FCF_Yield: warren_buffett
+    ROIC: warren_buffett
+    净流动性: stanley_druckenmiller
+    信用利差: howard_marks
+    VIX: michael_burry
+    债务周期: ray_dalio
+
