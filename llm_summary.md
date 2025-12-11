@@ -1,33 +1,33 @@
-# 投資決策框架摘要（LLM 專用）
+# 投资决策框架摘要（LLM 专用）
 
-> 濃縮版投資大師智慧，適用於 System Prompt 或快速參考。
+> 浓缩版投资大师智慧，适用于 System Prompt 或快速参考。
 
 ---
 
-## 一、投資人速查表
+## 一、投资人速查表
 
-| ID | 投資人 | 基金 | 核心一句話 | 適用場景 | 決策權重 |
+| ID | 投资人 | 基金 | 核心一句话 | 适用场景 | 决策权重 |
 |----|--------|------|-----------|----------|----------|
-| `warren_buffett` | Warren Buffett | Berkshire | 護城河+安全邊際+長期持有 | 選股估值 | stock:0.95, risk:0.7 |
-| `charlie_munger` | Charlie Munger | Berkshire | 逆向思考+避免愚蠢 | 決策檢查 | risk:0.95, stock:0.8 |
-| `ray_dalio` | Ray Dalio | Bridgewater | 經濟四象限+風險平價 | 資產配置 | portfolio:0.95, macro:0.9 |
-| `stanley_druckenmiller` | Stanley Druckenmiller | Duquesne | 流動性決定一切 | 宏觀擇時 | macro:0.95, portfolio:0.7 |
-| `george_soros` | George Soros | Quantum | 反身性+攻擊失衡 | 貨幣/極端事件 | macro:0.9, risk:0.7 |
-| `howard_marks` | Howard Marks | Oaktree | 週期位置決定行動 | 風險評估 | risk:0.9, macro:0.7 |
-| `peter_lynch` | Peter Lynch | Magellan | 買你懂的+PEG<1 | 成長股 | stock:0.9 |
-| `seth_klarman` | Seth Klarman | Baupost | 深度價值+極端耐心 | 冷門資產 | stock:0.85, risk:0.8 |
-| `michael_burry` | Michael Burry | Scion | 逆向深挖+不從眾 | 泡沫/特殊情況 | risk:0.8, stock:0.7 |
-| `carl_icahn` | Carl Icahn | Icahn Ent | 股東行動+解鎖價值 | 公司治理 | stock:0.7 |
-| `james_simons` | James Simons | Renaissance | 數據驅動+無情緒 | 量化策略 | systematic:0.9 |
-| `ed_thorp` | Ed Thorp | Princeton Newport | 凱利公式+套利 | 倉位管理 | risk:0.8 |
-| `cliff_asness` | Cliff Asness | AQR | 因子投資+價值動量 | 組合構建 | portfolio:0.8 |
-| `greg_abel` | Greg Abel | BHE | 長週期資本配置 | 公用事業 | stock:0.6 |
+| `warren_buffett` | Warren Buffett | Berkshire | 护城河+安全边际+长期持有 | 选股估值 | stock:0.95, risk:0.7 |
+| `charlie_munger` | Charlie Munger | Berkshire | 逆向思考+避免愚蠢 | 决策检查 | risk:0.95, stock:0.8 |
+| `ray_dalio` | Ray Dalio | Bridgewater | 经济四象限+风险平价 | 资产配置 | portfolio:0.95, macro:0.9 |
+| `stanley_druckenmiller` | Stanley Druckenmiller | Duquesne | 流动性决定一切 | 宏观择时 | macro:0.95, portfolio:0.7 |
+| `george_soros` | George Soros | Quantum | 反身性+攻击失衡 | 货币/极端事件 | macro:0.9, risk:0.7 |
+| `howard_marks` | Howard Marks | Oaktree | 周期位置决定行动 | 风险评估 | risk:0.9, macro:0.7 |
+| `peter_lynch` | Peter Lynch | Magellan | 买你懂的+PEG<1 | 成长股 | stock:0.9 |
+| `seth_klarman` | Seth Klarman | Baupost | 深度价值+极端耐心 | 冷门资产 | stock:0.85, risk:0.8 |
+| `michael_burry` | Michael Burry | Scion | 逆向深挖+不从众 | 泡沫/特殊情况 | risk:0.8, stock:0.7 |
+| `carl_icahn` | Carl Icahn | Icahn Ent | 股东行动+解锁价值 | 公司治理 | stock:0.7 |
+| `james_simons` | James Simons | Renaissance | 数据驱动+无情绪 | 量化策略 | systematic:0.9 |
+| `ed_thorp` | Ed Thorp | Princeton Newport | 凯利公式+套利 | 仓位管理 | risk:0.8 |
+| `cliff_asness` | Cliff Asness | AQR | 因子投资+价值动量 | 组合构建 | portfolio:0.8 |
+| `greg_abel` | Greg Abel | BHE | 长周期资本配置 | 公用事业 | stock:0.6 |
 
 ---
 
-## 二、核心決策規則（IF-THEN 格式）
+## 二、核心决策规则（IF-THEN 格式）
 
-### 買入規則
+### 买入规则
 ```
 IF 盈餘收益率 > 10Y國債 × 1.5 AND 護城河完好
    THEN 考慮買入 (Buffett)
@@ -42,7 +42,7 @@ IF 短期負面新聞 AND 護城河未損 AND 股價下跌 > 30%
    THEN 機會窗口 (Buffett)
 ```
 
-### 賣出/不買規則
+### 卖出/不买规则
 ```
 IF 護城河被侵蝕 AND 無改善跡象
    THEN 賣出 (Buffett)
@@ -57,7 +57,7 @@ IF 買入論點不再成立
    THEN 立即止損 (Soros)
 ```
 
-### 宏觀/倉位規則
+### 宏观/仓位规则
 ```
 IF 淨流動性上升 AND 估值合理
    THEN 做多風險資產 (Druckenmiller)
@@ -77,116 +77,116 @@ IF 確信度 < 50%
 
 ---
 
-## 三、經濟四象限配置（Dalio）
+## 三、经济四象限配置（Dalio）
 
-| 環境 | 增長 | 通膨 | 偏好資產 |
+| 环境 | 增长 | 通膨 | 偏好资产 |
 |------|------|------|----------|
-| 溫和擴張 | ↑ | ↓ | 股票、公司債 |
-| 過熱 | ↑ | ↑ | 商品、TIPS、新興股票 |
-| 滯脹 | ↓ | ↑ | 商品、黃金、TIPS |
-| 衰退/通縮 | ↓ | ↓ | 長期國債、現金 |
+| 温和扩张 | ↑ | ↓ | 股票、公司债 |
+| 过热 | ↑ | ↑ | 商品、TIPS、新兴股票 |
+| 滞胀 | ↓ | ↑ | 商品、黄金、TIPS |
+| 衰退/通缩 | ↓ | ↓ | 长期国债、现金 |
 
 ---
 
-## 四、週期位置判斷（Marks）
+## 四、周期位置判断（Marks）
 
-| 階段 | 特徵 | 行動 |
+| 阶段 | 特征 | 行动 |
 |------|------|------|
-| 底部 | 信用凍結、恐慌拋售、估值極低 | 積極進場 |
-| 復甦 | 利差收窄、風險偏好回升 | 持有優質高β |
-| 過熱 | 槓桿激增、低質資產熱捧、散戶湧入 | 減碼/防守 |
-| 下行 | 違約攀升、去槓桿、信用收緊 | 保留彈藥 |
+| 底部 | 信用冻结、恐慌抛售、估值极低 | 积极进场 |
+| 复苏 | 利差收窄、风险偏好回升 | 持有优质高β |
+| 过热 | 杠杆激增、低质资产热捧、散户涌入 | 减码/防守 |
+| 下行 | 违约攀升、去杠杆、信用收紧 | 保留弹药 |
 
 ---
 
-## 五、決策品質檢查（Munger）
+## 五、决策品质检查（Munger）
 
-### 心理偏誤自查
-| 偏誤 | 表現 | 解法 |
+### 心理偏误自查
+| 偏误 | 表现 | 解法 |
 |------|------|------|
-| 確認偏誤 | 只看利好 | 主動找反駁論點 |
-| 過度自信 | 我比市場聰明 | 市場知道什麼我不知道的？ |
-| 從眾效應 | 大家都在買 | 獨立思考，我的判斷是什麼？ |
-| 錨定效應 | 被成本價錨定 | 忘記成本，重新評估 |
-| FOMO | 怕錯過 | 這符合我的標準嗎？ |
+| 确认偏误 | 只看利好 | 主动找反驳论点 |
+| 过度自信 | 我比市场聪明 | 市场知道什么我不知道的？ |
+| 从众效应 | 大家都在买 | 独立思考，我的判断是什么？ |
+| 锚定效应 | 被成本价锚定 | 忘记成本，重新评估 |
+| FOMO | 怕错过 | 这符合我的标准吗？ |
 
-### 決策前五問
-1. **我在能力圈內嗎？** 能 2 句話解釋清楚嗎？
-2. **有安全邊際嗎？** 最壞情況能接受嗎？
-3. **週期在哪個位置？** 該進攻還是防守？
-4. **流動性趨勢如何？** 淨流動性上升還是下降？
-5. **有心理偏誤嗎？** 是理性決策還是情緒決策？
+### 决策前五问
+1. **我在能力圈内吗？** 能 2 句话解释清楚吗？
+2. **有安全边际吗？** 最坏情况能接受吗？
+3. **周期在哪个位置？** 该进攻还是防守？
+4. **流动性趋势如何？** 净流动性上升还是下降？
+5. **有心理偏误吗？** 是理性决策还是情绪决策？
 
 ---
 
-## 六、關鍵指標速查
+## 六、关键指标速查
 
-| 指標 | 公式/含義 | 閾值 | 來源 |
+| 指标 | 公式/含义 | 阈值 | 来源 |
 |------|----------|------|------|
-| **盈餘收益率** | E/P (倒數 P/E) | > 國債 × 1.5 = 便宜 | Buffett |
-| **FCF Yield** | FCF/市值 | > 8% = 機會 | Buffett |
-| **PEG** | P/E ÷ 增速 | < 1 便宜, > 2 貴 | Lynch |
-| **ROIC** | 資本回報率 | > 15% 持續 = 好生意 | Buffett |
-| **淨流動性** | Fed B/S − TGA − RRP | 上升 = 風險偏好 | Druckenmiller |
-| **信用利差** | 高收益-國債 | 擴大 = 風險上升 | Marks |
-| **VIX** | 恐懼指數 | > 30 恐慌, < 15 自滿 | Burry |
-| **市值/GDP** | Buffett 指標 | > 150% = 泡沫風險 | Buffett |
+| **盈余收益率** | E/P (倒数 P/E) | > 国债 × 1.5 = 便宜 | Buffett |
+| **FCF Yield** | FCF/市值 | > 8% = 机会 | Buffett |
+| **PEG** | P/E ÷ 增速 | < 1 便宜, > 2 贵 | Lynch |
+| **ROIC** | 资本回报率 | > 15% 持续 = 好生意 | Buffett |
+| **净流动性** | Fed B/S − TGA − RRP | 上升 = 风险偏好 | Druckenmiller |
+| **信用利差** | 高收益-国债 | 扩大 = 风险上升 | Marks |
+| **VIX** | 恐惧指数 | > 30 恐慌, < 15 自满 | Burry |
+| **市值/GDP** | Buffett 指标 | > 150% = 泡沫风险 | Buffett |
 
 ---
 
 ## 七、情境快速路由
 
-### 市場恐慌時
-**諮詢順序**：Howard Marks → Seth Klarman → Warren Buffett
-**關鍵問題**：
-- 這是流動性危機還是償付危機？
-- 央行有救市意願和能力嗎？
-- 哪些資產被無差別拋售？
+### 市场恐慌时
+**咨询顺序**：Howard Marks → Seth Klarman → Warren Buffett
+**关键问题**：
+- 这是流动性危机还是偿付危机？
+- 央行有救市意愿和能力吗？
+- 哪些资产被无差别抛售？
 
-### 市場狂熱時
-**諮詢順序**：Charlie Munger → Howard Marks → Michael Burry
-**關鍵問題**：
+### 市场狂热时
+**咨询顺序**：Charlie Munger → Howard Marks → Michael Burry
+**关键问题**：
 - 我是不是在 FOMO？
-- 估值用什麼邏輯都合理化了嗎？
-- 新手大量進場了嗎？
+- 估值用什么逻辑都合理化了吗？
+- 新手大量进场了吗？
 
-### 經濟衰退時
-**諮詢順序**：Ray Dalio → Howard Marks → Seth Klarman
-**關鍵問題**：
-- 處於哪個象限？增長↓ + 通膨↑ or ↓？
-- 違約開始了嗎？
-- 央行政策空間如何？
+### 经济衰退时
+**咨询顺序**：Ray Dalio → Howard Marks → Seth Klarman
+**关键问题**：
+- 处于哪个象限？增长↓ + 通膨↑ or ↓？
+- 违约开始了吗？
+- 央行政策空间如何？
 
-### 利率轉向時
-**諮詢順序**：Stanley Druckenmiller → Ray Dalio → Peter Lynch
-**關鍵問題**：
-- Fed 轉向信號確認了嗎？
-- 是預防性降息還是衰退式降息？
-- 市場定價了多少降息？
+### 利率转向时
+**咨询顺序**：Stanley Druckenmiller → Ray Dalio → Peter Lynch
+**关键问题**：
+- Fed 转向信号确认了吗？
+- 是预防性降息还是衰退式降息？
+- 市场定价了多少降息？
 
 ---
 
-## 八、經典語錄（可引用）
+## 八、经典语录（可引用）
 
-> "價格是你付出的，價值是你得到的。" — **Buffett**
+> "价格是你付出的，价值是你得到的。" — **Buffett**
 
-> "如果我知道我會死在哪裡，我就永遠不去那裡。" — **Munger**
+> "如果我知道我会死在哪里，我就永远不去那里。" — **Munger**
 
-> "流動性推動市場，而非基本面。" — **Druckenmiller**
+> "流动性推动市场，而非基本面。" — **Druckenmiller**
 
-> "週期意識是投資最重要的事。" — **Marks**
+> "周期意识是投资最重要的事。" — **Marks**
 
-> "最大的風險是永久虧損，而非波動。" — **Marks**
+> "最大的风险是永久亏损，而非波动。" — **Marks**
 
-> "市場不斷在不確定中波動，靠押注意外賺錢。" — **Soros**
+> "市场不断在不确定中波动，靠押注意外赚钱。" — **Soros**
 
 > "Know what you own, and know why you own it." — **Lynch**
 
-> "長期導向是投資者最大的優勢。" — **Klarman**
+> "长期导向是投资者最大的优势。" — **Klarman**
 
 ---
 
-## 九、決策工作流（標準流程）
+## 九、决策工作流（标准流程）
 
 ```
 [1] 宏觀定位
@@ -212,7 +212,7 @@ IF 確信度 < 50%
 
 ---
 
-## 十、快速參考映射
+## 十、快速参考映射
 
 ```yaml
 選股問題:
@@ -239,8 +239,8 @@ IF 確信度 < 50%
 ---
 
 > **LLM 使用提示**：
-> 1. 根據用戶問題類型，從「快速參考映射」找到相關投資人
-> 2. 應用對應的「決策規則」給出 IF-THEN 判斷
-> 3. 用「決策品質檢查」驗證建議的合理性
-> 4. 必要時引用「經典語錄」增強說服力
+> 1. 根据用户问题类型，从「快速参考映射」找到相关投资人
+> 2. 应用对应的「决策规则」给出 IF-THEN 判断
+> 3. 用「决策品质检查」验证建议的合理性
+> 4. 必要时引用「经典语录」增强说服力
 

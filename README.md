@@ -1,21 +1,21 @@
 # 📈 Investment Masters Handbook
 
-> 傳奇投資人智慧框架 | Legendary Investors' Wisdom Framework
+> 传奇投资人智慧框架 | Legendary Investors' Wisdom Framework
 
-將 Warren Buffett、Charlie Munger、Ray Dalio 等傳奇投資人的智慧，轉化為可執行的決策框架。
+将 Warren Buffett、Charlie Munger、Ray Dalio 等传奇投资人的智慧，转化为可执行的决策框架。
 
 ---
 
 ## ✨ 特色
 
-- 🎯 **IF-THEN 決策規則**：將投資智慧轉化為可執行的條件判斷
-- 🤖 **LLM 友好**：YAML 元數據 + 結構化格式，適合 AI 助手和 RAG 系統
-- 📊 **實戰導向**：完整案例、檢查清單、情境劇本
-- 🎭 **神級 Prompt**：創意角色設計，打破思維定式
+- 🎯 **IF-THEN 决策规则**：将投资智慧转化为可执行的条件判断
+- 🤖 **LLM 友好**：YAML 元数据 + 结构化格式，适合 AI 助手和 RAG 系统
+- 📊 **实战导向**：完整案例、检查清单、情境剧本
+- 🎭 **神级 Prompt**：创意角色设计，打破思维定式
 
 ---
 
-## 📁 文件結構
+## 📁 文件结构
 
 ```
 investment-masters/
@@ -60,19 +60,19 @@ investment-masters/
 
 ---
 
-## 🚀 快速開始
+## 🚀 快速开始
 
-### 1. 手動查詢
+### 1. 手动查询
 
-不知道該參考誰？查看 [decision_router.md](./decision_router.md)
+不知道该参考谁？查看 [decision_router.md](./decision_router.md)
 
-| 你在問什麼？ | 參考誰 |
+| 你在问什么？ | 参考谁 |
 |-------------|--------|
-| 這股票值得買嗎 | Buffett → Munger → Lynch |
-| 市場是不是泡沫 | Munger → Burry → Marks |
-| 現在週期在哪 | Dalio → Marks |
-| 流動性怎麼樣 | Druckenmiller |
-| 我有決策偏誤嗎 | Munger |
+| 这股票值得买吗 | Buffett → Munger → Lynch |
+| 市场是不是泡沫 | Munger → Burry → Marks |
+| 现在周期在哪 | Dalio → Marks |
+| 流动性怎么样 | Druckenmiller |
+| 我有决策偏误吗 | Munger |
 
 ### 2. AI 助手 / RAG
 
@@ -86,45 +86,45 @@ System Prompt: llm_summary.md
 ### 3. 完整案例
 
 查看 [README_Usage.md](./README_Usage.md)：
-- 如何分析一隻股票（Costco 案例）
-- 如何判斷市場週期
-- 如何設計 AI 投資助手 Prompt
+- 如何分析一只股票（Costco 案例）
+- 如何判断市场周期
+- 如何设计 AI 投资助手 Prompt
 
 ---
 
-## 📊 投資人速查
+## 📊 投资人速查
 
-### 由下而上（選股）
-| 投資人 | 核心 | 適用 |
+### 由下而上（选股）
+| 投资人 | 核心 | 适用 |
 |--------|------|------|
-| Warren Buffett | 護城河 + 安全邊際 | 估值、選股 |
-| Charlie Munger | 逆向思考 + 避免愚蠢 | 決策檢查 |
-| Peter Lynch | PEG < 1 | 成長股 |
-| Seth Klarman | 深度價值 + 耐心 | 冷門資產 |
+| Warren Buffett | 护城河 + 安全边际 | 估值、选股 |
+| Charlie Munger | 逆向思考 + 避免愚蠢 | 决策检查 |
+| Peter Lynch | PEG < 1 | 成长股 |
+| Seth Klarman | 深度价值 + 耐心 | 冷门资产 |
 
-### 由上而下（宏觀）
-| 投資人 | 核心 | 適用 |
+### 由上而下（宏观）
+| 投资人 | 核心 | 适用 |
 |--------|------|------|
-| Ray Dalio | 經濟四象限 | 資產配置 |
-| Stanley Druckenmiller | 流動性追蹤 | 擇時 |
-| George Soros | 反身性 | 貨幣/危機 |
+| Ray Dalio | 经济四象限 | 资产配置 |
+| Stanley Druckenmiller | 流动性追踪 | 择时 |
+| George Soros | 反身性 | 货币/危机 |
 
-### 週期/風控
-| 投資人 | 核心 | 適用 |
+### 周期/风控
+| 投资人 | 核心 | 适用 |
 |--------|------|------|
-| Howard Marks | 週期意識 | 風險評估 |
-| Michael Burry | 逆向極端 | 泡沫識別 |
+| Howard Marks | 周期意识 | 风险评估 |
+| Michael Burry | 逆向极端 | 泡沫识别 |
 
 ### 量化
-| 投資人 | 核心 | 適用 |
+| 投资人 | 核心 | 适用 |
 |--------|------|------|
-| James Simons | 統計套利 | 量化策略 |
-| Ed Thorp | 凱利公式 | 倉位管理 |
-| Cliff Asness | 因子投資 | 組合構建 |
+| James Simons | 统计套利 | 量化策略 |
+| Ed Thorp | 凯利公式 | 仓位管理 |
+| Cliff Asness | 因子投资 | 组合构建 |
 
 ---
 
-## 💡 核心 IF-THEN 規則
+## 💡 核心 IF-THEN 规则
 
 ```
 # 買入
@@ -143,40 +143,40 @@ IF 確信度 < 50% → 小倉位或不做
 
 ---
 
-## 🎭 神級 Prompt
+## 🎭 神级 Prompt
 
-創意角色設計，打破思維定式：
+创意角色设计，打破思维定式：
 
 | 角色 | 定位 | 用途 |
 |------|------|------|
-| [估值之王](./prompts/valuation_philosopher.md) | 認知邊界觀察者 | 質疑估值假設 |
-| [加密交易員](./prompts/crypto_trader.md) | 血腥味嗅探器 | 加密貨幣分析 |
-| [週期巫師](./prompts/cycle_wizard.md) | 時間漩渦行者 | 週期判斷 |
-| [風險獵人](./prompts/risk_hunter.md) | 黑天鵝飼養員 | 極端風險 |
-| [反向先知](./prompts/contrarian_prophet.md) | 共識墳墓守墓人 | 逆向思考 |
-| [流動性薩滿](./prompts/liquidity_shaman.md) | 資金血脈通靈者 | 流動性追蹤 |
+| [估值之王](./prompts/valuation_philosopher.md) | 认知边界观察者 | 质疑估值假设 |
+| [加密交易员](./prompts/crypto_trader.md) | 血腥味嗅探器 | 加密货币分析 |
+| [周期巫师](./prompts/cycle_wizard.md) | 时间漩涡行者 | 周期判断 |
+| [风险猎人](./prompts/risk_hunter.md) | 黑天鹅饲养员 | 极端风险 |
+| [反向先知](./prompts/contrarian_prophet.md) | 共识坟墓守墓人 | 逆向思考 |
+| [流动性萨满](./prompts/liquidity_shaman.md) | 资金血脉通灵者 | 流动性追踪 |
 
 ---
 
-## 📖 使用建議
+## 📖 使用建议
 
-### 個人投資者
-1. 從 `decision_router.md` 找到對應問題
-2. 閱讀相關投資人文檔
-3. 應用 IF-THEN 規則做決策
-4. 用檢查清單驗證
+### 个人投资者
+1. 从 `decision_router.md` 找到对应问题
+2. 阅读相关投资人文档
+3. 应用 IF-THEN 规则做决策
+4. 用检查清单验证
 
-### AI/RAG 開發者
-1. 將 `investor_index.yaml` 解析為結構化數據
-2. 用 `llm_summary.md` 作為 System Prompt
-3. 將各投資人文檔嵌入向量數據庫
-4. 基於問題類型路由到相關文檔
+### AI/RAG 开发者
+1. 将 `investor_index.yaml` 解析为结构化数据
+2. 用 `llm_summary.md` 作为 System Prompt
+3. 将各投资人文档嵌入向量数据库
+4. 基于问题类型路由到相关文档
 
 ---
 
-## ⚠️ 免責聲明
+## ⚠️ 免责声明
 
-本項目僅供教育和研究目的，不構成投資建議。投資有風險，請根據自身情況謹慎決策。
+本项目仅供教育和研究目的，不构成投资建议。投资有风险，请根据自身情况谨慎决策。
 
 ---
 
@@ -186,17 +186,17 @@ MIT License
 
 ---
 
-## 🤝 貢獻
+## 🤝 贡献
 
-歡迎提交 Issue 和 Pull Request！
+欢迎提交 Issue 和 Pull Request！
 
-可以貢獻的方向：
-- 補充更多投資人
-- 增加歷史案例
-- 改進 IF-THEN 規則
-- 翻譯成其他語言
+可以贡献的方向：
+- 补充更多投资人
+- 增加历史案例
+- 改进 IF-THEN 规则
+- 翻译成其他语言
 
 ---
 
-> *「學習大師的思考方式，而非機械複製操作。」*
+> *「学习大师的思考方式，而非机械复制操作。」*
 
