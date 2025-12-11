@@ -12,7 +12,7 @@
 将 **Warren Buffett、Charlie Munger、Ray Dalio** 等 14 位传奇投资人的智慧  
 转化为 **IF-THEN 决策规则**、**检查清单** 和 **实战框架**
 
-[快速开始](#-快速开始) • [使用案例](#-使用案例) • [投资人列表](#-支持的投资大师) • [AI 集成](#-ai-集成指南) • [贡献指南](#-贡献)
+[快速开始](#-快速开始) • [投资人列表](#-支持的投资大师) • [AI 集成](#-ai-集成指南) • [NOFX 集成](#-nofx-ai-交易系统集成) • [贡献](#-贡献)
 
 </div>
 
@@ -39,21 +39,21 @@
 
 | 问题类型 | 推荐框架 | 直达链接 |
 |---------|---------|---------|
-| 🏢 这只股票值不值得买？ | Buffett → Munger → Lynch | [📖 查看](./warren_buffett.md) |
-| 💰 当前估值是否合理？ | Buffett → Klarman | [📖 查看](./warren_buffett.md#如何判断低估) |
-| 📈 现在是牛市还是熊市？ | Dalio → Marks | [📖 查看](./ray_dalio.md) |
-| ⚠️ 市场是否有泡沫？ | Munger → Burry → Marks | [📖 查看](./michael_burry.md) |
-| 💧 流动性环境如何？ | Druckenmiller | [📖 查看](./stanley_druckenmiller.md) |
-| 🧠 我的决策有偏误吗？ | Munger | [📖 查看](./charlie_munger.md#心理偏误清单) |
-| 🎲 仓位应该多大？ | Druckenmiller + Thorp | [📖 查看](./ed_thorp.md) |
+| 🏢 这只股票值不值得买？ | Buffett → Munger → Lynch | [📖 查看](./investors/warren_buffett.md) |
+| 💰 当前估值是否合理？ | Buffett → Klarman | [📖 查看](./investors/warren_buffett.md#如何判断低估) |
+| 📈 现在是牛市还是熊市？ | Dalio → Marks | [📖 查看](./investors/ray_dalio.md) |
+| ⚠️ 市场是否有泡沫？ | Munger → Burry → Marks | [📖 查看](./investors/michael_burry.md) |
+| 💧 流动性环境如何？ | Druckenmiller | [📖 查看](./investors/stanley_druckenmiller.md) |
+| 🧠 我的决策有偏误吗？ | Munger | [📖 查看](./investors/charlie_munger.md#心理偏误清单) |
+| 🎲 仓位应该多大？ | Druckenmiller + Thorp | [📖 查看](./investors/ed_thorp.md) |
 
-👉 **不确定看谁？** 查看 [决策路由器](./decision_router.md) 获取完整映射表。
+👉 **不确定看谁？** 查看 [决策路由器](./config/decision_router.md) 获取完整映射表。
 
 ---
 
 ### 方式 2️⃣：完整案例（实战学习）
 
-阅读 **[📘 使用指南](./README_Usage.md)** 了解：
+阅读 **[📘 使用指南](./docs/README_Usage.md)** 了解：
 
 | 案例 | 内容 |
 |------|------|
@@ -69,11 +69,11 @@
 
 ```python
 # 1. 加载核心决策规则
-system_prompt = read_file("llm_summary.md")
+system_prompt = read_file("guides/llm_summary.md")
 
 # 2. 加载结构化索引
 import yaml
-investor_db = yaml.safe_load(open("investor_index.yaml"))
+investor_db = yaml.safe_load(open("config/investor_index.yaml"))
 
 # 3. 根据问题路由
 user_query = "这只股票估值合理吗？"
@@ -108,10 +108,10 @@ answer = llm.generate(
 
 | 用途 | 文件 | 说明 |
 |------|------|------|
-| System Prompt | `llm_summary.md` | 核心原则 + 决策清单精华版 |
-| 结构化索引 | `investor_index.yaml` | 机器可读，含标签/权重/场景映射 |
-| 决策逻辑 | `practical_guide.md` | 200+ IF-THEN 规则 |
-| 路由规则 | `decision_router.md` | 问题类型 → 投资人映射 |
+| System Prompt | `guides/llm_summary.md` | 核心原则 + 决策清单精华版 |
+| 结构化索引 | `config/investor_index.yaml` | 机器可读，含标签/权重/场景映射 |
+| 决策逻辑 | `guides/practical_guide.md` | 200+ IF-THEN 规则 |
+| 路由规则 | `config/decision_router.md` | 问题类型 → 投资人映射 |
 
 ---
 
@@ -121,46 +121,46 @@ answer = llm.generate(
 
 | 投资人 | AUM | 核心方法 | 最佳场景 | 文档 |
 |--------|-----|---------|---------|------|
-| **Warren Buffett** | $900B+ | 护城河 + 安全边际 | 选股、估值、长期持有 | [📖](./warren_buffett.md) |
-| **Charlie Munger** | N/A | 逆向思考 + 思维模型 | 决策检查、避免偏误 | [📖](./charlie_munger.md) |
-| **Peter Lynch** | $14B | PEG < 1 成长股 | 消费品、成长股 | [📖](./peter_lynch.md) |
-| **Seth Klarman** | $30B | 深度价值 + 耐心 | 困境资产、冷门标的 | [📖](./seth_klarman.md) |
+| **Warren Buffett** | $900B+ | 护城河 + 安全边际 | 选股、估值、长期持有 | [📖](./investors/warren_buffett.md) |
+| **Charlie Munger** | N/A | 逆向思考 + 思维模型 | 决策检查、避免偏误 | [📖](./investors/charlie_munger.md) |
+| **Peter Lynch** | $14B | PEG < 1 成长股 | 消费品、成长股 | [📖](./investors/peter_lynch.md) |
+| **Seth Klarman** | $30B | 深度价值 + 耐心 | 困境资产、冷门标的 | [📖](./investors/seth_klarman.md) |
 
 ### 宏观驱动派（Top-Down）
 
 | 投资人 | AUM | 核心方法 | 最佳场景 | 文档 |
 |--------|-----|---------|---------|------|
-| **Ray Dalio** | $150B | 经济四象限 | 资产配置、宏观择时 | [📖](./ray_dalio.md) |
-| **Stanley Druckenmiller** | $7B+ | 流动性追踪 | 宏观拐点、高确信度重仓 | [📖](./stanley_druckenmiller.md) |
-| **George Soros** | $26B | 反身性理论 | 货币危机、泡沫破裂 | [📖](./george_soros.md) |
+| **Ray Dalio** | $150B | 经济四象限 | 资产配置、宏观择时 | [📖](./investors/ray_dalio.md) |
+| **Stanley Druckenmiller** | $7B+ | 流动性追踪 | 宏观拐点、高确信度重仓 | [📖](./investors/stanley_druckenmiller.md) |
+| **George Soros** | $26B | 反身性理论 | 货币危机、泡沫破裂 | [📖](./investors/george_soros.md) |
 
 ### 周期/风控派
 
 | 投资人 | AUM | 核心方法 | 最佳场景 | 文档 |
 |--------|-----|---------|---------|------|
-| **Howard Marks** | $160B | 周期意识 | 风险评估、周期定位 | [📖](./howard_marks.md) |
-| **Michael Burry** | $340M | 逆向极端 | 泡沫识别、尾部对冲 | [📖](./michael_burry.md) |
+| **Howard Marks** | $160B | 周期意识 | 风险评估、周期定位 | [📖](./investors/howard_marks.md) |
+| **Michael Burry** | $340M | 逆向极端 | 泡沫识别、尾部对冲 | [📖](./investors/michael_burry.md) |
 
 ### 量化/系统派
 
 | 投资人 | AUM | 核心方法 | 最佳场景 | 文档 |
 |--------|-----|---------|---------|------|
-| **James Simons** | $130B | 统计套利 | 量化策略、高频交易 | [📖](./james_simons.md) |
-| **Ed Thorp** | N/A | 凯利公式 | 仓位管理、风险控制 | [📖](./ed_thorp.md) |
-| **Cliff Asness** | $140B | 因子投资 | 多因子组合、Smart Beta | [📖](./cliff_asness.md) |
+| **James Simons** | $130B | 统计套利 | 量化策略、高频交易 | [📖](./investors/james_simons.md) |
+| **Ed Thorp** | N/A | 凯利公式 | 仓位管理、风险控制 | [📖](./investors/ed_thorp.md) |
+| **Cliff Asness** | $140B | 因子投资 | 多因子组合、Smart Beta | [📖](./investors/cliff_asness.md) |
 
 ### 行动派
 
 | 投资人 | AUM | 核心方法 | 最佳场景 | 文档 |
 |--------|-----|---------|---------|------|
-| **Carl Icahn** | $17B | 激进行动主义 | 公司治理、并购套利 | [📖](./carl_icahn.md) |
+| **Carl Icahn** | $17B | 激进行动主义 | 公司治理、并购套利 | [📖](./investors/carl_icahn.md) |
 
 ### 接班人
 
 | 人物 | 角色 | 核心能力 | 文档 |
 |------|------|---------|------|
-| **Greg Abel** | Berkshire 非保险业务继承人 | 能源基建、资本配置 | [📖](./greg_abel.md) |
-| **Ajit Jain** | Berkshire 保险业务负责人 | 保险浮存金管理 | [📖](./berkshire_successors.md) |
+| **Greg Abel** | Berkshire 非保险业务继承人 | 能源基建、资本配置 | [📖](./investors/greg_abel.md) |
+| **Ajit Jain** | Berkshire 保险业务负责人 | 保险浮存金管理 | [📖](./investors/berkshire_successors.md) |
 
 ---
 
@@ -214,7 +214,7 @@ IF 确信度 < 50%
    → 小仓位观察或不做
 ```
 
-👉 查看完整规则：[实战指南](./practical_guide.md)
+👉 查看完整规则：[实战指南](./guides/practical_guide.md)
 
 ---
 
@@ -258,7 +258,7 @@ IF 确信度 < 50%
 最终决策：暂不买入，加入观察池
 ```
 
-👉 查看完整案例：[README_Usage.md](./README_Usage.md)
+👉 查看完整案例：[README_Usage.md](./docs/README_Usage.md)
 
 ---
 
@@ -286,10 +286,10 @@ system_prompt = """
 3. 返回多视角分析和明确建议
 
 核心规则：
-{load_file("llm_summary.md")}
+{load_file("guides/llm_summary.md")}
 
 决策路由：
-{load_file("decision_router.md")}
+{load_file("config/decision_router.md")}
 """
 
 # 处理用户提问
@@ -311,41 +311,244 @@ def answer_investment_query(user_query):
 
 ---
 
+## 🔗 NOFX AI 交易系统集成
+
+本项目可与 [NOFX](https://github.com/NoFxAiOS/nofx)（下一代 AI 交易操作系统）深度集成，为 AI 决策提供投资大师智慧增强。
+
+### 集成架构
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        NOFX 系统                            │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │                    AI Decision Engine                 │  │
+│  │                          │                            │  │
+│  │                          ▼                            │  │
+│  │  ┌─────────────────────────────────────────────────┐  │  │
+│  │  │         Investment Masters Knowledge            │  │  │
+│  │  │  ┌──────────┐ ┌──────────┐ ┌──────────────────┐ │  │  │
+│  │  │  │  Router  │ │ Investor │ │   IF-THEN Rules  │ │  │  │
+│  │  │  │ (路由)   │ │  Docs    │ │  (决策规则)       │ │  │  │
+│  │  │  └──────────┘ └──────────┘ └──────────────────┘ │  │  │
+│  │  └─────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────┘  │
+│                          │                                  │
+│                          ▼                                  │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │              Execution Layer (交易执行)                │  │
+│  │       Binance | Hyperliquid | OKX | Bybit             │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 集成方式
+
+#### 方式 1：作为 System Prompt（最简单）
+
+```python
+# 在 NOFX 的 AI 配置中，将 llm_summary.md 作为 System Prompt
+system_prompt = open("investment-masters/guides/llm_summary.md").read()
+
+# AI 决策时自动参考投资大师智慧
+response = ai_model.generate(
+    system=system_prompt,
+    user="BTC 现在值得买吗？"
+)
+```
+
+#### 方式 2：智能路由（推荐）
+
+```python
+# 使用 router_config.yaml 自动路由问题到相关投资人
+import yaml
+
+# 1. 加载路由配置
+with open("investment-masters/config/router_config.yaml") as f:
+    router = yaml.safe_load(f)
+
+# 2. 根据问题匹配关键词
+def route_to_investors(query: str) -> list:
+    for category, config in router["keyword_patterns"].items():
+        if any(kw in query for kw in config["pattern"].split("|")):
+            return config["investors"]
+    return router["default_investors"]
+
+# 3. 加载相关投资人文档
+def get_context(query: str) -> str:
+    investors = route_to_investors(query)
+    docs = []
+    for inv in investors[:2]:  # 取前 2 个最相关的
+        doc_path = f"investment-masters/investors/{inv}.md"
+        docs.append(open(doc_path).read())
+    return "\n\n".join(docs)
+
+# 4. 在 NOFX AI 决策中使用
+query = "现在流动性环境怎么样？"
+context = get_context(query)  # 自动加载 Druckenmiller 文档
+```
+
+#### 方式 3：NOFX Go 集成
+
+```go
+// 在 NOFX 的 decision/ 模块中添加
+package decision
+
+import (
+    "os"
+    "strings"
+    "gopkg.in/yaml.v3"
+)
+
+type MasterKnowledge struct {
+    RouterConfig map[string]interface{}
+    DocsPath     string
+}
+
+func NewMasterKnowledge(configPath, docsPath string) *MasterKnowledge {
+    data, _ := os.ReadFile(configPath)
+    var config map[string]interface{}
+    yaml.Unmarshal(data, &config)
+    
+    return &MasterKnowledge{
+        RouterConfig: config,
+        DocsPath:     docsPath,
+    }
+}
+
+func (mk *MasterKnowledge) EnhancePrompt(query string) string {
+    // 路由到相关投资人
+    investors := mk.routeQuery(query)
+    
+    // 加载文档
+    var docs []string
+    for _, inv := range investors {
+        content, _ := os.ReadFile(mk.DocsPath + "/" + inv + ".md")
+        docs = append(docs, string(content))
+    }
+    
+    return strings.Join(docs, "\n\n---\n\n")
+}
+
+// 在 AI 策略中使用
+func (s *Strategy) Decide(market *MarketData) Decision {
+    mk := NewMasterKnowledge(
+        "investment-masters/config/router_config.yaml",
+        "investment-masters/investors",
+    )
+    
+    query := fmt.Sprintf("当前 %s 价格 %f，该买入还是卖出？", 
+        market.Symbol, market.Price)
+    
+    context := mk.EnhancePrompt(query)
+    
+    // 将大师智慧注入 AI 决策
+    aiResponse := s.AI.Generate(context + "\n\n" + query)
+    
+    return parseDecision(aiResponse)
+}
+```
+
+### 关键文件说明
+
+| 文件 | 用途 | NOFX 集成方式 |
+|------|------|--------------|
+| `guides/llm_summary.md` | 核心原则精华 | 直接作为 System Prompt |
+| `config/router_config.yaml` | 路由配置 | 解析后用于智能路由 |
+| `config/decision_router.md` | 决策路由表 | 参考实现路由逻辑 |
+| `guides/practical_guide.md` | IF-THEN 规则 | 提取规则用于程序判断 |
+| `investors/*.md` | 详细框架 | 按需加载到 context |
+
+### 推荐集成步骤
+
+```bash
+# 1. 克隆本项目到 NOFX 目录
+cd /path/to/nofx
+git clone https://github.com/sou350121/investment-masters-handbook.git knowledge/
+
+# 2. 在 NOFX 配置中引用
+# config/strategy.yaml
+knowledge:
+  enabled: true
+  path: "./knowledge/investment-masters"
+  router_config: "./knowledge/investment-masters/config/router_config.yaml"
+  default_prompt: "./knowledge/investment-masters/guides/llm_summary.md"
+
+# 3. 重启 NOFX
+docker compose restart
+```
+
+### 效果示例
+
+**不使用本项目**：
+```
+用户: BTC 现在值得买吗？
+AI: 根据当前价格走势，建议...（通用回答）
+```
+
+**使用本项目**：
+```
+用户: BTC 现在值得买吗？
+AI: 基于投资大师框架分析：
+
+1. 流动性环境（Druckenmiller 框架）
+   - 当前净流动性：Fed B/S - TGA - RRP = ...
+   - IF 净流动性上升 THEN 风险资产友好
+
+2. 周期定位（Dalio 框架）
+   - 当前象限：增长↑ + 通胀↓
+   - 适合持有：风险资产
+
+3. 风险检查（Munger 框架）
+   - [ ] 是否有 FOMO？
+   - [ ] 确信度有多高？
+
+建议：根据仓位管理规则（Druckenmiller），
+IF 确信度 60-70% THEN 中等仓位 3-7%
+```
+
+---
+
 ## 🗂️ 项目结构
 
 ```
 investment-masters/
-├── 📖 核心文档
-│   ├── README.md                    # 本文件
+├── 📖 文档 (docs/)
 │   ├── README_Usage.md              # 详细使用指南（含完整案例）
 │   └── README_investors.md          # 投资人索引
 │
-├── 🤖 AI 集成
+├── ⚙️ 配置 (config/)
 │   ├── investor_index.yaml          # 机器可读索引（标签/权重/场景）
-│   ├── decision_router.md           # 问题类型 → 投资人映射
-│   └── llm_summary.md               # System Prompt 精华版
+│   ├── router_config.yaml           # 路由配置（YAML）
+│   └── decision_router.md           # 决策路由表（含代码示例）
 │
-├── 📋 实战工具
+├── 📋 指南 (guides/)
+│   ├── llm_summary.md               # System Prompt 精华版
 │   └── practical_guide.md           # 200+ IF-THEN 规则 + 检查清单
 │
-├── 👤 投资人框架（14位）
-│   ├── warren_buffett.md            # 沃伦·巴菲特
-│   ├── charlie_munger.md            # 查理·芒格
-│   ├── ray_dalio.md                 # 瑞·达利奥
-│   ├── howard_marks.md              # 霍华德·马克斯
-│   ├── stanley_druckenmiller.md     # 斯坦利·德鲁肯米勒
-│   ├── george_soros.md              # 乔治·索罗斯
-│   ├── peter_lynch.md               # 彼得·林奇
-│   ├── seth_klarman.md              # 塞斯·卡拉曼
-│   ├── michael_burry.md             # 迈克尔·伯里
-│   ├── carl_icahn.md                # 卡尔·伊坎
-│   ├── james_simons.md              # 詹姆斯·西蒙斯
-│   ├── ed_thorp.md                  # 爱德华·索普
-│   ├── cliff_asness.md              # 克里夫·阿斯尼斯
-│   ├── greg_abel.md                 # 格雷格·阿贝尔
-│   └── berkshire_successors.md      # Berkshire 接班人团队
+├── 👤 投资人 (investors/)
+│   ├── 价值投资派
+│   │   ├── warren_buffett.md        # 沃伦·巴菲特
+│   │   ├── charlie_munger.md        # 查理·芒格
+│   │   ├── peter_lynch.md           # 彼得·林奇
+│   │   └── seth_klarman.md          # 塞斯·卡拉曼
+│   ├── 宏观驱动派
+│   │   ├── ray_dalio.md             # 瑞·达利奥
+│   │   ├── stanley_druckenmiller.md # 斯坦利·德鲁肯米勒
+│   │   └── george_soros.md          # 乔治·索罗斯
+│   ├── 周期/风控派
+│   │   ├── howard_marks.md          # 霍华德·马克斯
+│   │   └── michael_burry.md         # 迈克尔·伯里
+│   ├── 量化/系统派
+│   │   ├── james_simons.md          # 詹姆斯·西蒙斯
+│   │   ├── ed_thorp.md              # 爱德华·索普
+│   │   └── cliff_asness.md          # 克里夫·阿斯尼斯
+│   ├── 行动派
+│   │   └── carl_icahn.md            # 卡尔·伊坎
+│   └── 接班人
+│       ├── greg_abel.md             # 格雷格·阿贝尔
+│       └── berkshire_successors.md  # Berkshire 接班人团队
 │
-└── 🎭 神级 Prompt（6个角色）
+└── 🎭 神级 Prompt (prompts/)
     ├── README_prompts.md
     ├── valuation_philosopher.md     # 估值哲学家
     ├── crypto_trader.md             # 加密交易员
@@ -355,6 +558,18 @@ investment-masters/
     └── liquidity_shaman.md          # 流动性萨满
 ```
 
+### 快速查找
+
+| 你想找什么？ | 去哪个文件夹 | 推荐文件 |
+|------------|-----------|---------|
+| 🚀 **快速开始** | 根目录 | `README.md` |
+| 📖 **使用教程** | `docs/` | `README_Usage.md` |
+| 👤 **某位投资人** | `investors/` | 按名字找 `.md` |
+| ⚙️ **程序集成** | `config/` | `router_config.yaml` |
+| 📋 **决策规则** | `guides/` | `practical_guide.md` |
+| 🤖 **AI Prompt** | `guides/` | `llm_summary.md` |
+| 🎭 **创意角色** | `prompts/` | 按角色找 `.md` |
+
 ---
 
 ## ❓ 常见问题
@@ -363,10 +578,10 @@ investment-masters/
 <summary><b>Q1: 我是新手，应该从哪里开始？</b></summary>
 
 **推荐路径**：
-1. 阅读 [README_Usage.md](./README_Usage.md) 中的案例 1（分析一只股票）
-2. 查看 [decision_router.md](./decision_router.md) 了解不同问题对应的框架
+1. 阅读 [README_Usage.md](./docs/README_Usage.md) 中的案例 1（分析一只股票）
+2. 查看 [decision_router.md](./config/decision_router.md) 了解不同问题对应的框架
 3. 深入阅读 Warren Buffett 和 Charlie Munger 的文档
-4. 用 [practical_guide.md](./practical_guide.md) 中的检查清单验证自己的决策
+4. 用 [practical_guide.md](./guides/practical_guide.md) 中的检查清单验证自己的决策
 
 </details>
 
@@ -374,11 +589,11 @@ investment-masters/
 <summary><b>Q2: 如何用这个项目构建 AI 投资助手？</b></summary>
 
 **三种方案**：
-1. **简单版**：直接用 `llm_summary.md` 作为 System Prompt
+1. **简单版**：直接用 `guides/llm_summary.md` 作为 System Prompt
 2. **RAG 版**：将所有 `.md` 文件向量化后检索
-3. **Agent 版**：用 `investor_index.yaml` 实现决策路由逻辑
+3. **Agent 版**：用 `config/investor_index.yaml` 实现决策路由逻辑
 
-详见 [README_Usage.md 案例 3](./README_Usage.md#案例三ai-投资助手-system-prompt)
+详见 [README_Usage.md 案例 3](./docs/README_Usage.md#案例三ai-投资助手-system-prompt)
 
 </details>
 
@@ -433,6 +648,25 @@ response = llm.chat(
 
 ---
 
+## ⚠️ 免责声明
+
+> **重要提示**：本项目仅供教育和研究目的，不构成任何投资建议。
+
+- 投资有风险，决策需谨慎
+- 历史表现不代表未来收益
+- 请根据自身风险承受能力做决策
+- 建议咨询专业财务顾问
+
+---
+
+## 📞 联系方式
+
+- **GitHub Issues**: [提交问题](https://github.com/sou350121/investment-masters-handbook/issues)
+- **Pull Requests**: [贡献代码](https://github.com/sou350121/investment-masters-handbook/pulls)
+- **Discussions**: [社区讨论](https://github.com/sou350121/investment-masters-handbook/discussions)
+
+---
+
 ## 🤝 贡献
 
 欢迎所有形式的贡献！
@@ -477,223 +711,6 @@ git push origin feature/add-bill-ackman
 - ✅ 构建衍生作品
 
 唯一要求：保留原始许可声明。
-
----
-
-## 🔗 NOFX AI 交易系统集成
-
-本项目可与 [NOFX](https://github.com/NoFxAiOS/nofx)（下一代 AI 交易操作系统）深度集成，为 AI 决策提供投资大师智慧增强。
-
-### 集成架构
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        NOFX 系统                            │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │                    AI Decision Engine                 │  │
-│  │                          │                            │  │
-│  │                          ▼                            │  │
-│  │  ┌─────────────────────────────────────────────────┐  │  │
-│  │  │         Investment Masters Knowledge            │  │  │
-│  │  │  ┌──────────┐ ┌──────────┐ ┌──────────────────┐ │  │  │
-│  │  │  │  Router  │ │ Investor │ │   IF-THEN Rules  │ │  │  │
-│  │  │  │ (路由)   │ │  Docs    │ │  (决策规则)       │ │  │  │
-│  │  │  └──────────┘ └──────────┘ └──────────────────┘ │  │  │
-│  │  └─────────────────────────────────────────────────┘  │  │
-│  └───────────────────────────────────────────────────────┘  │
-│                          │                                  │
-│                          ▼                                  │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │              Execution Layer (交易执行)                │  │
-│  │       Binance | Hyperliquid | OKX | Bybit             │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### 集成方式
-
-#### 方式 1：作为 System Prompt（最简单）
-
-```python
-# 在 NOFX 的 AI 配置中，将 llm_summary.md 作为 System Prompt
-system_prompt = open("investment-masters/llm_summary.md").read()
-
-# AI 决策时自动参考投资大师智慧
-response = ai_model.generate(
-    system=system_prompt,
-    user="BTC 现在值得买吗？"
-)
-```
-
-#### 方式 2：智能路由（推荐）
-
-```python
-# 使用 router_config.yaml 自动路由问题到相关投资人
-import yaml
-
-# 1. 加载路由配置
-with open("investment-masters/router_config.yaml") as f:
-    router = yaml.safe_load(f)
-
-# 2. 根据问题匹配关键词
-def route_to_investors(query: str) -> list:
-    for category, config in router["keyword_patterns"].items():
-        if any(kw in query for kw in config["pattern"].split("|")):
-            return config["investors"]
-    return router["default_investors"]
-
-# 3. 加载相关投资人文档
-def get_context(query: str) -> str:
-    investors = route_to_investors(query)
-    docs = []
-    for inv in investors[:2]:  # 取前 2 个最相关的
-        doc_path = f"investment-masters/{inv}.md"
-        docs.append(open(doc_path).read())
-    return "\n\n".join(docs)
-
-# 4. 在 NOFX AI 决策中使用
-query = "现在流动性环境怎么样？"
-context = get_context(query)  # 自动加载 Druckenmiller 文档
-```
-
-#### 方式 3：NOFX Go 集成
-
-```go
-// 在 NOFX 的 decision/ 模块中添加
-
-package decision
-
-import (
-    "os"
-    "strings"
-    "gopkg.in/yaml.v3"
-)
-
-type MasterKnowledge struct {
-    RouterConfig map[string]interface{}
-    DocsPath     string
-}
-
-func NewMasterKnowledge(configPath, docsPath string) *MasterKnowledge {
-    data, _ := os.ReadFile(configPath)
-    var config map[string]interface{}
-    yaml.Unmarshal(data, &config)
-    
-    return &MasterKnowledge{
-        RouterConfig: config,
-        DocsPath:     docsPath,
-    }
-}
-
-func (mk *MasterKnowledge) EnhancePrompt(query string) string {
-    // 路由到相关投资人
-    investors := mk.routeQuery(query)
-    
-    // 加载文档
-    var docs []string
-    for _, inv := range investors {
-        content, _ := os.ReadFile(mk.DocsPath + "/" + inv + ".md")
-        docs = append(docs, string(content))
-    }
-    
-    return strings.Join(docs, "\n\n---\n\n")
-}
-
-// 在 AI 策略中使用
-func (s *Strategy) Decide(market *MarketData) Decision {
-    mk := NewMasterKnowledge(
-        "investment-masters/router_config.yaml",
-        "investment-masters",
-    )
-    
-    query := fmt.Sprintf("当前 %s 价格 %f，该买入还是卖出？", 
-        market.Symbol, market.Price)
-    
-    context := mk.EnhancePrompt(query)
-    
-    // 将大师智慧注入 AI 决策
-    aiResponse := s.AI.Generate(context + "\n\n" + query)
-    
-    return parseDecision(aiResponse)
-}
-```
-
-### 关键文件说明
-
-| 文件 | 用途 | NOFX 集成方式 |
-|------|------|--------------|
-| `llm_summary.md` | 核心原则精华 | 直接作为 System Prompt |
-| `router_config.yaml` | 路由配置 | 解析后用于智能路由 |
-| `decision_router.md` | 决策路由表 | 参考实现路由逻辑 |
-| `practical_guide.md` | IF-THEN 规则 | 提取规则用于程序判断 |
-| `*.md` (投资人) | 详细框架 | 按需加载到 context |
-
-### 推荐集成步骤
-
-```bash
-# 1. 克隆本项目到 NOFX 目录
-cd /path/to/nofx
-git clone https://github.com/sou350121/investment-masters-handbook.git knowledge/
-
-# 2. 在 NOFX 配置中引用
-# config/strategy.yaml
-knowledge:
-  enabled: true
-  path: "./knowledge/investment-masters"
-  router_config: "./knowledge/investment-masters/router_config.yaml"
-  default_prompt: "./knowledge/investment-masters/llm_summary.md"
-
-# 3. 重启 NOFX
-docker compose restart
-```
-
-### 效果示例
-
-**不使用本项目**：
-```
-用户: BTC 现在值得买吗？
-AI: 根据当前价格走势，建议...（通用回答）
-```
-
-**使用本项目**：
-```
-用户: BTC 现在值得买吗？
-AI: 基于投资大师框架分析：
-
-1. 流动性环境（Druckenmiller 框架）
-   - 当前净流动性：Fed B/S - TGA - RRP = ...
-   - IF 净流动性上升 THEN 风险资产友好
-
-2. 周期定位（Dalio 框架）
-   - 当前象限：增长↑ + 通胀↓
-   - 适合持有：风险资产
-
-3. 风险检查（Munger 框架）
-   - [ ] 是否有 FOMO？
-   - [ ] 确信度有多高？
-
-建议：根据仓位管理规则（Druckenmiller），
-IF 确信度 60-70% THEN 中等仓位 3-7%
-```
-
----
-
-## ⚠️ 免责声明
-
-> **重要提示**：本项目仅供教育和研究目的，不构成任何投资建议。
-
-- 投资有风险，决策需谨慎
-- 历史表现不代表未来收益
-- 请根据自身风险承受能力做决策
-- 建议咨询专业财务顾问
-
----
-
-## 📞 联系方式
-
-- **GitHub Issues**: [提交问题](https://github.com/sou350121/investment-masters-handbook/issues)
-- **Pull Requests**: [贡献代码](https://github.com/sou350121/investment-masters-handbook/pulls)
-- **Discussions**: [社区讨论](https://github.com/sou350121/investment-masters-handbook/discussions)
 
 ---
 
