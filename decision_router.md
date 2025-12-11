@@ -330,3 +330,201 @@
 > - 决策规则采用 IF-THEN 格式，可直接用于判断
 > - 复杂决策建议交叉参考多位投资人观点
 
+---
+
+## 八、关键词自动匹配表
+
+以下关键词可用于自动识别问题类型：
+
+| 类别 | 关键词（正则） | 路由投资人 |
+|------|--------------|-----------|
+| **估值** | `估值\|值不值\|贵不贵\|便宜\|低估\|高估\|PE\|PB\|PEG` | Buffett, Klarman, Lynch |
+| **护城河** | `护城河\|竞争优势\|壁垒\|moat\|品牌` | Buffett, Munger |
+| **宏观** | `宏观\|周期\|经济\|GDP\|通胀\|利率\|Fed` | Dalio, Druckenmiller, Marks |
+| **流动性** | `流动性\|QE\|QT\|缩表\|资产负债表\|TGA\|RRP` | Druckenmiller |
+| **风险** | `风险\|泡沫\|崩盘\|危机\|做空\|黑天鹅` | Burry, Marks, Munger |
+| **心理** | `偏误\|心理\|FOMO\|从众\|贪婪\|恐惧` | Munger |
+| **仓位** | `仓位\|加仓\|减仓\|止损\|凯利\|Kelly` | Druckenmiller, Thorp |
+| **成长股** | `成长股\|PEG\|增速\|十倍股\|tenbagger` | Lynch |
+| **量化** | `量化\|因子\|统计\|回测\|alpha\|夏普` | Simons, Asness, Thorp |
+| **加密** | `BTC\|ETH\|加密\|币\|链上\|DeFi` | prompts/crypto_trader |
+
+---
+
+## 九、程序调用示例
+
+### 机器可读配置
+
+完整配置文件：[router_config.yaml](./router_config.yaml)
+
+### Python 路由函数
+
+```python
+import re
+import yaml
+from pathlib import Path
+
+def load_router_config():
+    """加载路由配置"""
+    config_path = Path(__file__).parent / "router_config.yaml"
+    with open(config_path, encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+def route_query(query: str, config: dict = None) -> dict:
+    """
+    根据问题自动路由到相关投资人
+    
+    Args:
+        query: 用户问题
+        config: 路由配置（可选，默认自动加载）
+    
+    Returns:
+        {
+            "matched_category": "valuation",
+            "primary_investors": ["warren_buffett", "seth_klarman"],
+            "secondary_investors": ["peter_lynch"],
+            "confidence": 0.85,
+            "matched_keywords": ["估值", "便宜"]
+        }
+    """
+    if config is None:
+        config = load_router_config()
+    
+    query_lower = query.lower()
+    results = []
+    
+    # 遍历关键词模式
+    for category, pattern_config in config.get("keyword_patterns", {}).items():
+        pattern = pattern_config["pattern"]
+        investors = pattern_config["investors"]
+        weight = pattern_config.get("weight", 0.8)
+        
+        # 查找匹配的关键词
+        matches = re.findall(pattern, query, re.IGNORECASE)
+        if matches:
+            results.append({
+                "category": category,
+                "investors": investors,
+                "weight": weight,
+                "matches": matches,
+                "score": len(matches) * weight
+            })
+    
+    if not results:
+        # 无匹配，返回默认
+        return {
+            "matched_category": "default",
+            "primary_investors": config.get("default_investors", []),
+            "secondary_investors": [],
+            "confidence": 0.0,
+            "matched_keywords": []
+        }
+    
+    # 按分数排序
+    results.sort(key=lambda x: x["score"], reverse=True)
+    best = results[0]
+    
+    return {
+        "matched_category": best["category"],
+        "primary_investors": best["investors"][:2],
+        "secondary_investors": best["investors"][2:] if len(best["investors"]) > 2 else [],
+        "confidence": min(best["score"] / 3, 1.0),
+        "matched_keywords": best["matches"]
+    }
+
+def get_investor_docs(investors: list, base_path: Path = None) -> str:
+    """加载投资人文档内容"""
+    if base_path is None:
+        base_path = Path(__file__).parent
+    
+    docs = []
+    for inv in investors:
+        doc_path = base_path / f"{inv}.md"
+        if doc_path.exists():
+            docs.append(doc_path.read_text(encoding="utf-8"))
+    
+    return "\n\n---\n\n".join(docs)
+
+# ========== 使用示例 ==========
+if __name__ == "__main__":
+    # 测试路由
+    test_queries = [
+        "这只股票的护城河稳不稳？",
+        "现在流动性环境怎么样？",
+        "BTC 60000 美元值得买吗？",
+        "我是不是有 FOMO 了？",
+        "仓位应该多大？"
+    ]
+    
+    config = load_router_config()
+    
+    for q in test_queries:
+        result = route_query(q, config)
+        print(f"\n问题: {q}")
+        print(f"  类别: {result['matched_category']}")
+        print(f"  主要参考: {result['primary_investors']}")
+        print(f"  置信度: {result['confidence']:.2f}")
+```
+
+### Go 调用示例（NOFX 集成）
+
+```go
+package knowledge
+
+import (
+    "encoding/json"
+    "net/http"
+    "bytes"
+)
+
+type RouteResult struct {
+    Category   string   `json:"matched_category"`
+    Primary    []string `json:"primary_investors"`
+    Secondary  []string `json:"secondary_investors"`
+    Confidence float64  `json:"confidence"`
+    Keywords   []string `json:"matched_keywords"`
+}
+
+// RouteQuery 调用 Python 路由服务
+func RouteQuery(query string) (*RouteResult, error) {
+    payload := map[string]string{"query": query}
+    body, _ := json.Marshal(payload)
+    
+    resp, err := http.Post(
+        "http://localhost:8000/api/v1/route",
+        "application/json",
+        bytes.NewBuffer(body),
+    )
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+    
+    var result RouteResult
+    json.NewDecoder(resp.Body).Decode(&result)
+    return &result, nil
+}
+
+// 在 NOFX AI 决策中使用
+func (ai *AIEngine) EnhanceDecision(query string) string {
+    // 1. 路由到相关投资人
+    route, _ := RouteQuery(query)
+    
+    // 2. 加载对应文档
+    docs := LoadInvestorDocs(route.Primary)
+    
+    // 3. 构建增强 prompt
+    enhancedPrompt := fmt.Sprintf(`
+基于以下投资大师框架回答问题：
+
+%s
+
+用户问题：%s
+
+请用 IF-THEN 规则格式回答。
+`, docs, query)
+    
+    return enhancedPrompt
+}
+```
+

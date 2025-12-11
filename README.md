@@ -480,6 +480,204 @@ git push origin feature/add-bill-ackman
 
 ---
 
+## 🔗 NOFX AI 交易系统集成
+
+本项目可与 [NOFX](https://github.com/NoFxAiOS/nofx)（下一代 AI 交易操作系统）深度集成，为 AI 决策提供投资大师智慧增强。
+
+### 集成架构
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        NOFX 系统                            │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │                    AI Decision Engine                 │  │
+│  │                          │                            │  │
+│  │                          ▼                            │  │
+│  │  ┌─────────────────────────────────────────────────┐  │  │
+│  │  │         Investment Masters Knowledge            │  │  │
+│  │  │  ┌──────────┐ ┌──────────┐ ┌──────────────────┐ │  │  │
+│  │  │  │  Router  │ │ Investor │ │   IF-THEN Rules  │ │  │  │
+│  │  │  │ (路由)   │ │  Docs    │ │  (决策规则)       │ │  │  │
+│  │  │  └──────────┘ └──────────┘ └──────────────────┘ │  │  │
+│  │  └─────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────┘  │
+│                          │                                  │
+│                          ▼                                  │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │              Execution Layer (交易执行)                │  │
+│  │       Binance | Hyperliquid | OKX | Bybit             │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 集成方式
+
+#### 方式 1：作为 System Prompt（最简单）
+
+```python
+# 在 NOFX 的 AI 配置中，将 llm_summary.md 作为 System Prompt
+system_prompt = open("investment-masters/llm_summary.md").read()
+
+# AI 决策时自动参考投资大师智慧
+response = ai_model.generate(
+    system=system_prompt,
+    user="BTC 现在值得买吗？"
+)
+```
+
+#### 方式 2：智能路由（推荐）
+
+```python
+# 使用 router_config.yaml 自动路由问题到相关投资人
+import yaml
+
+# 1. 加载路由配置
+with open("investment-masters/router_config.yaml") as f:
+    router = yaml.safe_load(f)
+
+# 2. 根据问题匹配关键词
+def route_to_investors(query: str) -> list:
+    for category, config in router["keyword_patterns"].items():
+        if any(kw in query for kw in config["pattern"].split("|")):
+            return config["investors"]
+    return router["default_investors"]
+
+# 3. 加载相关投资人文档
+def get_context(query: str) -> str:
+    investors = route_to_investors(query)
+    docs = []
+    for inv in investors[:2]:  # 取前 2 个最相关的
+        doc_path = f"investment-masters/{inv}.md"
+        docs.append(open(doc_path).read())
+    return "\n\n".join(docs)
+
+# 4. 在 NOFX AI 决策中使用
+query = "现在流动性环境怎么样？"
+context = get_context(query)  # 自动加载 Druckenmiller 文档
+```
+
+#### 方式 3：NOFX Go 集成
+
+```go
+// 在 NOFX 的 decision/ 模块中添加
+
+package decision
+
+import (
+    "os"
+    "strings"
+    "gopkg.in/yaml.v3"
+)
+
+type MasterKnowledge struct {
+    RouterConfig map[string]interface{}
+    DocsPath     string
+}
+
+func NewMasterKnowledge(configPath, docsPath string) *MasterKnowledge {
+    data, _ := os.ReadFile(configPath)
+    var config map[string]interface{}
+    yaml.Unmarshal(data, &config)
+    
+    return &MasterKnowledge{
+        RouterConfig: config,
+        DocsPath:     docsPath,
+    }
+}
+
+func (mk *MasterKnowledge) EnhancePrompt(query string) string {
+    // 路由到相关投资人
+    investors := mk.routeQuery(query)
+    
+    // 加载文档
+    var docs []string
+    for _, inv := range investors {
+        content, _ := os.ReadFile(mk.DocsPath + "/" + inv + ".md")
+        docs = append(docs, string(content))
+    }
+    
+    return strings.Join(docs, "\n\n---\n\n")
+}
+
+// 在 AI 策略中使用
+func (s *Strategy) Decide(market *MarketData) Decision {
+    mk := NewMasterKnowledge(
+        "investment-masters/router_config.yaml",
+        "investment-masters",
+    )
+    
+    query := fmt.Sprintf("当前 %s 价格 %f，该买入还是卖出？", 
+        market.Symbol, market.Price)
+    
+    context := mk.EnhancePrompt(query)
+    
+    // 将大师智慧注入 AI 决策
+    aiResponse := s.AI.Generate(context + "\n\n" + query)
+    
+    return parseDecision(aiResponse)
+}
+```
+
+### 关键文件说明
+
+| 文件 | 用途 | NOFX 集成方式 |
+|------|------|--------------|
+| `llm_summary.md` | 核心原则精华 | 直接作为 System Prompt |
+| `router_config.yaml` | 路由配置 | 解析后用于智能路由 |
+| `decision_router.md` | 决策路由表 | 参考实现路由逻辑 |
+| `practical_guide.md` | IF-THEN 规则 | 提取规则用于程序判断 |
+| `*.md` (投资人) | 详细框架 | 按需加载到 context |
+
+### 推荐集成步骤
+
+```bash
+# 1. 克隆本项目到 NOFX 目录
+cd /path/to/nofx
+git clone https://github.com/sou350121/investment-masters-handbook.git knowledge/
+
+# 2. 在 NOFX 配置中引用
+# config/strategy.yaml
+knowledge:
+  enabled: true
+  path: "./knowledge/investment-masters"
+  router_config: "./knowledge/investment-masters/router_config.yaml"
+  default_prompt: "./knowledge/investment-masters/llm_summary.md"
+
+# 3. 重启 NOFX
+docker compose restart
+```
+
+### 效果示例
+
+**不使用本项目**：
+```
+用户: BTC 现在值得买吗？
+AI: 根据当前价格走势，建议...（通用回答）
+```
+
+**使用本项目**：
+```
+用户: BTC 现在值得买吗？
+AI: 基于投资大师框架分析：
+
+1. 流动性环境（Druckenmiller 框架）
+   - 当前净流动性：Fed B/S - TGA - RRP = ...
+   - IF 净流动性上升 THEN 风险资产友好
+
+2. 周期定位（Dalio 框架）
+   - 当前象限：增长↑ + 通胀↓
+   - 适合持有：风险资产
+
+3. 风险检查（Munger 框架）
+   - [ ] 是否有 FOMO？
+   - [ ] 确信度有多高？
+
+建议：根据仓位管理规则（Druckenmiller），
+IF 确信度 60-70% THEN 中等仓位 3-7%
+```
+
+---
+
 ## ⚠️ 免责声明
 
 > **重要提示**：本项目仅供教育和研究目的，不构成任何投资建议。
