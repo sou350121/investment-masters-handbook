@@ -499,6 +499,85 @@ investors:
       - 系统化
     related_doc: cliff_asness.md
 
+  # ----- 中国价值投资派 -----
+  - id: qiu_guolu
+    full_name: Qiu Guolu
+    chinese_name: 邱国鹭
+    fund: 高毅资产
+    aum: "~$15B (高毅)"
+    active_years: "2000-present"
+    style:
+      - value_investing
+      - contrarian
+      - bottom_up
+      - industry_focus
+    best_for:
+      - industry_selection
+      - moat_analysis
+      - valuation_anchor
+      - a_share_investing
+    key_concepts:
+      - 品牌渠道成本三把刀
+      - 得寡头者得天下
+      - 便宜是硬道理
+      - 人弃我取
+      - 胜而后求战
+    market_conditions:
+      bearish: high
+      panic: high
+      overvaluation: low
+    decision_weight:
+      stock_pick: 0.9
+      macro_timing: 0.3
+      risk_check: 0.7
+      portfolio: 0.5
+    tags_zh:
+      - A股价值
+      - 行业选择
+      - 逆向
+      - 估值锚
+      - 护城河
+    related_doc: qiu_guolu.md
+
+  - id: feng_liu
+    full_name: Feng Liu
+    chinese_name: 冯柳
+    fund: 高毅资产
+    aum: "~$8B (个人管理)"
+    active_years: "2003-present"
+    style:
+      - contrarian
+      - left_side_buying
+      - odds_first
+      - weak_player_system
+    best_for:
+      - contrarian_timing
+      - turnaround_situations
+      - information_asymmetry
+      - a_share_investing
+    key_concepts:
+      - 弱者体系 (假设市场是对的)
+      - 赔率优先于胜率
+      - 逆向左侧买入
+      - 不择时不止损
+      - 信息不完美决策
+    market_conditions:
+      bearish: critical
+      panic: critical
+      sentiment_extreme: critical
+    decision_weight:
+      stock_pick: 0.85
+      macro_timing: 0.2
+      risk_check: 0.6
+      portfolio: 0.4
+    tags_zh:
+      - 弱者体系
+      - 逆向
+      - 左侧交易
+      - 赔率
+      - 散户思维
+    related_doc: feng_liu.md
+
   # ----- Berkshire 接班人 -----
   - id: greg_abel
     full_name: Greg Abel

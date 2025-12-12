@@ -460,6 +460,123 @@
       "when": "流動性下降"
     },
     {
+      "because": "弱者体系：先假设市场是对的",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:001",
+      "source_file": "investors/feng_liu.md",
+      "then": "分析担心是否被夸大",
+      "when": "股价下跌 > 30% AND 市场担心因素可量化"
+    },
+    {
+      "because": "市场可能过度反应短期利空",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:002",
+      "source_file": "investors/feng_liu.md",
+      "then": "逆向机会",
+      "when": "市场担心因素是周期性/一次性 AND 长期逻辑未变"
+    },
+    {
+      "because": "市场可能是对的",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:003",
+      "source_file": "investors/feng_liu.md",
+      "then": "PASS",
+      "when": "市场担心因素是结构性/不可逆"
+    },
+    {
+      "because": "赔率优先于胜率",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:004",
+      "source_file": "investors/feng_liu.md",
+      "then": "值得下注",
+      "when": "赔率 > 3:1 AND 胜率 > 30%"
+    },
+    {
+      "because": "期望收益可能不够",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:005",
+      "source_file": "investors/feng_liu.md",
+      "then": "谨慎",
+      "when": "赔率 < 2:1 即使胜率 > 70%"
+    },
+    {
+      "because": "价格已反映悲观预期",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:006",
+      "source_file": "investors/feng_liu.md",
+      "then": "左侧买入",
+      "when": "估值处于历史底部区间 AND 基本面有边际改善迹象"
+    },
+    {
+      "because": "可能有我不知道的利空",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:007",
+      "source_file": "investors/feng_liu.md",
+      "then": "不要抄底",
+      "when": "股价新低 AND 找不到合理解释"
+    },
+    {
+      "because": "不止损是弱者体系核心",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:008",
+      "source_file": "investors/feng_liu.md",
+      "then": "持有或加仓",
+      "when": "买入后继续下跌 AND 长期逻辑未变"
+    },
+    {
+      "because": "认错要快",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:009",
+      "source_file": "investors/feng_liu.md",
+      "then": "卖出",
+      "when": "买入逻辑被证伪（长期逻辑改变）"
+    },
+    {
+      "because": "赔率变差",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:010",
+      "source_file": "investors/feng_liu.md",
+      "then": "逐步减仓",
+      "when": "股价涨到合理估值 AND 没有更多上涨空间"
+    },
+    {
+      "because": "机会成本",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:011",
+      "source_file": "investors/feng_liu.md",
+      "then": "换仓",
+      "when": "有更好的赔率机会"
+    },
+    {
+      "because": "最好的机会出现在最差的时刻",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:012",
+      "source_file": "investors/feng_liu.md",
+      "then": "买入优质股",
+      "when": "市场极度恐慌 AND 好公司被无差别抛售"
+    },
+    {
+      "because": "弱者体系需要\"熬\"的能力",
+      "investor_id": "feng_liu",
+      "kind": "buy",
+      "rule_id": "feng_liu:buy:013",
+      "source_file": "investors/feng_liu.md",
+      "then": "不适用弱者体系",
+      "when": "使用杠杆"
+    },
+    {
       "because": "反身性開始自我強化",
       "investor_id": "george_soros",
       "kind": "other",
@@ -1241,6 +1358,114 @@
       "source_file": "investors/peter_lynch.md",
       "then": "不買",
       "when": "負債過高 AND 利息保障倍數低"
+    },
+    {
+      "because": "得寡头者得天下",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:001",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "行业值得关注",
+      "when": "行业CR3 > 50% AND 龙头市占率持续提升"
+    },
+    {
+      "because": "格局未定，价格战风险",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:002",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "回避该行业",
+      "when": "行业CR3 < 30% AND 玩家众多"
+    },
+    {
+      "because": "品牌是真护城河",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:003",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "护城河有效",
+      "when": "公司有品牌溢价能力（提价不掉量）"
+    },
+    {
+      "because": "渠道为王",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:004",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "护城河有效",
+      "when": "公司有渠道优势 AND 竞争对手3年内无法复制"
+    },
+    {
+      "because": "结构性成本优势持久",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:005",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "护城河有效",
+      "when": "成本优势来自规模/地理/资源 AND 非暂时性"
+    },
+    {
+      "because": "PEG > 1 为成长付太多溢价",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:006",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "估值偏贵",
+      "when": "PE > 30x AND 增速 < 30%"
+    },
+    {
+      "because": "便宜的好公司",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:007",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "好价格",
+      "when": "PE < 15x AND ROE > 15% AND 护城河完好"
+    },
+    {
+      "because": "人弃我取",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:008",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "逆向机会",
+      "when": "股价因短期利空下跌 > 30% AND 长期逻辑未变"
+    },
+    {
+      "because": "别人恐惧我贪婪",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:009",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "布局时机",
+      "when": "市场极度悲观 AND 机构仓位处于历史低位"
+    },
+    {
+      "because": "不和市场对着干太久",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:010",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "降低仓位",
+      "when": "估值处于历史高位 AND 市场情绪亢奋"
+    },
+    {
+      "because": "便宜可能更便宜",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:011",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "卖出",
+      "when": "公司基本面恶化（护城河受损）"
+    },
+    {
+      "because": "机会成本考量",
+      "investor_id": "qiu_guolu",
+      "kind": "sell",
+      "rule_id": "qiu_guolu:sell:012",
+      "source_file": "investors/qiu_guolu.md",
+      "then": "换仓",
+      "when": "找到更好的标的 AND 当前持仓性价比下降"
     },
     {
       "because": "最佳環境",

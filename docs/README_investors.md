@@ -55,6 +55,12 @@
 | [Ed Thorp](../investors/ed_thorp.md) | Princeton Newport | 凯利公式 + 套利 | 仓位管理、期权定价 |
 | [Cliff Asness](../investors/cliff_asness.md) | AQR Capital | 因子投资、价值+动量 | 因子策略、组合构建 |
 
+### 🇨🇳 中国价值投资
+| 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
+|--------|----------|-----------|----------|
+| [邱国鹭](../investors/qiu_guolu.md) | 高毅资产 | 品牌渠道成本三把刀、得寡头者得天下 | A股选股、行业选择 |
+| [冯柳](../investors/feng_liu.md) | 高毅资产 | 弱者体系、赔率优先、左侧买入 | 逆向投资、困境反转 |
+
 ---
 
 ## 基金规模与风格速览
