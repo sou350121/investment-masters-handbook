@@ -7,12 +7,14 @@
 | 文件 | 用途 |
 |------|------|
 | **[README_Usage.md](./README_Usage.md)** | 🆕 **使用指南（含完整案例）** |
-| **[prompts/](./prompts/)** | 🎭 **神级 Prompt 角色库** |
-| `investor_index.yaml` | 结构化索引（机器可读），含决策权重矩阵 |
-| `decision_router.md` | 决策路由（问题类型 → 参考投资人） |
-| `llm_summary.md` | LLM 专用摘要（浓缩版，适合 System Prompt） |
-| `practical_guide.md` | 完整实战指南（IF-THEN 规则、检查清单） |
-| `{investor}.md` | 各投资人详细框架（含 YAML 元数据 + DECISION_RULES） |
+| **[INVESTORS.generated.md](./INVESTORS.generated.md)** | 🧭 **投资人列表（自动生成）** |
+| **[../prompts/](../prompts/)** | 🎭 **神级 Prompt 角色库** |
+| `../config/investor_index.yaml` | 结构化索引（机器可读），含决策权重矩阵（SSOT） |
+| `../config/router_config.yaml` | 路由配置（关键词/分类/Prompt 映射）（SSOT） |
+| `../decision_router.md` | 决策路由（问题类型 → 参考投资人）（权威入口） |
+| `../guides/llm_summary.md` | LLM 专用摘要（浓缩版，适合 System Prompt） |
+| `../guides/practical_guide.md` | 完整实战指南（IF-THEN 规则、检查清单） |
+| `../investors/*.md` | 各投资人详细框架（含 YAML 元数据 + DECISION_RULES） |
 
 ---
 
@@ -21,37 +23,37 @@
 ### 🔬 由下而上（选股/价值）
 | 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
 |--------|----------|-----------|----------|
-| [Warren Buffett](./warren_buffett.md) | Berkshire Hathaway | 好公司 + 好价格 + 长期持有 | 护城河、安全边际 |
-| [Charlie Munger](./charlie_munger.md) | Berkshire / Daily Journal | 多元思维模型、避免愚蠢 | 决策品质、排除偏误 |
-| [**Berkshire 接班人**](./berkshire_successors.md) | Berkshire Hathaway | 传统价值 + 世代更新 | 能源转型、科技适应 |
-| [Greg Abel](./greg_abel.md) | Berkshire Hathaway Energy | 超长周期资本配置 | 公用事业、能源基建 |
-| [Peter Lynch](./peter_lynch.md) | Fidelity Magellan | 买你懂的、PEG < 1 | 成长股筛选 |
-| [Seth Klarman](./seth_klarman.md) | Baupost Group | 深度价值、极端耐心 | 冷门资产、特殊情况 |
+| [Warren Buffett](../investors/warren_buffett.md) | Berkshire Hathaway | 好公司 + 好价格 + 长期持有 | 护城河、安全边际 |
+| [Charlie Munger](../investors/charlie_munger.md) | Berkshire / Daily Journal | 多元思维模型、避免愚蠢 | 决策品质、排除偏误 |
+| [**Berkshire 接班人**](../investors/berkshire_successors.md) | Berkshire Hathaway | 传统价值 + 世代更新 | 能源转型、科技适应 |
+| [Greg Abel](../investors/greg_abel.md) | Berkshire Hathaway Energy | 超长周期资本配置 | 公用事业、能源基建 |
+| [Peter Lynch](../investors/peter_lynch.md) | Fidelity Magellan | 买你懂的、PEG < 1 | 成长股筛选 |
+| [Seth Klarman](../investors/seth_klarman.md) | Baupost Group | 深度价值、极端耐心 | 冷门资产、特殊情况 |
 
 ### 🌍 由上而下（宏观/择时）
 | 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
 |--------|----------|-----------|----------|
-| [Ray Dalio](./ray_dalio.md) | Bridgewater Associates | 经济四象限 + 风险平价 | 资产配置、周期定位 |
-| [Stanley Druckenmiller](./stanley_druckenmiller.md) | Duquesne (原 Quantum) | 流动性追踪、集中重注 | 择时、方向性交易 |
-| [George Soros](./george_soros.md) | Quantum Fund | 反身性、攻击失衡 | 货币/宏观极端事件 |
+| [Ray Dalio](../investors/ray_dalio.md) | Bridgewater Associates | 经济四象限 + 风险平价 | 资产配置、周期定位 |
+| [Stanley Druckenmiller](../investors/stanley_druckenmiller.md) | Duquesne (原 Quantum) | 流动性追踪、集中重注 | 择时、方向性交易 |
+| [George Soros](../investors/george_soros.md) | Quantum Fund | 反身性、攻击失衡 | 货币/宏观极端事件 |
 
 ### 🔄 周期/信用/逆向
 | 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
 |--------|----------|-----------|----------|
-| [Howard Marks](./howard_marks.md) | Oaktree Capital | 周期极端时逆向、控制下档 | 信用周期、恐慌抄底 |
-| [Michael Burry](./michael_burry.md) | Scion Asset Mgmt | 逆向深挖、不从众 | 特殊情况、做空泡沫 |
+| [Howard Marks](../investors/howard_marks.md) | Oaktree Capital | 周期极端时逆向、控制下档 | 信用周期、恐慌抄底 |
+| [Michael Burry](../investors/michael_burry.md) | Scion Asset Mgmt | 逆向深挖、不从众 | 特殊情况、做空泡沫 |
 
 ### 🏛️ 激进/事件驱动
 | 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
 |--------|----------|-----------|----------|
-| [Carl Icahn](./carl_icahn.md) | Icahn Enterprises | 激进股东、解锁价值 | 公司治理套利 |
+| [Carl Icahn](../investors/carl_icahn.md) | Icahn Enterprises | 激进股东、解锁价值 | 公司治理套利 |
 
 ### 🤖 量化/系统化
 | 投资人 | 基金/机构 | 核心一句话 | 适用情境 |
 |--------|----------|-----------|----------|
-| [James Simons](./james_simons.md) | Renaissance Tech | 数据驱动、无情绪 | 量化策略设计参考 |
-| [Ed Thorp](./ed_thorp.md) | Princeton Newport | 凯利公式 + 套利 | 仓位管理、期权定价 |
-| [Cliff Asness](./cliff_asness.md) | AQR Capital | 因子投资、价值+动量 | 因子策略、组合构建 |
+| [James Simons](../investors/james_simons.md) | Renaissance Tech | 数据驱动、无情绪 | 量化策略设计参考 |
+| [Ed Thorp](../investors/ed_thorp.md) | Princeton Newport | 凯利公式 + 套利 | 仓位管理、期权定价 |
+| [Cliff Asness](../investors/cliff_asness.md) | AQR Capital | 因子投资、价值+动量 | 因子策略、组合构建 |
 
 ---
 
@@ -83,13 +85,13 @@
 | 找冷门/特殊机会 | Klarman → Burry |
 | 量化策略灵感 | Simons |
 
-📖 **[完整实战指南 →](./practical_guide.md)**：情境剧本、决策流程、IF-THEN 规则、检查清单
+📖 **[完整实战指南 →](../guides/practical_guide.md)**：情境剧本、决策流程、IF-THEN 规则、检查清单
 
-🔀 **[决策路由 →](./decision_router.md)**：根据问题类型快速定位参考投资人
+🔀 **[决策路由 →](../decision_router.md)**：根据问题类型快速定位参考投资人
 
-📋 **[LLM 摘要 →](./llm_summary.md)**：浓缩版框架，适合 System Prompt
+📋 **[LLM 摘要 →](../guides/llm_summary.md)**：浓缩版框架，适合 System Prompt
 
-🗂️ **[结构化索引 →](./investor_index.yaml)**：YAML 格式，含决策权重矩阵
+🗂️ **[结构化索引 →](../config/investor_index.yaml)**：YAML 格式，含决策权重矩阵
 
 ---
 

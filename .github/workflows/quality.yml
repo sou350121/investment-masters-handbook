@@ -1,0 +1,46 @@
+name: quality
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+
+      - name: Check links
+        run: |
+          python scripts/check_links.py
+
+      - name: Validate front matter
+        run: |
+          python scripts/validate_front_matter.py
+
+      - name: Check router config
+        run: |
+          python scripts/check_router_config.py
+
+      - name: Scan sensitive content
+        run: |
+          python scripts/scan_sensitive.py
+
+      - name: Generate artifacts and ensure repo is clean
+        run: |
+          python scripts/generate_artifacts.py
+          git status --porcelain
+          test -z "$(git status --porcelain)" || (echo \"Generated artifacts differ. Run: python scripts/generate_artifacts.py\" && exit 1)
+
+

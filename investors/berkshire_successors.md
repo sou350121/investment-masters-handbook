@@ -1,3 +1,37 @@
+---
+investor_id: berkshire_successors
+full_name: Berkshire Hathaway Successors (Team)
+chinese_name: 伯克希尔接班人团队
+fund: Berkshire Hathaway
+aum: "$900B+"
+style:
+  - succession
+  - capital_allocation
+  - insurance_float
+  - operations
+applicable_scenarios:
+  - governance
+  - capital_allocation
+  - insurance_float
+  - succession
+market_conditions:
+  all_conditions: neutral
+decision_weight:
+  stock_pick: 0.4
+  macro_timing: 0.1
+  risk_check: 0.4
+  portfolio: 0.4
+tags:
+  - 伯克希尔
+  - 接班人
+  - 保险浮存金
+  - 资本配置
+  - 运营管理
+related_investors:
+  similar: [warren_buffett, charlie_munger, greg_abel]
+  complementary: [howard_marks, seth_klarman]
+---
+
 # Berkshire Hathaway 接班人团队
 
 > Greg Abel（CEO 接班人）+ Ajit Jain（保险）+ Todd Combs & Ted Weschler（投资）：继承 Buffett-Munger 理念，保险浮存金 + 能源转型 + 科技适应。

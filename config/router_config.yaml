@@ -86,7 +86,8 @@ keyword_patterns:
   # 加密货币（链接到 Prompt 角色）
   crypto:
     pattern: "BTC|ETH|比特币|以太坊|加密|币|链上|DeFi|NFT|交易所|合约|永续"
-    investors: [prompts/crypto_trader]
+    investors: [james_simons, ed_thorp]
+    prompts: [crypto_trader]
     weight: 0.95
 
 # ============================================
