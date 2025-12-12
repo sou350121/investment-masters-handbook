@@ -158,17 +158,22 @@ def route_question(question_type):
     return matrix.get(question_type, {})
 ```
 
-### 方式四：NOFX 集成
+### 方式四：NOFX / Agent 集成
+
+**一行命令下载规则：**
+```bash
+curl -sL https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/config/decision_rules.generated.json -o rules.json
+```
+
+**Python 直接加载（无需下载）：**
 ```python
-import json
+import json, urllib.request
+rules = json.load(urllib.request.urlopen("https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/config/decision_rules.generated.json"))
+```
 
-# 加载机读规则
-with open("config/decision_rules.generated.json") as f:
-    rules = json.load(f)
-
-# 187 条 IF-THEN 规则，可直接用于 Agent 决策
-for rule in rules["rules"]:
-    print(f"IF {rule['when']} THEN {rule['then']}")
+**或复制这个 URL 到任何支持 JSON 的工具：**
+```
+https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/config/decision_rules.generated.json
 ```
 
 ---
