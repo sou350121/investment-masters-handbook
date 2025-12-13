@@ -578,6 +578,43 @@ investors:
       - 散户思维
     related_doc: feng_liu.md
 
+  - id: duan_yongping
+    full_name: Duan Yongping
+    chinese_name: 段永平
+    fund: 个人投资者 / 步步高系创始人
+    aum: "N/A (个人)"
+    active_years: "2001-present"
+    style:
+      - value_investing
+      - long_term_hold
+      - business_model_focus
+      - concentrated
+    best_for:
+      - stock_selection
+      - business_model_analysis
+      - long_term_investing
+      - moat_analysis
+    key_concepts:
+      - 买股票就是买公司
+      - 不懂不做
+      - 本分
+      - 好公司好价格
+      - 差异化定价权
+    market_conditions:
+      all_conditions: neutral
+    decision_weight:
+      stock_pick: 0.95
+      macro_timing: 0.1
+      risk_check: 0.7
+      portfolio: 0.6
+    tags_zh:
+      - 商业模式
+      - 长期持有
+      - 好公司
+      - 不懂不做
+      - 本分
+    related_doc: duan_yongping.md
+
   # ----- Berkshire 接班人 -----
   - id: greg_abel
     full_name: Greg Abel

@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/sou350121/investment-masters-handbook/actions/workflows/quality.yml/badge.svg)](https://github.com/sou350121/investment-masters-handbook/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Investors](https://img.shields.io/badge/Investors-16-green.svg)](#-投资大师速览)
+[![Investors](https://img.shields.io/badge/Investors-17-green.svg)](#-投资大师速览)
 
-> **把 16 位传奇投资大师的智慧，转化为可检索、可路由、可执行的 IF-THEN 规则**
+> **把 17 位传奇投资大师的智慧，转化为可检索、可路由、可执行的 IF-THEN 规则**
 > 
 > 支持 RAG 检索 · LLM System Prompt · AI Agent · NOFX 集成
 
@@ -98,7 +98,7 @@ curl -sL https://raw.githubusercontent.com/sou350121/investment-masters-handbook
 | 特性 | 说明 |
 |------|------|
 | **200+ IF-THEN 规则** | 从大师著作中提炼的可执行决策规则 |
-| **16 位投资大师** | 涵盖价值、宏观、量化、逆向等流派 |
+| **17 位投资大师** | 涵盖价值、宏观、量化、逆向等流派（含 3 位中国投资人）|
 | **机器可读** | YAML/JSON 格式，支持程序化调用 |
 | **AI 原生** | 专为 RAG、Agent、LLM 设计 |
 | **CI 校验** | 自动化链接检查、格式校验、一致性检测 |
@@ -141,6 +141,7 @@ curl -sL https://raw.githubusercontent.com/sou350121/investment-masters-handbook
 |--------|-----------|----------|
 | [邱国鹭](investors/qiu_guolu.md) | 品牌渠道成本三把刀、得寡头者得天下 | A股选股、行业选择 |
 | [冯柳](investors/feng_liu.md) | 弱者体系、赔率优先、左侧买入 | 逆向投资、困境反转 |
+| [段永平](investors/duan_yongping.md) | 买股票就是买公司、不懂不做 | 商业模式分析、长期持有 |
 
 ---
 

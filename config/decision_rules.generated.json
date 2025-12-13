@@ -379,6 +379,186 @@
       "when": "動量崩潰（如 2009.03）"
     },
     {
+      "because": "不懂不做 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "buy",
+      "rule_id": "duan_yongping:buy:001",
+      "source_file": "investors/duan_yongping.md",
+      "then": "在能力圈内",
+      "when": "能2句话说清商业模式 AND 有差异化/定价权"
+    },
+    {
+      "because": "买股票就是买公司 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "buy",
+      "rule_id": "duan_yongping:buy:002",
+      "source_file": "investors/duan_yongping.md",
+      "then": "考虑买入",
+      "when": "好公司 AND 价格合理 AND 愿意持有10年"
+    },
+    {
+      "because": "自由现金流是真金白银 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "buy",
+      "rule_id": "duan_yongping:buy:003",
+      "source_file": "investors/duan_yongping.md",
+      "then": "好生意",
+      "when": "ROIC > 15% 持续多年 AND 不需大量再投资"
+    },
+    {
+      "because": "好生意也需要好管理 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "buy",
+      "rule_id": "duan_yongping:buy:004",
+      "source_file": "investors/duan_yongping.md",
+      "then": "管理层可信",
+      "when": "管理层诚信 AND 与股东利益一致 AND 能力强"
+    },
+    {
+      "because": "安全边际 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "buy",
+      "rule_id": "duan_yongping:buy:005",
+      "source_file": "investors/duan_yongping.md",
+      "then": "好价格",
+      "when": "价格 < 内在价值 × 0.7 AND 好公司"
+    },
+    {
+      "because": "不懂不做 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "avoid",
+      "rule_id": "duan_yongping:avoid:001",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不买",
+      "when": "无法用2句话解释如何赚钱"
+    },
+    {
+      "because": "不是好生意 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "avoid",
+      "rule_id": "duan_yongping:avoid:002",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不买",
+      "when": "需要不断融资才能活"
+    },
+    {
+      "because": "骗过一次会骗第二次 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "avoid",
+      "rule_id": "duan_yongping:avoid:003",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不买",
+      "when": "管理层有诚信问题"
+    },
+    {
+      "because": "价格太贵 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "avoid",
+      "rule_id": "duan_yongping:avoid:004",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不买",
+      "when": "估值需要\"信仰\"支撑"
+    },
+    {
+      "because": "没有护城河 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "avoid",
+      "rule_id": "duan_yongping:avoid:005",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不买",
+      "when": "竞争激烈无差异化"
+    },
+    {
+      "because": "好公司变坏了 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "sell",
+      "rule_id": "duan_yongping:sell:001",
+      "source_file": "investors/duan_yongping.md",
+      "then": "卖出",
+      "when": "商业模式被破坏 OR 护城河消失"
+    },
+    {
+      "because": "无法信任 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "sell",
+      "rule_id": "duan_yongping:sell:002",
+      "source_file": "investors/duan_yongping.md",
+      "then": "立即卖出",
+      "when": "管理层出现诚信问题"
+    },
+    {
+      "because": "价格太贵（但好公司可以多拿）(段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "sell",
+      "rule_id": "duan_yongping:sell:003",
+      "source_file": "investors/duan_yongping.md",
+      "then": "可以考虑卖出",
+      "when": "估值极度高估（如 PE > 50 且增速放缓）"
+    },
+    {
+      "because": "机会成本 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "sell",
+      "rule_id": "duan_yongping:sell:004",
+      "source_file": "investors/duan_yongping.md",
+      "then": "可以换仓",
+      "when": "有更好的机会 AND 确定性更高"
+    },
+    {
+      "because": "时间是好公司的朋友 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:001",
+      "source_file": "investors/duan_yongping.md",
+      "then": "继续持有",
+      "when": "好公司 AND 估值合理 AND 长期逻辑未变"
+    },
+    {
+      "because": "市场先生情绪化 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:002",
+      "source_file": "investors/duan_yongping.md",
+      "then": "持有或加仓",
+      "when": "股价下跌 BUT 基本面未变"
+    },
+    {
+      "because": "不要因为短期波动卖好公司 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:003",
+      "source_file": "investors/duan_yongping.md",
+      "then": "继续持有",
+      "when": "短期业绩波动 BUT 长期竞争力未变"
+    },
+    {
+      "because": "机会来了要敢下手 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:004",
+      "source_file": "investors/duan_yongping.md",
+      "then": "可以重仓",
+      "when": "确定性高 AND 了解深入 AND 价格好"
+    },
+    {
+      "because": "杠杆会让你在对的时候也被迫出局 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:005",
+      "source_file": "investors/duan_yongping.md",
+      "then": "不做",
+      "when": "杠杆 OR 借钱"
+    },
+    {
+      "because": "投资应该让生活更好，不是更焦虑 (段永平)",
+      "investor_id": "duan_yongping",
+      "kind": "other",
+      "rule_id": "duan_yongping:other:006",
+      "source_file": "investors/duan_yongping.md",
+      "then": "减仓",
+      "when": "仓位让你睡不着觉"
+    },
+    {
       "because": "能計算期望值和凱利比例",
       "investor_id": "ed_thorp",
       "kind": "other",

@@ -19,4 +19,5 @@
 | `cliff_asness` | 克利夫·阿斯内斯 | [Cliff Asness](../investors/cliff_asness.md) | AQR Capital Management | quantitative, factor_investing, value_momentum, systematic | factor_investing, portfolio_construction, risk_premium_harvesting, style_rotation |
 | `qiu_guolu` | 邱国鹭 | [Qiu Guolu](../investors/qiu_guolu.md) | 高毅资产 | value_investing, contrarian, bottom_up, industry_focus | industry_selection, moat_analysis, valuation_anchor, a_share_investing |
 | `feng_liu` | 冯柳 | [Feng Liu](../investors/feng_liu.md) | 高毅资产 | contrarian, left_side_buying, odds_first, weak_player_system | contrarian_timing, turnaround_situations, information_asymmetry, a_share_investing |
+| `duan_yongping` | 段永平 | [Duan Yongping](../investors/duan_yongping.md) | 个人投资者 / 步步高系创始人 | value_investing, long_term_hold, business_model_focus, concentrated | stock_selection, business_model_analysis, long_term_investing, moat_analysis |
 | `greg_abel` | 格雷格·阿贝尔 | [Greg Abel](../investors/greg_abel.md) | Berkshire Hathaway Energy | long_term_capital_allocation, regulated_industries, energy_transition, operational_excellence | utility_valuation, infrastructure_investing, regulated_return_analysis |
