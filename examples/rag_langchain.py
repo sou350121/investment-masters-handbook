@@ -1,0 +1,323 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Investment Masters RAG Integration Example
+
+使用 LangChain + ChromaDB 实现投资大师知识库的 RAG 检索。
+
+Requirements:
+    pip install langchain langchain-community chromadb pyyaml
+
+Usage:
+    python rag_langchain.py "这个股票值得买吗？"
+    python rag_langchain.py --interactive
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+# 项目根目录
+PROJECT_ROOT = Path(__file__).parent.parent
+
+
+def check_dependencies():
+    """检查依赖是否安装"""
+    missing = []
+    
+    try:
+        import yaml
+    except ImportError:
+        missing.append("pyyaml")
+    
+    try:
+        from langchain.schema import Document
+    except ImportError:
+        missing.append("langchain")
+    
+    try:
+        import chromadb
+    except ImportError:
+        missing.append("chromadb")
+    
+    if missing:
+        print("缺少依赖，请安装:")
+        print(f"  pip install {' '.join(missing)}")
+        sys.exit(1)
+
+
+def load_investor_documents():
+    """加载投资者文档为 LangChain Document 格式"""
+    from langchain.schema import Document
+    import yaml
+    
+    documents = []
+    investors_dir = PROJECT_ROOT / "investors"
+    
+    # 加载投资者索引获取元数据
+    index_file = PROJECT_ROOT / "config" / "investor_index.yaml"
+    investor_meta = {}
+    
+    if index_file.exists():
+        with open(index_file, "r", encoding="utf-8") as f:
+            index_data = yaml.safe_load(f)
+            for inv in index_data.get("investors", []):
+                investor_meta[inv["id"]] = inv
+    
+    # 加载每个投资者的 Markdown 文件
+    for md_file in investors_dir.glob("*.md"):
+        investor_id = md_file.stem
+        
+        with open(md_file, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        # 获取元数据
+        meta = investor_meta.get(investor_id, {})
+        
+        doc = Document(
+            page_content=content,
+            metadata={
+                "source": str(md_file.relative_to(PROJECT_ROOT)),
+                "investor_id": investor_id,
+                "investor_name": meta.get("full_name", investor_id),
+                "chinese_name": meta.get("chinese_name", ""),
+                "style": ", ".join(meta.get("style", [])),
+                "best_for": ", ".join(meta.get("best_for", [])),
+            }
+        )
+        documents.append(doc)
+    
+    return documents
+
+
+def load_decision_rules():
+    """加载决策规则为 Document 格式"""
+    from langchain.schema import Document
+    import json
+    
+    rules_file = PROJECT_ROOT / "config" / "decision_rules.generated.json"
+    
+    if not rules_file.exists():
+        print(f"规则文件不存在: {rules_file}")
+        return []
+    
+    with open(rules_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    documents = []
+    for rule in data.get("rules", []):
+        # 将规则转为自然语言
+        content = f"""
+投资者: {rule.get('investor_id', 'unknown')}
+规则类型: {rule.get('kind', 'other')}
+
+IF {rule.get('when', 'N/A')}
+THEN {rule.get('then', 'N/A')}
+BECAUSE {rule.get('because', 'N/A')}
+        """.strip()
+        
+        doc = Document(
+            page_content=content,
+            metadata={
+                "source": "decision_rules.generated.json",
+                "investor_id": rule.get("investor_id", "unknown"),
+                "rule_id": rule.get("rule_id", ""),
+                "kind": rule.get("kind", "other"),
+            }
+        )
+        documents.append(doc)
+    
+    return documents
+
+
+def create_vectorstore(documents, persist_dir=None):
+    """创建向量存储"""
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_community.vectorstores import Chroma
+    
+    # 使用免费的本地 embedding 模型
+    # 如果有 OpenAI API key，可以改用 OpenAIEmbeddings
+    print("加载 embedding 模型...")
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_kwargs={"device": "cpu"}
+    )
+    
+    print(f"创建向量存储，共 {len(documents)} 个文档...")
+    
+    if persist_dir:
+        vectorstore = Chroma.from_documents(
+            documents=documents,
+            embedding=embeddings,
+            persist_directory=persist_dir
+        )
+        vectorstore.persist()
+    else:
+        vectorstore = Chroma.from_documents(
+            documents=documents,
+            embedding=embeddings
+        )
+    
+    return vectorstore
+
+
+def query_vectorstore(vectorstore, query: str, k: int = 5):
+    """查询向量存储"""
+    results = vectorstore.similarity_search_with_score(query, k=k)
+    return results
+
+
+def format_results(results):
+    """格式化搜索结果"""
+    output = []
+    
+    for i, (doc, score) in enumerate(results, 1):
+        investor_id = doc.metadata.get("investor_id", "unknown")
+        source = doc.metadata.get("source", "unknown")
+        
+        output.append(f"\n{'='*60}")
+        output.append(f"[{i}] 相关度: {1-score:.2%} | 来源: {source}")
+        output.append(f"    投资者: {investor_id}")
+        output.append("-" * 60)
+        
+        # 截取内容预览
+        content = doc.page_content[:500]
+        if len(doc.page_content) > 500:
+            content += "..."
+        output.append(content)
+    
+    return "\n".join(output)
+
+
+def interactive_mode(vectorstore):
+    """交互模式"""
+    print("\n" + "=" * 60)
+    print("投资大师知识库 - 交互查询模式")
+    print("输入问题进行查询，输入 'quit' 退出")
+    print("=" * 60)
+    
+    while True:
+        try:
+            query = input("\n🔍 你的问题: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n再见!")
+            break
+        
+        if query.lower() in ["quit", "exit", "q"]:
+            print("再见!")
+            break
+        
+        if not query:
+            continue
+        
+        results = query_vectorstore(vectorstore, query)
+        print(format_results(results))
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Investment Masters RAG Query",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+示例:
+  %(prog)s "这个股票值得买吗？"
+  %(prog)s "市场恐慌时该怎么办？"
+  %(prog)s --interactive
+  %(prog)s --persist ./vectorstore "护城河分析"
+        """
+    )
+    
+    parser.add_argument(
+        "query",
+        nargs="?",
+        help="查询问题"
+    )
+    parser.add_argument(
+        "--interactive", "-i",
+        action="store_true",
+        help="交互模式"
+    )
+    parser.add_argument(
+        "--persist", "-p",
+        help="向量存储持久化目录"
+    )
+    parser.add_argument(
+        "--top-k", "-k",
+        type=int,
+        default=5,
+        help="返回结果数量（默认: 5）"
+    )
+    parser.add_argument(
+        "--rules-only",
+        action="store_true",
+        help="仅加载决策规则（更快）"
+    )
+    
+    args = parser.parse_args()
+    
+    # 检查依赖
+    check_dependencies()
+    
+    # 加载文档
+    print("加载文档...")
+    
+    if args.rules_only:
+        documents = load_decision_rules()
+        print(f"已加载 {len(documents)} 条决策规则")
+    else:
+        investor_docs = load_investor_documents()
+        rule_docs = load_decision_rules()
+        documents = investor_docs + rule_docs
+        print(f"已加载 {len(investor_docs)} 个投资者文档 + {len(rule_docs)} 条决策规则")
+    
+    # 创建向量存储
+    vectorstore = create_vectorstore(documents, args.persist)
+    print("向量存储创建完成!")
+    
+    # 执行查询
+    if args.interactive:
+        interactive_mode(vectorstore)
+    elif args.query:
+        results = query_vectorstore(vectorstore, args.query, args.top_k)
+        print(format_results(results))
+    else:
+        parser.print_help()
+
+
+# === 简化版本（无需安装额外依赖）===
+
+def simple_keyword_search(query: str):
+    """
+    简化版关键词搜索（无需安装 LangChain）
+    
+    Usage:
+        from rag_langchain import simple_keyword_search
+        results = simple_keyword_search("护城河")
+    """
+    import json
+    import re
+    
+    # 加载规则
+    rules_file = PROJECT_ROOT / "config" / "decision_rules.generated.json"
+    with open(rules_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    results = []
+    query_lower = query.lower()
+    
+    for rule in data.get("rules", []):
+        when = rule.get("when", "").lower()
+        then = rule.get("then", "").lower()
+        because = (rule.get("because") or "").lower()
+        
+        # 简单关键词匹配
+        if query_lower in when or query_lower in then or query_lower in because:
+            results.append(rule)
+    
+    return results
+
+
+if __name__ == "__main__":
+    main()
+

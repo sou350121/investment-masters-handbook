@@ -10,6 +10,62 @@
 
 ---
 
+## ⚡ 5 分钟快速入门
+
+<details>
+<summary><b>我是新手，该看谁？</b></summary>
+
+| 先看这 3 位 | 为什么 |
+|------------|--------|
+| [Buffett](investors/warren_buffett.md) | 价值投资基础：护城河、安全边际 |
+| [Lynch](investors/peter_lynch.md) | 最实用的选股框架：PEG < 1 |
+| [Munger](investors/charlie_munger.md) | 避免愚蠢比聪明更重要 |
+
+**一句话总结**：好公司 + 好价格 + 长期持有 = 大概率赚钱
+</details>
+
+<details>
+<summary><b>我关注宏观/择时</b></summary>
+
+| 先看这 3 位 | 为什么 |
+|------------|--------|
+| [Druckenmiller](investors/stanley_druckenmiller.md) | 流动性决定一切 |
+| [Dalio](investors/ray_dalio.md) | 经济四象限 + 全天候配置 |
+| [Soros](investors/george_soros.md) | 反身性 + 攻击政策失衡 |
+
+**一句话总结**：跟着央行流动性走，别和 Fed 作对
+</details>
+
+<details>
+<summary><b>我想做量化/系统化交易</b></summary>
+
+| 先看这 3 位 | 为什么 |
+|------------|--------|
+| [Simons](investors/james_simons.md) | 数据驱动、无情绪执行 |
+| [Thorp](investors/ed_thorp.md) | 凯利公式 + 仓位管理 |
+| [Asness](investors/cliff_asness.md) | 因子投资：价值 + 动量 |
+
+**一句话总结**：正期望 + 严格风控 + 系统执行 = 长期复利
+</details>
+
+<details>
+<summary><b>我想接入 AI 系统（RAG/Agent/NOFX）</b></summary>
+
+**最快方式（30秒）**：
+```bash
+curl -sL https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/config/decision_rules.generated.json -o rules.json
+```
+
+**更多方式**：
+- [规则引擎 CLI](#-工具)：`python tools/rule_query.py --scenario "市场恐慌"`
+- [RAG 示例](#-工具)：`examples/rag_langchain.py`
+- [详细指南](guides/nofx_integration.md)
+</details>
+
+> 📋 **完整速查卡片**：[guides/quick_reference.md](guides/quick_reference.md)
+
+---
+
 ## 🎯 这个项目能帮你做什么？
 
 ```
@@ -299,6 +355,45 @@ https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/con
 | 检查决策偏误 | Munger | 25 种心理偏误清单 |
 | 逆向抄底 | 冯柳 → Klarman | 赔率优先 + 左侧买入 |
 | 量化策略灵感 | Simons → Thorp | 统计套利 + 凯利公式 |
+
+---
+
+## 🛠️ 工具
+
+### 规则引擎 CLI
+
+```bash
+# 按场景查询
+python tools/rule_query.py --scenario "市场恐慌"
+
+# 按投资者查询
+python tools/rule_query.py --investor buffett
+
+# 按关键词查询
+python tools/rule_query.py --keyword "护城河"
+
+# 组合查询
+python tools/rule_query.py --when "估值" --then "买入"
+
+# 输出 JSON（方便程序处理）
+python tools/rule_query.py --scenario "选股" --format json
+```
+
+### RAG 集成示例
+
+```bash
+# 安装依赖
+pip install langchain langchain-community chromadb pyyaml sentence-transformers
+
+# 单次查询
+python examples/rag_langchain.py "这个股票值得买吗？"
+
+# 交互模式
+python examples/rag_langchain.py --interactive
+
+# 仅加载规则（更快）
+python examples/rag_langchain.py --rules-only "市场恐慌怎么办"
+```
 
 ---
 
