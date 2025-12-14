@@ -114,3 +114,4 @@ git status --porcelain
 - `config/decision_rules.generated.json` 是自动生成的，不要手动编辑
 - 所有投资人数据以 `investor_index.yaml` 为 SSOT
 - 项目是纯知识库，无运行时服务
+

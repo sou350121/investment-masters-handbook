@@ -89,6 +89,14 @@ keyword_patterns:
     investors: [james_simons, ed_thorp]
     prompts: [crypto_trader]
     weight: 0.95
+  
+  # AI500 量化交易（NOFX 专用）
+  ai500:
+    pattern: "AI500|ai500|NOFX|nofx|OI排名|持仓量|K线量化|爆拉|做局|拉盘"
+    investors: [george_soros, stanley_druckenmiller, ed_thorp, howard_marks, james_simons]
+    prompts: [nofx_ai500_master]
+    weight: 0.98
+    description: "AI500 币种专用量化策略，融合五位大师智慧"
 
 # ============================================
 # 分类路由配置
@@ -352,6 +360,12 @@ quick_routes:
     investors: [stanley_druckenmiller, ed_thorp]
   - question: "BTC/加密货币怎么看"
     investors: [prompts/crypto_trader]
+  - question: "AI500怎么交易"
+    investors: [prompts/nofx_ai500_master]
+  - question: "OI排名怎么看"
+    investors: [stanley_druckenmiller, prompts/nofx_ai500_master]
+  - question: "K线+OI怎么分析"
+    investors: [james_simons, prompts/nofx_ai500_master]
 
 # ============================================
 # 投资人元数据
@@ -468,4 +482,11 @@ prompt_roles:
     name: "流动性萨满"
     keywords: ["流动性", "Fed", "资金"]
     doc: "prompts/liquidity_shaman.md"
+  
+  nofx_ai500_master:
+    name: "AI500 量化大师"
+    keywords: ["AI500", "NOFX", "OI排名", "K线量化", "持仓量", "做局", "拉盘"]
+    doc: "prompts/nofx_ai500_master.md"
+    description: "融合 Soros/Druckenmiller/Thorp/Marks/Simons 五位大师智慧的 AI500 专用策略"
+    investor_sources: [george_soros, stanley_druckenmiller, ed_thorp, howard_marks, james_simons]
 
