@@ -380,7 +380,9 @@ python tools/rule_query.py --when "估值" --then "买入"
 python tools/rule_query.py --scenario "选股" --format json
 ```
 
-### RAG 集成示例
+### RAG 检索增强生成
+
+> 📚 **完整指南**：[guides/rag_guide.md](guides/rag_guide.md)
 
 ```bash
 # 安装依赖
@@ -395,6 +397,12 @@ python examples/rag_langchain.py --interactive
 # 仅加载规则（更快）
 python examples/rag_langchain.py --rules-only "市场恐慌怎么办"
 ```
+
+**核心特性**：
+- 🔍 语义检索 17 位大师的智慧
+- 📊 232 条 IF-THEN 规则检索
+- 🤖 支持多轮对话上下文
+- ⚡ 按投资者/规则类型过滤
 
 ---
 
