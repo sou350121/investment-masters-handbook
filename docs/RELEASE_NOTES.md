@@ -47,7 +47,187 @@
 - ✅ 信号矩阵改为表格格式
 - ✅ 6 项量化条件编号化
 
-### 推文模板
+### 推文模板（Thread 格式）
+
+**1/ 引子 - 什么是 RAG**
+```
+Investment Masters Handbook v1.5.1 更新 🎉
+
+新增 700+ 行 RAG 完整指南
+
+什么是 RAG？为什么你的投资 AI 需要它？
+
+一条 Thread 讲清楚 👇
+
+#RAG #AI #投资 #OpenSource
+```
+
+**2/ 问题 - 传统 LLM 的局限**
+```
+2/ 传统 LLM 的三大痛点：
+
+❌ 幻觉：编造看似专业的投资建议
+❌ 过时：训练数据截止日期前的知识
+❌ 通用：缺乏专业投资人的深度智慧
+
+你问它"特斯拉值得买吗？"
+它可能给你一堆通用理论，但没有巴菲特的能力圈检查，也没有 Lynch 的 PEG 计算。
+```
+
+**3/ 什么是 RAG**
+```
+3/ RAG = Retrieval-Augmented Generation
+    检索 + 增强 + 生成
+
+简单说：
+在 AI 回答前，先从你的知识库里找相关内容
+
+传统 LLM：问题 → AI → 答案
+RAG 增强：问题 → 检索知识库 → AI + 知识 → 答案
+
+知识库 = 17 位投资大师的智慧 📚
+```
+
+**4/ RAG 的价值**
+```
+4/ RAG 带来什么？
+
+✅ 准确性：基于真实文档，可溯源
+✅ 时效性：知识库实时更新
+✅ 专业性：17 位大师 + 232 条规则
+✅ 可控性：你决定 AI 学什么
+
+举例：
+你问"市场暴跌怎么办？"
+RAG 会检索：
+- Marks 的周期位置判断
+- Buffett 的恐慌时买入
+- Klarman 的安全边际
+```
+
+**5/ 实战场景 1 - 投资决策**
+```
+5/ 实战场景 1：投资决策辅助
+
+问题："特斯拉 P/E 60，PEG 1.8，值得买吗？"
+
+RAG 检索会返回：
+📊 Lynch 的 PEG < 1 规则（警告！）
+🎯 Buffett 的能力圈检查
+🧠 Munger 的估值偏误清单
+
+AI 基于这些大师智慧给出建议，而不是瞎猜。
+```
+
+**6/ 实战场景 2 - 风险检查**
+```
+6/ 实战场景 2：风险检查
+
+问题："我想满仓一只成长股"
+
+RAG 检索会返回：
+⚠️ Thorp 的凯利公式（仓位不超过 25%）
+🛡️ Klarman 的安全边际要求
+🚨 Munger 的决策偏误清单
+
+相当于 3 位大师同时给你风险提醒！
+```
+
+**7/ 如何使用 - 3 步上手**
+```
+7/ 如何使用？3 步上手
+
+步骤 1：安装依赖
+pip install langchain chromadb pyyaml
+
+步骤 2：单次查询
+python examples/rag_langchain.py "市场恐慌怎么办？"
+
+步骤 3：交互模式
+python examples/rag_langchain.py --interactive
+
+就这么简单！
+```
+
+**8/ 高级用法 - 按投资者过滤**
+```
+8/ 高级用法：按投资者过滤
+
+只想听巴菲特的建议？
+
+vectorstore.similarity_search(
+    "护城河分析",
+    filter={"investor_id": "warren_buffett"}
+)
+
+或者只看宏观大师的观点：
+- Soros（反身性）
+- Druckenmiller（流动性）
+- Dalio（债务周期）
+```
+
+**9/ NOFX AI500 集成**
+```
+9/ 量化交易者的福音 🎰
+
+RAG 已集成到 NOFX AI500 策略
+
+实时检索：
+- Soros 反身性理论（OI+价格自我强化）
+- Druckenmiller 流动性（OI 排名=资金热度）
+- Thorp 凯利公式（置信度→仓位）
+
+把大师智慧变成可执行的交易信号！
+```
+
+**10/ 性能优化建议**
+```
+10/ 性能优化 Tips ⚡
+
+🔸 持久化向量库（首次慢，后续快）
+🔸 使用 --rules-only（只加载规则，更快）
+🔸 选择合适的 Embedding 模型：
+  - 开发：HuggingFace MiniLM（免费）
+  - 生产：OpenAI ada-002（高精度）
+  - 中文：BGE-large-zh（中文优化）
+```
+
+**11/ 无需 RAG 的简化方案**
+```
+11/ 不想搭 RAG？还有简化方案
+
+方案 1：直接加载规则
+import json
+rules = json.load("decision_rules.json")
+
+方案 2：作为 System Prompt
+system_prompt = open("llm_summary.md").read()
+
+方案 3：关键词搜索
+simple_keyword_search("护城河")
+
+选择适合你的！
+```
+
+**12/ CTA - 完整指南**
+```
+12/ 完整的 RAG 指南在这里 👇
+
+✅ 700+ 行完整教程
+✅ 架构图 + 代码示例
+✅ 3 个实战场景
+✅ 性能优化 + 常见问题
+
+github.com/sou350121/investment-masters-handbook/blob/main/guides/rag_guide.md
+
+把 17 位投资大师的智慧装进你的 AI 🚀
+
+#RAG #AI #投资 #OpenSource
+```
+
+---
+
+### 推文模板（单条版）
 
 ```
 Investment Masters Handbook v1.5.1 更新
