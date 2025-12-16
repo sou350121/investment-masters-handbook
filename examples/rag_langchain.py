@@ -99,6 +99,44 @@ def load_investor_documents():
     return documents
 
 
+def split_investor_documents(documents, chunk_size: int = 900, chunk_overlap: int = 200):
+    """
+    将投资者长文档分块，提升检索精度，并为每个块附加引用信息。
+
+    - 保留原 metadata（source/investor_id 等）
+    - 增加 chunk_index/chunk_id/title_hint/source_type
+    """
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    import re
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        separators=["\n## ", "\n### ", "\n#### ", "\n\n", "\n", " "],
+    )
+
+    split_docs = []
+
+    for parent in documents:
+        investor_id = parent.metadata.get("investor_id", "unknown")
+        chunks = splitter.split_documents([parent])
+
+        for idx, doc in enumerate(chunks):
+            # 标题提示：取 chunk 内第一个 markdown 标题
+            m = re.search(r"(?m)^(#{1,4})\s+(.+?)\s*$", doc.page_content)
+            title_hint = m.group(2) if m else ""
+
+            doc.metadata["source_type"] = "investor_doc"
+            doc.metadata["chunk_index"] = idx
+            doc.metadata["chunk_id"] = f"{investor_id}#{idx}"
+            if title_hint:
+                doc.metadata["title_hint"] = title_hint
+
+        split_docs.extend(chunks)
+
+    return split_docs
+
+
 def load_decision_rules():
     """加载决策规则为 Document 格式"""
     from langchain.schema import Document
@@ -132,6 +170,7 @@ BECAUSE {rule.get('because', 'N/A')}
                 "investor_id": rule.get("investor_id", "unknown"),
                 "rule_id": rule.get("rule_id", ""),
                 "kind": rule.get("kind", "other"),
+                "source_type": "rule",
             }
         )
         documents.append(doc)
@@ -198,11 +237,22 @@ def format_results(results):
     
     for i, (doc, score) in enumerate(results, 1):
         investor_id = doc.metadata.get("investor_id", "unknown")
+        investor_name = doc.metadata.get("chinese_name") or doc.metadata.get("investor_name") or investor_id
         source = doc.metadata.get("source", "unknown")
+        source_type = doc.metadata.get("source_type", "unknown")
+        rule_id = doc.metadata.get("rule_id", "")
+        chunk_id = doc.metadata.get("chunk_id", "")
+        title_hint = doc.metadata.get("title_hint", "")
+
+        # 引用：优先 rule_id，其次 chunk_id
+        citation = rule_id or chunk_id or "N/A"
         
         output.append(f"\n{'='*60}")
-        output.append(f"[{i}] 相关度: {1-score:.2%} | 来源: {source}")
-        output.append(f"    投资者: {investor_id}")
+        output.append(f"[{i}] 相似度(估算): {1-score:.2%} | 类型: {source_type} | 来源: {source}")
+        output.append(f"    投资者: {investor_name} ({investor_id})")
+        if title_hint:
+            output.append(f"    章节: {title_hint}")
+        output.append(f"    引用: {citation}")
         output.append("-" * 60)
         
         # 截取内容预览
@@ -210,6 +260,7 @@ def format_results(results):
         if len(doc.page_content) > 500:
             content += "..."
         output.append(content)
+        output.append(f"\n📌 可溯源引用: {source}  ->  {citation}")
     
     return "\n".join(output)
 
@@ -308,9 +359,10 @@ def main():
             print(f"已加载 {len(documents)} 条决策规则")
         else:
             investor_docs = load_investor_documents()
+            investor_docs = split_investor_documents(investor_docs)
             rule_docs = load_decision_rules()
             documents = investor_docs + rule_docs
-            print(f"已加载 {len(investor_docs)} 个投资者文档 + {len(rule_docs)} 条决策规则")
+            print(f"已加载 {len(investor_docs)} 个投资者文档分块 + {len(rule_docs)} 条决策规则")
 
         # 创建向量存储
         vectorstore = create_vectorstore(documents, args.persist)

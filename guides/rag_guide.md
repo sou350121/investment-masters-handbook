@@ -124,7 +124,7 @@ results = vectorstore.similarity_search(
 
 **返回内容**：
 - 投资者 Markdown 文档的相关段落
-- 元数据：投资者 ID、中文名、投资风格、擅长领域
+- 元数据：投资者 ID、中文名、投资风格、擅长领域、**引用信息（chunk_id / 章节提示）**
 
 ---
 

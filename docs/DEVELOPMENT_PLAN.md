@@ -334,11 +334,11 @@ def format_results_with_citation(results):
 ```
 
 #### 執行步驟
-1. [ ] 在 `examples/rag_langchain.py` 中添加 `split_investor_documents()` 函數
-2. [ ] 改寫 `format_results()` 為 `format_results_with_citation()`，加入引用信息
-3. [ ] 更新 `create_vectorstore()` 調用分塊邏輯
-4. [ ] 測試分塊效果（查詢同樣的問題，對比結果的精準度）
-5. [ ] 提交：`git commit -m "feat: Improve RAG chunking and add citation support"`
+1. [x] 在 `examples/rag_langchain.py` 中添加 `split_investor_documents()` 函數 ✅（按标题/段落分块）
+2. [x] 改寫 `format_results()`，加入引用信息 ✅（输出 source + 引用ID + 章节提示）
+3. [x] 更新加载逻辑：对投资者文档分块后再入库 ✅
+4. [ ] 測試分塊效果（查詢同樣的問題，對比結果的精準度）⚠️（需本机安装依赖后运行一次）
+5. [ ] 提交：`git commit -m "feat: Improve RAG chunking and add citation support"`（待提交）
 
 #### 驗收標準
 ✅ 查詢同一問題，返回的結果片段更聚焦（不是整篇文檔）  
