@@ -334,7 +334,18 @@ https://raw.githubusercontent.com/sou350121/investment-masters-handbook/main/con
 
 **Step 3** - 验证：应加载 187 条规则
 
+**Step 4** - 设置环境变量（如果使用 AI500 策略配置）：
+```bash
+# Linux / macOS
+export NOFX_AUTH_TOKEN="your_token_here"
+
+# Windows PowerShell
+$env:NOFX_AUTH_TOKEN="your_token_here"
+```
+
 > 📖 详细集成指南、字段说明、排错步骤见 **[guides/nofx_integration.md](guides/nofx_integration.md)**
+> 
+> 🔐 **安全提示**：配置文件使用环境变量管理敏感信息，详见 [安全政策](docs/SECURITY.md)
 
 ### 集成方式对比
 

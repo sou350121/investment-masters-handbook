@@ -6,10 +6,10 @@
       "source_type": "coinpool",
       "use_coin_pool": true,
       "coin_pool_limit": 10,
-      "coin_pool_api_url": "http://nofxaios.com:30006/api/ai500/list?auth=cm_568c67eae410d912c54c",
+      "coin_pool_api_url": "http://nofxaios.com:30006/api/ai500/list?auth=${NOFX_AUTH_TOKEN}",
       "use_oi_top": true,
       "oi_top_limit": 20,
-      "oi_top_api_url": "http://nofxaios.com:30006/api/oi/top-ranking?limit=20&duration=1h&auth=cm_568c67eae410d912c54c"
+      "oi_top_api_url": "http://nofxaios.com:30006/api/oi/top-ranking?limit=20&duration=1h&auth=${NOFX_AUTH_TOKEN}"
     },
     "indicators": {
       "klines": {
@@ -32,7 +32,7 @@
       "rsi_periods": [7, 14],
       "atr_periods": [14],
       "enable_quant_data": true,
-      "quant_data_api_url": "http://nofxaios.com:30006/api/coin/{symbol}?include=netflow,oi,price&auth=cm_568c67eae410d912c54c",
+      "quant_data_api_url": "http://nofxaios.com:30006/api/coin/{symbol}?include=netflow,oi,price&auth=${NOFX_AUTH_TOKEN}",
       "enable_quant_oi": true,
       "enable_quant_netflow": true,
       "enable_oi_ranking": true,

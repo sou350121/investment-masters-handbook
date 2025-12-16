@@ -545,3 +545,5 @@ results = vectorstore.similarity_search(query, k=5)
 ---
 
 > **提示**：RAG 是工具，投资决策的核心仍然是你的判断。大师的智慧是参考，不是答案。
+
+

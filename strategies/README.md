@@ -1,103 +1,132 @@
-# NOFX 交易策略配置
+# Strategies 策略配置
 
-本目录存放 NOFX AI 交易系统的策略配置文件。
+本目录包含各种量化交易策略的配置文件。
+
+---
 
 ## 📁 文件列表
 
-| 文件 | 说明 |
-|------|------|
-| `nofx_ai500_quantified.json` | AI500 K线+OI 量化策略配置 |
-| `INVESTOR_MAPPING.md` | 投资人适配说明（五位大师→AI500 规则映射） |
-
----
-
-## 🎯 nofx_ai500_quantified.json
-
-### 策略特点
-
-专为 **AI500 币种** 设计的量化交易策略，融合五位投资大师的核心智慧：
-
-| 大师 | 贡献 | 应用 |
+| 文件 | 说明 | 版本 |
 |------|------|------|
-| **Soros** | 反身性 | OI↑+价格↑=自我强化拉盘 |
-| **Druckenmiller** | 流动性 | OI排名=资金热度 |
-| **Thorp** | 凯利公式 | 置信度→仓位映射 |
-| **Marks** | 周期意识 | 不追高，等回调 |
-| **Simons** | 量化执行 | K线+OI信号矩阵 |
-
-**核心理念**：
-1. **只做多，不做空** — AI500 拉盘暴力，做空风险极高
-2. **K线 + OI 双重验证** — 传统指标无效，只看 K线形态和持仓量
-3. **多时间框架** — 5m/15m/1h/4h 联合确认
-
-> 详细适配说明请参考 [INVESTOR_MAPPING.md](./INVESTOR_MAPPING.md)
-
-### 信号矩阵速查
-
-```
-         价格上涨              价格下跌
-      ┌─────────────┐      ┌─────────────┐
-OI↑   │ ⭐⭐⭐⭐⭐     │      │ 🔴🔴🔴       │
-      │ 主力拉盘      │      │ 空头入场     │
-      │ → 做多/加仓   │      │ → 观望/止损  │
-      └─────────────┘      └─────────────┘
-      ┌─────────────┐      ┌─────────────┐
-OI↓   │ ⚠️⚠️         │      │ 🔴🔴         │
-      │ 主力出货      │      │ 资金离场     │
-      │ → 止盈/减仓   │      │ → 空仓等待   │
-      └─────────────┘      └─────────────┘
-```
-
-### 做多条件（需满足 3 项以上）
-
-- [ ] K线：5m/15m 连续 3 根以上阳线
-- [ ] K线：价格站上前高或关键阻力位
-- [ ] K线：回调至前低支撑附近企稳
-- [ ] OI：1h 内 OI 增量 > 3%
-- [ ] OI：OI 排名进入前 20
-- [ ] 多时间框架：15m + 1h 趋势一致向上
-
-### 止盈条件（满足任意 1 项）
-
-- ⚠️ K线：出现长上影线（上影 > 实体 2 倍）
-- ⚠️ K线：连续 2 根阴线跌破 5m 关键支撑
-- ⚠️ OI：价格上涨但 OI 大幅减少 > 5%
-- ⚠️ OI：OI 排名跌出前 50
-- ⚠️ 盈利：已达到 3:1 盈亏比目标
-
-### 铁律
-
-1. 趋势是上涨 → 拿住趋势多单
-2. 趋势是上涨 → **绝不做空**
-3. 上涨趋势结束 → 及时止盈多单
-4. 止盈后 → 等回调确认再进，不追高
-5. 宁愿空仓 → 也不要做空
+| `nofx_ai500_quantified.json` | NOFX AI500 量化策略配置（融合五位投资大师） | v2.0 |
 
 ---
 
-## 🔧 如何使用
+## 🔐 环境变量设置（必须）
 
-### 导入到 NOFX
+### ⚠️ 重要提示
 
-1. 打开 NOFX 交易系统
-2. 进入策略配置页面
-3. 点击 "导入配置"
-4. 选择 `nofx_ai500_quantified.json`
+**所有策略配置文件都使用环境变量来管理敏感信息（如 API Token），请在使用前先设置环境变量！**
 
-### 配置项说明
+### 快速设置
 
-| 配置项 | 默认值 | 说明 |
-|--------|--------|------|
-| `max_positions` | 3 | 最大同时持仓数 |
-| `altcoin_max_leverage` | 5x | 山寨币最大杠杆 |
-| `min_risk_reward_ratio` | 3:1 | 最小盈亏比 |
-| `min_confidence` | 75% | 最低置信度阈值 |
-| `oi_ranking_limit` | 20 | OI 排名监控范围 |
+#### Linux / macOS
+```bash
+export NOFX_AUTH_TOKEN="your_token_here"
+```
+
+#### Windows PowerShell
+```powershell
+$env:NOFX_AUTH_TOKEN="your_token_here"
+```
+
+#### Windows CMD
+```cmd
+set NOFX_AUTH_TOKEN=your_token_here
+```
+
+### 详细说明
+
+👉 **完整的环境变量设置指南**：[../docs/SECURITY.md](../docs/SECURITY.md)
 
 ---
 
-## ⚠️ 风险提示
+## 📖 使用方式
 
-- 本策略仅供参考，不构成投资建议
-- 加密货币市场波动剧烈，请控制仓位
-- 建议先用小资金测试策略有效性
+### NOFX AI500 量化策略
+
+**配置文件**：`nofx_ai500_quantified.json`
+
+**特点**：
+- 融合 Soros、Druckenmiller、Thorp、Marks、Simons 五位大师智慧
+- K线 + OI 量化信号矩阵
+- 置信度 → 仓位映射（凯利公式）
+
+**使用步骤**：
+
+1. **设置环境变量**（见上方）
+2. **加载配置**：
+   ```python
+   import json
+   import os
+   
+   with open("strategies/nofx_ai500_quantified.json", "r", encoding="utf-8") as f:
+       config = json.load(f)
+   
+   # 替换环境变量占位符
+   token = os.getenv("NOFX_AUTH_TOKEN")
+   if not token:
+       raise ValueError("请设置 NOFX_AUTH_TOKEN 环境变量")
+   
+   # 替换 URL 中的占位符
+   config["config"]["coin_source"]["coin_pool_api_url"] = \
+       config["config"]["coin_source"]["coin_pool_api_url"].replace("${NOFX_AUTH_TOKEN}", token)
+   ```
+
+3. **在 NOFX 系统中导入**：
+   - 将配置文件上传到 NOFX 后台
+   - 系统会自动读取环境变量并替换占位符
+
+---
+
+## 🔄 环境变量占位符说明
+
+配置文件中的占位符格式：`${VARIABLE_NAME}`
+
+| 占位符 | 环境变量 | 说明 |
+|--------|----------|------|
+| `${NOFX_AUTH_TOKEN}` | `NOFX_AUTH_TOKEN` | NOFX API 认证 Token |
+
+**替换逻辑**：
+- 程序读取配置文件时，检测到 `${...}` 格式的占位符
+- 从系统环境变量中查找对应的值
+- 如果找不到，抛出错误（防止使用空值）
+
+---
+
+## 📚 相关文档
+
+- [安全政策](../docs/SECURITY.md) - 详细的安全管理指南
+- [NOFX AI500 大师 Prompt](../prompts/nofx_ai500_master.md) - 策略的 Prompt 说明
+- [投资人映射说明](./INVESTOR_MAPPING.md) - 五位大师如何应用到策略中
+
+---
+
+## ⚠️ 常见问题
+
+### Q: 为什么配置文件里没有真实的 Token？
+
+**A**: 为了安全！Token 是敏感信息，不应该进入代码库。使用环境变量可以：
+- 每个用户用自己的 Token
+- 随时轮换 Token 而不改代码
+- 避免 Token 泄露到公开仓库
+
+### Q: 如何获取 NOFX Token？
+
+**A**: 
+1. 登录 NOFX 后台
+2. 进入"API 设置"或"开发者设置"
+3. 生成新的 API Token
+4. 复制 Token 并设置为环境变量
+
+### Q: 环境变量设置后还是不生效？
+
+**A**: 
+1. 确认环境变量名拼写正确（区分大小写）
+2. 确认已重启终端/IDE
+3. 运行 `echo $NOFX_AUTH_TOKEN`（Linux/macOS）或 `$env:NOFX_AUTH_TOKEN`（PowerShell）验证
+4. 检查配置文件中的占位符格式是否正确（`${NOFX_AUTH_TOKEN}`）
+
+---
+
+> 💡 **提示**：如果遇到问题，请查看 [安全政策文档](../docs/SECURITY.md) 获取详细帮助。
