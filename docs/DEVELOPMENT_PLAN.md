@@ -247,12 +247,12 @@ indent_size = 2
    - 明確說明"首次慢 → 保存 → 後續秒開"的使用流程
 
 #### 執行步驟
-1. [ ] 在 `examples/rag_langchain.py` 的 `check_dependencies()` 中添加 `sentence-transformers` 檢查
-2. [ ] 實現 `--load` CLI 選項，支持從已保存的向量庫加載
-3. [ ] 測試"首次 --persist → 後續 --load"的完整流程
-4. [ ] 更新 `examples/README.md` 文檔
-5. [ ] 同步更新 `guides/rag_guide.md` 中的快速開始部分
-6. [ ] 提交：`git commit -m "feat: Complete RAG example with --load support and docs alignment"`
+1. [x] 在 `examples/rag_langchain.py` 的 `check_dependencies()` 中添加 `sentence-transformers` 檢查 ✅（缺依赖会提示安装）
+2. [x] 實現 `--load` CLI 選項，支持從已保存的向量庫加載 ✅（已加入 `--load/-l`）
+3. [ ] 測試"首次 --persist → 後續 --load"的完整流程 ⚠️（需本机安装依赖后验证性能差异）
+4. [x] 更新 `examples/README.md` 文檔 ✅（补充 sentence-transformers 与 --persist/--load 示例）
+5. [x] 同步更新 `guides/rag_guide.md` 中的快速開始部分 ✅（安装命令与脚本一致）
+6. [ ] 提交：`git commit -m "feat: Complete RAG example with --load support and docs alignment"`（待提交）
 
 #### 驗收標準
 ✅ `python examples/rag_langchain.py --help` 顯示 `--load` 選項  

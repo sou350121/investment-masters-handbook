@@ -70,11 +70,8 @@ flowchart LR
 ### 1. 安装依赖
 
 ```bash
-# 基础 RAG 依赖
-pip install langchain langchain-community chromadb pyyaml
-
-# 如果需要更好的 embedding（可选）
-pip install sentence-transformers
+# 基础 RAG 依赖（默认 embedding 需要 sentence-transformers）
+pip install langchain langchain-community chromadb pyyaml sentence-transformers
 
 # 如果使用 OpenAI（可选）
 pip install openai

@@ -12,13 +12,19 @@
 
 ```bash
 # 安装依赖
-pip install langchain langchain-community chromadb pyyaml
+pip install langchain langchain-community chromadb pyyaml sentence-transformers
 
 # 运行查询
 python examples/rag_langchain.py "这个股票值得买吗？"
 
 # 交互模式
 python examples/rag_langchain.py --interactive
+
+# 首次运行：创建并保存向量库（较慢）
+python examples/rag_langchain.py --persist ./vectorstore "市场恐慌怎么办？"
+
+# 后续运行：加载已保存的向量库（更快）
+python examples/rag_langchain.py --load ./vectorstore "芒格的决策清单"
 
 # 仅使用规则（更快，无需向量数据库）
 python examples/rag_langchain.py --rules-only "护城河"

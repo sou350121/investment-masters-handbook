@@ -6,11 +6,13 @@ Investment Masters RAG Integration Example
 使用 LangChain + ChromaDB 实现投资大师知识库的 RAG 检索。
 
 Requirements:
-    pip install langchain langchain-community chromadb pyyaml
+    pip install langchain langchain-community chromadb pyyaml sentence-transformers
 
 Usage:
     python rag_langchain.py "这个股票值得买吗？"
     python rag_langchain.py --interactive
+    python rag_langchain.py --persist ./vectorstore "护城河分析"
+    python rag_langchain.py --load ./vectorstore "巴菲特如何选股？"
 """
 
 import argparse
@@ -40,6 +42,12 @@ def check_dependencies():
         import chromadb
     except ImportError:
         missing.append("chromadb")
+
+    # HuggingFaceEmbeddings 默认依赖 sentence-transformers
+    try:
+        import sentence_transformers  # noqa: F401
+    except ImportError:
+        missing.append("sentence-transformers")
     
     if missing:
         print("缺少依赖，请安装:")
@@ -162,6 +170,22 @@ def create_vectorstore(documents, persist_dir=None):
     return vectorstore
 
 
+def load_vectorstore(persist_dir: str):
+    """从持久化目录加载向量存储（需与创建时使用同一 embedding 配置）"""
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_community.vectorstores import Chroma
+
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_kwargs={"device": "cpu"},
+    )
+
+    return Chroma(
+        persist_directory=persist_dir,
+        embedding_function=embeddings,
+    )
+
+
 def query_vectorstore(vectorstore, query: str, k: int = 5):
     """查询向量存储"""
     results = vectorstore.similarity_search_with_score(query, k=k)
@@ -225,6 +249,7 @@ def main():
   %(prog)s "市场恐慌时该怎么办？"
   %(prog)s --interactive
   %(prog)s --persist ./vectorstore "护城河分析"
+  %(prog)s --load ./vectorstore "芒格的决策清单"
         """
     )
     
@@ -243,6 +268,10 @@ def main():
         help="向量存储持久化目录"
     )
     parser.add_argument(
+        "--load", "-l",
+        help="加载已保存的向量存储目录（更快）"
+    )
+    parser.add_argument(
         "--top-k", "-k",
         type=int,
         default=5,
@@ -258,22 +287,34 @@ def main():
     
     # 检查依赖
     check_dependencies()
-    
-    # 加载文档
-    print("加载文档...")
-    
-    if args.rules_only:
-        documents = load_decision_rules()
-        print(f"已加载 {len(documents)} 条决策规则")
+
+    # 加载或创建向量存储
+    if args.load:
+        load_dir = Path(args.load)
+        if not load_dir.exists():
+            print(f"向量库目录不存在: {load_dir}")
+            print("提示：首次运行请使用 --persist ./vectorstore 先创建向量库")
+            sys.exit(1)
+
+        print(f"加载向量存储: {load_dir}")
+        vectorstore = load_vectorstore(str(load_dir))
+        print("向量存储加载完成!")
     else:
-        investor_docs = load_investor_documents()
-        rule_docs = load_decision_rules()
-        documents = investor_docs + rule_docs
-        print(f"已加载 {len(investor_docs)} 个投资者文档 + {len(rule_docs)} 条决策规则")
-    
-    # 创建向量存储
-    vectorstore = create_vectorstore(documents, args.persist)
-    print("向量存储创建完成!")
+        # 加载文档
+        print("加载文档...")
+
+        if args.rules_only:
+            documents = load_decision_rules()
+            print(f"已加载 {len(documents)} 条决策规则")
+        else:
+            investor_docs = load_investor_documents()
+            rule_docs = load_decision_rules()
+            documents = investor_docs + rule_docs
+            print(f"已加载 {len(investor_docs)} 个投资者文档 + {len(rule_docs)} 条决策规则")
+
+        # 创建向量存储
+        vectorstore = create_vectorstore(documents, args.persist)
+        print("向量存储创建完成!")
     
     # 执行查询
     if args.interactive:
