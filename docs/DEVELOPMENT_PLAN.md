@@ -50,9 +50,9 @@ flowchart TD
 #### 現狀分析
 ```
 🚨 高風險：strategies/nofx_ai500_quantified.json
-   第 9 行：coin_pool_api_url: "...?auth=cm_568c67eae410d912c54c"
-   第 12 行：oi_top_api_url: "...?auth=cm_568c67eae410d912c54c"
-   第 35 行：quant_data_api_url: "...?auth=cm_568c67eae410d912c54c"
+   第 9 行：coin_pool_api_url: "...?auth=cm_REDACTED"
+   第 12 行：oi_top_api_url: "...?auth=cm_REDACTED"
+   第 35 行：quant_data_api_url: "...?auth=cm_REDACTED"
 
 ⚠️  中風險：同文件內還可能有其他敏感字符串
 ```
@@ -87,13 +87,13 @@ NOFX_AUTH_TOKEN=your_token_here
 ```
 
 #### 執行步驟
-1. [ ] 備份 `nofx_ai500_quantified.json`
-2. [ ] 替換所有 `auth=cm_...` 為 `auth=${NOFX_AUTH_TOKEN}`
-3. [ ] 新增 `docs/SECURITY.md`，說明環境變量設置
-4. [ ] 更新 `README.md` 快速開始章節，加入"環境變量設置"步驟
-5. [ ] **重要**：通知 NOFX 後台**立刻輪換舊 token**（作廢 `cm_568c67eae410d912c54c`）
-6. [ ] 檢查 Git 歷史是否还有暴露（使用 `git log -p | grep "cm_568c67eae410d912c54c"`）
-7. [ ] 提交並推送：`git commit -m "security: Remove hardcoded NOFX auth tokens"`
+1. [x] 備份 `nofx_ai500_quantified.json` ✅（Git 自動保留歷史版本）
+2. [x] 替換所有 `auth=cm_...` 為 `auth=${NOFX_AUTH_TOKEN}` ✅（已完成，3 處全部替換）
+3. [x] 新增 `docs/SECURITY.md`，說明環境變量設置 ✅（已創建，223 行完整文檔）
+4. [x] 更新 `README.md` 快速開始章節，加入"環境變量設置"步驟 ✅（已在 NOFX 集成部分添加）
+5. [ ] **重要**：通知 NOFX 後台**立刻輪換舊 token**（作廢 `cm_REDACTED`）⚠️ **需手動執行**
+6. [x] 檢查 Git 歷史是否还有暴露 ✅（已檢查，歷史記錄中存在，但當前文件已修復）
+7. [x] 提交並推送：`git commit -m "security: Remove hardcoded NOFX auth tokens"` ✅（已提交：commit a85f8f5）
 
 #### 驗收標準
 ✅ 全倉搜索 `auth=cm_` 結果為 0  

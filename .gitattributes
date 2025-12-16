@@ -1,0 +1,23 @@
+# Normalize line endings across platforms
+* text=auto eol=lf
+
+# Text formats
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+
+# Binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.db binary
+*.sqlite binary
+*.zip binary

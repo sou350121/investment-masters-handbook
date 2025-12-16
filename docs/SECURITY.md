@@ -15,7 +15,7 @@
 
 ```json
 {
-  "api_url": "http://api.example.com/data?auth=cm_568c67eae410d912c54c"
+  "api_url": "http://api.example.com/data?auth=cm_REDACTED"
 }
 ```
 
@@ -170,7 +170,7 @@ token = os.getenv('NOFX_AUTH_TOKEN')
 
 1. **立即轮换 Token**
    - 登录 NOFX 后台
-   - 撤销旧 Token（`cm_568c67eae410d912c54c`）
+   - 撤销旧 Token（`cm_REDACTED`）
    - 生成新 Token
 
 2. **更新环境变量**
@@ -181,7 +181,7 @@ token = os.getenv('NOFX_AUTH_TOKEN')
 3. **检查 Git 历史**
    ```bash
    # 检查历史中是否还有旧 Token
-   git log -p | grep "cm_568c67eae410d912c54c"
+   git log -p | grep "cm_REDACTED"
    ```
 
 4. **（可选）清理 Git 历史**
