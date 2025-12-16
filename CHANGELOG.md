@@ -61,6 +61,30 @@ guides/rag_guide.md          # RAG 检索增强生成完整指南 (700+ 行)
 guides/README.md             # 指南目录索引
 ```
 
+### 🔐 安全与可运维（今日追加）
+
+- **移除 NOFX 硬编码凭证**：`strategies/nofx_ai500_quantified.json`
+  - 将 URL 中的 `auth` 参数改为环境变量占位符：`${NOFX_AUTH_TOKEN}`
+  - 新增安全文档：`docs/SECURITY.md`（环境变量设置 + Token 轮换指南）
+  - 新增策略说明：`strategies/README.md`（如何使用环境变量占位符）
+
+### 🧰 RAG 示例可用性（今日追加）
+
+- **RAG 示例补齐持久化加载**：`examples/rag_langchain.py`
+  - 新增 `--load/-l`：加载已保存的 Chroma 向量库（无需重复建库）
+  - 依赖检查补齐 `sentence-transformers`，并同步更新示例文档
+
+### 🎯 检索质量提升（今日追加）
+
+- **投资者文档分块 + 引用溯源**：`examples/rag_langchain.py`
+  - 对 `investors/*.md` 做标题/段落分块（chunking）
+  - 输出增加 `source_type / chunk_id / title_hint`，结果可定位可溯源
+
+### 🧼 工程一致性（今日追加）
+
+- **跨平台换行/格式规范**：新增 `.gitattributes`、`.editorconfig`
+  - 统一 LF 行尾，减少 CRLF/LF 引发的“整文件 diff”
+
 ---
 
 ## [1.5.0] - 2024-12-14

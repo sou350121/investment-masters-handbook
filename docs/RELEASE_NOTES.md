@@ -8,6 +8,29 @@
 
 ### 更新内容
 
+#### 🔐 安全与可运维（今日追加）
+
+- **移除 NOFX 硬编码 Token**
+  - `strategies/nofx_ai500_quantified.json` 中的 URL 认证参数改为环境变量占位符：`${NOFX_AUTH_TOKEN}`
+  - 新增安全文档 `docs/SECURITY.md`：解释“为什么不能硬编码 token”、以及 Windows/macOS/Linux 的环境变量设置与 Token 轮换流程
+  - 新增 `strategies/README.md`：策略目录的环境变量使用说明
+
+#### 🧰 RAG 示例可用性（今日追加）
+
+- `examples/rag_langchain.py` 新增 `--load/-l`：加载已保存的向量库（避免每次重建）
+- 依赖检查补齐 `sentence-transformers`，并同步更新：
+  - `examples/README.md`
+  - `guides/rag_guide.md`
+
+#### 🎯 RAG 检索质量提升（今日追加）
+
+- 投资者文档分块（chunking）：按标题/段落切分 `investors/*.md`
+- 输出结果附带引用溯源信息：`source + rule_id/chunk_id + title_hint`（可定位原文片段）
+
+#### 🧼 工程一致性（今日追加）
+
+- 新增 `.gitattributes`、`.editorconfig`：统一 LF 行尾与基础格式，减少跨平台无意义 diff
+
 #### 📚 RAG 完整指南
 
 **新增 700+ 行 RAG 使用指南**：`guides/rag_guide.md`
