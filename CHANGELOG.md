@@ -79,6 +79,11 @@ guides/README.md             # 指南目录索引
 - **投资者文档分块 + 引用溯源**：`examples/rag_langchain.py`
   - 对 `investors/*.md` 做标题/段落分块（chunking）
   - 输出增加 `source_type / chunk_id / title_hint`，结果可定位可溯源
+- **RAG CLI 高级增强 (v1.5.1)**：
+  - **字符级精准溯源**：记录并显示 `start_index`（片段在原文中的偏移位置）
+  - **多维结果过滤**：新增 `--investor`、`--source-type`、`--kind` 参数
+  - **分块粒度控制**：支持 `--chunk-size` 和 `--chunk-overlap` 自定义
+  - **机器可读格式**：新增 `--format json` 输出支持，方便 Agent 集成
 
 ### 🧼 工程一致性（今日追加）
 

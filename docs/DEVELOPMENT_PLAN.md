@@ -407,15 +407,18 @@ def get_embeddings(model_choice: str):
 ```
 
 #### 執行步驟
-1. [ ] 添加 `--load` 選項支持
+1. [x] 添加 `--load` 選項支持 ✅
 2. [ ] 添加 `--embedding` 選項與 `get_embeddings()` 函數
-3. [ ] 實現 `load_vectorstore()` 函數（從已保存的目錄快速加載）
-4. [ ] 路徑統一用 `pathlib.Path`，確保 Windows 兼容
-5. [ ] 測試場景：
+3. [x] 實現 `load_vectorstore()` 函數 ✅
+4. [x] 增加多維過濾參數 (--investor, --kind, --type) ✅
+5. [x] 增加精確偏移溯源 (start_index) ✅
+6. [x] 增加 JSON 格式化輸出支持 ✅
+7. [ ] 路徑統一用 `pathlib.Path`，確保 Windows 兼容
+8. [ ] 測試場景：
    - [ ] 首次 `--persist ./vectorstore` 構建（計時）
    - [ ] 後續 `--load ./vectorstore` 加載（應該快 10 倍以上）
    - [ ] 在 Windows 和 Linux 上都驗證路徑處理
-6. [ ] 提交：`git commit -m "feat: Add vectorstore persistence, loading, and embedding selection"`
+9. [x] 提交：`git commit -m "feat: Add advanced filters and character-level tracing to RAG CLI"` ✅
 
 #### 驗收標準
 ✅ 首次 `--persist` 耗時 > 30 秒（構建中），後續 `--load` 耗時 < 3 秒  

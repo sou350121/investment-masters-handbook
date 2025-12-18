@@ -100,6 +100,79 @@ python examples/rag_langchain.py --persist ./vectorstore "巴菲特如何选股�
 python examples/rag_langchain.py --load ./vectorstore "芒格的决策清单"
 ```
 
+### 4. 高级过滤与溯源（v1.5.1+）
+
+```bash
+# 只搜巴菲特的买入逻辑
+python examples/rag_langchain.py "买入" --investor warren_buffett --kind entry
+
+# 只搜风控规则，并以 JSON 格式输出
+python examples/rag_langchain.py "止损" --kind risk_management --format json
+```
+
+---
+
+## 💡 使用示例 (Input/Output)
+
+### 场景 A：精确字符溯源
+**Input:**
+```bash
+python examples/rag_langchain.py "芒格的清单" --top-k 1
+```
+
+**Output:**
+```text
+[1] 相似度(估算): 85.20% | 类型: investor_doc | 来源: investors/charlie_munger.md
+    投资者: 查理·芒格 (charlie_munger)
+    章节: 决策清单系统
+    位置: 字符偏移 12450
+    引用: charlie_munger#12
+------------------------------------------------------------
+...芒格强调：使用清单能避免跳过基本的步骤，特别是...
+
+📌 可溯源引用: investors/charlie_munger.md  ->  charlie_munger#12 (offset: 12450)
+```
+
+### 场景 B：锁定特定大师的过滤
+**Input:**
+```bash
+python examples/rag_langchain.py "安全边际" --investor seth_klarman
+```
+
+**Output:**
+```text
+[1] 相似度(估算): 92.15% | 类型: rule | 来源: decision_rules.generated.json
+    投资者: 赛思·卡拉曼 (seth_klarman)
+    引用: KLAR-RULE-005
+------------------------------------------------------------
+IF 股票的市场价格大幅低于其保守估算的内在价值
+THEN 考虑买入，确保拥有足够大的安全边际
+BECAUSE 价值投资的核心不在于预测准确，而在于为错误预留空间...
+
+📌 可溯源引用: decision_rules.generated.json  ->  KLAR-RULE-005 (offset: 0)
+```
+
+### 场景 C：机器集成 (JSON 格式)
+**Input:**
+```bash
+python examples/rag_langchain.py "周期" --format json --top-k 1
+```
+
+**Output:**
+```json
+[
+  {
+    "source": "investors/howard_marks.md",
+    "investor_id": "howard_marks",
+    "source_type": "investor_doc",
+    "chunk_id": "howard_marks#3",
+    "start_index": 4500,
+    "similarity_estimate": 0.895,
+    "content": "理解周期的位置比预测未来更重要。当市场处于恐慌的低点..."
+  }
+]
+```
+
 ---
 
 ## 核心功能
