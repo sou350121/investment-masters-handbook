@@ -13,6 +13,8 @@ Usage:
     python rag_langchain.py --interactive
     python rag_langchain.py --persist ./vectorstore "护城河分析"
     python rag_langchain.py --load ./vectorstore "巴菲特如何选股？"
+    python rag_langchain.py "止损" --kind risk_management
+    python rag_langchain.py "护城河" --investor warren_buffett
 """
 
 import argparse
@@ -105,6 +107,7 @@ def split_investor_documents(documents, chunk_size: int = 900, chunk_overlap: in
 
     - 保留原 metadata（source/investor_id 等）
     - 增加 chunk_index/chunk_id/title_hint/source_type
+    - 记录 start_index 用于精确溯源
     """
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     import re
@@ -113,6 +116,7 @@ def split_investor_documents(documents, chunk_size: int = 900, chunk_overlap: in
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
         separators=["\n## ", "\n### ", "\n#### ", "\n\n", "\n", " "],
+        add_start_index=True,
     )
 
     split_docs = []
@@ -225,9 +229,14 @@ def load_vectorstore(persist_dir: str):
     )
 
 
-def query_vectorstore(vectorstore, query: str, k: int = 5):
-    """查询向量存储"""
-    results = vectorstore.similarity_search_with_score(query, k=k)
+def query_vectorstore(vectorstore, query: str, k: int = 5, filter_dict: dict = None):
+    """查询向量存储，支持元数据过滤"""
+    # Chroma 过滤语法：{"metadata_key": "value"} 或 {"$and": [...]}
+    results = vectorstore.similarity_search_with_score(
+        query, 
+        k=k,
+        filter=filter_dict
+    )
     return results
 
 
@@ -243,6 +252,7 @@ def format_results(results):
         rule_id = doc.metadata.get("rule_id", "")
         chunk_id = doc.metadata.get("chunk_id", "")
         title_hint = doc.metadata.get("title_hint", "")
+        start_index = doc.metadata.get("start_index", 0)
 
         # 引用：优先 rule_id，其次 chunk_id
         citation = rule_id or chunk_id or "N/A"
@@ -252,6 +262,8 @@ def format_results(results):
         output.append(f"    投资者: {investor_name} ({investor_id})")
         if title_hint:
             output.append(f"    章节: {title_hint}")
+        if source_type == "investor_doc":
+            output.append(f"    位置: 字符偏移 {start_index}")
         output.append(f"    引用: {citation}")
         output.append("-" * 60)
         
@@ -260,15 +272,17 @@ def format_results(results):
         if len(doc.page_content) > 500:
             content += "..."
         output.append(content)
-        output.append(f"\n📌 可溯源引用: {source}  ->  {citation}")
+        output.append(f"\n📌 可溯源引用: {source}  ->  {citation} (offset: {start_index})")
     
     return "\n".join(output)
 
 
-def interactive_mode(vectorstore):
+def interactive_mode(vectorstore, filter_dict=None):
     """交互模式"""
     print("\n" + "=" * 60)
     print("投资大师知识库 - 交互查询模式")
+    if filter_dict:
+        print(f"活动过滤器: {filter_dict}")
     print("输入问题进行查询，输入 'quit' 退出")
     print("=" * 60)
     
@@ -286,7 +300,7 @@ def interactive_mode(vectorstore):
         if not query:
             continue
         
-        results = query_vectorstore(vectorstore, query)
+        results = query_vectorstore(vectorstore, query, filter_dict=filter_dict)
         print(format_results(results))
 
 
@@ -333,11 +347,55 @@ def main():
         action="store_true",
         help="仅加载决策规则（更快）"
     )
+    parser.add_argument(
+        "--investor", "-inv",
+        help="按投资者 ID 过滤 (例如: warren_buffett)"
+    )
+    parser.add_argument(
+        "--source-type", "-t",
+        choices=["investor_doc", "rule"],
+        help="按来源类型过滤"
+    )
+    parser.add_argument(
+        "--kind", "-knd",
+        choices=["entry", "exit", "risk_management", "other"],
+        help="按规则类型过滤 (仅对 rule 类型有效)"
+    )
+    parser.add_argument(
+        "--chunk-size",
+        type=int,
+        default=900,
+        help="投资者文档分块大小 (默认: 900)"
+    )
+    parser.add_argument(
+        "--chunk-overlap",
+        type=int,
+        default=200,
+        help="分块重叠大小 (默认: 200)"
+    )
+    parser.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="输出格式 (默认: text)"
+    )
     
     args = parser.parse_args()
     
     # 检查依赖
     check_dependencies()
+
+    # 构建过滤器
+    filter_dict = {}
+    if args.investor:
+        filter_dict["investor_id"] = args.investor
+    if args.source_type:
+        filter_dict["source_type"] = args.source_type
+    if args.kind:
+        filter_dict["kind"] = args.kind
+    
+    if not filter_dict:
+        filter_dict = None
 
     # 加载或创建向量存储
     if args.load:
@@ -359,7 +417,11 @@ def main():
             print(f"已加载 {len(documents)} 条决策规则")
         else:
             investor_docs = load_investor_documents()
-            investor_docs = split_investor_documents(investor_docs)
+            investor_docs = split_investor_documents(
+                investor_docs, 
+                chunk_size=args.chunk_size, 
+                chunk_overlap=args.chunk_overlap
+            )
             rule_docs = load_decision_rules()
             documents = investor_docs + rule_docs
             print(f"已加载 {len(investor_docs)} 个投资者文档分块 + {len(rule_docs)} 条决策规则")
@@ -370,10 +432,21 @@ def main():
     
     # 执行查询
     if args.interactive:
-        interactive_mode(vectorstore)
+        interactive_mode(vectorstore, filter_dict=filter_dict)
     elif args.query:
-        results = query_vectorstore(vectorstore, args.query, args.top_k)
-        print(format_results(results))
+        results = query_vectorstore(vectorstore, args.query, args.top_k, filter_dict=filter_dict)
+        
+        if args.format == "json":
+            import json
+            json_results = []
+            for doc, score in results:
+                res = doc.metadata.copy()
+                res["content"] = doc.page_content
+                res["similarity_estimate"] = round(1 - score, 4)
+                json_results.append(res)
+            print(json.dumps(json_results, ensure_ascii=False, indent=2))
+        else:
+            print(format_results(results))
     else:
         parser.print_help()
 
