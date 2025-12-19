@@ -59,14 +59,29 @@ def _route_investors(text: str, top_k: int = 5) -> List[Dict[str, Any]]:
     t = (text or "").strip()
     t_low = t.lower()
 
+    quick_lookup = (idx.get("quick_lookup", {}) or {}).get("by_question", {}) or {}
+
     # Scenario keyword heuristics (Chinese + English-ish)
     scenario_keywords = {
-        "市场恐慌": ["恐慌", "暴跌", "崩盘", "踩踏", "流动性危机", "挤兑", "panic", "crash"],
-        "市场狂热": ["狂热", "泡沫", "fomo", "all in", "追高", "过热", "疯涨"],
-        "经济衰退": ["衰退", "萧条", "失业", "经济下行", "recession"],
-        "利率转向": ["降息", "加息", "利率", "yield", "rates", "转向", "拐点"],
-        "流动性收紧": ["缩表", "收紧", "紧缩", "流动性", "tga", "rrp", "qt"],
-        "估值泡沫": ["估值", "泡沫", "过高", "市盈率", "pe", "ps", "pb"],
+        "市场恐慌": ["恐慌", "暴跌", "崩盘", "踩踏", "流动性危机", "挤兑", "panic", "crash", "selloff", "limit down", "跌停"],
+        "市场狂热": ["狂热", "fomo", "all in", "追高", "过热", "疯涨", "逼空", "挤空", "meme", "热钱"],
+        "经济衰退": ["衰退", "萧条", "失业", "经济下行", "recession", "hard landing", "soft landing"],
+        "利率转向": ["降息", "加息", "利率", "yield", "rates", "转向", "拐点", "会议纪要", "点阵图"],
+        "流动性收紧": ["缩表", "收紧", "紧缩", "流动性", "tga", "rrp", "qt", "qe", "融资", "保证金"],
+        "估值泡沫": ["估值", "泡沫", "过高", "市盈率", "pe", "ps", "pb", "ev/ebitda", "估值扩张"],
+    }
+
+    # Decision intent keywords -> investor boosts (very novice-friendly)
+    intent_keywords = {
+        "买入/追高": (["买", "买入", "开仓", "追", "追吗", "chase", "enter"], ["warren_buffett", "peter_lynch", "charlie_munger"]),
+        "卖出/止盈": (["卖", "卖出", "止盈", "take profit", "exit"], ["howard_marks", "stanley_druckenmiller", "george_soros"]),
+        "止损/风控": (["止损", "风控", "回撤", "仓位", "max drawdown", "risk", "position sizing"], ["george_soros", "stanley_druckenmiller", "seth_klarman"]),
+        "宏观/政策": (["宏观", "利率", "通胀", "就业", "美元", "政策", "fed", "cpi", "ppi"], ["ray_dalio", "stanley_druckenmiller", "george_soros"]),
+        "周期/情绪": (["周期", "情绪", "极端", "恐慌", "狂热", "sentiment", "cycle"], ["howard_marks", "ray_dalio", "charlie_munger"]),
+        "估值/安全边际": (["估值", "安全边际", "便宜", "贵", "pe", "pb", "ps", "intrinsic value"], ["warren_buffett", "seth_klarman", "charlie_munger"]),
+        "成长/PEG": (["成长", "peg", "营收增长", "增速", "tenbagger"], ["peter_lynch", "warren_buffett"]),
+        "量化/因子": (["量化", "因子", "模型", "回测", "因子投资", "factor"], ["james_simons", "ed_thorp", "cliff_asness"]),
+        "事件/激进": (["并购", "分拆", "回购", "重组", "股东行动", "proxy fight", "activist"], ["carl_icahn", "seth_klarman"]),
     }
 
     # Base score table
@@ -77,6 +92,12 @@ def _route_investors(text: str, top_k: int = 5) -> List[Dict[str, Any]]:
         scores[iid] = scores.get(iid, 0.0) + delta
         reasons.setdefault(iid, []).append(why)
 
+    # Quick lookup exact phrases (from YAML)
+    for q, ids in quick_lookup.items():
+        if q and q in t:
+            for iid in (ids or []):
+                add(iid, 3.5, f"匹配快速问题「{q}」")
+
     # Scenario match boosts consult_order
     matched_scenarios: List[str] = []
     for scen, keys in scenario_keywords.items():
@@ -86,6 +107,17 @@ def _route_investors(text: str, top_k: int = 5) -> List[Dict[str, Any]]:
             consult = route.get("consult_order", []) or []
             for rank, iid in enumerate(consult):
                 add(iid, 3.0 - min(rank, 3) * 0.5, f"匹配情境「{scen}」")
+
+    # Intent boosts (buy/sell/stoploss/macro etc.)
+    for intent, (keys, ids) in intent_keywords.items():
+        if any(k.lower() in t_low for k in keys):
+            for iid in ids:
+                add(iid, 1.8, f"匹配意图「{intent}」")
+
+    # Ticker hints (AAPL/TSLA/NVDA etc.) -> treat as stock selection
+    if re.search(r"\b[A-Z]{1,5}\b", text or ""):
+        for iid in ["warren_buffett", "peter_lynch", "charlie_munger"]:
+            add(iid, 1.2, "识别到代码/股票缩写，偏向选股视角")
 
     # Per-investor keyword match
     for inv in investors:

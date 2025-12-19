@@ -381,6 +381,29 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                 disabled={routeLoading}
               />
 
+              <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                <Chip
+                  label="模板：止损/仓位"
+                  clickable
+                  onClick={() => setRouteText('我买了TSLA，目前浮亏8%。应该止损吗？止损点位怎么定？仓位要不要减半？')}
+                />
+                <Chip
+                  label="模板：宏观/利率"
+                  clickable
+                  onClick={() => setRouteText('美联储可能降息，通胀回落但经济放缓。现在更适合配置什么类型资产？')}
+                />
+                <Chip
+                  label="模板：价值/安全边际"
+                  clickable
+                  onClick={() => setRouteText('这家公司现金流稳定，但估值偏贵。我想等到更有安全边际再买，怎么判断“合理价格”？')}
+                />
+                <Chip
+                  label="模板：成长/PEG"
+                  clickable
+                  onClick={() => setRouteText('NVDA涨很多了，但业绩增速也高。用PEG怎么看是否还能继续持有/加仓？')}
+                />
+              </Box>
+
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ mt: 1 }} alignItems="center">
                 <Button variant="contained" onClick={handleRoute} disabled={routeLoading}>
                   {routeLoading ? '正在推荐…' : '推荐大师'}
