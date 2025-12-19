@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import os
@@ -23,6 +25,7 @@ app = FastAPI(title="Investment Masters RAG API")
 # 全局向量库实例
 vectorstore = None
 PERSIST_DIR = str(PROJECT_ROOT / "vectorstore")
+WEB_OUT_DIR = PROJECT_ROOT / "web" / "out"
 
 class QueryRequest(BaseModel):
     query: str
@@ -94,6 +97,38 @@ async def query(req: QueryRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# Compatibility: keep the web frontend calling /api/rag/query
+@app.post("/api/rag/query", response_model=List[QueryResponse])
+async def query_alias(req: QueryRequest):
+    return await query(req)
+
+
+@app.get("/")
+async def web_index():
+    """
+    Serve the exported static web app.
+    """
+    index_file = WEB_OUT_DIR / "index.html"
+    if not index_file.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Web UI not built. Run: cd web && npm install && npm run build",
+        )
+    return FileResponse(index_file)
+
+
+# Mount static after API routes so /query stays functional.
+if WEB_OUT_DIR.exists():
+    # Support both hosting styles:
+    # - root:   http://host:port/
+    # - /imh:   http://host:port/imh/  (when integrated into another app or basePath is used)
+    #
+    # IMPORTANT: mount /imh BEFORE /, otherwise / will swallow /imh and cause 404 for /imh/* assets.
+    app.mount("/imh", StaticFiles(directory=str(WEB_OUT_DIR), html=True), name="web_imh")
+    app.mount("/", StaticFiles(directory=str(WEB_OUT_DIR), html=True), name="web")
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.getenv("PORT", "8000"))
+    uvicorn.run(app, host="0.0.0.0", port=port)
