@@ -16,6 +16,8 @@ investors:
   - id: warren_buffett
     full_name: Warren Buffett
     chinese_name: 沃伦·巴菲特
+    nationality: 美国
+    intro_zh: 价值投资与“护城河”理念的代表，强调在合理价格买入优质企业并长期持有，以资本配置创造复利。
     fund: Berkshire Hathaway
     aum: "$900B+"
     active_years: "1965-present"
@@ -59,6 +61,8 @@ investors:
   - id: charlie_munger
     full_name: Charlie Munger
     chinese_name: 查理·芒格
+    nationality: 美国
+    intro_zh: “多学科思维模型”倡导者，强调避免愚蠢、逆向思考与高质量决策，在长期复利中追求少而精的下注。
     fund: Berkshire Hathaway / Daily Journal
     aum: "N/A (Partner)"
     active_years: "1978-2023"
@@ -99,6 +103,8 @@ investors:
   - id: peter_lynch
     full_name: Peter Lynch
     chinese_name: 彼得·林奇
+    nationality: 美国
+    intro_zh: GARP（合理价格成长）代表人物，强调自下而上选股与“你身边就有机会”，用分类与 PEG 框架捕捉成长股。
     fund: Fidelity Magellan Fund
     aum: "Peak $14B (1990)"
     active_years: "1977-1990"
@@ -134,6 +140,8 @@ investors:
   - id: seth_klarman
     full_name: Seth Klarman
     chinese_name: 塞斯·卡拉曼
+    nationality: 美国
+    intro_zh: 深度价值与困境投资代表，强调安全边际、绝对回报与耐心，在市场恐慌中寻找被迫抛售带来的机会。
     fund: Baupost Group
     aum: "$27B"
     active_years: "1982-present"
@@ -174,6 +182,8 @@ investors:
   - id: ray_dalio
     full_name: Ray Dalio
     chinese_name: 雷·达利奥
+    nationality: 美国
+    intro_zh: 宏观与系统化交易代表，提出“经济机器/债务周期”框架与全天候配置，强调规则化与风险平价思维。
     fund: Bridgewater Associates
     aum: "$120B"
     active_years: "1975-present"
@@ -211,6 +221,8 @@ investors:
   - id: stanley_druckenmiller
     full_name: Stanley Druckenmiller
     chinese_name: 斯坦利·德鲁肯米勒
+    nationality: 美国
+    intro_zh: 宏观择时与流动性派代表，强调顺势、集中下注与仓位/确信度管理，紧盯政策与流动性拐点。
     fund: Duquesne Capital (Closed) / Quantum Fund
     aum: "Peak $12B"
     active_years: "1981-2010 (fund), present (family office)"
@@ -248,6 +260,8 @@ investors:
   - id: george_soros
     full_name: George Soros
     chinese_name: 乔治·索罗斯
+    nationality: 美国（匈牙利裔）
+    intro_zh: 宏观交易与反身性理论代表，擅长在政策与预期错配中捕捉趋势变化，强调“先活下来”的风控纪律。
     fund: Quantum Fund
     aum: "Peak $25B"
     active_years: "1973-2011"
@@ -286,6 +300,8 @@ investors:
   - id: howard_marks
     full_name: Howard Marks
     chinese_name: 霍华德·马克斯
+    nationality: 美国
+    intro_zh: 信用周期与逆向思考代表，强调第二层思考、风险控制与周期位置判断，在极端情绪下追求非对称回报。
     fund: Oaktree Capital
     aum: "$190B"
     active_years: "1995-present"
@@ -323,6 +339,8 @@ investors:
   - id: michael_burry
     full_name: Michael Burry
     chinese_name: 迈克尔·伯里
+    nationality: 美国
+    intro_zh: 深度价值与极端逆向代表，重视独立研究与估值偏离，擅长在泡沫与信用过热时寻找做空/对冲机会。
     fund: Scion Asset Management
     aum: "~$250M"
     active_years: "2000-2008, 2013-present"
@@ -361,6 +379,8 @@ investors:
   - id: carl_icahn
     full_name: Carl Icahn
     chinese_name: 卡尔·伊坎
+    nationality: 美国
+    intro_zh: 激进投资与事件驱动代表，通过公司治理与资本运作释放价值，擅长在公司行动中寻找收益空间。
     fund: Icahn Enterprises
     aum: "$15B+"
     active_years: "1968-present"
@@ -397,6 +417,8 @@ investors:
   - id: james_simons
     full_name: James Simons
     chinese_name: 詹姆斯·西蒙斯
+    nationality: 美国
+    intro_zh: 量化对冲基金先驱，强调数据驱动与模型迭代，以系统化方法在长期统计优势中获取收益。
     fund: Renaissance Technologies
     aum: "$130B"
     active_years: "1982-2010 (active), 2010-present (emeritus)"
@@ -432,6 +454,8 @@ investors:
   - id: ed_thorp
     full_name: Ed Thorp
     chinese_name: 爱德华·索普
+    nationality: 美国
+    intro_zh: 量化与套利先驱，提出凯利公式并将数学优势用于期权定价与统计套利，强调风险优先与纪律化执行。
     fund: Princeton Newport Partners
     aum: "Peak ~$270M (1988)"
     active_years: "1969-1988"
@@ -467,6 +491,8 @@ investors:
   - id: cliff_asness
     full_name: Cliff Asness
     chinese_name: 克利夫·阿斯内斯
+    nationality: 美国
+    intro_zh: 因子投资与系统化组合构建代表，聚焦价值/动量等风险溢价的长期捕捉，并重视分散与稳健执行。
     fund: AQR Capital Management
     aum: "$100B+"
     active_years: "1998-present"
@@ -503,6 +529,8 @@ investors:
   - id: qiu_guolu
     full_name: Qiu Guolu
     chinese_name: 邱国鹭
+    nationality: 中国
+    intro_zh: 中国价值投资代表，强调行业选择与“护城河”验证，用估值锚与逆向思维在 A 股寻找高确定性机会。
     fund: 高毅资产
     aum: "~$15B (高毅)"
     active_years: "2000-present"
@@ -542,6 +570,8 @@ investors:
   - id: feng_liu
     full_name: Feng Liu
     chinese_name: 冯柳
+    nationality: 中国
+    intro_zh: 逆向与左侧交易代表，强调“赔率优先”，在信息不完美的情况下做高胜率/高赔率的结构化决策。
     fund: 高毅资产
     aum: "~$8B (个人管理)"
     active_years: "2003-present"
@@ -581,6 +611,8 @@ investors:
   - id: duan_yongping
     full_name: Duan Yongping
     chinese_name: 段永平
+    nationality: 中国
+    intro_zh: 价值投资与商业模式派代表，强调“买股票就是买公司”“不懂不做”，偏好少而精、长期持有的好公司。
     fund: 个人投资者 / 步步高系创始人
     aum: "N/A (个人)"
     active_years: "2001-present"
@@ -619,6 +651,8 @@ investors:
   - id: greg_abel
     full_name: Greg Abel
     chinese_name: 格雷格·阿贝尔
+    nationality: 加拿大
+    intro_zh: 实业经营与长期资本配置代表，聚焦公用事业/受监管行业的稳健回报，以运营效率与长周期资产管理见长。
     fund: Berkshire Hathaway Energy
     aum: "$140B+ (BHE assets)"
     active_years: "2000-present"

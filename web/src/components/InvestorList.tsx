@@ -35,6 +35,19 @@ function getInitials(investor: Investor) {
   return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
 }
 
+function buildIntro(investor: Investor) {
+  if (investor.intro_zh && investor.intro_zh.trim()) return investor.intro_zh.trim();
+  const style = (investor.style || []).slice(0, 2).join(' / ');
+  const bestFor = (investor.best_for || []).slice(0, 2).join(' / ');
+  const fund = investor.fund ? `代表：${investor.fund}` : '';
+  const parts = [
+    style ? `风格：${style}` : '',
+    bestFor ? `擅长：${bestFor}` : '',
+    fund,
+  ].filter(Boolean);
+  return parts.join('；');
+}
+
 export default function InvestorList({ investors }: { investors: Investor[] }) {
   const [search, setSearch] = useState('');
   const [missingAvatar, setMissingAvatar] = useState<Record<string, boolean>>({});
@@ -90,9 +103,9 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
       >
         {filtered.map((investor) => (
           <Box key={investor.id}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Card className="imh-card" sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardActionArea component={Link} href={`/investors/${investor.id}`} sx={{ flexGrow: 1 }}>
-                <CardContent>
+                <CardContent sx={{ p: 2 }}>
                   <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 1 }}>
                     {(() => {
                       const avatarUrl = getAvatarUrl(investor);
@@ -113,6 +126,7 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                         height: 40,
                         fontSize: 18,
                         bgcolor: hashToHsl(investor.id),
+                        border: '1px solid rgba(2,6,23,0.08)',
                       }}
                     >
                       {getInitials(investor)}
@@ -132,8 +146,27 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                       <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block' }}>
                         {investor.full_name}
                       </Typography>
+                      <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block', opacity: 0.9 }}>
+                        {(investor.nationality || '—')}{investor.fund ? ` · ${investor.fund}` : ''}
+                      </Typography>
                     </Box>
                   </Stack>
+
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      mt: 1,
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      minHeight: 36,
+                      fontSize: 12.5,
+                    }}
+                  >
+                    {buildIntro(investor)}
+                  </Typography>
                   
                   <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                     {investor.style.map(s => (

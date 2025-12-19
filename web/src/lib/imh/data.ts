@@ -8,6 +8,10 @@ export interface Investor {
   id: string;
   full_name: string;
   chinese_name: string;
+  nationality?: string;
+  // Representative company / fund (existing field in investor_index.yaml)
+  fund?: string;
+  intro_zh?: string;
   style: string[];
   best_for: string[];
   content?: string;

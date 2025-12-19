@@ -80,7 +80,17 @@ export default function InvestorDetail({
         <Typography color="text.primary">{investor.chinese_name}</Typography>
       </Breadcrumbs>
 
-      <Paper sx={{ p: 4, mb: 4, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+      <Paper
+        sx={{
+          p: 4,
+          mb: 4,
+          color: 'primary.contrastText',
+          background:
+            'radial-gradient(1200px circle at 10% 10%, rgba(255,255,255,0.18), rgba(255,255,255,0) 55%), linear-gradient(135deg, #1a73e8 0%, #2563eb 35%, #0ea5e9 100%)',
+          borderRadius: 3,
+          border: '1px solid rgba(255,255,255,0.2)',
+        }}
+      >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
           <Avatar
             src={!missingAvatar ? getAvatarUrl(investor) ?? undefined : undefined}
@@ -102,8 +112,18 @@ export default function InvestorDetail({
             <Typography variant="h6" sx={{ opacity: 0.9 }}>
               {investor.full_name}
             </Typography>
+            <Typography variant="body2" sx={{ opacity: 0.92, mt: 0.5 }}>
+              {(investor.nationality || '—')}{investor.fund ? ` · ${investor.fund}` : ''}
+            </Typography>
           </Box>
         </Stack>
+
+        {(investor.intro_zh || investor.fund || investor.style?.length) && (
+          <Typography variant="body1" sx={{ mt: 1.5, maxWidth: 850, opacity: 0.95 }}>
+            {investor.intro_zh ||
+              `风格：${(investor.style || []).slice(0, 4).join(' / ')}${investor.fund ? `；代表：${investor.fund}` : ''}`}
+          </Typography>
+        )}
         
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {investor.style.map(s => (
