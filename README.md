@@ -187,12 +187,13 @@ IF 信用利差极窄 + VIX极低 + 散户疯狂入场
 
 ## 🚀 快速开始
 
-### 方式一：手动查询
+### 方式一：Web 界面 (推荐)
+```bash
+cd web
+npm install
+npm run dev
 ```
-1. 遇到问题 → 打开 decision_router.md
-2. 找到问题类型 → 定位推荐投资人
-3. 打开对应 .md → 应用 IF-THEN 规则
-```
+打开浏览器访问 [http://localhost:3000](http://localhost:3000) 即可。
 
 ### 方式二：AI System Prompt
 ```python
@@ -395,18 +396,19 @@ python tools/rule_query.py --scenario "选股" --format json
 
 > 📚 **完整指南**：[guides/rag_guide.md](guides/rag_guide.md)
 
+#### 1. 启动 RAG API 服务 (FastAPI)
 ```bash
-# 安装依赖
-pip install langchain langchain-community chromadb pyyaml sentence-transformers
+pip install -r requirements.txt
+python services/rag_service.py
+```
 
+#### 2. CLI 示例
+```bash
 # 单次查询
 python examples/rag_langchain.py "这个股票值得买吗？"
 
 # 交互模式
 python examples/rag_langchain.py --interactive
-
-# 仅加载规则（更快）
-python examples/rag_langchain.py --rules-only "市场恐慌怎么办"
 ```
 
 **核心特性**：
@@ -421,10 +423,11 @@ python examples/rag_langchain.py --rules-only "市场恐慌怎么办"
 
 查看 [CHANGELOG.md](CHANGELOG.md) 了解版本更新历史。
 
-**最新版本 v1.1.0**（2024-12-12）：
-- ✨ 新增 SSOT 架构 + CI 四件套
-- 🇨🇳 新增邱国鹭、冯柳两位中国投资人
-- 📊 187 条机读 IF-THEN 规则
+**最新版本 v1.6.0** (2024-12-14):
+- 🌐 **现代化 Web 界面**：Google 风格搜索 + 17 位大师详情展示。
+- 🧠 **RAG 服务化**：FastAPI 驱动的生产级检索 API。
+- 🔍 **精确溯源**：支持字符级偏移定位，告别 AI 幻觉。
+- 🛠️ **多维过滤**：支持按大师、规则类型、来源类型精确检索。
 
 ---
 

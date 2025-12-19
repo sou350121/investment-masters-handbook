@@ -4,6 +4,36 @@
 
 ---
 
+## [1.6.0] - 2024-12-14
+
+### 🚀 重大更新：IMH Web + RAG 服务化
+
+本项目现在拥有了一个现代化的 Web 界面和生产级的 RAG 检索 API，大幅降低了非技术用户的使用门槛。
+
+#### 🌐 现代化 Web 界面
+- **大师目录**：Google 风格的搜索与卡片式布局，支持按姓名、风格、擅长领域模糊搜索。
+- **大师详情页**：
+  - **Overview**：渲染 17 位大师的 Markdown 投资哲学与框架。
+  - **Trading Rules**：将 232 条规则按“入场”、“出场”、“风控”进行结构化分类展示。
+  - **Ask AI**：深度集成 RAG 问答面板。
+- **技术栈**：Next.js 15 (App Router), Material UI (MUI), TypeScript.
+
+#### 🧠 RAG 服务化 (FastAPI)
+- **生产级 API**：新增 `services/rag_service.py`，提供高性能的检索接口。
+- **自动初始化**：启动时自动加载或构建持久化向量库。
+- **多维过滤**：支持通过 API 按投资者 ID、来源类型（文档/规则）、规则类型（kind）进行预过滤。
+- **精确溯源**：返回结果包含 `start_index` 字符偏移、`chunk_id`、`rule_id` 以及 `similarity_estimate`。
+
+#### 🛠️ 架构改进
+- **核心逻辑剥离**：将 RAG 核心功能抽离至 `tools/rag_core.py`，实现 CLI 与 API 共享代码。
+- **Next.js 代理**：Web 路由通过 `/api/rag/query` 代理本地 Python 服务，解决跨域并统一错误处理。
+
+### 🧼 工程卫生
+- 修复了 `guides/rag_guide.md` 等文档中的拼写错误。
+- 统一了全仓库的 LF 换行符，解决了跨平台协作的 Diff 噪音问题。
+
+---
+
 ## [1.5.1] - 2024-12-14
 
 ### 📚 文档增强

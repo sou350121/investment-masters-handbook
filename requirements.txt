@@ -3,8 +3,13 @@
 pyyaml>=6.0
 
 # 可选依赖（RAG/LLM 集成）
-# langchain>=0.1.0
-# langchain-community>=0.0.10
-# chromadb>=0.4.0
-# sentence-transformers>=2.2.0
+langchain>=0.1.0
+langchain-community>=0.0.10
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# 服务端依赖
+fastapi>=0.100.0
+uvicorn>=0.20.0
+pydantic>=2.0.0
 
