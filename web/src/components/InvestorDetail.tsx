@@ -7,20 +7,18 @@ import {
   Tab, 
   Paper, 
   Chip, 
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
   Breadcrumbs,
   Link as MuiLink,
-  Grid,
   Card,
-  CardContent
+  CardContent,
+  Stack,
+  Avatar
 } from '@mui/material';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { Investor, Rule } from '@/lib/imh/data';
 import AskPanel from '@/components/AskPanel';
+import { getAvatarUrl } from '@/lib/imh/avatarMap';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -53,6 +51,7 @@ export default function InvestorDetail({
   rules: Rule[] 
 }) {
   const [tab, setTab] = useState(0);
+  const [missingAvatar, setMissingAvatar] = useState(false);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
@@ -82,12 +81,29 @@ export default function InvestorDetail({
       </Breadcrumbs>
 
       <Paper sx={{ p: 4, mb: 4, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
-        <Typography variant="h3" component="h1" fontWeight="bold">
-          {investor.chinese_name}
-        </Typography>
-        <Typography variant="h5" sx={{ opacity: 0.9, mb: 2 }}>
-          {investor.full_name}
-        </Typography>
+        <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
+          <Avatar
+            src={!missingAvatar ? getAvatarUrl(investor) ?? undefined : undefined}
+            imgProps={{ onError: () => setMissingAvatar(true) }}
+            sx={{
+              width: 64,
+              height: 64,
+              fontSize: 28,
+              bgcolor: 'rgba(255,255,255,0.2)',
+              border: '1px solid rgba(255,255,255,0.35)',
+            }}
+          >
+            {investor.chinese_name?.slice(0, 1) || investor.full_name?.slice(0, 1) || '?'}
+          </Avatar>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography variant="h3" component="h1" fontWeight="bold" sx={{ lineHeight: 1.05 }}>
+              {investor.chinese_name}
+            </Typography>
+            <Typography variant="h6" sx={{ opacity: 0.9 }}>
+              {investor.full_name}
+            </Typography>
+          </Box>
+        </Stack>
         
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {investor.style.map(s => (
@@ -124,38 +140,36 @@ export default function InvestorDetail({
               <Typography variant="h5" gutterBottom color="primary" fontWeight="bold">
                 {kindLabels[kind] || kind}
               </Typography>
-              <Grid container spacing={2}>
+              <Stack spacing={2}>
                 {kindRules.map(rule => (
-                  <Grid item xs={12} key={rule.rule_id}>
-                    <Card variant="outlined">
-                      <CardContent>
-                        <Box sx={{ mb: 1 }}>
+                  <Card key={rule.rule_id} variant="outlined">
+                    <CardContent>
+                      <Box sx={{ mb: 1 }}>
+                        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>
+                          WHEN
+                        </Typography>
+                        <Typography variant="body1">{rule.when}</Typography>
+                      </Box>
+                      <Box sx={{ mb: 1 }}>
+                        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>
+                          THEN
+                        </Typography>
+                        <Typography variant="body1" color="primary.main" fontWeight="medium">
+                          {rule.then}
+                        </Typography>
+                      </Box>
+                      {rule.because && (
+                        <Box>
                           <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>
-                            WHEN
+                            BECAUSE
                           </Typography>
-                          <Typography variant="body1">{rule.when}</Typography>
+                          <Typography variant="body2" sx={{ fontStyle: 'italic' }}>{rule.because}</Typography>
                         </Box>
-                        <Box sx={{ mb: 1 }}>
-                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>
-                            THEN
-                          </Typography>
-                          <Typography variant="body1" color="primary.main" fontWeight="medium">
-                            {rule.then}
-                          </Typography>
-                        </Box>
-                        {rule.because && (
-                          <Box>
-                            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>
-                              BECAUSE
-                            </Typography>
-                            <Typography variant="body2" sx={{ fontStyle: 'italic' }}>{rule.because}</Typography>
-                          </Box>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Grid>
+                      )}
+                    </CardContent>
+                  </Card>
                 ))}
-              </Grid>
+              </Stack>
             </Box>
           ))
         )}

@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   // Host under /imh when mounted into another app (port 8000)
   basePath: "/imh",
   assetPrefix: "/imh",
+  env: {
+    // Used by client code when building absolute URLs (e.g. public assets)
+    NEXT_PUBLIC_BASE_PATH: "/imh",
+  },
   trailingSlash: true,
   images: {
     unoptimized: true,

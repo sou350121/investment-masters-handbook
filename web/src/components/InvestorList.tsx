@@ -15,6 +15,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
 import { Investor } from '@/lib/imh/data';
+import { getAvatarUrl } from '@/lib/imh/avatarMap';
 
 function hashToHsl(input: string) {
   let hash = 0;
@@ -36,6 +37,7 @@ function getInitials(investor: Investor) {
 
 export default function InvestorList({ investors }: { investors: Investor[] }) {
   const [search, setSearch] = useState('');
+  const [missingAvatar, setMissingAvatar] = useState<Record<string, boolean>>({});
 
   const filtered = investors.filter(i => 
     i.full_name.toLowerCase().includes(search.toLowerCase()) ||
@@ -92,7 +94,20 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
               <CardActionArea component={Link} href={`/investors/${investor.id}`} sx={{ flexGrow: 1 }}>
                 <CardContent>
                   <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 1 }}>
+                    {(() => {
+                      const avatarUrl = getAvatarUrl(investor);
+                      const src =
+                        avatarUrl && !missingAvatar[investor.id] ? avatarUrl : undefined;
+                      return (
                     <Avatar
+                      src={src}
+                      imgProps={{
+                        onError: () =>
+                          setMissingAvatar((prev) => ({
+                            ...prev,
+                            [investor.id]: true,
+                          })),
+                      }}
                       sx={{
                         width: 40,
                         height: 40,
@@ -102,6 +117,8 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                     >
                       {getInitials(investor)}
                     </Avatar>
+                      );
+                    })()}
                     <Box sx={{ minWidth: 0 }}>
                       <Typography
                         variant="subtitle1"
