@@ -14,9 +14,14 @@ import {
   Paper,
   Button,
   Snackbar,
-  Alert
+  Alert,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Divider
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
 import { Investor } from '@/lib/imh/data';
 import { getAvatarUrl } from '@/lib/imh/avatarMap';
@@ -57,6 +62,22 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
   const [missingAvatar, setMissingAvatar] = useState<Record<string, boolean>>({});
   const [origin, setOrigin] = useState('');
   const [toast, setToast] = useState<{ open: boolean; text: string }>({ open: false, text: '' });
+  const [routeText, setRouteText] = useState('');
+  const [routeLoading, setRouteLoading] = useState(false);
+  const [routeError, setRouteError] = useState<string | null>(null);
+  const [routeResults, setRouteResults] = useState<
+    Array<{
+      investor_id: string;
+      chinese_name: string;
+      full_name: string;
+      nationality?: string;
+      fund?: string;
+      intro_zh?: string;
+      score: number;
+      reasons: string[];
+      matched_scenarios?: string[];
+    }>
+  >([]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') setOrigin(window.location.origin);
@@ -68,8 +89,24 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
       health: `${base}/health`,
       query: `${base}/api/rag/query`,
       queryImh: `${base}/imh/api/rag/query`,
+      route: `${base}/api/route`,
     };
   }, [origin]);
+
+  const exampleBody = useMemo(
+    () => `{"query":"护城河","top_k":3,"investor_id":"warren_buffett"}`,
+    [],
+  );
+  const exampleCurl = useMemo(
+    () =>
+      `curl -s -X POST "${api.query}" -H "Content-Type: application/json" -d '${exampleBody}'`,
+    [api.query, exampleBody],
+  );
+  const exampleCurlImh = useMemo(
+    () =>
+      `curl -s -X POST "${api.queryImh}" -H "Content-Type: application/json" -d '${exampleBody}'`,
+    [api.queryImh, exampleBody],
+  );
 
   async function copy(text: string) {
     try {
@@ -77,6 +114,34 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
       setToast({ open: true, text: '已复制到剪贴板' });
     } catch {
       setToast({ open: true, text: '复制失败（浏览器权限限制）' });
+    }
+  }
+
+  async function handleRoute() {
+    const text = routeText.trim();
+    if (!text) {
+      setToast({ open: true, text: '请先粘贴/输入今天的股票信息' });
+      return;
+    }
+    setRouteLoading(true);
+    setRouteError(null);
+    try {
+      const resp = await fetch('/api/route', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, top_k: 5 }),
+      });
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.detail || err.error || '路由失败');
+      }
+      const data = await resp.json();
+      setRouteResults(Array.isArray(data) ? data : []);
+    } catch (e: any) {
+      setRouteError(e?.message || '路由失败');
+      setRouteResults([]);
+    } finally {
+      setRouteLoading(false);
     }
   }
 
@@ -152,8 +217,21 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                   size="small"
                   variant="text"
                   onClick={() =>
+                    copy(exampleCurl)
+                  }
+                >
+                  复制 curl
+                </Button>
+              </Stack>
+
+              <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+                <Chip label="POST /api/route" size="small" color="secondary" variant="outlined" />
+                <Button
+                  size="small"
+                  variant="text"
+                  onClick={() =>
                     copy(
-                      `curl -s -X POST \"${api.query}\" -H \"Content-Type: application/json\" -d \"{\\\"query\\\":\\\"护城河\\\",\\\"top_k\\\":3}\"`,
+                      `curl -s -X POST \"${api.route}\" -H \"Content-Type: application/json\" -d \"{\\\"text\\\":\\\"今天AAPL涨5%，我担心估值太贵且市场过热，该追吗？\\\",\\\"top_k\\\":5}\"`,
                     )
                   }
                 >
@@ -168,15 +246,215 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                 size="small"
                 variant="text"
                 onClick={() =>
-                  copy(
-                    `curl -s -X POST \"${api.queryImh}\" -H \"Content-Type: application/json\" -d \"{\\\"query\\\":\\\"护城河\\\",\\\"top_k\\\":3}\"`,
-                  )
+                  copy(exampleCurlImh)
                 }
               >
                 复制 /imh curl
               </Button>
             </Stack>
           </Paper>
+        </Box>
+
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ width: '100%', maxWidth: 900 }}>
+            <Accordion variant="outlined" sx={{ bgcolor: 'background.paper', borderRadius: 3 }}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography fontWeight={800}>新手 1 分钟上手</Typography>
+                  <Chip size="small" label="网页" variant="outlined" />
+                  <Chip size="small" label="API" variant="outlined" />
+                </Stack>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Stack spacing={2}>
+                  <Box>
+                    <Typography variant="subtitle2" fontWeight={800}>
+                      A. 用网页怎么用（最推荐）
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                      1) 在首页搜索框输入：大师姓名 / 风格 / 擅长领域（例如“护城河”、“宏观”、“逆向”）<br />
+                      2) 点击任意大师卡片进入详情页<br />
+                      3) 切到 <strong>Ask AI</strong>，输入你的问题（例如“什么情况下可以买入？”）<br />
+                      4) 结果里可以展开 <strong>溯源信息</strong>，看到来源文件与引用编号（更可信）
+                    </Typography>
+                  </Box>
+
+                  <Divider />
+
+                  <Box>
+                    <Typography variant="subtitle2" fontWeight={800}>
+                      B. 用 API 怎么用（给机器人/脚本）
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                      先确认服务在跑：打开 <strong>/health</strong>，看到 status=ok 即可。
+                    </Typography>
+
+                    <Stack
+                      direction={{ xs: 'column', sm: 'row' }}
+                      spacing={1}
+                      sx={{ mt: 1 }}
+                      alignItems={{ xs: 'stretch', sm: 'center' }}
+                    >
+                      <Button size="small" variant="outlined" component="a" href="/health">
+                        打开 /health
+                      </Button>
+                      <Button size="small" variant="text" onClick={() => copy(api.health)}>
+                        复制完整 /health 链接
+                      </Button>
+                    </Stack>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                      然后请求：<strong>POST /api/rag/query</strong>
+                    </Typography>
+
+                    <Paper
+                      variant="outlined"
+                      sx={{
+                        mt: 1,
+                        p: 1.5,
+                        borderRadius: 2,
+                        bgcolor: 'rgba(2,6,23,0.02)',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                        fontSize: 12,
+                        whiteSpace: 'pre-wrap',
+                      }}
+                    >
+                      {exampleCurl}
+                    </Paper>
+
+                    <Stack direction="row" spacing={1} sx={{ mt: 1 }} justifyContent="flex-start">
+                      <Button size="small" variant="contained" onClick={() => copy(exampleCurl)}>
+                        复制 curl
+                      </Button>
+                      <Button size="small" variant="text" onClick={() => copy(exampleBody)}>
+                        复制 JSON body
+                      </Button>
+                    </Stack>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                      可选字段（不懂就先不填）：<br />
+                      - investor_id：只问某位大师（如 warren_buffett）<br />
+                      - top_k：返回几条（默认 5）<br />
+                      - source_type：rule / investor_doc<br />
+                      - kind：entry / exit / risk_management / other
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                      返回是一个数组，每条都有：<strong>content</strong>（片段内容）、<strong>metadata</strong>（来源/引用/偏移）、<strong>similarity_estimate</strong>（相似度估算）。
+                    </Typography>
+
+                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+                      如果你是通过 /imh 集成到别的系统里：用 <strong>POST /imh/api/rag/query</strong>（上方也有一键复制）。
+                    </Typography>
+                  </Box>
+                </Stack>
+              </AccordionDetails>
+            </Accordion>
+          </Box>
+        </Box>
+
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ width: '100%', maxWidth: 900, textAlign: 'left' }}>
+            <Paper
+              variant="outlined"
+              sx={{
+                p: 2,
+                borderRadius: 3,
+                bgcolor: 'background.paper',
+                borderColor: 'rgba(2,6,23,0.10)',
+              }}
+            >
+              <Typography fontWeight={800} sx={{ mb: 0.5 }}>
+                快速路由：把“今天的股票信息”贴进来 → 推荐该问哪些大师
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                这是一个“很简单但很好用”的功能：先用关键词/情境把问题路由到合适的大师，再点进去 Ask AI 获取依据与溯源。
+              </Typography>
+
+              <TextField
+                fullWidth
+                multiline
+                minRows={3}
+                placeholder="示例：\n今天AAPL涨5%，成交放大。我担心估值太贵且市场过热，该追吗？如果回撤到哪里更合适？\n（你也可以粘贴：新闻、财报摘要、K线描述、仓位与止损计划…）"
+                value={routeText}
+                onChange={(e) => setRouteText(e.target.value)}
+                disabled={routeLoading}
+              />
+
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ mt: 1 }} alignItems="center">
+                <Button variant="contained" onClick={handleRoute} disabled={routeLoading}>
+                  {routeLoading ? '正在推荐…' : '推荐大师'}
+                </Button>
+                <Button
+                  variant="text"
+                  onClick={() => {
+                    setRouteText('今天AAPL涨5%，成交放大。我担心估值太贵且市场过热，该追吗？如果回撤到哪里更合适？');
+                    setRouteResults([]);
+                    setRouteError(null);
+                  }}
+                  disabled={routeLoading}
+                >
+                  填入示例
+                </Button>
+                <Typography variant="caption" color="text.secondary" sx={{ ml: { sm: 'auto' } }}>
+                  接口：POST /api/route（无需 LLM，本地规则路由）
+                </Typography>
+              </Stack>
+
+              {routeError && (
+                <Alert severity="error" sx={{ mt: 1 }}>
+                  {routeError}
+                </Alert>
+              )}
+
+              {routeResults.length > 0 && (
+                <Box sx={{ mt: 1.5 }}>
+                  <Typography variant="subtitle2" fontWeight={800} sx={{ mb: 1 }}>
+                    推荐结果（点名字进入详情页，再用 Ask AI 追问）
+                  </Typography>
+                  <Stack spacing={1}>
+                    {routeResults.map((r) => (
+                      <Paper key={r.investor_id} variant="outlined" sx={{ p: 1.25, borderRadius: 2 }}>
+                        <Stack
+                          direction={{ xs: 'column', sm: 'row' }}
+                          spacing={1}
+                          alignItems={{ xs: 'flex-start', sm: 'center' }}
+                        >
+                          <Button
+                            component={Link}
+                            href={`/investors/${r.investor_id}`}
+                            variant="text"
+                            sx={{ px: 0.5, fontWeight: 800 }}
+                          >
+                            {r.chinese_name}（{r.investor_id}）
+                          </Button>
+                          <Typography variant="caption" color="text.secondary">
+                            {(r.nationality || '—')}{r.fund ? ` · ${r.fund}` : ''}
+                          </Typography>
+                          <Box sx={{ flex: 1 }} />
+                          <Chip size="small" label={`score ${r.score}`} variant="outlined" />
+                        </Stack>
+
+                        {(r.matched_scenarios || []).length > 0 && (
+                          <Box sx={{ mt: 0.75, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                            {(r.matched_scenarios || []).slice(0, 3).map((s) => (
+                              <Chip key={s} size="small" label={`情境：${s}`} />
+                            ))}
+                          </Box>
+                        )}
+
+                        {r.reasons?.length > 0 && (
+                          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.75 }}>
+                            推荐理由：{r.reasons.join('；')}
+                          </Typography>
+                        )}
+                      </Paper>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
+            </Paper>
+          </Box>
         </Box>
       </Box>
 
