@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { 
   TextField, 
   Card, 
@@ -10,7 +10,11 @@ import {
   Chip, 
   InputAdornment,
   CardActionArea,
-  Stack
+  Stack,
+  Paper,
+  Button,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
@@ -51,6 +55,30 @@ function buildIntro(investor: Investor) {
 export default function InvestorList({ investors }: { investors: Investor[] }) {
   const [search, setSearch] = useState('');
   const [missingAvatar, setMissingAvatar] = useState<Record<string, boolean>>({});
+  const [origin, setOrigin] = useState('');
+  const [toast, setToast] = useState<{ open: boolean; text: string }>({ open: false, text: '' });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') setOrigin(window.location.origin);
+  }, []);
+
+  const api = useMemo(() => {
+    const base = origin || '';
+    return {
+      health: `${base}/health`,
+      query: `${base}/api/rag/query`,
+      queryImh: `${base}/imh/api/rag/query`,
+    };
+  }, [origin]);
+
+  async function copy(text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setToast({ open: true, text: '已复制到剪贴板' });
+    } catch {
+      setToast({ open: true, text: '复制失败（浏览器权限限制）' });
+    }
+  }
 
   const filtered = investors.filter(i => 
     i.full_name.toLowerCase().includes(search.toLowerCase()) ||
@@ -86,6 +114,69 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
               sx: { borderRadius: 50, bgcolor: 'background.paper' }
             }}
           />
+        </Box>
+
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+          <Paper
+            variant="outlined"
+            sx={{
+              px: 2,
+              py: 1,
+              borderRadius: 3,
+              bgcolor: 'background.paper',
+              borderColor: 'rgba(2,6,23,0.10)',
+            }}
+          >
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1}
+              alignItems={{ xs: 'stretch', sm: 'center' }}
+              justifyContent="center"
+            >
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
+                API（给网页 / 其他系统调用）
+              </Typography>
+
+              <Chip
+                label="GET /health"
+                size="small"
+                component="a"
+                href="/health"
+                clickable
+                variant="outlined"
+              />
+
+              <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+                <Chip label="POST /api/rag/query" size="small" color="primary" variant="outlined" />
+                <Button
+                  size="small"
+                  variant="text"
+                  onClick={() =>
+                    copy(
+                      `curl -s -X POST \"${api.query}\" -H \"Content-Type: application/json\" -d \"{\\\"query\\\":\\\"护城河\\\",\\\"top_k\\\":3}\"`,
+                    )
+                  }
+                >
+                  复制 curl
+                </Button>
+              </Stack>
+
+              <Typography variant="caption" color="text.secondary" sx={{ opacity: 0.85 }}>
+                若你用 /imh 集成（代理）：POST /imh/api/rag/query
+              </Typography>
+              <Button
+                size="small"
+                variant="text"
+                onClick={() =>
+                  copy(
+                    `curl -s -X POST \"${api.queryImh}\" -H \"Content-Type: application/json\" -d \"{\\\"query\\\":\\\"护城河\\\",\\\"top_k\\\":3}\"`,
+                  )
+                }
+              >
+                复制 /imh curl
+              </Button>
+            </Stack>
+          </Paper>
         </Box>
       </Box>
 
@@ -185,6 +276,17 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
           </Box>
         ))}
       </Box>
+
+      <Snackbar
+        open={toast.open}
+        autoHideDuration={2500}
+        onClose={() => setToast({ open: false, text: '' })}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity="info" variant="filled" onClose={() => setToast({ open: false, text: '' })}>
+          {toast.text}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
