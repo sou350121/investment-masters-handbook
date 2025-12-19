@@ -388,6 +388,11 @@ export default function InvestorList({ investors }: { investors: Investor[] }) {
                   onClick={() => setRouteText('我买了TSLA，目前浮亏8%。应该止损吗？止损点位怎么定？仓位要不要减半？')}
                 />
                 <Chip
+                  label="模板：低估/高估"
+                  clickable
+                  onClick={() => setRouteText('请判断这只股票是低估还是高估？当前估值是否合理？如果要买，安全边际要多少？')}
+                />
+                <Chip
                   label="模板：宏观/利率"
                   clickable
                   onClick={() => setRouteText('美联储可能降息，通胀回落但经济放缓。现在更适合配置什么类型资产？')}

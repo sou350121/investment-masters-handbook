@@ -78,7 +78,33 @@ def _route_investors(text: str, top_k: int = 5) -> List[Dict[str, Any]]:
         "止损/风控": (["止损", "风控", "回撤", "仓位", "max drawdown", "risk", "position sizing"], ["george_soros", "stanley_druckenmiller", "seth_klarman"]),
         "宏观/政策": (["宏观", "利率", "通胀", "就业", "美元", "政策", "fed", "cpi", "ppi"], ["ray_dalio", "stanley_druckenmiller", "george_soros"]),
         "周期/情绪": (["周期", "情绪", "极端", "恐慌", "狂热", "sentiment", "cycle"], ["howard_marks", "ray_dalio", "charlie_munger"]),
-        "估值/安全边际": (["估值", "安全边际", "便宜", "贵", "pe", "pb", "ps", "intrinsic value"], ["warren_buffett", "seth_klarman", "charlie_munger"]),
+        # Valuation (novice-friendly)
+        "估值/安全边际": (
+            [
+                "估值",
+                "高估",
+                "低估",
+                "贵不贵",
+                "便不便宜",
+                "值不值",
+                "合理吗",
+                "溢价",
+                "折价",
+                "安全边际",
+                "内在价值",
+                "价值陷阱",
+                "pe",
+                "pb",
+                "ps",
+                "ev/ebitda",
+                "intrinsic value",
+                "undervalued",
+                "overvalued",
+                "cheap",
+                "expensive",
+            ],
+            ["warren_buffett", "seth_klarman", "howard_marks", "charlie_munger"],
+        ),
         "成长/PEG": (["成长", "peg", "营收增长", "增速", "tenbagger"], ["peter_lynch", "warren_buffett"]),
         "量化/因子": (["量化", "因子", "模型", "回测", "因子投资", "factor"], ["james_simons", "ed_thorp", "cliff_asness"]),
         "事件/激进": (["并购", "分拆", "回购", "重组", "股东行动", "proxy fight", "activist"], ["carl_icahn", "seth_klarman"]),
@@ -113,6 +139,16 @@ def _route_investors(text: str, top_k: int = 5) -> List[Dict[str, Any]]:
         if any(k.lower() in t_low for k in keys):
             for iid in ids:
                 add(iid, 1.8, f"匹配意图「{intent}」")
+
+    # Explicit over/under valuation routing (stronger signal)
+    underval_keys = ["低估", "便宜", "折价", "underpriced", "undervalued", "cheap"]
+    overval_keys = ["高估", "太贵", "贵", "溢价", "overpriced", "overvalued", "expensive"]
+    if any(k.lower() in t_low for k in underval_keys):
+        for iid in ["seth_klarman", "warren_buffett", "howard_marks"]:
+            add(iid, 2.6, "判断是否低估/有安全边际")
+    if any(k.lower() in t_low for k in overval_keys):
+        for iid in ["charlie_munger", "michael_burry", "howard_marks", "george_soros"]:
+            add(iid, 2.6, "判断是否高估/泡沫与风险")
 
     # Ticker hints (AAPL/TSLA/NVDA etc.) -> treat as stock selection
     if re.search(r"\b[A-Z]{1,5}\b", text or ""):
