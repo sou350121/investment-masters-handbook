@@ -1,0 +1,45 @@
+scenarios:
+  - id: crisis_2008
+    label: "2008 极度恐慌 (Financial Crisis)"
+    description: "极度恐慌/崩盘：高波动率、信用利差扩张、流动性紧缩"
+    features:
+      vix: 45.0
+      credit_spread: 3.5
+      credit_spread_bps: 350.0
+      yield_curve: -0.5
+      realized_vol_20d: 0.45
+    portfolio_state:
+      cash_ratio: 0.1
+      current_leverage: 1.2
+    expectations:
+      risk_multiplier: { op: "<", value: 0.6 }
+      min_cash: { op: ">", value: 0.2 }
+  
+  - id: ai_boom_2024
+    label: "科技牛市 (AI Boom 2024)"
+    description: "AI 牛市：低波动、强动能、适度通胀"
+    features:
+      vix: 12.0
+      breadth_pct_up: 0.65
+      market_momentum: 0.8
+      cpi: 2.5
+    portfolio_state:
+      cash_ratio: 0.05
+      current_leverage: 1.0
+    expectations:
+      risk_multiplier: { op: ">", value: 1.0 }
+      max_leverage: { op: ">", value: 1.0 }
+
+  - id: stagflation_vibe
+    label: "滞胀阴影 (Stagflation)"
+    description: "滞胀/震荡：通胀高企、增长停滞、不确定性增加"
+    features:
+      vix: 22.0
+      inflation: 6.0
+      inflation_yoy: 0.06
+      gdp_growth: 0.5
+    portfolio_state:
+      cash_ratio: 0.15
+    expectations:
+      risk_multiplier: { op: "~", value: 0.8, tol: 0.05 }
+      max_invest: { op: "<", value: 0.08 }
