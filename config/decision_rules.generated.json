@@ -5,7 +5,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:001",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "深入研究",
       "when": "估值折價（股價 vs 資產/同業）AND 治理問題"
     },
@@ -14,7 +14,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:002",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "有介入空間",
       "when": "管理層薪酬過高 OR 資本配置失誤"
     },
@@ -23,7 +23,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:003",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "有催化劑潛力",
       "when": "可分拆/回購/出售資產釋放價值"
     },
@@ -32,7 +32,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:004",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "法律障礙低",
       "when": "無毒丸/分級董事會/超級投票權"
     },
@@ -41,7 +41,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:005",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "逐步累積至 5-15%",
       "when": "篩選通過 AND 有介入空間"
     },
@@ -50,7 +50,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:006",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "進入介入階段",
       "when": "累積足夠股份"
     },
@@ -59,7 +59,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:007",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "公開信 + 提名董事 + 股東提案",
       "when": "建倉完成"
     },
@@ -68,7 +68,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:008",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "代理權戰爭（proxy fight）",
       "when": "管理層抵抗"
     },
@@ -77,7 +77,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:009",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "協商具體改革方案",
       "when": "談判進展"
     },
@@ -86,7 +86,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:010",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "賣出",
       "when": "價值釋放（分拆/回購/出售/被收購）"
     },
@@ -95,7 +95,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:011",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "重新評估是否退出",
       "when": "對抗失敗 AND 無進展"
     },
@@ -104,7 +104,7 @@
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:012",
-      "source_file": "investors/carl_icahn.md",
+      "source_file": "investors\\carl_icahn.md",
       "then": "可以換倉",
       "when": "有更好機會"
     },
@@ -113,7 +113,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:001",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "考慮買入",
       "when": "便宜因為短期負面 AND 護城河未損 AND 問題可逆"
     },
@@ -122,7 +122,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:002",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "深入研究",
       "when": "商業模式 2 句話可解釋 AND ROIC > 15% 持續 10 年+"
     },
@@ -131,7 +131,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:003",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "深入研究",
       "when": "市場忽視（無聊/分析師不覆蓋）AND 現金流穩定"
     },
@@ -140,7 +140,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:004",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "重注機會",
       "when": "恐慌拋售 AND 好公司 AND 暫時困境"
     },
@@ -149,7 +149,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:005",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "無法理解商業模式"
     },
@@ -158,7 +158,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:006",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "管理層激勵與股東不一致"
     },
@@ -167,7 +167,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:007",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "需要「信仰」未來才能合理化"
     },
@@ -176,7 +176,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:008",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "複雜且不透明"
     },
@@ -185,7 +185,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:009",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "槓桿過高（負債/資產 > 50%）"
     },
@@ -194,7 +194,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:010",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "不買",
       "when": "行業結構性衰退"
     },
@@ -203,7 +203,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:011",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "賣出",
       "when": "買入論點不再成立"
     },
@@ -212,7 +212,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:012",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "賣出",
       "when": "護城河被侵蝕 AND 無改善跡象"
     },
@@ -221,7 +221,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:013",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "考慮減倉",
       "when": "估值過高 AND 已無安全邊際"
     },
@@ -230,7 +230,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:014",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "暫停，主動找反駁論點",
       "when": "只看到利好信息"
     },
@@ -239,7 +239,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:015",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "暫停，獨立分析",
       "when": "「大家都在買」"
     },
@@ -248,7 +248,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:016",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "謙虛，問「市場知道什麼我不知道的」",
       "when": "「我比市場聰明」"
     },
@@ -257,7 +257,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:017",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "忘記成本，重新評估",
       "when": "被成本價錨定"
     },
@@ -266,7 +266,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:018",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "論點對不對？與成本無關",
       "when": "虧損不想賣，盈利急著賣"
     },
@@ -275,7 +275,7 @@
       "investor_id": "charlie_munger",
       "kind": "other",
       "rule_id": "charlie_munger:other:019",
-      "source_file": "investors/charlie_munger.md",
+      "source_file": "investors\\charlie_munger.md",
       "then": "新信息改變判斷就改",
       "when": "已經說了會買，不想反悔"
     },
@@ -284,7 +284,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:001",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "可以納入",
       "when": "因子有學術研究支持 AND 有經濟學邏輯 AND 跨市場有效"
     },
@@ -293,7 +293,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:002",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "謹慎",
       "when": "因子只在回測中有效 BUT 無法解釋為什麼"
     },
@@ -302,7 +302,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:003",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "減少暴露",
       "when": "因子近期表現很好 AND 變得擁擠"
     },
@@ -311,7 +311,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:004",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "接受高波動",
       "when": "單一因子暴露"
     },
@@ -320,7 +320,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:005",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "期望更平滑收益",
       "when": "多因子組合"
     },
@@ -329,7 +329,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:006",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "檢查市場環境",
       "when": "因子之間相關性上升"
     },
@@ -338,7 +338,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:007",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "再平衡",
       "when": "偏離目標權重超過閾值"
     },
@@ -347,7 +347,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:008",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "不交易",
       "when": "交易成本 > 再平衡收益"
     },
@@ -356,7 +356,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:009",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "可以提前再平衡",
       "when": "因子信號極端強"
     },
@@ -365,7 +365,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:010",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "增加價值暴露",
       "when": "價值 spread 極度擴張（如 2020）"
     },
@@ -374,7 +374,7 @@
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:011",
-      "source_file": "investors/cliff_asness.md",
+      "source_file": "investors\\cliff_asness.md",
       "then": "減少動量暴露",
       "when": "動量崩潰（如 2009.03）"
     },
@@ -383,7 +383,7 @@
       "investor_id": "duan_yongping",
       "kind": "buy",
       "rule_id": "duan_yongping:buy:001",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "在能力圈内",
       "when": "能2句话说清商业模式 AND 有差异化/定价权"
     },
@@ -392,7 +392,7 @@
       "investor_id": "duan_yongping",
       "kind": "buy",
       "rule_id": "duan_yongping:buy:002",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "考虑买入",
       "when": "好公司 AND 价格合理 AND 愿意持有10年"
     },
@@ -401,7 +401,7 @@
       "investor_id": "duan_yongping",
       "kind": "buy",
       "rule_id": "duan_yongping:buy:003",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "好生意",
       "when": "ROIC > 15% 持续多年 AND 不需大量再投资"
     },
@@ -410,7 +410,7 @@
       "investor_id": "duan_yongping",
       "kind": "buy",
       "rule_id": "duan_yongping:buy:004",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "管理层可信",
       "when": "管理层诚信 AND 与股东利益一致 AND 能力强"
     },
@@ -419,7 +419,7 @@
       "investor_id": "duan_yongping",
       "kind": "buy",
       "rule_id": "duan_yongping:buy:005",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "好价格",
       "when": "价格 < 内在价值 × 0.7 AND 好公司"
     },
@@ -428,7 +428,7 @@
       "investor_id": "duan_yongping",
       "kind": "avoid",
       "rule_id": "duan_yongping:avoid:001",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "无法用2句话解释如何赚钱"
     },
@@ -437,7 +437,7 @@
       "investor_id": "duan_yongping",
       "kind": "avoid",
       "rule_id": "duan_yongping:avoid:002",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "需要不断融资才能活"
     },
@@ -446,7 +446,7 @@
       "investor_id": "duan_yongping",
       "kind": "avoid",
       "rule_id": "duan_yongping:avoid:003",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "管理层有诚信问题"
     },
@@ -455,7 +455,7 @@
       "investor_id": "duan_yongping",
       "kind": "avoid",
       "rule_id": "duan_yongping:avoid:004",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "估值需要\"信仰\"支撑"
     },
@@ -464,7 +464,7 @@
       "investor_id": "duan_yongping",
       "kind": "avoid",
       "rule_id": "duan_yongping:avoid:005",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "竞争激烈无差异化"
     },
@@ -473,7 +473,7 @@
       "investor_id": "duan_yongping",
       "kind": "sell",
       "rule_id": "duan_yongping:sell:001",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "卖出",
       "when": "商业模式被破坏 OR 护城河消失"
     },
@@ -482,7 +482,7 @@
       "investor_id": "duan_yongping",
       "kind": "sell",
       "rule_id": "duan_yongping:sell:002",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "立即卖出",
       "when": "管理层出现诚信问题"
     },
@@ -491,7 +491,7 @@
       "investor_id": "duan_yongping",
       "kind": "sell",
       "rule_id": "duan_yongping:sell:003",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以考虑卖出",
       "when": "估值极度高估（如 PE > 50 且增速放缓）"
     },
@@ -500,7 +500,7 @@
       "investor_id": "duan_yongping",
       "kind": "sell",
       "rule_id": "duan_yongping:sell:004",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以换仓",
       "when": "有更好的机会 AND 确定性更高"
     },
@@ -509,7 +509,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:001",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "继续持有",
       "when": "好公司 AND 估值合理 AND 长期逻辑未变"
     },
@@ -518,7 +518,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:002",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "持有或加仓",
       "when": "股价下跌 BUT 基本面未变"
     },
@@ -527,7 +527,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:003",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "继续持有",
       "when": "短期业绩波动 BUT 长期竞争力未变"
     },
@@ -536,7 +536,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:004",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以重仓",
       "when": "确定性高 AND 了解深入 AND 价格好"
     },
@@ -545,7 +545,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:005",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不做",
       "when": "杠杆 OR 借钱"
     },
@@ -554,7 +554,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:006",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "减仓",
       "when": "仓位让你睡不着觉"
     },
@@ -563,7 +563,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:001",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "可以考慮",
       "when": "勝率可量化 AND 賠率可估算 AND 歷史數據充足"
     },
@@ -572,7 +572,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:002",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "策略可行",
       "when": "期望值 > 0 AND 夏普比率 > 1"
     },
@@ -581,7 +581,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:003",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "不做",
       "when": "無法量化優勢"
     },
@@ -590,7 +590,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:004",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "用半凱利計算倉位",
       "when": "有明確優勢 AND 勝率/賠率已知"
     },
@@ -599,7 +599,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:005",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "用 1/4 凱利或更低",
       "when": "估計不確定性高"
     },
@@ -608,7 +608,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:006",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "總倉位要調低",
       "when": "策略之間有相關性"
     },
@@ -617,7 +617,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:007",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "減少倉位 50%",
       "when": "單月虧損達到限制（如 5%）"
     },
@@ -626,7 +626,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:008",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "暫停交易，檢查模型",
       "when": "回撤超過歷史最大"
     },
@@ -635,7 +635,7 @@
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:009",
-      "source_file": "investors/ed_thorp.md",
+      "source_file": "investors\\ed_thorp.md",
       "then": "減少倉位",
       "when": "流動性下降"
     },
@@ -644,7 +644,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:001",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "分析担心是否被夸大",
       "when": "股价下跌 > 30% AND 市场担心因素可量化"
     },
@@ -653,7 +653,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:002",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "逆向机会",
       "when": "市场担心因素是周期性/一次性 AND 长期逻辑未变"
     },
@@ -662,7 +662,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:003",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "PASS",
       "when": "市场担心因素是结构性/不可逆"
     },
@@ -671,7 +671,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:004",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "值得下注",
       "when": "赔率 > 3:1 AND 胜率 > 30%"
     },
@@ -680,7 +680,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:005",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "谨慎",
       "when": "赔率 < 2:1 即使胜率 > 70%"
     },
@@ -689,7 +689,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:006",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "左侧买入",
       "when": "估值处于历史底部区间 AND 基本面有边际改善迹象"
     },
@@ -698,7 +698,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:007",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "不要抄底",
       "when": "股价新低 AND 找不到合理解释"
     },
@@ -707,7 +707,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:008",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "持有或加仓",
       "when": "买入后继续下跌 AND 长期逻辑未变"
     },
@@ -716,7 +716,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:009",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "卖出",
       "when": "买入逻辑被证伪（长期逻辑改变）"
     },
@@ -725,7 +725,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:010",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "逐步减仓",
       "when": "股价涨到合理估值 AND 没有更多上涨空间"
     },
@@ -734,7 +734,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:011",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "换仓",
       "when": "有更好的赔率机会"
     },
@@ -743,7 +743,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:012",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "买入优质股",
       "when": "市场极度恐慌 AND 好公司被无差别抛售"
     },
@@ -752,7 +752,7 @@
       "investor_id": "feng_liu",
       "kind": "buy",
       "rule_id": "feng_liu:buy:013",
-      "source_file": "investors/feng_liu.md",
+      "source_file": "investors\\feng_liu.md",
       "then": "不适用弱者体系",
       "when": "使用杠杆"
     },
@@ -761,7 +761,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:001",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "順勢建倉",
       "when": "趨勢啟動（基本面改善 + 認知跟上）"
     },
@@ -770,7 +770,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:002",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "持有/加碼",
       "when": "自我強化階段（價格 → 基本面 → 更多買盤）"
     },
@@ -779,7 +779,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:003",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "警惕、縮倉",
       "when": "測試極限（認知過度樂觀，價格脫離基本面）"
     },
@@ -788,7 +788,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:004",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "反向做空或等待",
       "when": "崩潰階段（現實戳破認知）"
     },
@@ -797,7 +797,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:005",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "做空該貨幣",
       "when": "固定匯率制 AND 外儲耗竭 AND 經濟失衡"
     },
@@ -806,7 +806,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:006",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "重注",
       "when": "政策/匯率明顯不可持續 AND 有催化劑"
     },
@@ -815,7 +815,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:007",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "準備做空",
       "when": "信用泡沫（槓桿 → 資產價格 → 更多槓桿）AND 流動性開始收緊"
     },
@@ -824,7 +824,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:008",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "立即止損",
       "when": "論點被證偽 OR 虧損超過預設止損"
     },
@@ -833,7 +833,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:009",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "快砍，不等",
       "when": "錯了"
     },
@@ -842,7 +842,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:010",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "小倉位測試",
       "when": "確信度不夠"
     },
@@ -851,7 +851,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:011",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "可用槓桿重倉",
       "when": "高確信 + 失衡明顯 + 有催化劑"
     },
@@ -860,7 +860,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:012",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "小倉位",
       "when": "測試假設階段"
     },
@@ -869,7 +869,7 @@
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:013",
-      "source_file": "investors/george_soros.md",
+      "source_file": "investors\\george_soros.md",
       "then": "減倉",
       "when": "最大回撤 > 容忍度"
     },
@@ -878,7 +878,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:001",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "深入研究",
       "when": "長期可預測現金流（10+ 年）AND 監管環境穩定"
     },
@@ -887,7 +887,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:002",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "符合框架",
       "when": "資本密集 BUT 回報穩定（受管制行業）"
     },
@@ -896,7 +896,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:003",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "符合框架",
       "when": "資產生命週期 > 20 年"
     },
@@ -905,7 +905,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:004",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "加分項",
       "when": "再投資空間大 AND 能持續部署資本"
     },
@@ -914,7 +914,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:005",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "用受管制回報率法 合理估值 = Rate Base × 允許回報率",
       "when": "公用事業"
     },
@@ -923,7 +923,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:006",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "用長週期 DCF（20-30 年） 貼現率 7-9%（公用事業較低風險）",
       "when": "資本密集型"
     },
@@ -932,7 +932,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:007",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "可能高估（除非有顯著增長）",
       "when": "公用事業 P/E > 20x"
     },
@@ -941,7 +941,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:008",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "可能低估（除非有監管風險）",
       "when": "公用事業 P/E < 12x"
     },
@@ -950,7 +950,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:009",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "短期概念炒作（新能源泡沫股）"
     },
@@ -959,7 +959,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:010",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "謹慎",
       "when": "依賴政府補貼"
     },
@@ -968,7 +968,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:011",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "技術快速迭代行業"
     },
@@ -977,7 +977,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:012",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "監管不確定性高"
     },
@@ -986,7 +986,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:013",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "需要持續融資才能存活"
     },
@@ -995,7 +995,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:014",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "良好投資",
       "when": "可再生能源 + 長期購電協議（PPA）"
     },
@@ -1004,7 +1004,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:015",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "保留",
       "when": "天然氣（過渡燃料）"
     },
@@ -1013,7 +1013,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:016",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "退出",
       "when": "煤炭"
     },
@@ -1022,7 +1022,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:017",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "觀望",
       "when": "核能"
     },
@@ -1031,7 +1031,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:001",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "積極進場，強調存續力",
       "when": "信用凍結 + 恐慌拋售 + 估值極低 (底部)"
     },
@@ -1040,7 +1040,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:002",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "持有，選擇優質高β",
       "when": "利差收窄 + 風險偏好回升 (復甦)"
     },
@@ -1049,7 +1049,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:003",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "減碼/防守，增現金",
       "when": "槓桿激增 + 低質資產熱捧 + 散戶湧入 (過熱)"
     },
@@ -1058,7 +1058,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:004",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "保留彈藥，等更便宜",
       "when": "違約攀升 + 去槓桿 + 信用收緊 (下行)"
     },
@@ -1067,7 +1067,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:005",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "考慮買入",
       "when": "恐懼指數極高 + 估值極低"
     },
@@ -1076,7 +1076,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:006",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "考慮減倉",
       "when": "貪婪指數極高 + 估值極高"
     },
@@ -1085,7 +1085,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:007",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "提高警惕",
       "when": "共識認為「這次不一樣」"
     },
@@ -1094,7 +1094,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:008",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "不買",
       "when": "下檔保護不足"
     },
@@ -1103,7 +1103,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:009",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "不買或減倉",
       "when": "最壞情況會導致永久虧損"
     },
@@ -1112,7 +1112,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:010",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "減少暴露",
       "when": "自身現金比重無法撐過極端"
     },
@@ -1121,7 +1121,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:011",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "減少信用暴露",
       "when": "利差過窄（歷史低位）"
     },
@@ -1130,7 +1130,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:012",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "增加信用暴露",
       "when": "利差極寬（歷史高位）AND 非系統性危機"
     },
@@ -1139,7 +1139,7 @@
       "investor_id": "howard_marks",
       "kind": "other",
       "rule_id": "howard_marks:other:013",
-      "source_file": "investors/howard_marks.md",
+      "source_file": "investors\\howard_marks.md",
       "then": "提高質量要求",
       "when": "違約率開始攀升"
     },
@@ -1148,7 +1148,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:001",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "可以開始研究",
       "when": "數據乾淨 + 無前視偏差 + 夠長"
     },
@@ -1157,7 +1157,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:002",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "減少過擬合風險",
       "when": "樣本外測試 + 多市場驗證通過"
     },
@@ -1166,7 +1166,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:003",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "策略可行",
       "when": "考慮滑點 + 佣金後仍有正期望"
     },
@@ -1175,7 +1175,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:004",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "可以部署",
       "when": "策略容量 > 預期資金規模"
     },
@@ -1184,7 +1184,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:005",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "嚴格執行，不因情緒改變",
       "when": "規則制定完成"
     },
@@ -1193,7 +1193,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:006",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "先歷史回測",
       "when": "有想法"
     },
@@ -1202,7 +1202,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:007",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "小倉位測試",
       "when": "不確定"
     },
@@ -1211,7 +1211,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:008",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "可以執行（不需要「理解」為什麼）",
       "when": "統計顯著"
     },
@@ -1220,7 +1220,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:009",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "減倉或停用",
       "when": "模型衰減信號"
     },
@@ -1229,7 +1229,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:010",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "不執行",
       "when": "單筆風險 > 閾值"
     },
@@ -1238,7 +1238,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:011",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "再平衡",
       "when": "組合風險 > 預算"
     },
@@ -1247,7 +1247,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:012",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "實時監控 + 模型衰減檢測",
       "when": "策略上線"
     },
@@ -1256,7 +1256,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:013",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "檢查模型 + 數據",
       "when": "回報偏離預期"
     },
@@ -1265,7 +1265,7 @@
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:014",
-      "source_file": "investors/james_simons.md",
+      "source_file": "investors\\james_simons.md",
       "then": "停用 + 重新研究",
       "when": "模型持續失效"
     },
@@ -1274,7 +1274,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:001",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "深入研究",
       "when": "共識明顯錯誤 AND 有數據/邏輯支持"
     },
@@ -1283,7 +1283,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:002",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "考慮買入",
       "when": "股價像「路殺」(road kill) AND 資產價值仍在"
     },
@@ -1292,7 +1292,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:003",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "考慮買入",
       "when": "清算價值 > 市值 AND 有催化劑"
     },
@@ -1301,7 +1301,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:004",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "重倉",
       "when": "高確信 AND 論點獨立驗證"
     },
@@ -1310,7 +1310,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:005",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "考慮做空",
       "when": "估值極端 AND 需要「信仰」合理化"
     },
@@ -1319,7 +1319,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:006",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "深入研究做空機會",
       "when": "結構性風險被市場忽視（如 2005 次貸）"
     },
@@ -1328,7 +1328,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:007",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "做空候選",
       "when": "流動性收緊 AND 高槓桿/負現金流公司"
     },
@@ -1337,7 +1337,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:008",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "獨立驗證",
       "when": "賣方報告說好"
     },
@@ -1346,7 +1346,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:009",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "對照財務數據與行業趨勢",
       "when": "管理層說法"
     },
@@ -1355,7 +1355,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:010",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "問「為什麼？共識哪裡錯？」",
       "when": "市場定價"
     },
@@ -1364,7 +1364,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:011",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "確保資金續航",
       "when": "論點兌現需要數年"
     },
@@ -1373,7 +1373,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:012",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "嚴格控制倉位",
       "when": "做空"
     },
@@ -1382,7 +1382,7 @@
       "investor_id": "michael_burry",
       "kind": "other",
       "rule_id": "michael_burry:other:013",
-      "source_file": "investors/michael_burry.md",
+      "source_file": "investors\\michael_burry.md",
       "then": "可以承受但要有預案",
       "when": "時機太早"
     },
@@ -1391,7 +1391,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:001",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "考慮買入",
       "when": "PEG < 1 AND 增速可持續"
     },
@@ -1400,7 +1400,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:002",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "深入研究",
       "when": "PEG < 0.5 AND 增速穩定"
     },
@@ -1409,7 +1409,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:003",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "在能力圈內",
       "when": "能 2 分鐘講清楚公司做什麼 AND 為何賺錢"
     },
@@ -1418,7 +1418,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:004",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "機會（未被發現）",
       "when": "機構持股低 AND 基本面好"
     },
@@ -1427,7 +1427,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:005",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "正面信號",
       "when": "內部人在買入"
     },
@@ -1436,7 +1436,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:006",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "看股息，不期待資本增值",
       "when": "慢速成長股"
     },
@@ -1445,7 +1445,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:007",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "核心持倉，回檔買漲多賣",
       "when": "穩定成長股"
     },
@@ -1454,7 +1454,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:008",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "重點追蹤增速是否持續",
       "when": "快速成長股"
     },
@@ -1463,7 +1463,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:009",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "低 PE 不一定便宜，逆週期佈局",
       "when": "週期股"
     },
@@ -1472,7 +1472,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:010",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "控制倉位，高賠率低勝率",
       "when": "困境反轉股"
     },
@@ -1481,7 +1481,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:011",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "挖掘隱藏價值（土地、品牌、現金）",
       "when": "資產型"
     },
@@ -1490,7 +1490,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:012",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "考慮賣出",
       "when": "PEG > 2"
     },
@@ -1499,7 +1499,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:013",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "賣出",
       "when": "故事變了（成長停滯、競爭加劇）"
     },
@@ -1508,7 +1508,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:014",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "重新評估",
       "when": "增速持續下滑"
     },
@@ -1517,7 +1517,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:015",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "不買",
       "when": "無法 2 分鐘講清楚公司"
     },
@@ -1526,7 +1526,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:016",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "不買",
       "when": "PEG > 2"
     },
@@ -1535,7 +1535,7 @@
       "investor_id": "peter_lynch",
       "kind": "other",
       "rule_id": "peter_lynch:other:017",
-      "source_file": "investors/peter_lynch.md",
+      "source_file": "investors\\peter_lynch.md",
       "then": "不買",
       "when": "負債過高 AND 利息保障倍數低"
     },
@@ -1544,7 +1544,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:001",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "行业值得关注",
       "when": "行业CR3 > 50% AND 龙头市占率持续提升"
     },
@@ -1553,7 +1553,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:002",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "回避该行业",
       "when": "行业CR3 < 30% AND 玩家众多"
     },
@@ -1562,7 +1562,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:003",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "公司有品牌溢价能力（提价不掉量）"
     },
@@ -1571,7 +1571,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:004",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "公司有渠道优势 AND 竞争对手3年内无法复制"
     },
@@ -1580,7 +1580,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:005",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "成本优势来自规模/地理/资源 AND 非暂时性"
     },
@@ -1589,7 +1589,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:006",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "估值偏贵",
       "when": "PE > 30x AND 增速 < 30%"
     },
@@ -1598,7 +1598,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:007",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "好价格",
       "when": "PE < 15x AND ROE > 15% AND 护城河完好"
     },
@@ -1607,7 +1607,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:008",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "逆向机会",
       "when": "股价因短期利空下跌 > 30% AND 长期逻辑未变"
     },
@@ -1616,7 +1616,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:009",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "布局时机",
       "when": "市场极度悲观 AND 机构仓位处于历史低位"
     },
@@ -1625,7 +1625,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:010",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "降低仓位",
       "when": "估值处于历史高位 AND 市场情绪亢奋"
     },
@@ -1634,7 +1634,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:011",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "卖出",
       "when": "公司基本面恶化（护城河受损）"
     },
@@ -1643,7 +1643,7 @@
       "investor_id": "qiu_guolu",
       "kind": "sell",
       "rule_id": "qiu_guolu:sell:012",
-      "source_file": "investors/qiu_guolu.md",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "换仓",
       "when": "找到更好的标的 AND 当前持仓性价比下降"
     },
@@ -1652,7 +1652,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:001",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "偏重股票、公司債",
       "when": "增長↑ + 通膨↓ (溫和擴張)"
     },
@@ -1661,7 +1661,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:002",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "偏重商品、TIPS、新興股票",
       "when": "增長↑ + 通膨↑ (過熱)"
     },
@@ -1670,7 +1670,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:003",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "偏重商品、黃金、TIPS",
       "when": "增長↓ + 通膨↑ (滯脹)"
     },
@@ -1679,7 +1679,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:004",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "偏重長期國債、現金",
       "when": "增長↓ + 通膨↓ (衰退/通縮)"
     },
@@ -1688,7 +1688,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:005",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "做多風險資產",
       "when": "早期擴張（低槓桿、信用易得）"
     },
@@ -1697,7 +1697,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:006",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "減曝險、增現金/黃金",
       "when": "泡沫階段（槓桿激增、估值脫離基本面）"
     },
@@ -1706,7 +1706,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:007",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "防守，等待政策底",
       "when": "去槓桿（違約攀升、信用收縮）"
     },
@@ -1715,7 +1715,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:008",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "做多硬資產、股票",
       "when": "再通脹（央行大規模刺激）"
     },
@@ -1724,7 +1724,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:009",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "再平衡",
       "when": "各資產貢獻風險不均衡"
     },
@@ -1733,7 +1733,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:010",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "增加現金、減少暴露",
       "when": "相關性在極端時上升"
     },
@@ -1742,7 +1742,7 @@
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:011",
-      "source_file": "investors/ray_dalio.md",
+      "source_file": "investors\\ray_dalio.md",
       "then": "減少風險暴露",
       "when": "壓力測試顯示回撤 > 容忍度"
     },
@@ -1751,7 +1751,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:001",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "考慮買入",
       "when": "安全邊際 > 30-50%（價格 vs 保守估值）"
     },
@@ -1760,7 +1760,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:002",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "深入研究",
       "when": "便宜因為結構性賣壓（指數剔除、評級下調）AND 基本面未變"
     },
@@ -1769,7 +1769,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:003",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "深入研究",
       "when": "困境債 AND 資產價值 > 債券價格 AND 有催化劑"
     },
@@ -1778,7 +1778,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:004",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "積極尋找機會",
       "when": "恐慌/危機時期 AND 有現金儲備"
     },
@@ -1787,7 +1787,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:005",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "深入研究",
       "when": "冷門資產 AND 無人關注 AND 有價值"
     },
@@ -1796,7 +1796,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:006",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "提高現金比例（可達 30-50%）",
       "when": "估值普遍高估 AND 缺乏安全邊際"
     },
@@ -1805,7 +1805,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:007",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "不部署",
       "when": "機會不夠好"
     },
@@ -1814,7 +1814,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:008",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "大膽部署",
       "when": "危機到來 AND 有現金"
     },
@@ -1823,7 +1823,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:009",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "不買",
       "when": "安全邊際 < 30%"
     },
@@ -1832,7 +1832,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:010",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "不買",
       "when": "便宜因為基本面惡化 AND 無改善跡象"
     },
@@ -1841,7 +1841,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:011",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "不買",
       "when": "下檔保護不明確"
     },
@@ -1850,7 +1850,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:012",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "不買",
       "when": "流動性極差 AND 無法長期持有"
     },
@@ -1859,7 +1859,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:013",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "賣出",
       "when": "達到內在價值"
     },
@@ -1868,7 +1868,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:014",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "等待/部分獲利",
       "when": "有催化劑讓市場重新定價"
     },
@@ -1877,7 +1877,7 @@
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:015",
-      "source_file": "investors/seth_klarman.md",
+      "source_file": "investors\\seth_klarman.md",
       "then": "重新評估，可能賣出",
       "when": "基本面惡化"
     },
@@ -1886,7 +1886,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:001",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "做多風險資產",
       "when": "淨流動性（Fed B/S − TGA − RRP）上升 AND 估值合理"
     },
@@ -1895,7 +1895,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:002",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "先佈局成長股",
       "when": "Fed 轉向（緊→鬆）信號確認"
     },
@@ -1904,7 +1904,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:003",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "重倉 10-25%",
       "when": "確信度 90%+ AND 邏輯一句話講清楚"
     },
@@ -1913,7 +1913,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:004",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "做多長期國債",
       "when": "最後一次加息確認"
     },
@@ -1922,7 +1922,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:005",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "減倉或做空",
       "when": "淨流動性下降 AND 高估值"
     },
@@ -1931,7 +1931,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:006",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "警惕，考慮減倉",
       "when": "方向做多 BUT 市場寬度惡化（< 50% 股票 > 200MA）"
     },
@@ -1940,7 +1940,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:007",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "減倉",
       "when": "需要多重假設才能支持邏輯"
     },
@@ -1949,7 +1949,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:008",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "立即止損",
       "when": "論點被證偽 OR 價格確認反向"
     },
@@ -1958,7 +1958,7 @@
       "investor_id": "stanley_druckenmiller",
       "kind": "other",
       "rule_id": "stanley_druckenmiller:other:009",
-      "source_file": "investors/stanley_druckenmiller.md",
+      "source_file": "investors\\stanley_druckenmiller.md",
       "then": "可以持有/加倉",
       "when": "虧損但論點仍成立 AND 流動性未變"
     },
@@ -1967,7 +1967,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:001",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "考慮買入",
       "when": "盈餘收益率 > 10Y國債 × 1.5 AND 護城河完好"
     },
@@ -1976,7 +1976,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:002",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "深入研究",
       "when": "FCF Yield > 8% AND ROIC > 15% 持續 5 年+"
     },
@@ -1985,7 +1985,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:003",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "機會窗口",
       "when": "短期負面新聞 AND 護城河未損 AND 股價下跌 > 30%"
     },
@@ -1994,7 +1994,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:004",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "考慮買入",
       "when": "P/E < 歷史均值 - 1σ AND 護城河未變 AND 管理層誠信"
     },
@@ -2003,7 +2003,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:005",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "深入研究",
       "when": "「無聊」的生意 AND 分析師不關注 AND FCF 穩定"
     },
@@ -2012,7 +2012,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:006",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "賣出",
       "when": "護城河被侵蝕 AND 無改善跡象"
     },
@@ -2021,7 +2021,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:007",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "考慮減倉",
       "when": "估值 > 內在價值 × 1.5"
     },
@@ -2030,7 +2030,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:008",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "立即賣出",
       "when": "管理層誠信問題"
     },
@@ -2039,7 +2039,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:009",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "換倉",
       "when": "有更好的機會 AND 當前持倉估值合理但不便宜"
     },
@@ -2048,7 +2048,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:010",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "不買",
       "when": "無法用 2 句話解釋商業模式"
     },
@@ -2057,7 +2057,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:011",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "不買",
       "when": "需要「信仰」未來才能合理化估值"
     },
@@ -2066,7 +2066,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:012",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "不買",
       "when": "FCF 長期為負 AND 無明確盈利路徑"
     },
@@ -2075,7 +2075,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:013",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "不買",
       "when": "高槓桿 AND 短期債務 > 現金"
     },
@@ -2084,7 +2084,7 @@
       "investor_id": "warren_buffett",
       "kind": "other",
       "rule_id": "warren_buffett:other:014",
-      "source_file": "investors/warren_buffett.md",
+      "source_file": "investors\\warren_buffett.md",
       "then": "不買",
       "when": "管理層頻繁質押股票 OR 高調承諾"
     }
