@@ -550,14 +550,14 @@ def vectorstore_fixture():
 **跨文檔的"無縫導航"**
 ```markdown
 # 在 README.md 中
-> 💡 首次使用？👉 [5 分鐘快速入門](guides/README.md)
+> 💡 首次使用？👉 [5 分鐘快速入門](/guides/README.md)
 
 # 在 guides/README.md 中  
-> 想深入 RAG？👉 [完整 RAG 指南](./rag_guide.md)
+> 想深入 RAG？👉 [完整 RAG 指南](/guides/rag_guide.md)
 > 回到主文檔？👉 [← 主文檔](../README.md)
 
 # 在各專項指南的開頭
-> 📍 你在這裡：[主文檔](../README.md) > [使用指南](./README.md) > **RAG 指南**
+> 📍 你在這裡：[主文檔](../README.md) > [使用指南](/docs/README_Usage.md) > **RAG 指南**
 ```
 
 #### 執行步驟
@@ -793,6 +793,13 @@ P2-3 版本策略          [████████] 1 小時
 > 📌 **下一步**：開始 P0-1（Token 清理）  
 > 📌 **責任人**：@sou350121  
 > 📌 **反饋與討論**：歡迎提 Issue / PR
+
+
+
+
+
+
+
 
 
 
