@@ -1,13 +1,18 @@
-import { getInvestorById, getRulesByInvestorId } from '@/lib/imh/data';
+import { getInvestorById, getInvestors, getRulesByInvestorId } from '@/lib/imh/data';
 import InvestorDetail from '@/components/InvestorDetail';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  const investors = await getInvestors();
+  return investors.map((i) => ({ id: i.id }));
+}
 
 export default async function InvestorPage({ 
   params 
 }: { 
-  params: Promise<{ id: string }> 
+  params: { id: string } 
 }) {
-  const { id } = await params;
+  const { id } = params;
   const investor = await getInvestorById(id);
   
   if (!investor) {

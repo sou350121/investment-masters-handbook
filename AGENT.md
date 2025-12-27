@@ -54,6 +54,15 @@ investment-masters-handbook/
 ## 常用命令
 
 ```bash
+# （推荐）启动后端（同时托管 Web 静态站点）
+python -m pip install -r requirements.txt
+python services/rag_service.py
+
+# 构建 Web 静态站点（生成 web/out，由后端托管）
+cd web
+npm install
+npm run build
+
 # 规则查询
 python tools/rule_query.py --scenario "市场恐慌"
 python tools/rule_query.py --investor buffett
@@ -67,6 +76,27 @@ python scripts/check_links.py
 python scripts/validate_front_matter.py
 python scripts/check_router_config.py
 ```
+
+## Web UI / Policy Gate 场景沙盒（Scenario Sandbox）
+
+### 打开网页
+
+1. 构建前端静态站点：
+   - `cd web && npm install && npm run build`
+2. 启动后端：
+   - `python services/rag_service.py`
+3. 打开浏览器：
+   - `http://localhost:8001/imh/`（推荐）
+
+> 快速自检：`GET /health` 应返回 `{"status":"ok","vectorstore_ready": ...}`。  
+> 如果你看到的是 `{"status":"healthy"}` 或 `/api/policy/*` 返回 404，说明你启动的是其它项目的后端（端口冲突）。
+
+### 验证场景沙盒
+
+- 进入 Web UI → 展开 **Policy Gate** 面板 → 在 **🚀 场景沙盒** 点击场景
+- 点击 **生成 Policy Gate 护栏**，页面会展示 ✅/❌ 校验报告
+- 场景来源：`config/scenarios.yaml`
+- Policy Gate 规则来源：`config/policy_gate.yaml`
 
 ## 代码规范
 

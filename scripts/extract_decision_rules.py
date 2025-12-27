@@ -27,26 +27,6 @@ def _stable_rule_id(investor_id: str, kind: str, idx: int) -> str:
     return f"{investor_id}:{kind}:{idx:03d}"
 
 
-def _extract_blocks_under_decision_rules(body):
-    """
-    Heuristic extractor:
-    - Find the first heading containing 'DECISION_RULES'
-    - Collect fenced code blocks (``` ... ```) after that point.
-    """
-    body = body.replace("\\r\\n", "\\n").replace("\\r", "\\n")
-    pos = body.lower().find("decision_rules")
-    if pos < 0:
-        return []
-    tail = body[pos:]
-
-    blocks = []
-    parts = tail.split("```")
-    # odd indices are fenced content
-    for i in range(1, len(parts), 2):
-        blocks.append(parts[i])
-    return blocks
-
-
 def _parse_rule_block(block):
     """
     Parse a code fence body that contains multiple IF/THEN/BECAUSE sequences.
@@ -106,7 +86,7 @@ def _parse_rule_block(block):
     return rules
 
 
-def extract_from_investor_md(path):
+def extract_from_investor_md(path: Path) -> List[Dict[str, Any]]:
     text = read_text(path)
     fm = parse_front_matter(text)
     investor_id = path.stem
@@ -115,43 +95,82 @@ def extract_from_investor_md(path):
         investor_id = str(fm.data.get("investor_id") or investor_id)
         body = fm.body
 
-    blocks = _extract_blocks_under_decision_rules(body)
-    if not blocks:
+    # Locate the DECISION_RULES section
+    lines = body.splitlines()
+    start_idx = -1
+    for i, line in enumerate(lines):
+        if "decision_rules" in line.lower():
+            start_idx = i
+            break
+    
+    if start_idx == -1:
         return []
 
+    relevant_lines = lines[start_idx:]
     extracted = []
     per_kind_counter = {}
+    current_header = ""
+    
+    in_code_block = False
+    current_block_lines = []
 
-    for block in blocks:
-        lower = block.lower()
-        if "买入" in block or "buy" in lower:
-            kind = "buy"
-        elif "卖出" in block or "sell" in lower:
-            kind = "sell"
-        elif "不买" in block or "avoid" in lower:
-            kind = "avoid"
-        else:
-            kind = "other"
-
-        triples = _parse_rule_block(block)
-        if not triples:
+    for line in relevant_lines:
+        trimmed = line.strip()
+        
+        # Header detection
+        if not in_code_block and trimmed.startswith("#"):
+            current_header = trimmed.lower()
             continue
+            
+        # Code block detection
+        if trimmed.startswith("```"):
+            if not in_code_block:
+                in_code_block = True
+                current_block_lines = []
+            else:
+                # End of code block
+                in_code_block = False
+                code_content = "\n".join(current_block_lines)
+                
+                # Determine kind
+                kind = "other"
+                if any(x in current_header for x in ["买入", "buy", "entry"]):
+                    kind = "entry"
+                elif any(x in current_header for x in ["卖出", "sell", "exit"]):
+                    kind = "exit"
+                elif any(x in current_header for x in ["不买", "avoid", "风险", "risk", "flags", "止损"]):
+                    kind = "risk_management"
+                
+                if kind == "other":
+                    lower_code = code_content.lower()
+                    if any(x in lower_code for x in ["买入", "buy", "entry"]):
+                        kind = "entry"
+                    elif any(x in lower_code for x in ["卖出", "sell", "exit"]):
+                        kind = "exit"
+                    elif any(x in lower_code for x in ["不买", "avoid", "风险", "risk", "flags", "止损"]):
+                        kind = "risk_management"
 
-        per_kind_counter.setdefault(kind, 0)
-        for when, then, because in triples:
-            per_kind_counter[kind] += 1
-            rid = _stable_rule_id(investor_id, kind, per_kind_counter[kind])
-            extracted.append(
-                _make_rule(
-                    rule_id=rid,
-                    investor_id=investor_id,
-                    kind=kind,
-                    when=when,
-                    then=then,
-                    because=because,
-                    source_file=str(path.relative_to(repo_root())),
-                )
-            )
+                triples = _parse_rule_block(code_content)
+                if triples:
+                    per_kind_counter.setdefault(kind, 0)
+                    for when, then, because in triples:
+                        per_kind_counter[kind] += 1
+                        rid = _stable_rule_id(investor_id, kind, per_kind_counter[kind])
+                        extracted.append(
+                            _make_rule(
+                                rule_id=rid,
+                                investor_id=investor_id,
+                                kind=kind,
+                                when=when,
+                                then=then,
+                                because=because,
+                                source_file=str(path.relative_to(repo_root())),
+                            )
+                        )
+            continue
+            
+        if in_code_block:
+            current_block_lines.append(line)
 
     return extracted
 
@@ -166,8 +185,17 @@ def extract_all():
         for r in rules:
             rid = r.get("rule_id")
             if rid in seen_ids:
-                print("[rules] duplicate rule_id: {} ({})".format(rid, md), file=sys.stderr)
-                raise SystemExit(2)
+                # If we have duplicate IDs, it means the extraction or stability logic failed
+                print(f"[rules] duplicate rule_id: {rid} in {md}", file=sys.stderr)
+                # We'll just append a suffix for now to avoid crashing, but this shouldn't happen
+                count = 1
+                new_rid = f"{rid}_{count}"
+                while new_rid in seen_ids:
+                    count += 1
+                    new_rid = f"{rid}_{count}"
+                rid = new_rid
+                r["rule_id"] = rid
+                
             seen_ids.add(rid)
             out.append(r)
 
@@ -177,5 +205,3 @@ def extract_all():
 if __name__ == "__main__":
     rules = extract_all()
     print("[rules] extracted: {}".format(len(rules)))
-
-

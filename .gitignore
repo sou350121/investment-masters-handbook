@@ -11,5 +11,24 @@ venv/
 .env
 .DS_Store
 
+# Cursor / IDE
+.cursor/
+
+# Python tooling
+.pytest_cache/
+
+# Node / Next
+node_modules/
+web/node_modules/
+web/.next/
+
+# Local artifacts / runtime data
+vectorstore/
+logs/
+
+# Temp files created during debugging
+_tmp_*.py
+_tmp_*.json
+
 
 

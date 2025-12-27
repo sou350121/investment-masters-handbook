@@ -4,6 +4,73 @@
 
 ---
 
+## v1.8.1 - 2025-12-28
+
+### 更新内容
+
+#### 🏛️ 大师深度会诊：一级输出 / 二级输出
+- **输出结构升级**：`POST /api/rag/ensemble` 现在返回 `{ primary, secondary }`：
+  - `primary`：四类资产目标配比（stocks/bonds/gold/cash，sum=100）+ 一句话结论 + `confidence`
+  - `secondary`：保留辩论与溯源（experts/opinions/citations/ensemble_adjustment/metadata）
+- **前端展示升级**：Web UI 默认展示一级输出（更可执行），二级输出折叠展开（更可审计）。
+
+#### 📚 README 排版优化
+- 参考 TradeVoyage README 的“产品化排版”风格，强化导航、快速开始、API 段落与项目结构树。
+
+### 推文模板
+
+```
+Investment Masters Handbook v1.8.1
+
+🏛️ IC Engine 输出升级：一级输出（股/债/金/现金配比）+ 二级输出（证据链/辩论/裁决）
+🎨 Web UI 默认可执行配比，溯源信息可展开查看
+📚 README 重新排版：导航更清晰、上手更快
+
+github.com/sou350121/investment-masters-handbook
+
+#RAG #Agent #Investing #OpenSource
+```
+
+---
+
+## v1.7.0 - 2025-12-23
+
+### 更新内容
+
+#### 🛡️ 场景沙盒 (Scenario Sandbox) 发布
+- **压力测试全自动化**：支持对 8 个历史极端行情（08危机、20疫情、22加息等）进行秒级回归验证。
+- **校验报告**：自动对比 Actual 输出与 YAML 预设的 Expectation，输出 ✅/❌ 报告。
+- **UI 交互**：支持搜索、标签过滤、Tooltip 预览，点击场景即可一键跳转 Policy Gate 调试。
+
+#### 🎨 首页 UX 革命
+- **Tabs 导航**：全新标签页架构，逻辑分区更清晰（大师 | 沙盒 | 护栏 | 手册）。
+- **Hero 视觉中心**：新增沉浸式头部设计，品牌感拉满。
+- **大师题库**：内置 4 大类投资问题模板，一键开启 AI 深度对话。
+
+#### ⚙️ 系统工程优化
+- **端口迁移**：默认切换至 **8001** 端口，解决 8000 端口占用玄学。
+- **决策审计**：启用 `logs/policy_gate_audit.jsonl`，所有风控护栏输出均可回溯。
+- **CI/CD 修复**：自动化流水线全线飘绿，修复了缺失脚本与断链问题。
+
+### 推文模板
+
+```
+Investment Masters Handbook v1.7.0 重磅发布！🚀
+
+不仅仅是文档库，我们把它变成了“投资大师实验室”：
+
+🛡️ 场景沙盒：一键模拟 2008 危机等 8 大极端行情，验证你的风控护栏
+🎨 UI 革命：Tabs 架构 + Hero 搜索，可能是最好用的投资知识库
+⚙️ 稳定增强：默认端口 8001，自带决策审计日志
+
+复现传奇大脑，在极端行情下像大师一样思考 👇
+github.com/sou350121/investment-masters-handbook
+
+#AI投资 #场景沙盒 #巴菲特 #RAG #OpenSource
+```
+
+---
+
 ## v1.6.0 - 2024-12-14
 
 ### 更新内容

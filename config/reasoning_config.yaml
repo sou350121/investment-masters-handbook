@@ -1,0 +1,73 @@
+version: "1"
+
+# nofx-style debate personalities
+personality_descriptions:
+  bull: "Aggressive Bull: optimistic, looks for long opportunities, trend continuation."
+  bear: "Cautious Bear: skeptical, focuses on risks, highlights downside and liquidity stress."
+  analyst: "Data Analyst: neutral and data-driven, weighs evidence and uncertainty explicitly."
+  contrarian: "Contrarian: challenges consensus, searches for overlooked risks/opportunities."
+  risk_manager: "Risk Manager: capital preservation first, position sizing, stop losses, guardrails."
+
+# Master -> personality mapping
+master_personalities:
+  ray_dalio: risk_manager
+  george_soros: contrarian
+  stanley_druckenmiller: analyst
+  warren_buffett: bull
+  charlie_munger: contrarian
+  seth_klarman: bear
+  howard_marks: risk_manager
+  michael_burry: bear
+  peter_lynch: bull
+  james_simons: analyst
+  ed_thorp: analyst
+  cliff_asness: contrarian
+  nassim_taleb: risk_manager
+  cathie_wood: bull
+  bill_ackman: contrarian
+  joel_greenblatt: analyst
+
+# Regime-to-Category Weight Matrix
+# Categories: macro, value, growth, quant, cycle, distressed
+regime_weights:
+  crisis:
+    macro: 0.9
+    distressed: 0.8
+    cycle: 0.7
+    value: 0.4
+    growth: 0.2
+  stagflation:
+    macro: 0.8
+    cycle: 0.8
+    value: 0.6
+    growth: 0.2
+  bull:
+    growth: 0.9
+    value: 0.7
+    quant: 0.7
+    macro: 0.4
+  neutral:
+    value: 0.8
+    growth: 0.6
+    quant: 0.6
+    cycle: 0.5
+
+# Expert -> category mapping
+expert_categories:
+  ray_dalio: macro
+  george_soros: macro
+  stanley_druckenmiller: macro
+  warren_buffett: value
+  charlie_munger: value
+  seth_klarman: distressed
+  howard_marks: cycle
+  michael_burry: cycle
+  peter_lynch: growth
+  james_simons: quant
+  ed_thorp: quant
+  cliff_asness: quant
+  nassim_taleb: macro
+  cathie_wood: growth
+  bill_ackman: value
+  joel_greenblatt: quant
+

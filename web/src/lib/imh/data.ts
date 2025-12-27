@@ -53,3 +53,31 @@ export async function getRulesByInvestorId(id: string): Promise<Rule[]> {
   const data = JSON.parse(fileContents);
   return (data.rules || []).filter((r: Rule) => r.investor_id === id);
 }
+
+export async function getProductManual(): Promise<string> {
+  const manualPath = path.join(PROJECT_ROOT, 'PRODUCT_MANUAL.md');
+  if (fs.existsSync(manualPath)) {
+    return fs.readFileSync(manualPath, 'utf8');
+  }
+  return '';
+}
+
+export interface RagRequest {
+  query: string;
+  investor_id?: string;
+  top_k?: number;
+  source_type?: 'rule' | 'investor_doc';
+  kind?: string;
+}
+
+export interface RagResponseItem {
+  content: string;
+  metadata: {
+    investor_id: string;
+    source: string;
+    rule_id?: string;
+    kind?: string;
+    title_hint?: string;
+  };
+  similarity_estimate: number;
+}
