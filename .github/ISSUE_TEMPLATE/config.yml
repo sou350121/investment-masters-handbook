@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 文档与协作流程（多 Agent 闭环）
+    url: https://github.com/sou350121/investment-masters-handbook/blob/main/docs/MULTI_AGENT_WORKFLOW.md
+    about: Requirement -> Issue -> PR -> Review -> Fix -> Merge 的协作说明（最小必要上下文）
+
+
+

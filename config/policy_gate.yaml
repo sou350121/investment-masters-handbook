@@ -1,0 +1,190 @@
+# Policy Gate configuration
+# - Deterministic, auditable rules (no LLM required)
+# - Handbook provides: regime/scenario routing + risk overlay guardrails
+
+version: 0.1.0
+
+# Base guardrails (absolute values).
+# NOTE: Units are intentionally generic so it can map to your own stack:
+# - leverage: gross leverage (e.g. 1.0 = 100%)
+# - cash: fraction of NAV (0.10 = 10%)
+# - max_invest: max single-name exposure (fraction of NAV)
+# - max_turnover: max turnover per day/week (fraction)
+# - max_corr: max allowed correlation proxy (0..1)
+base_guardrails:
+  max_leverage: 1.2
+  min_cash: 0.10
+  max_invest: 0.10
+  max_turnover: 0.25
+  max_corr: 0.80
+
+clamps:
+  max_leverage: { min: 0.0, max: 2.0 }
+  min_cash: { min: 0.00, max: 0.80 }
+  max_invest: { min: 0.01, max: 0.30 }
+  max_turnover: { min: 0.01, max: 1.00 }
+  max_corr: { min: 0.20, max: 0.99 }
+
+# Feature rules -> regime scoring.
+# If condition is met, add weight.
+# Supported ops: ">", ">=", "<", "<=", "=="
+# Examples of typical features:
+# - vix
+# - credit_spread_bps
+# - rate_change_3m_bps
+# - inflation_yoy
+# - breadth_pct_up (0..1)
+# - realized_vol_20d
+regimes:
+  - id: crisis
+    label: 极度恐慌 / Crisis
+    rules:
+      - { feature: vix, op: ">=", value: 40, weight: 2.0 }
+      - { feature: credit_spread_bps, op: ">=", value: 300, weight: 1.2 }
+      - { feature: realized_vol_20d, op: ">=", value: 0.40, weight: 0.6 }
+
+  - id: stagflation
+    label: 滞胀 / Stagflation
+    rules:
+      - { feature: inflation_yoy, op: ">=", value: 0.055, weight: 1.2 }
+      - { feature: vix, op: ">=", value: 20, weight: 0.6 }
+
+  - id: risk_on
+    label: 风险偏好 / Risk-On
+    rules:
+      - { feature: vix, op: "<", value: 18, weight: 1.0 }
+      - { feature: breadth_pct_up, op: ">=", value: 0.60, weight: 1.0 }
+
+  - id: risk_off
+    label: 风险规避 / Risk-Off
+    rules:
+      - { feature: vix, op: ">=", value: 25, weight: 1.2 }
+      - { feature: credit_spread_bps, op: ">=", value: 250, weight: 1.0 }
+      - { feature: realized_vol_20d, op: ">=", value: 0.35, weight: 0.8 }
+
+  - id: liquidity_tightening
+    label: 流动性收紧 / Liquidity Tightening
+    rules:
+      - { feature: rate_change_3m_bps, op: ">=", value: 75, weight: 1.0 }
+      - { feature: credit_spread_bps, op: ">=", value: 200, weight: 0.6 }
+
+  - id: inflation_shock
+    label: 通胀冲击 / Inflation Shock
+    rules:
+      - { feature: inflation_yoy, op: ">=", value: 0.04, weight: 1.0 }
+      - { feature: rate_change_3m_bps, op: ">=", value: 50, weight: 0.5 }
+
+  - id: mania
+    label: 市场狂热 / Mania
+    rules:
+      - { feature: vix, op: "<", value: 16, weight: 0.6 }
+      - { feature: breadth_pct_up, op: ">=", value: 0.75, weight: 0.8 }
+
+# Regime -> overlay multipliers (deterministic)
+# Higher risk => lower leverage / lower turnover / lower corr, higher cash
+regime_overlays:
+  neutral:
+    risk_multiplier: 1.00
+    max_leverage: 1.00
+    min_cash: 1.00
+    max_invest: 1.00
+    max_turnover: 1.00
+    max_corr: 1.00
+
+  crisis:
+    risk_multiplier: 0.55
+    max_leverage: 0.60
+    min_cash: 2.20
+    max_invest: 0.75
+    max_turnover: 0.60
+    max_corr: 0.80
+
+  stagflation:
+    risk_multiplier: 0.80
+    max_leverage: 0.85
+    min_cash: 1.30
+    max_invest: 0.75
+    max_turnover: 0.85
+    max_corr: 0.90
+
+  risk_on:
+    risk_multiplier: 1.10
+    max_leverage: 1.10
+    min_cash: 0.90
+    max_invest: 1.05
+    max_turnover: 1.10
+    max_corr: 1.00
+
+  risk_off:
+    risk_multiplier: 0.75
+    max_leverage: 0.70
+    min_cash: 1.40
+    max_invest: 0.85
+    max_turnover: 0.70
+    max_corr: 0.85
+
+  liquidity_tightening:
+    risk_multiplier: 0.85
+    max_leverage: 0.80
+    min_cash: 1.20
+    max_invest: 0.90
+    max_turnover: 0.80
+    max_corr: 0.90
+
+  inflation_shock:
+    risk_multiplier: 0.90
+    max_leverage: 0.85
+    min_cash: 1.10
+    max_invest: 0.95
+    max_turnover: 0.85
+    max_corr: 0.90
+
+  mania:
+    risk_multiplier: 0.80
+    max_leverage: 0.75
+    min_cash: 1.25
+    max_invest: 0.85
+    max_turnover: 0.65
+    max_corr: 0.85
+
+# Scenario -> overlay tweaks (optional additive multipliers)
+# If scenario detected, multiply again.
+scenario_overlays:
+  市场恐慌:
+    max_leverage: 0.80
+    min_cash: 1.25
+    max_turnover: 0.85
+    max_corr: 0.90
+
+  市场狂热:
+    max_leverage: 0.85
+    min_cash: 1.15
+    max_turnover: 0.75
+    max_corr: 0.85
+
+  流动性收紧:
+    max_leverage: 0.90
+    min_cash: 1.10
+    max_turnover: 0.90
+
+  估值泡沫:
+    max_invest: 0.90
+    max_corr: 0.90
+
+  政策与法案:
+    max_turnover: 0.95
+
+  叙事与风投:
+    max_turnover: 0.90
+    max_invest: 0.90
+
+# Portfolio-state pressure adjustments
+# When drawdown is high or leverage already high, tighten further.
+portfolio_overlays:
+  drawdown_pct:
+    - { op: ">=", value: 0.10, max_leverage: 0.85, min_cash: 1.15, max_turnover: 0.90 }
+    - { op: ">=", value: 0.20, max_leverage: 0.70, min_cash: 1.30, max_turnover: 0.80 }
+  leverage:
+    - { op: ">=", value: 1.5, max_leverage: 0.85, min_cash: 1.10 }
+
+# Default: treat missing features as neutral.

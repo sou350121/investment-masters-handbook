@@ -162,7 +162,7 @@ export default function InvestorDetail({
               </Typography>
               <Stack spacing={2}>
                 {kindRules.map(rule => (
-                  <Card key={rule.rule_id} variant="outlined">
+                  <Card key={rule.rule_id} id={`rule-${rule.rule_id}`} variant="outlined">
                     <CardContent>
                       <Box sx={{ mb: 1 }}>
                         <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}>

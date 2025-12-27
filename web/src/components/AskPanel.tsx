@@ -25,7 +25,7 @@ interface RAGResult {
   similarity_estimate: number;
 }
 
-export default function AskPanel({ investorId }: { investor_id?: string }) {
+export default function AskPanel({ investorId }: { investorId?: string }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<RAGResult[]>([]);
   const [loading, setLoading] = useState(false);

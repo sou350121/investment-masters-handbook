@@ -42,6 +42,11 @@ WIKI_TITLE_BY_ID: dict[str, str] = {
     "cliff_asness": "Cliff Asness",
     "duan_yongping": "Duan Yongping",
     "greg_abel": "Greg Abel",
+    "naval_ravikant": "Naval Ravikant",
+    "donald_trump": "Donald Trump",
+    "nancy_pelosi": "Nancy Pelosi",
+    "robert_kiyosaki": "Robert Kiyosaki",
+    "chamath_palihapitiya": "Chamath Palihapitiya",
 }
 
 # Optional: try Chinese Wikipedia for CN investors (or when en has no images).
@@ -211,3 +216,9 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+

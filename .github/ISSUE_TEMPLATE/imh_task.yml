@@ -1,0 +1,124 @@
+name: IMH Task（Spec -> PR -> Review）
+description: Requirement Agent 用于产出“最小必要上下文”的可执行 Issue（便于 Coder/Reviewer 闭环协作）
+title: "[IMH] <简短标题>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 说明
+        - **Coder Agent**：只实现本 Issue 定义的范围（禁止“顺手重构”）。
+        - **Reviewer Agent**：Review 意见必须 **inline comment** 或附带 **文件路径:行号** 精确定位。
+        - **最小必要上下文**：不要要求 Coder/Reviewer 去“猜你想要什么”；把验收标准、边界、依赖写清楚。
+
+  - type: input
+    id: task_id
+    attributes:
+      label: Task ID（可选）
+      description: 如果你在 docs/tasks 里有编号，可填写如 IMH-TASK-001
+      placeholder: IMH-TASK-001
+    validations:
+      required: false
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目标（Goal）
+      description: 一句话 + 1-3 条补充，明确“要解决什么问题”
+      placeholder: |
+        在 IMH 系统中引入 XXX 能力，解决 YYY 痛点，并能通过 ZZZ 方式验证。
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 范围（Scope）
+      description: 明确 In-scope / Out-of-scope（Reviewer 以此做 Scope Check）
+      value: |
+        **In-scope**
+        - 
+
+        **Out-of-scope**
+        - 
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec
+    attributes:
+      label: 详细规格（Spec）
+      description: 建议按“数据/后端 API/前端 UI/兼容性/错误处理/日志溯源”分段写
+      placeholder: |
+        ### A. 数据/配置
+        - 文件：path/to/file
+        - 结构示例：...
+
+        ### B. 后端 API
+        - GET /xxx：...
+        - POST /yyy：...
+
+        ### C. 前端 UI
+        - 组件：...
+        - 交互：...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收标准（DoD）
+      description: 使用 checklist，写可验证的结果（而不是“实现某某功能”）
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: 限制与不变量（Constraints）
+      description: 明确不能改什么、必须保持什么行为/风格/兼容性
+      placeholder: |
+        - 不要修改 RAG 核心逻辑
+        - 保持前端 Material UI 风格一致
+        - 不引入新依赖（除非明确批准）
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 依赖关系（Dependencies）
+      description: 需要先完成的 Issue/PR、外部资源、配置等
+      placeholder: |
+        - Depends on: #123
+        - Blocks: #456
+    validations:
+      required: false
+
+  - type: textarea
+    id: test_plan
+    attributes:
+      label: 运行/验证方式（Test Plan / Runbook）
+      description: Coder 应在 PR 里复述并给出实际运行命令与结果
+      placeholder: |
+        - 运行：python scripts/xxx.py
+        - 手动验证：打开 web 页面，点击...
+        - 预期输出：...
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 参考资料/链接（可选）
+      description: 相关文档、代码入口、截图等（避免要求对方自己搜）
+      placeholder: |
+        - docs/xxx.md
+        - 相关代码：path/to/file
+    validations:
+      required: false
+
+

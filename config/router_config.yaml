@@ -89,7 +89,7 @@ keyword_patterns:
     investors: [james_simons, ed_thorp]
     prompts: [crypto_trader]
     weight: 0.95
-  
+
   # AI500 量化交易（NOFX 专用）
   ai500:
     pattern: "AI500|ai500|NOFX|nofx|OI排名|持仓量|K线量化|爆拉|做局|拉盘"

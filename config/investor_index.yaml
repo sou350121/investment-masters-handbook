@@ -683,6 +683,341 @@ investors:
       - 监管行业
     related_doc: greg_abel.md
 
+  # ----- 硅谷/杠杆与天使投资派 -----
+  - id: naval_ravikant
+    full_name: Naval Ravikant
+    chinese_name: 纳瓦尔·拉维康特
+    nationality: 美国
+    intro_zh: 硅谷知名天使投资人、AngelList 创始人。强调财富积累而非单纯赚钱，主张通过杠杆（代码、媒体、资本、劳动力）与特定知识实现产品化自我。
+    fund: AngelList / AirChat
+    aum: "N/A (Angel)"
+    active_years: "2007-present"
+    style:
+      - angel_investing
+      - leverage_focus
+      - specific_knowledge
+      - productize_yourself
+    best_for:
+      - wealth_building_strategy
+      - career_planning
+      - mental_models
+      - startup_angel_investing
+    key_concepts:
+      - leverage (杠杆：代码/媒体/资本)
+      - specific_knowledge (特定知识)
+      - productize_yourself (产品化自我)
+      - accountability (问责制)
+      - judgement (判断力)
+    market_conditions:
+      all_conditions: high
+    decision_weight:
+      stock_pick: 0.3
+      macro_timing: 0.1
+      risk_check: 0.6
+      portfolio: 0.5
+    tags_zh:
+      - 杠杆
+      - 特定知识
+      - 复利
+      - 所有权
+      - 幸福哲学
+    related_doc: naval_ravikant.md
+
+  # ----- 交易艺术与地产/谈判派 -----
+  - id: donald_trump
+    full_name: Donald Trump
+    chinese_name: 唐纳德·特朗普
+    nationality: 美国
+    intro_zh: 特朗普集团负责人。强调“交易的艺术”、品牌杠杆、高杠杆经营与地产周期判断，擅长通过宏观叙事与极致谈判创造商业价值。
+    fund: The Trump Organization
+    aum: "N/A"
+    active_years: "1968-present"
+    style:
+      - real_estate_focus
+      - brand_leverage
+      - aggressive_negotiation
+      - cycle_timing
+    best_for:
+      - real_estate_valuation
+      - business_negotiation
+      - macro_narrative
+      - leverage_strategy
+    key_concepts:
+      - art_of_the_deal (交易的艺术)
+      - brand_premium (品牌溢价)
+      - opm (利用他人的钱)
+      - think_big (想大一点)
+    market_conditions:
+      bullish: high
+      bearish: neutral
+      expansion: critical
+    decision_weight:
+      stock_pick: 0.2
+      macro_timing: 0.6
+      risk_check: 0.4
+      portfolio: 0.3
+    tags_zh:
+      - 地产
+      - 谈判
+      - 品牌溢价
+      - 杠杆
+      - 周期
+    related_doc: donald_trump.md
+
+  # ----- 政策驱动与公开披露派 -----
+  - id: nancy_pelosi
+    full_name: Nancy Pelosi
+    chinese_name: 南希·佩洛西
+    nationality: 美国
+    intro_zh: 美国资深政治家。其家族投资风格被视为“政策驱动型”代表，擅长捕捉科技/半导体等领域的法案红利，常利用远期期权进行博弈。
+    fund: N/A (Public Disclosure)
+    aum: "N/A"
+    active_years: "1987-present"
+    style:
+      - policy_driven
+      - event_driven
+      - call_options_strategy
+      - sector_focus
+    best_for:
+      - policy_impact_analysis
+      - sector_rotation
+      - regulatory_risk_assessment
+      - disclosure_tracking
+    key_concepts:
+      - stock_act (披露法案)
+      - policy_tailwinds (政策顺风)
+      - leaps (远期期权)
+      - sector_legislation (行业立法)
+    market_conditions:
+      all_conditions: high
+    decision_weight:
+      stock_pick: 0.6
+      macro_timing: 0.5
+      risk_check: 0.3
+      portfolio: 0.4
+    tags_zh:
+      - 政策驱动
+      - 期权
+      - 公开披露
+      - 科技巨头
+      - 立法红利
+    related_doc: nancy_pelosi.md
+
+  # ----- 财商与现金流网红派 -----
+  - id: robert_kiyosaki
+    full_name: Robert Kiyosaki
+    chinese_name: 罗伯特·清崎
+    nationality: 美国
+    intro_zh: 《富爸爸穷爸爸》作者。强调“现金流象限”、资产与负债的将会定义，推崇通过硬资产（金、银、比特币）对冲通胀，是大众财商教育的代表人物。
+    fund: Rich Dad Company
+    aum: "N/A"
+    active_years: "1997-present"
+    style:
+      - financial_education
+      - cash_flow_focus
+      - hard_assets_advocate
+    best_for:
+      - personal_finance_structuring
+      - inflation_hedging
+      - cash_flow_analysis
+    key_concepts:
+      - cash_flow (现金流)
+      - assets_vs_liabilities (资产vs负债)
+      - savers_are_losers (储蓄者是输家)
+      - esbi_quadrant (ESBI象限)
+    market_conditions:
+      bullish: neutral
+      bearish: high
+      high_inflation: critical
+    decision_weight:
+      stock_pick: 0.1
+      macro_timing: 0.5
+      risk_check: 0.7
+      portfolio: 0.4
+    tags_zh:
+      - 财商
+      - 现金流
+      - 硬资产
+      - 通胀对冲
+    related_doc: robert_kiyosaki.md
+
+  # ----- 风投叙事与公共市场派 -----
+  - id: chamath_palihapitiya
+    full_name: Chamath Palihapitiya
+    chinese_name: 查马斯·帕里哈皮蒂亚
+    nationality: 加拿大/美国
+    intro_zh: Social Capital 创始人。擅长捕捉科技趋势与“叙事驱动”投资，通过播客等舆论杠杆影响市场，风格极具攻击性且侧重跨周期的大规模下注。
+    fund: Social Capital
+    aum: "N/A"
+    active_years: "2011-present"
+    style:
+      - venture_capital_mindset
+      - narrative_driven
+      - reflexivity_play
+    best_for:
+      - tech_trend_identification
+      - narrative_analysis
+      - public_market_catalyst_trading
+    key_concepts:
+      - market_narrative (市场叙事)
+      - reflexivity (反身性)
+      - asymmetric_bet (非对称下注)
+      - technology_compounding (技术复利)
+    market_conditions:
+      bullish: high
+      bearish: neutral
+      low_rates: critical
+    decision_weight:
+      stock_pick: 0.5
+      macro_timing: 0.4
+      risk_check: 0.3
+      portfolio: 0.6
+    tags_zh:
+      - 叙事驱动
+      - 科技趋势
+      - 风投思维
+      - 舆论杠杆
+    related_doc: chamath_palihapitiya.md
+
+  - id: nassim_taleb
+    full_name: Nassim Nicholas Taleb
+    chinese_name: 纳西姆·尼古拉斯·塔勒布
+    nationality: 美国/黎巴嫩
+    intro_zh: 《黑天鹅》、《反脆弱》作者。主张通过杠杆策略（Barbell Strategy）在保护资本的同时，利用尾部风险获取指数级收益。
+    fund: Universa Investments (Advisor)
+    aum: "N/A"
+    active_years: "1980s-present"
+    style:
+      - black_swan_hedging
+      - antifragile
+      - barbell_strategy
+      - convexity_focus
+    best_for:
+      - tail_risk_management
+      - extreme_volatility
+      - uncertainty_navigation
+    key_concepts:
+      - black_swan (黑天鹅)
+      - antifragile (反脆弱)
+      - barbell_strategy (杠杆策略)
+      - convexity (凸性)
+    market_conditions:
+      high_volatility: critical
+      crisis: critical
+      bubble: high
+    decision_weight:
+      stock_pick: 0.2
+      macro_timing: 0.6
+      risk_check: 0.95
+      portfolio: 0.9
+    tags_zh:
+      - 黑天鹅
+      - 反脆弱
+      - 杠杆策略
+      - 凸性
+    related_doc: nassim_taleb.md
+
+  - id: cathie_wood
+    full_name: Cathie Wood
+    chinese_name: 凯瑟琳·伍德（木头姐）
+    nationality: 美国
+    intro_zh: 方舟投资 (ARK Invest) 创始人。聚焦人工智能、基因组学等颠覆性创新，主张跨行业研究并坚持 5 年投资视野。
+    fund: ARK Invest
+    aum: "$10B+"
+    active_years: "2014-present"
+    style:
+      - disruptive_innovation
+      - hyper_growth
+      - thematic_investing
+    best_for:
+      - tech_trend_betting
+      - exponential_growth_analysis
+    key_concepts:
+      - disruptive_innovation (颠覆性创新)
+      - five_year_horizon (五年视野)
+      - wrights_law (赖茨定律)
+    market_conditions:
+      bullish: high
+      low_rates: critical
+    decision_weight:
+      stock_pick: 0.9
+      macro_timing: 0.2
+      risk_check: 0.2
+      portfolio: 0.5
+    tags_zh:
+      - 颠覆性创新
+      - 科技风口
+      - 指数级增长
+    related_doc: cathie_wood.md
+
+  - id: bill_ackman
+    full_name: Bill Ackman
+    chinese_name: 比尔·阿克曼
+    nationality: 美国
+    intro_zh: 潘兴广场资本创始人。激进投资者，擅长寻找“简单的”好生意，或在宏观极端不平衡时通过信用衍生品进行巨额对冲。
+    fund: Pershing Square Capital Management
+    aum: "$15B+"
+    active_years: "1992-present"
+    style:
+      - activist_investing
+      - concentrated_value
+      - asymmetric_hedging
+    best_for:
+      - high_quality_business_selection
+      - tail_risk_hedging
+      - activist_plays
+    key_concepts:
+      - shareholder_activism (股东行动主义)
+      - simple_business (简单生意)
+      - asymmetric_hedge (非对称对冲)
+    market_conditions:
+      crisis: critical
+      overvaluation: high
+    decision_weight:
+      stock_pick: 0.8
+      macro_timing: 0.7
+      risk_check: 0.8
+      portfolio: 0.6
+    tags_zh:
+      - 激进投资
+      - 信用对冲
+      - 简单生意
+    related_doc: bill_ackman.md
+
+  - id: joel_greenblatt
+    full_name: Joel Greenblatt
+    chinese_name: 乔尔·格林布拉特
+    nationality: 美国
+    intro_zh: 哥谭资本创始人，“神奇公式”提出者。主张通过资本回报率 ROIC 和盈余收益率筛选“物美价廉”的股票。
+    fund: Gotham Capital
+    aum: "$10B+"
+    active_years: "1985-present"
+    style:
+      - magic_formula_investing
+      - value_quantitative
+      - special_situations
+    best_for:
+      - quantitative_value_selection
+      - spinoff_arbitrage
+    key_concepts:
+      - magic_formula (神奇公式)
+      - roic (资本回报率)
+      - earnings_yield (盈余收益率)
+      - spinoff (分拆上市)
+    market_conditions:
+      panic: critical
+      neutral: high
+    decision_weight:
+      stock_pick: 0.95
+      macro_timing: 0.1
+      risk_check: 0.6
+      portfolio: 0.7
+    tags_zh:
+      - 神奇公式
+      - ROIC
+      - 特殊情况
+    related_doc: joel_greenblatt.md
+
 # ============================================
 # 决策矩阵 (Decision Matrix)
 # ============================================
@@ -691,13 +1026,13 @@ decision_matrix:
   # 选股决策
   stock_selection:
     护城河评估:
-      primary: [warren_buffett, charlie_munger]
+      primary: [warren_buffett, charlie_munger, bill_ackman]
       secondary: [seth_klarman]
     成长股估值:
-      primary: [peter_lynch]
+      primary: [peter_lynch, cathie_wood]
       secondary: [warren_buffett]
     深度价值:
-      primary: [seth_klarman, michael_burry]
+      primary: [seth_klarman, michael_burry, joel_greenblatt]
       secondary: [warren_buffett]
     困境/冷门:
       primary: [seth_klarman, michael_burry]
@@ -708,12 +1043,24 @@ decision_matrix:
     公用事业/基建:
       primary: [greg_abel]
       secondary: [warren_buffett]
+    地产/地标资产:
+      primary: [donald_trump]
+      secondary: [seth_klarman]
 
   # 宏观/择时
   macro_timing:
     经济周期定位:
       primary: [ray_dalio]
       secondary: [howard_marks, stanley_druckenmiller]
+    政策/法案驱动:
+      primary: [nancy_pelosi, george_soros]
+      secondary: [stanley_druckenmiller, chamath_palihapitiya]
+    叙事与趋势辨识:
+      primary: [chamath_palihapitiya, stanley_druckenmiller]
+      secondary: [george_soros, naval_ravikant]
+    通胀/贬值对冲:
+      primary: [ray_dalio, robert_kiyosaki]
+      secondary: [stanley_druckenmiller]
     流动性趋势:
       primary: [stanley_druckenmiller]
       secondary: [ray_dalio]
@@ -736,8 +1083,8 @@ decision_matrix:
       primary: [howard_marks]
       secondary: [ray_dalio]
     极端风险/泡沫:
-      primary: [michael_burry, charlie_munger]
-      secondary: [howard_marks]
+      primary: [michael_burry, charlie_munger, nassim_taleb]
+      secondary: [howard_marks, bill_ackman]
     决策质量:
       primary: [charlie_munger]
       secondary: [warren_buffett]
@@ -757,10 +1104,13 @@ decision_matrix:
       concentrated: [warren_buffett, stanley_druckenmiller]
       diversified: [ray_dalio]
     现金比例:
-      primary: [seth_klarman, howard_marks]
+      primary: [seth_klarman, howard_marks, nassim_taleb]
       secondary: [warren_buffett]
     仓位管理:
       primary: [stanley_druckenmiller]
+      secondary: [george_soros]
+    杠杆/再融资策略:
+      primary: [donald_trump]
       secondary: [george_soros]
 
   # 特殊策略
@@ -775,12 +1125,33 @@ decision_matrix:
       primary: [carl_icahn]
     做空泡沫:
       primary: [michael_burry, george_soros]
+    创业/早期投资:
+      primary: [naval_ravikant]
+      secondary: [charlie_munger, duan_yongping]
+    个人杠杆/职业规划:
+      primary: [naval_ravikant]
+      secondary: [charlie_munger]
+    财富积累框架:
+      primary: [naval_ravikant, robert_kiyosaki]
+      secondary: [warren_buffett, charlie_munger, ray_dalio]
+    谈判与交易:
+      primary: [donald_trump, carl_icahn]
+    政策/披露追踪:
+      primary: [nancy_pelosi]
+    期权策略:
+      primary: [nancy_pelosi, ed_thorp]
+    科技/风投视角:
+      primary: [chamath_palihapitiya, naval_ravikant]
+    财商/个人财务:
+      primary: [robert_kiyosaki]
     量化策略:
       primary: [james_simons]
     波动率交易:
       primary: [michael_burry]
     宏观对冲:
-      primary: [george_soros, stanley_druckenmiller]
+      primary: [george_soros, stanley_druckenmiller, bill_ackman]
+    尾部风险对冲:
+      primary: [nassim_taleb, bill_ackman]
 
 # ============================================
 # 情境路由 (Scenario Routing)
@@ -788,11 +1159,11 @@ decision_matrix:
 scenario_routing:
 
   市场恐慌:
-    consult_order: [howard_marks, seth_klarman, warren_buffett, stanley_druckenmiller]
+    consult_order: [nassim_taleb, howard_marks, bill_ackman, seth_klarman, joel_greenblatt]
     key_questions:
-      - "这是流动性危机还是偿付危机？"
-      - "央行有救市意愿和能力吗？"
-      - "哪些资产被无差别抛售？"
+      - "我的脆弱性暴露在哪里？"
+      - "尾部保险现在贵吗？"
+      - "这是不是神奇公式捡钱的机会？"
 
   市场狂热:
     consult_order: [charlie_munger, howard_marks, michael_burry, seth_klarman]
@@ -823,11 +1194,53 @@ scenario_routing:
       - "TGA、RRP 的影响？"
 
   估值泡沫:
-    consult_order: [charlie_munger, michael_burry, howard_marks, george_soros]
+    consult_order: [michael_burry, nassim_taleb, charlie_munger, bill_ackman, cathie_wood]
     key_questions:
       - "估值需要'信仰'吗？"
       - "反身性在哪个阶段？"
       - "泡沫破裂的催化剂是什么？"
+
+  创业与产品化:
+    consult_order: [naval_ravikant, charlie_munger, duan_yongping]
+    key_questions:
+      - "这符合我的特定知识吗？"
+      - "我是否利用了零边际成本的杠杆？"
+      - "这是一个长期游戏吗？"
+
+  个人财富框架:
+    consult_order: [naval_ravikant, charlie_munger, ray_dalio, warren_buffett]
+    key_questions:
+      - "我是否拥有所有权（股权）？"
+      - "我的判断力如何转化为财富？"
+      - "我是否正在产品化自我？"
+
+  政策与法案博弈:
+    consult_order: [nancy_pelosi, george_soros, stanley_druckenmiller]
+    key_questions:
+      - "近期有关键行业立法吗？"
+      - "公开披露显示了什么趋势？"
+      - "政策不确定性是否已定价？"
+
+  地产与杠杆交易:
+    consult_order: [donald_trump, seth_klarman, howard_marks]
+    key_questions:
+      - "地段是否具有不可复制性？"
+      - "我能制造谈判筹码吗？"
+      - "品牌能创造多少溢价？"
+
+  高通胀/法币危机:
+    consult_order: [robert_kiyosaki, ray_dalio, stanley_druckenmiller]
+    key_questions:
+      - "这是好债还是坏债？"
+      - "实际利率是负的吗？"
+      - "我持有足够的硬资产吗？"
+
+  叙事与科技风口:
+    consult_order: [chamath_palihapitiya, naval_ravikant, stanley_druckenmiller]
+    key_questions:
+      - "这个叙事的规模有多大？"
+      - "是否存在反身性？"
+      - "这是长期博弈吗？"
 
 # ============================================
 # 快速查询映射
@@ -835,16 +1248,150 @@ scenario_routing:
 quick_lookup:
 
   by_question:
-    "这个股票值得买吗": [warren_buffett, charlie_munger, peter_lynch]
-    "现在该加仓还是减仓": [howard_marks, stanley_druckenmiller]
-    "市场是不是泡沫": [charlie_munger, michael_burry, howard_marks]
-    "该持有多少现金": [seth_klarman, howard_marks, warren_buffett]
-    "周期在哪个位置": [ray_dalio, howard_marks]
-    "流动性怎么样": [stanley_druckenmiller]
-    "我的决策有偏误吗": [charlie_munger]
-    "该如何做资产配置": [ray_dalio]
-    "这是价值陷阱吗": [charlie_munger, seth_klarman]
-    "该不该止损": [george_soros, stanley_druckenmiller]
+    # ===== stock_selection / 选股决策 =====
+    "护城河怎么评估？": [warren_buffett, charlie_munger, seth_klarman]
+    "这家公司有没有定价权？": [warren_buffett, charlie_munger]
+    "竞争加剧会不会伤到它？": [warren_buffett, charlie_munger]
+    "商业模式到底强不强？": [warren_buffett, charlie_munger]
+    "这是不是我能力圈内的生意？": [warren_buffett, charlie_munger]
+    "成长股现在贵不贵？": [peter_lynch, warren_buffett]
+    "PEG 多少算合理？": [peter_lynch]
+    "增速放缓会不会爆雷？": [peter_lynch, charlie_munger]
+    "这家公司是不是十倍股潜力？": [peter_lynch]
+    "我到底懂不懂自己买的成长股？": [peter_lynch, warren_buffett]
+    "现在是不是安全边际足够？": [seth_klarman, warren_buffett]
+    "这算被错杀吗？": [seth_klarman, michael_burry]
+    "内在价值怎么保守估？": [warren_buffett, seth_klarman]
+    "折价这么大合理吗？": [seth_klarman, michael_burry]
+    "有没有催化剂让它回归价值？": [seth_klarman, howard_marks]
+    "困境资产能不能捡漏？": [seth_klarman, howard_marks, michael_burry]
+    "被迫抛售是不是机会？": [seth_klarman, howard_marks]
+    "这家公司会不会直接倒闭？": [seth_klarman, michael_burry]
+    "违约风险怎么判断？": [howard_marks, seth_klarman]
+    "现在是恐慌底吗？": [howard_marks, seth_klarman]
+    "这是价值陷阱吗？": [charlie_munger, seth_klarman, warren_buffett]
+    "便宜是不是因为它烂了？": [charlie_munger, seth_klarman]
+    "管理层激励有没有坑？": [charlie_munger]
+    "这家公司有没有会计幻觉？": [charlie_munger, michael_burry]
+    "我是不是在自欺欺人？": [charlie_munger]
+    "黑天鹅风险怎么对冲？": [nassim_taleb, bill_ackman]
+    "怎么建立反脆弱组合？": [nassim_taleb]
+    "神奇公式怎么选股？": [joel_greenblatt]
+    "分拆上市有没有捡漏机会？": [joel_greenblatt, peter_lynch]
+    "颠覆性创新怎么估值？": [cathie_wood]
+    "5年后的技术趋势在哪里？": [cathie_wood, naval_ravikant]
+    "激进投资怎么释放价值？": [bill_ackman, carl_icahn]
+    "公用事业怎么估值？": [greg_abel, warren_buffett]
+    "受监管行业回报怎么看？": [greg_abel]
+    "利率变化会怎么影响它？": [greg_abel, ray_dalio]
+    "基建类资产适合长期持有吗？": [greg_abel, warren_buffett]
+    "这类资产的护城河是什么？": [greg_abel, warren_buffett]
+    "地产周期现在在哪？": [donald_trump, howard_marks]
+    "我怎么谈判拿到最好条款？": [donald_trump]
+    "怎么制造谈判筹码？": [donald_trump]
+    "这块地段值不值？": [donald_trump, seth_klarman]
+    "再融资能不能把回报做出来？": [donald_trump, george_soros]
+
+    # ===== macro_timing / 宏观择时 =====
+    "现在处在经济周期哪个阶段？": [ray_dalio, howard_marks, stanley_druckenmiller]
+    "增长和通胀怎么组合判断？": [ray_dalio]
+    "债务周期在什么位置？": [ray_dalio, howard_marks]
+    "衰退来了该怎么准备？": [ray_dalio, howard_marks]
+    "滞胀环境该买什么？": [ray_dalio, robert_kiyosaki]
+    "最近有什么法案会影响股市？": [nancy_pelosi, george_soros, stanley_druckenmiller]
+    "行业补贴会利好哪些公司？": [nancy_pelosi, chamath_palihapitiya]
+    "监管变严会先伤谁？": [nancy_pelosi, george_soros]
+    "政策不确定性怎么定价？": [nancy_pelosi, george_soros]
+    "怎么跟踪政策与披露线索？": [nancy_pelosi]
+    "现在市场在炒什么叙事？": [chamath_palihapitiya, stanley_druckenmiller]
+    "这波趋势在早期还是末期？": [chamath_palihapitiya, george_soros]
+    "什么是反身性？": [george_soros, chamath_palihapitiya]
+    "叙事驱动投资怎么做？": [chamath_palihapitiya]
+    "如何判断科技风口真假？": [chamath_palihapitiya, naval_ravikant]
+    "通胀会不会继续上升？": [ray_dalio, robert_kiyosaki]
+    "黄金能不能抗通胀？": [robert_kiyosaki, ray_dalio]
+    "法币贬值该怎么对冲？": [robert_kiyosaki, ray_dalio]
+    "实际利率为负意味着什么？": [ray_dalio, stanley_druckenmiller]
+    "印钞环境适合配置什么？": [ray_dalio, robert_kiyosaki]
+    "流动性在收紧还是放松？": [stanley_druckenmiller, ray_dalio]
+    "缩表会怎么影响市场？": [stanley_druckenmiller, ray_dalio]
+    "净流动性怎么看？": [stanley_druckenmiller]
+    "现在是 risk-on 还是 risk-off？": [stanley_druckenmiller, howard_marks]
+    "为什么市场涨跌跟流动性有关？": [stanley_druckenmiller]
+    "美元走强会发生什么？": [george_soros, stanley_druckenmiller]
+    "汇率风险怎么评估？": [george_soros]
+    "货币危机有什么信号？": [george_soros, ray_dalio]
+    "强美元对新兴市场影响？": [george_soros, ray_dalio]
+    "政策分化怎么交易？": [george_soros, stanley_druckenmiller]
+    "加息周期到头了吗？": [stanley_druckenmiller, ray_dalio]
+    "降息是预防式还是衰退式？": [stanley_druckenmiller, howard_marks]
+    "利率拐点怎么确认？": [stanley_druckenmiller]
+    "利率上行谁最受伤？": [stanley_druckenmiller, ray_dalio]
+    "利率下行谁最受益？": [ray_dalio, stanley_druckenmiller]
+    "美联储下一步怎么走？": [stanley_druckenmiller, ray_dalio]
+    "点阵图和会议纪要怎么解读？": [stanley_druckenmiller]
+    "CPI 数据出来该怎么看？": [stanley_druckenmiller, ray_dalio]
+    "Fed 转向对市场意味着什么？": [stanley_druckenmiller, ray_dalio]
+    "为什么政策预期比事实更重要？": [stanley_druckenmiller]
+
+    # ===== risk_check / 风险检查 =====
+    "我是不是在 FOMO？": [charlie_munger]
+    "我是不是确认偏误？": [charlie_munger]
+    "我是不是过度自信？": [charlie_munger]
+    "怎么用清单避免低级错误？": [charlie_munger]
+    "我现在是在玩地位游戏吗？": [charlie_munger, naval_ravikant]
+    "现在风险溢价高不高？": [howard_marks, ray_dalio]
+    "现在该进攻还是防守？": [howard_marks, stanley_druckenmiller]
+    "市场在恐慌还是狂热？": [howard_marks, charlie_munger]
+    "信用在扩张还是收缩？": [howard_marks, ray_dalio]
+    "周期高位该怎么降风险？": [howard_marks]
+    "这是不是泡沫？": [michael_burry, charlie_munger, howard_marks]
+    "估值是不是脱离现实？": [michael_burry, charlie_munger]
+    "系统性风险在累积吗？": [michael_burry, howard_marks]
+    "如果崩盘谁会先死？": [michael_burry, george_soros]
+    "我该怎么识别黑天鹅脆弱点？": [michael_burry, charlie_munger]
+    "我的决策过程靠谱吗？": [charlie_munger, warren_buffett]
+    "信息是否足够，逻辑是否自洽？": [charlie_munger]
+    "我是不是在做看起来聪明但危险的事？": [charlie_munger]
+    "怎么把决策系统化可复盘？": [charlie_munger, ray_dalio]
+    "我到底懂不懂我在买什么？": [warren_buffett, charlie_munger]
+    "要不要止损？": [george_soros, stanley_druckenmiller]
+    "止损点怎么设？": [george_soros, stanley_druckenmiller]
+    "这是逻辑错了还是波动噪声？": [george_soros, howard_marks]
+    "越跌越加仓对吗？": [george_soros, charlie_munger]
+    "怎么先活下来再赚钱？": [george_soros, seth_klarman]
+
+    # ===== portfolio / 组合配置 =====
+    "我该怎么做大类资产配置？": [ray_dalio, howard_marks]
+    "股债黄金现金怎么配？": [ray_dalio, howard_marks]
+    "不同象限下该偏哪类资产？": [ray_dalio]
+    "怎么做压力测试？": [ray_dalio, howard_marks]
+    "配置的目标是收益还是生存？": [howard_marks, ray_dalio]
+    "什么是风险平价？": [ray_dalio]
+    "怎么按风险而不是金额配置？": [ray_dalio]
+    "风险预算怎么做？": [ray_dalio]
+    "什么时候需要再平衡？": [ray_dalio]
+    "为什么 60/40 可能不够分散？": [ray_dalio]
+    "我应该集中下注还是分散？": [warren_buffett, ray_dalio]
+    "集中下注靠什么支撑？": [warren_buffett, stanley_druckenmiller]
+    "分散到多少才有意义？": [ray_dalio]
+    "相关性上升怎么办？": [ray_dalio, howard_marks]
+    "我是不是分散成了指数？": [warren_buffett, charlie_munger]
+    "我该留多少现金？": [seth_klarman, howard_marks, warren_buffett]
+    "现在要不要提高现金仓位？": [howard_marks, seth_klarman]
+    "现金是机会成本还是安全垫？": [seth_klarman, howard_marks]
+    "什么时候现金是王？": [howard_marks, ray_dalio]
+    "恐慌期现金怎么用？": [seth_klarman, warren_buffett]
+    "仓位怎么配？": [stanley_druckenmiller, george_soros]
+    "确信度怎么映射仓位？": [stanley_druckenmiller]
+    "最大回撤怎么控制？": [stanley_druckenmiller, george_soros]
+    "什么时候该加仓或减仓？": [stanley_druckenmiller]
+    "怎么避免一次错误毁掉组合？": [george_soros, stanley_druckenmiller]
+    "我该不该用杠杆？": [donald_trump, george_soros]
+    "杠杆用多少不致命？": [george_soros, howard_marks]
+    "再融资怎么把回报放大？": [donald_trump]
+    "怎么避免现金流断裂爆仓？": [donald_trump, seth_klarman]
+    "负债结构怎么设计更安全？": [donald_trump, howard_marks]
 
   by_metric:
     PEG: peter_lynch
@@ -854,4 +1401,7 @@ quick_lookup:
     信用利差: howard_marks
     VIX: michael_burry
     债务周期: ray_dalio
+    神奇公式: joel_greenblatt
+    尾部风险: nassim_taleb
+    创新溢价: cathie_wood
 
