@@ -20,6 +20,7 @@
 - [核心能力](#-核心能力)
 - [Web UI / API](#-web-ui--api)
 - [大师深度会诊（一级输出/二级输出）](#-大师深度会诊一级输出二级输出)
+- [回测引擎（双周 LLM In-loop）](#-回测引擎双周-llm-in-loop)
 - [投资大师速览](#-投资大师速览)
 - [项目结构](#-项目结构)
 - [工具与常用命令](#-工具与常用命令)
@@ -94,6 +95,18 @@ curl -sL "https://raw.githubusercontent.com/sou350121/investment-masters-handboo
 - **二级输出 (`secondary`)**：原始辩论与证据链（experts/opinions/citations/ensemble_adjustment/metadata）
 
 > Web UI 会优先展示一级输出，二级输出可展开查看溯源。
+
+---
+
+## 📈 回测引擎（双周 LLM In-loop）
+
+新增双周（10 交易日）回测框架，支持“LLM 委员会”与“量化策略信号”的 A/B 对照：
+
+- **Mode A**：将历史新闻摘要喂给 LLM 委员会决定配比。
+- **Mode B**：根据风险偏好（risk_bias）自动映射配比。
+- **缓存机制**：自动持久化 LLM 输出，支持 `--resume` 断点重跑，节省 API 成本。
+
+详细使用说明请参考：[`guides/backtest_guide.md`](guides/backtest_guide.md)
 
 ---
 

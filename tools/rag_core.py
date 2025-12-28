@@ -7,6 +7,105 @@ import json
 import re
 
 from tools.reasoning_core import get_master_personality, get_personality_description
+from tools.llm_bridge import LLMBridge, extract_json_block
+from pydantic import BaseModel
+
+# ---------------- Master Reasoning Board (Ensemble) Schemas ----------------
+class CitationItem(BaseModel):
+    id: int
+    expert: Optional[str] = None
+    source: Optional[str] = None
+    rule_id: Optional[str] = None
+    kind: Optional[str] = None
+    title_hint: Optional[str] = None
+
+
+class ExpertOpinion(BaseModel):
+    expert: str
+    summary: str
+    impact: Optional[float] = None
+    confidence: Optional[float] = None
+    citations: List[int] = []
+
+
+class EnsembleAdjustment(BaseModel):
+    final_multiplier_offset: float
+    primary_expert: str
+    conflict_detected: bool
+    resolution: str
+    contributions: Optional[List[Dict[str, Any]]] = None
+
+
+class EnsembleResponse(BaseModel):
+    experts: List[str]
+    expert_opinions: List[ExpertOpinion]
+    consensus: str
+    conflicts: str
+    synthesis: str
+    citations: List[CitationItem]
+    ensemble_adjustment: EnsembleAdjustment
+    metadata: Dict[str, Any] = {}
+
+
+class AllocationBuckets(BaseModel):
+    stocks: int
+    bonds: int
+    gold: int
+    cash: int
+
+
+class PrimaryAllocation(BaseModel):
+    target_allocation: AllocationBuckets
+    one_liner: str
+    confidence: float
+
+
+class TieredEnsembleResponse(BaseModel):
+    primary: PrimaryAllocation
+    secondary: EnsembleResponse
+
+
+def _normalize_target_allocation(raw: Any) -> Dict[str, int]:
+    """
+    Ensure we always return a valid allocation:
+    - keys: stocks/bonds/gold/cash
+    - each 0..100 integer
+    - sum == 100 (best-effort rebalance)
+    """
+    base = {"stocks": 60, "bonds": 20, "gold": 10, "cash": 10}
+
+    if not isinstance(raw, dict):
+        return base
+
+    out: Dict[str, int] = {}
+    for k in ("stocks", "bonds", "gold", "cash"):
+        v = raw.get(k, base[k])
+        try:
+            iv = int(round(float(v)))
+        except Exception:
+            iv = int(base[k])
+        iv = max(0, min(100, iv))
+        out[k] = iv
+
+    s = sum(out.values())
+    if s == 100:
+        return out
+    if s <= 0:
+        return base
+
+    # Proportional normalization to 100 with integer rounding.
+    scaled = {k: int(round(out[k] * 100.0 / s)) for k in out}
+    # Fix rounding drift by adjusting the largest bucket.
+    drift = 100 - sum(scaled.values())
+    if drift != 0:
+        kmax = max(scaled.keys(), key=lambda k: scaled[k])
+        scaled[kmax] = max(0, min(100, scaled[kmax] + drift))
+    # As a final guard, if still off due to clipping, fall back to base.
+    if sum(scaled.values()) != 100:
+        return base
+    return scaled
+
+
 # 项目根目录
 PROJECT_ROOT = Path(__file__).parent.parent
 
@@ -213,6 +312,7 @@ def ensemble_reasoning(
     if vectorstore is None:
         raise ValueError("vectorstore is None")
 
+    from tools.rag_core import query_vectorstore  # Ensure available
     hits = query_vectorstore(vectorstore, query, k=int(top_n_rules or 20), filter_dict={"source_type": "rule"})
     hits = rerank_hits(hits, query=query)
 
@@ -229,6 +329,159 @@ def ensemble_reasoning(
         )
 
     return {"experts": experts, "rule_hits": rule_hits}
+
+
+def run_ensemble_committee(
+    vectorstore: Any,
+    query: str,
+    bridge: Optional[LLMBridge] = None,
+    top_n_rules: int = 20,
+    top_k_experts: int = 3,
+) -> Dict[str, Any]:
+    """
+    Complete ensemble flow: retrieval -> LLM synthesis -> adjudication.
+    Returns the tiered response as a dict.
+    """
+    from tools.llm_bridge import LLMBridge, extract_json_block
+    from tools.reasoning_core import get_master_personality, EnsembleAdjudicator, ExpertOpinion as AdjudicatorOpinion
+    
+    if bridge is None:
+        bridge = LLMBridge()
+
+    # Step 1: retrieve rule hits + select experts
+    prep = ensemble_reasoning(
+        vectorstore=vectorstore,
+        query=query,
+        top_n_rules=top_n_rules,
+        top_k_experts=top_k_experts,
+    )
+    experts = prep.get("experts") or []
+    rule_hits = prep.get("rule_hits") or []
+    experts_personality = {eid: get_master_personality(eid) for eid in experts}
+
+    # Step 2: call LLM to synthesize structured JSON
+    messages = build_committee_prompt(
+        query=query,
+        experts=experts,
+        evidence=rule_hits,
+        require_quant=True,
+    )
+    raw = bridge.call_chat(messages)
+
+    parsed, rest = extract_json_block(raw)
+    if parsed is None:
+        raise ValueError("ensemble output is not valid JSON")
+
+    # New tiered format: { primary, secondary }. If LLM returns legacy shape, treat it as secondary.
+    if isinstance(parsed, dict) and "secondary" in parsed and isinstance(parsed.get("secondary"), dict):
+        primary_in = parsed.get("primary") if isinstance(parsed.get("primary"), dict) else {}
+        secondary = parsed.get("secondary") or {}
+    else:
+        primary_in = {}
+        secondary = parsed if isinstance(parsed, dict) else {}
+
+    # Step 2.5: hybrid adjudication (deterministic overlay)
+    def _match_scenarios_local(text: str) -> List[str]:
+        # Light copy of _match_scenarios from rag_service
+        t_low = (text or "").lower()
+        scenario_keywords = {
+            "市场恐慌": ["恐慌", "暴跌", "崩盘", "流动性危机", "panic", "crash", "selloff"],
+            "市场狂热": ["狂热", "fomo", "overheated", "追高"],
+            "经济衰退": ["衰退", "萧条", "recession"],
+            "流动性收紧": ["紧缩", "qt", "tightening"],
+        }
+        matched = []
+        for scen, keys in scenario_keywords.items():
+            if any(k in t_low for k in keys):
+                matched.append(scen)
+        return matched
+
+    def _infer_regime_id(text: str) -> str:
+        scen = _match_scenarios_local(text)
+        if any(s in scen for s in ("市场恐慌", "经济衰退", "流动性收紧")):
+            return "crisis"
+        if any(s in scen for s in ("市场狂热", "估值泡沫")):
+            return "bull"
+        return "neutral"
+
+    regime_id = _infer_regime_id(query)
+    secondary.setdefault("metadata", {})
+    secondary["metadata"]["regime_id_inferred"] = regime_id
+
+    opinions_in = secondary.get("expert_opinions") or []
+    adjudicator_ops: List[AdjudicatorOpinion] = []
+    if isinstance(opinions_in, list):
+        for op in opinions_in:
+            if not isinstance(op, dict):
+                continue
+            expert_id = str(op.get("expert") or "").strip()
+            if not expert_id:
+                continue
+            
+            def _safe_f(v):
+                try: return float(v)
+                except: return None
+
+            imp = _safe_f(op.get("impact"))
+            conf = _safe_f(op.get("confidence"))
+            adjudicator_ops.append(
+                AdjudicatorOpinion(
+                    investor_id=expert_id, 
+                    impact=max(-1.0, min(1.0, float(imp or 0.0))), 
+                    confidence=max(0.0, min(1.0, float(conf or 0.6))), 
+                    reason=str(op.get("summary") or "")
+                )
+            )
+
+    adjudicated = EnsembleAdjudicator.adjudicate(regime_id, adjudicator_ops)
+    secondary["ensemble_adjustment"] = {
+        "final_multiplier_offset": float(adjudicated.get("final_multiplier_offset") or 0.0),
+        "primary_expert": str(adjudicated.get("primary_expert") or (experts[0] if experts else "")),
+        "conflict_detected": bool(adjudicated.get("conflict_detected") or False),
+        "resolution": str(adjudicated.get("resolution") or ""),
+        "contributions": adjudicated.get("contributions") or [],
+    }
+
+    # Step 3: normalize citations
+    citations_out = []
+    for i, hit in enumerate(rule_hits):
+        meta = hit.get("metadata") or {}
+        citations_out.append({
+            "id": i + 1,
+            "expert": meta.get("investor_id"),
+            "source": meta.get("source"),
+            "rule_id": meta.get("rule_id"),
+            "kind": meta.get("kind"),
+            "title_hint": meta.get("title_hint"),
+        })
+
+    secondary["citations"] = citations_out
+    secondary.setdefault("experts", experts)
+    secondary["metadata"].update({
+        "top_n_rules": int(top_n_rules),
+        "top_k_experts": int(top_k_experts),
+        "llm_provider": bridge.cfg.provider,
+        "llm_model": bridge.cfg.model,
+        "experts_personality": experts_personality
+    })
+    if rest:
+        secondary["metadata"]["reasoning_preview"] = rest[:2000]
+
+    # Build primary allocation (normalized)
+    target_alloc = _normalize_target_allocation((primary_in or {}).get("target_allocation"))
+    
+    def _safe_f(v):
+        try: return float(v)
+        except: return None
+    
+    conf = _safe_f((primary_in or {}).get("confidence"))
+    primary = {
+        "target_allocation": target_alloc,
+        "one_liner": str((primary_in or {}).get("one_liner") or "").strip() or "分析完成。",
+        "confidence": max(0.0, min(1.0, float(conf if conf is not None else 0.6)))
+    }
+
+    return {"primary": primary, "secondary": secondary}
 
 def load_investor_documents():
     """加载投资者文档为 LangChain Document 格式"""
