@@ -29,13 +29,6 @@ from tools.rag_core import (
     build_committee_prompt,
     run_ensemble_committee,
     TieredEnsembleResponse,
-    PrimaryAllocation,
-    EnsembleResponse,
-    EnsembleRequest,
-    CitationItem,
-    ExpertOpinion,
-    EnsembleAdjustment,
-    AllocationBuckets,
 )
 
 from tools.llm_bridge import LLMBridge, LLMBridgeError, extract_json_block
@@ -506,6 +499,10 @@ class PolicyGateResponse(BaseModel):
     explanation: Dict[str, Any]
     audit: Dict[str, Any]
 
+class EnsembleRequest(BaseModel):
+    query: str
+    top_n_rules: int = 20
+    top_k_experts: int = 3
 
 
 @app.post("/api/rag/ensemble", response_model=TieredEnsembleResponse)

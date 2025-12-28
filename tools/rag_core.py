@@ -278,6 +278,7 @@ def build_committee_prompt(
         "2) 再输出 <json> ... </json>，其中必须是一个**严格 JSON 对象**（不要 markdown code fence）。\n"
         "要求：\n"
         "- 你必须输出两级结构：primary + secondary。\n"
+        "- 注意：primary.target_allocation 会由服务端根据 secondary.expert_opinions.impact/confidence 与裁决引擎重新计算（Sharpe 优先、抗抖动）。你仍需输出 primary 结构，但不必为整数配比耗费大量 token。\n"
         "- primary 是面向交易执行的“一级输出”，必须包含：\n"
         "  - target_allocation: stocks/bonds/gold/cash 四个整数，范围 0..100，且四者之和必须等于 100。\n"
         "  - one_liner: 一句话可执行建议（例如：提高现金与债、降低股票暴露）。\n"
@@ -343,7 +344,12 @@ def run_ensemble_committee(
     Returns the tiered response as a dict.
     """
     from tools.llm_bridge import LLMBridge, extract_json_block
-    from tools.reasoning_core import get_master_personality, EnsembleAdjudicator, ExpertOpinion as AdjudicatorOpinion
+    from tools.reasoning_core import (
+        get_master_personality,
+        EnsembleAdjudicator,
+        ExpertOpinion as AdjudicatorOpinion,
+        SharpePrimaryAllocator,
+    )
     
     if bridge is None:
         bridge = LLMBridge()
@@ -467,19 +473,73 @@ def run_ensemble_committee(
     if rest:
         secondary["metadata"]["reasoning_preview"] = rest[:2000]
 
-    # Build primary allocation (normalized)
-    target_alloc = _normalize_target_allocation((primary_in or {}).get("target_allocation"))
-    
-    def _safe_f(v):
-        try: return float(v)
-        except: return None
-    
-    conf = _safe_f((primary_in or {}).get("confidence"))
-    primary = {
-        "target_allocation": target_alloc,
-        "one_liner": str((primary_in or {}).get("one_liner") or "").strip() or "分析完成。",
-        "confidence": max(0.0, min(1.0, float(conf if conf is not None else 0.6)))
+    # Step 4: build primary allocation deterministically (Sharpe-first).
+    # We still accept LLM's primary fields for interop, but the allocation is generated
+    # from adjudicator output to reduce numeric noise and improve stability.
+    adj = secondary.get("ensemble_adjustment") if isinstance(secondary, dict) else {}
+    try:
+        final_offset = float((adj or {}).get("final_multiplier_offset") or 0.0)
+    except Exception:
+        final_offset = 0.0
+    conflict = bool((adj or {}).get("conflict_detected") or False)
+
+    alloc_det = SharpePrimaryAllocator.allocate(regime_id, final_offset, conflict_detected=conflict)
+    target_alloc = _normalize_target_allocation(alloc_det)
+
+    secondary.setdefault("metadata", {})
+    secondary["metadata"]["primary_generated_by"] = "allocator_sharpe_v1"
+    secondary["metadata"]["primary_allocator_inputs"] = {
+        "objective": "sharpe",
+        "regime_id": regime_id,
+        "final_multiplier_offset": round(final_offset, 3),
+        "conflict_detected": conflict,
     }
+
+    def _safe_f(v):
+        try:
+            return float(v)
+        except Exception:
+            return None
+
+    # Confidence: prefer impact-weighted expert confidence; fall back to LLM primary.
+    conf_llm = _safe_f((primary_in or {}).get("confidence"))
+    conf_det: Optional[float] = None
+    try:
+        weights = []
+        for op in (opinions_in or []):
+            if not isinstance(op, dict):
+                continue
+            c = _safe_f(op.get("confidence"))
+            imp = _safe_f(op.get("impact")) or 0.0
+            w = abs(float(imp))
+            if c is None:
+                continue
+            weights.append((float(c), float(w)))
+        if weights:
+            denom = sum(w for _, w in weights)
+            if denom > 0:
+                conf_det = sum(c * w for c, w in weights) / denom
+            else:
+                conf_det = sum(c for c, _ in weights) / float(len(weights))
+    except Exception:
+        conf_det = None
+
+    conf = conf_det if conf_det is not None else (conf_llm if conf_llm is not None else 0.6)
+    if conflict:
+        conf *= 0.85
+    conf = max(0.0, min(1.0, float(conf)))
+
+    # One-liner: keep LLM summary if present, but ensure it includes the computed allocation.
+    alloc_str = f"股{target_alloc['stocks']}/债{target_alloc['bonds']}/金{target_alloc['gold']}/现{target_alloc['cash']}"
+    llm_liner = str((primary_in or {}).get("one_liner") or "").strip()
+    if llm_liner:
+        one_liner = llm_liner
+        if alloc_str not in one_liner:
+            one_liner = f"{one_liner} 目标配比：{alloc_str}。"
+    else:
+        one_liner = f"Sharpe 优先：目标配比 {alloc_str}。"
+
+    primary = {"target_allocation": target_alloc, "one_liner": one_liner, "confidence": conf}
 
     return {"primary": primary, "secondary": secondary}
 

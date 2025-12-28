@@ -117,5 +117,6 @@ def test_ensemble_endpoint_returns_quant_adjustment(monkeypatch):
     assert data["secondary"]["citations"][0]["rule_id"] == "R-10"
     assert "metadata" in data["secondary"]
     assert data["secondary"]["metadata"]["experts_personality"]["ray_dalio"] in ("risk_manager", "analyst", "bear", "bull", "contrarian")
+    assert data["secondary"]["metadata"]["primary_generated_by"] == "allocator_sharpe_v1"
 
 

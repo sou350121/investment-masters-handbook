@@ -30,5 +30,14 @@ logs/
 _tmp_*.py
 _tmp_*.json
 
+# Local backtest scratch (generated)
+data_news_*.csv
+data_signals_*.csv
+_gen_*.py
+_run_*.py
+results_sim*/
+results_sim_long*/
+results_test/
+
 
 
