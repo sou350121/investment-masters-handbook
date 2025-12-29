@@ -13,6 +13,8 @@ import time
 import traceback
 from pathlib import Path
 import yaml
+import csv
+import ast
 
 # 添加项目根目录到路径
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -54,6 +56,7 @@ POLICY_PATH = PROJECT_ROOT / "config" / "policy_gate.yaml"
 SCENARIOS_PATH = PROJECT_ROOT / "config" / "scenarios.yaml"
 AUDIT_DIR = PROJECT_ROOT / "logs"
 AUDIT_PATH = AUDIT_DIR / "policy_gate_audit.jsonl"
+DEFAULT_BACKTEST_RESULTS_ROOT = "results"
 
 _index_cache: Optional[Dict[str, Any]] = None
 
@@ -106,6 +109,275 @@ def _get_vectorstore_doc_count(vs: Any) -> Optional[int]:
     except Exception:
         return None
     return None
+
+
+def _maybe_require_token(authorization: Optional[str]) -> Optional[str]:
+    """
+    Optional auth: if IMH_API_TOKEN is set (instance protected) OR client sends Authorization,
+    we enforce Bearer token checks. Otherwise allow open access (local dev friendly).
+    """
+    if os.getenv("IMH_API_TOKEN") or (authorization and "Bearer" in str(authorization)):
+        return _require_bearer_token(authorization)
+    return None
+
+
+def _safe_results_root(root: Optional[str]) -> Path:
+    """
+    Resolve a results root directory under PROJECT_ROOT, preventing path traversal.
+    Allows roots like: results, results_sim_sharpe, etc (must live directly under PROJECT_ROOT).
+    """
+    r = (root or DEFAULT_BACKTEST_RESULTS_ROOT).strip().strip("/\\")
+    if not r:
+        r = DEFAULT_BACKTEST_RESULTS_ROOT
+    if any(x in r for x in ("..", "/", "\\")):
+        raise HTTPException(status_code=400, detail="Invalid results root")
+    p = (PROJECT_ROOT / r).resolve()
+    pr = PROJECT_ROOT.resolve()
+    if pr not in p.parents and p != pr:
+        raise HTTPException(status_code=400, detail="Invalid results root")
+    return p
+
+
+def _read_json_file(path: Path) -> Optional[Dict[str, Any]]:
+    try:
+        if not path.exists():
+            return None
+        data = json.loads(path.read_text(encoding="utf-8") or "{}")
+        return data if isinstance(data, dict) else None
+    except Exception:
+        return None
+
+
+def _read_text_file(path: Path, max_chars: int = 200_000) -> Optional[str]:
+    try:
+        if not path.exists():
+            return None
+        s = path.read_text(encoding="utf-8", errors="replace")
+        if len(s) > max_chars:
+            return s[:max_chars] + "\n\n...[truncated]..."
+        return s
+    except Exception:
+        return None
+
+
+def _read_equity_curve_csv(path: Path, max_points: int = 800) -> List[Dict[str, Any]]:
+    """
+    Read Series-like CSV (date,index -> value) produced by pandas Series.to_csv().
+    Returns downsampled points: [{date, equity}].
+    """
+    if not path.exists():
+        return []
+    pts: List[Dict[str, Any]] = []
+    try:
+        with path.open("r", encoding="utf-8", newline="") as f:
+            reader = csv.reader(f)
+            _header = next(reader, None)
+            for row in reader:
+                if not row or len(row) < 2:
+                    continue
+                date_s = str(row[0]).strip()
+                if not date_s:
+                    continue
+                try:
+                    v = float(row[1])
+                except Exception:
+                    continue
+                pts.append({"date": date_s, "equity": v})
+    except Exception:
+        return []
+
+    if max_points > 0 and len(pts) > max_points:
+        # Evenly sample and keep the last point for correct end-of-period display.
+        step = max(1, int((len(pts) + max_points - 1) / max_points))
+        ds = pts[::step]
+        if ds and pts and ds[-1].get("date") != pts[-1].get("date"):
+            ds.append(pts[-1])
+        pts = ds
+
+    return pts
+
+
+def _read_history_csv(path: Path, max_rows: int = 500) -> List[Dict[str, Any]]:
+    """
+    Read history_A.csv / history_B.csv and normalize allocation fields to dict.
+    """
+    if not path.exists():
+        return []
+    out: List[Dict[str, Any]] = []
+    try:
+        with path.open("r", encoding="utf-8", newline="") as f:
+            reader = csv.DictReader(f)
+            for i, row in enumerate(reader):
+                if max_rows > 0 and i >= max_rows:
+                    break
+                r = dict(row or {})
+                # allocation is stored as python dict string in CSV by pandas
+                alloc_raw = r.get("allocation")
+                alloc: Optional[Dict[str, Any]] = None
+                if isinstance(alloc_raw, str) and alloc_raw.strip():
+                    s = alloc_raw.strip()
+                    try:
+                        alloc = json.loads(s)
+                    except Exception:
+                        try:
+                            v = ast.literal_eval(s)
+                            alloc = v if isinstance(v, dict) else None
+                        except Exception:
+                            alloc = None
+                if alloc is not None:
+                    r["allocation"] = alloc
+                # equity numeric
+                if "equity" in r:
+                    try:
+                        r["equity"] = float(r["equity"])
+                    except Exception:
+                        pass
+                out.append(r)
+    except Exception:
+        return []
+    return out
+
+
+class BacktestRunSummary(BaseModel):
+    run_id: str
+    root: str
+    last_modified_ts: float
+    last_modified_iso: str
+    modes: List[str] = []
+    metrics: Dict[str, Any] = {}
+
+
+class BacktestRunDetail(BaseModel):
+    run_id: str
+    root: str
+    files: Dict[str, bool] = {}
+    config: Dict[str, Any] = {}
+    metrics: Dict[str, Any] = {}
+    equity: Dict[str, Any] = {}
+    history: Dict[str, Any] = {}
+    comparison_md: Optional[str] = None
+
+
+@app.get("/api/backtest/runs", response_model=Dict[str, Any])
+async def list_backtest_runs(root: Optional[str] = None, authorization: Optional[str] = Header(None)):
+    _maybe_require_token(authorization)
+    root_dir = _safe_results_root(root)
+    if not root_dir.exists():
+        return {"root": str(root_dir.name), "runs": []}
+
+    runs: List[BacktestRunSummary] = []
+    try:
+        for child in root_dir.iterdir():
+            if not child.is_dir():
+                continue
+            run_id = child.name
+            try:
+                st = child.stat()
+                mtime = float(st.st_mtime)
+            except Exception:
+                mtime = 0.0
+
+            metrics_a = _read_json_file(child / "metrics_A.json")
+            metrics_b = _read_json_file(child / "metrics_B.json")
+            modes = []
+            metrics: Dict[str, Any] = {}
+            if metrics_a is not None:
+                modes.append("A")
+                metrics["A"] = metrics_a
+            if metrics_b is not None:
+                modes.append("B")
+                metrics["B"] = metrics_b
+
+            # Only list folders that look like a backtest run (has any known file)
+            has_any = any(
+                (child / fn).exists()
+                for fn in (
+                    "metrics_A.json",
+                    "metrics_B.json",
+                    "equity_curve_A.csv",
+                    "equity_curve_B.csv",
+                    "history_A.csv",
+                    "history_B.csv",
+                    "comparison.md",
+                )
+            )
+            if not has_any:
+                continue
+
+            iso = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(mtime))
+            runs.append(
+                BacktestRunSummary(
+                    run_id=run_id,
+                    root=str(root_dir.name),
+                    last_modified_ts=mtime,
+                    last_modified_iso=iso,
+                    modes=modes,
+                    metrics=metrics,
+                )
+            )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to list backtest runs: {e}")
+
+    runs.sort(key=lambda r: r.last_modified_ts, reverse=True)
+    return {"root": str(root_dir.name), "runs": [r.model_dump() for r in runs]}
+
+
+@app.get("/api/backtest/runs/{run_id}", response_model=BacktestRunDetail)
+async def get_backtest_run(run_id: str, root: Optional[str] = None, authorization: Optional[str] = Header(None)):
+    _maybe_require_token(authorization)
+    root_dir = _safe_results_root(root)
+    if not run_id or "/" in run_id or "\\" in run_id or ".." in run_id:
+        raise HTTPException(status_code=400, detail="Invalid run_id")
+    run_dir = (root_dir / run_id).resolve()
+    pr = PROJECT_ROOT.resolve()
+    if pr not in run_dir.parents and run_dir != pr:
+        raise HTTPException(status_code=400, detail="Invalid run path")
+    if not run_dir.exists() or not run_dir.is_dir():
+        raise HTTPException(status_code=404, detail="Backtest run not found")
+
+    files = {
+        "metrics_A": (run_dir / "metrics_A.json").exists(),
+        "metrics_B": (run_dir / "metrics_B.json").exists(),
+        "equity_curve_A": (run_dir / "equity_curve_A.csv").exists(),
+        "equity_curve_B": (run_dir / "equity_curve_B.csv").exists(),
+        "history_A": (run_dir / "history_A.csv").exists(),
+        "history_B": (run_dir / "history_B.csv").exists(),
+        "comparison": (run_dir / "comparison.md").exists(),
+        "run_config": (run_dir / "run_config.json").exists(),
+    }
+
+    config = _read_json_file(run_dir / "run_config.json") or {}
+    metrics: Dict[str, Any] = {}
+    ma = _read_json_file(run_dir / "metrics_A.json")
+    mb = _read_json_file(run_dir / "metrics_B.json")
+    if ma is not None:
+        metrics["A"] = ma
+    if mb is not None:
+        metrics["B"] = mb
+
+    equity = {}
+    if files["equity_curve_A"]:
+        equity["A"] = _read_equity_curve_csv(run_dir / "equity_curve_A.csv", max_points=900)
+    if files["equity_curve_B"]:
+        equity["B"] = _read_equity_curve_csv(run_dir / "equity_curve_B.csv", max_points=900)
+
+    history = {}
+    if files["history_A"]:
+        history["A"] = _read_history_csv(run_dir / "history_A.csv", max_rows=800)
+    if files["history_B"]:
+        history["B"] = _read_history_csv(run_dir / "history_B.csv", max_rows=800)
+
+    comparison_md = _read_text_file(run_dir / "comparison.md")
+    return BacktestRunDetail(
+        run_id=run_id,
+        root=str(root_dir.name),
+        files=files,
+        config=config,
+        metrics=metrics,
+        equity=equity,
+        history=history,
+        comparison_md=comparison_md,
+    )
 
 
 def _load_index() -> Dict[str, Any]:

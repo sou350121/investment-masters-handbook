@@ -60,6 +60,14 @@
 - **Token 登录修复**：允许保存 `sk-or-...` 等 LLM API Key（NOFX BYOK），并提示其仅本地保存、请求时透传后端不落盘。
 - **执行代理更明确**：一级输出旁展示默认 ETF 代理（SPY/SHY/GLD/BIL），并在二级输出中展示 allocator policy 与 `disagreement_score`。
 
+## [1.8.3] - 2025-12-29
+
+### 🖥️ 回测历史工作台（Web 可视化复盘）
+
+- **Backtest Results API**：新增 `GET /api/backtest/runs` 与 `GET /api/backtest/runs/{run_id}`，把 `results/<run_id>/`（metrics/equity/history/comparison）转成前端友好 JSON。
+- **“回测历史”新 Tab**：展示回测 flow、run 列表、A/B 指标卡片、Equity sparkline、rebalance timeline（brief/risk_bias + allocation）。
+- **run_config.json**：回测 CLI 会额外写出配置快照（start/end/step_days/tickers），网页可直接展示本次回测的底盘参数。
+
 ## [1.7.0] - 2025-12-23
 
 ### 🚀 重磅更新：场景沙盒 (Scenario Sandbox) & 首页 UX 革命

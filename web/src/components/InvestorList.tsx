@@ -46,6 +46,7 @@ import {
   RagResponseItem 
 } from '@/lib/imh/data';
 import { getAvatarUrl } from '@/lib/imh/avatarMap';
+import BacktestHistory from '@/components/BacktestHistory';
 
 function hashToHsl(input: string) {
   let hash = 0;
@@ -679,6 +680,7 @@ export default function InvestorList({
             <Tab label="场景沙盒" sx={{ fontWeight: 800, px: 3 }} />
             <Tab label="风控护栏" sx={{ fontWeight: 800, px: 3 }} />
             <Tab label="关于手册" sx={{ fontWeight: 800, px: 3 }} />
+            <Tab label="回测历史" sx={{ fontWeight: 800, px: 3 }} />
           </Tabs>
         </Stack>
       </Paper>
@@ -1229,6 +1231,13 @@ export default function InvestorList({
               </Paper>
             </Box>
           </Stack>
+        </Box>
+      )}
+
+      {/* --- Tab 4: Backtest History --- */}
+      {tabValue === 4 && (
+        <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
+          <BacktestHistory />
         </Box>
       )}
 

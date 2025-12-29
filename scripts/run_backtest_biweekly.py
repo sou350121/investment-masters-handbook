@@ -55,6 +55,28 @@ def main():
         print("Error: --tickers must provide exactly 4 tickers in order: Stocks,Bonds,Gold,Cash")
         sys.exit(2)
     ticker_map = {"stocks": tickers[0], "bonds": tickers[1], "gold": tickers[2], "cash": tickers[3]}
+
+    # Write run config for UI viewer
+    try:
+        with open(os.path.join(run_dir, "run_config.json"), "w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "run_id": args.run_id,
+                    "mode": args.mode,
+                    "start": args.start,
+                    "end": args.end,
+                    "step_days": int(args.step_days),
+                    "tickers": ticker_map,
+                    "results_dir": args.results_dir,
+                    "provider": args.provider,
+                    "model": args.model,
+                },
+                f,
+                indent=2,
+                ensure_ascii=False,
+            )
+    except Exception as e:
+        print(f"Warning: failed to write run_config.json: {e}")
     prices = engine.load_prices(tickers, args.start, args.end)
     
     # 3. Load Inputs
