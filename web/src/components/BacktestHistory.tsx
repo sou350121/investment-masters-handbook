@@ -23,6 +23,8 @@ import {
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import { BACKTEST_DEMO } from '@/lib/imh/backtest_demo';
+
 type Metrics = Record<string, any>;
 
 type BacktestRunSummary = {
@@ -237,6 +239,8 @@ export default function BacktestHistory() {
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'A' | 'B'>('A');
+  const [dataSource, setDataSource] = useState<'api' | 'demo'>('api');
+  const [demoNotice, setDemoNotice] = useState<string | null>(null);
 
   const flow = useMemo(
     () => [
@@ -257,15 +261,29 @@ export default function BacktestHistory() {
       const resp = await fetch('/api/backtest/runs', {
         headers: { ...getAuthHeaders() },
       });
+      const ct = (resp.headers.get('content-type') || '').toLowerCase();
+      if (resp.status === 404 || ct.includes('text/html')) {
+        // Older backend / no backtest API: fall back to offline demo dataset.
+        setDataSource('demo');
+        setDemoNotice('后端未启用 backtest API，已自动切换到 Demo 数据（基于此前回测生成）。');
+        const demoRuns = Array.from((BACKTEST_DEMO?.runs || []) as readonly any[]);
+        setRuns(demoRuns as unknown as BacktestRunSummary[]);
+        return;
+      }
       if (!resp.ok) {
         const body = await resp.text().catch(() => '');
         throw new Error(`加载回测 runs 失败（HTTP ${resp.status}）${body ? `: ${body}` : ''}`);
       }
       const data = await resp.json();
       setRuns(Array.isArray(data?.runs) ? data.runs : []);
+      setDataSource('api');
+      setDemoNotice(null);
     } catch (e: any) {
-      setError(e?.message || '加载回测 runs 失败');
-      setRuns([]);
+      // If API is unreachable, also fall back to demo instead of hard failing.
+      setDataSource('demo');
+      setDemoNotice('后端 backtest API 不可用，已自动切换到 Demo 数据。');
+      const demoRuns = Array.from((BACKTEST_DEMO?.runs || []) as readonly any[]);
+      setRuns(demoRuns as unknown as BacktestRunSummary[]);
     } finally {
       setLoadingRuns(false);
     }
@@ -276,9 +294,32 @@ export default function BacktestHistory() {
     setError(null);
     setDetail(null);
     try {
+      if (dataSource === 'demo') {
+        const details = (BACKTEST_DEMO?.details || {}) as unknown as Record<string, any>;
+        const d = details[runId] as any;
+        if (!d) throw new Error('Demo 数据中找不到该 run');
+        setDetail(d as BacktestRunDetail);
+        const modes = Object.keys(d?.metrics || {});
+        if (modes.includes('A')) setMode('A');
+        else if (modes.includes('B')) setMode('B');
+        return;
+      }
       const resp = await fetch(`/api/backtest/runs/${encodeURIComponent(runId)}`, {
         headers: { ...getAuthHeaders() },
       });
+      const ct = (resp.headers.get('content-type') || '').toLowerCase();
+      if (resp.status === 404 || ct.includes('text/html')) {
+        setDataSource('demo');
+        setDemoNotice('后端未启用 backtest API，已自动切换到 Demo 数据。');
+        const details = (BACKTEST_DEMO?.details || {}) as unknown as Record<string, any>;
+        const d = details[runId] as any;
+        if (!d) throw new Error('Demo 数据中找不到该 run');
+        setDetail(d as BacktestRunDetail);
+        const modes = Object.keys(d?.metrics || {});
+        if (modes.includes('A')) setMode('A');
+        else if (modes.includes('B')) setMode('B');
+        return;
+      }
       if (!resp.ok) {
         const body = await resp.text().catch(() => '');
         throw new Error(`加载回测详情失败（HTTP ${resp.status}）${body ? `: ${body}` : ''}`);
@@ -338,6 +379,15 @@ export default function BacktestHistory() {
       {error && (
         <Alert severity="error" sx={{ mb: 2, borderRadius: 3 }}>
           {error}
+        </Alert>
+      )}
+
+      {demoNotice && (
+        <Alert severity="info" sx={{ mb: 2, borderRadius: 3 }}>
+          {demoNotice}{' '}
+          <Typography component="span" variant="caption" sx={{ fontWeight: 900 }}>
+            （dataSource: {dataSource}）
+          </Typography>
         </Alert>
       )}
 
