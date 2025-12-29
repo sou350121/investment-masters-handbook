@@ -86,6 +86,14 @@ ALLOCATION_POLICY: Dict[str, Any] = {
     "amplitude": 8,  # +/- 8% stocks swing at max offset
     # When experts conflict, dampen the effective offset to avoid whipsaw.
     "conflict_damping": 0.7,
+    # Mapping (non-linear + asymmetric): risk-on slower, risk-off faster.
+    # This usually improves downside risk metrics (Sortino) by reducing whipsaw
+    # while cutting risk more quickly under stress.
+    "mapping_mode": "asymmetric_power",
+    "exp_up": 1.35,     # >1 => slower risk-on
+    "exp_down": 0.85,   # <1 => faster risk-off
+    "scale_up": 0.90,
+    "scale_down": 1.10,
     # Soft bounds
     "min_cash": 5,
     "max_cash": 30,
@@ -102,7 +110,18 @@ if isinstance(_CFG.get("allocation_policy"), dict):
     ap = _CFG.get("allocation_policy") or {}
     if isinstance(ap.get("regime_bases"), dict):
         ALLOCATION_POLICY["regime_bases"] = {**ALLOCATION_POLICY["regime_bases"], **ap.get("regime_bases")}
-    for k in ("objective", "amplitude", "conflict_damping", "min_cash", "max_cash"):
+    for k in (
+        "objective",
+        "amplitude",
+        "conflict_damping",
+        "mapping_mode",
+        "exp_up",
+        "exp_down",
+        "scale_up",
+        "scale_down",
+        "min_cash",
+        "max_cash",
+    ):
         if k in ap:
             ALLOCATION_POLICY[k] = ap.get(k)
 
@@ -191,6 +210,7 @@ class EnsembleAdjudicator:
         
         weighted_sum = 0.0
         total_weight = 0.0
+        abs_sum = 0.0
         expert_contributions = []
         
         # Track conflicts (opposite signs)
@@ -203,6 +223,7 @@ class EnsembleAdjudicator:
             
             impact_value = op.impact * weight
             weighted_sum += impact_value
+            abs_sum += abs(impact_value)
             total_weight += weight
             
             expert_contributions.append({
@@ -218,6 +239,17 @@ class EnsembleAdjudicator:
                 neg_impacts.append(op.investor_id)
 
         final_offset = weighted_sum / total_weight if total_weight > 0 else 0.0
+
+        # Continuous disagreement score in [0..1]:
+        # - 0 => aligned (all contributions in same direction)
+        # - 1 => strong cancellation (experts heavily disagree)
+        disagreement_score = 0.0
+        try:
+            if abs_sum > 0:
+                disagreement_score = 1.0 - min(1.0, abs(weighted_sum) / abs_sum)
+                disagreement_score = max(0.0, min(1.0, float(disagreement_score)))
+        except Exception:
+            disagreement_score = 0.0
         
         # Determine conflict
         conflict_detected = len(pos_impacts) > 0 and len(neg_impacts) > 0
@@ -234,6 +266,7 @@ class EnsembleAdjudicator:
             "final_multiplier_offset": round(final_offset, 3),
             "primary_expert": primary_expert,
             "conflict_detected": conflict_detected,
+            "disagreement_score": round(float(disagreement_score), 3),
             "resolution": resolution_msg,
             "contributions": expert_contributions
         }
@@ -285,7 +318,13 @@ class SharpePrimaryAllocator:
         return scaled
 
     @classmethod
-    def allocate(cls, regime_id: str, final_multiplier_offset: float, conflict_detected: bool = False) -> Dict[str, int]:
+    def allocate(
+        cls,
+        regime_id: str,
+        final_multiplier_offset: float,
+        conflict_detected: bool = False,
+        disagreement_score: Optional[float] = None,
+    ) -> Dict[str, int]:
         ap = ALLOCATION_POLICY or {}
 
         # Regime base
@@ -300,14 +339,25 @@ class SharpePrimaryAllocator:
             off = 0.0
         off = cls._clamp(off, -0.5, 0.5)
 
-        # Conflict damping for Sharpe stability
-        if conflict_detected:
+        # Continuous damping for stability (Sortino/Sharpe):
+        # - if disagreement_score provided: interpolate between 1.0 and conflict_damping
+        # - else fall back to boolean conflict_detected
+        try:
+            damp_min = float(ap.get("conflict_damping") or 0.7)
+        except Exception:
+            damp_min = 0.7
+        damp_min = cls._clamp(damp_min, 0.0, 1.0)
+
+        if disagreement_score is not None:
             try:
-                damp = float(ap.get("conflict_damping") or 0.7)
+                ds = float(disagreement_score)
             except Exception:
-                damp = 0.7
-            damp = cls._clamp(damp, 0.0, 1.0)
+                ds = 0.0
+            ds = cls._clamp(ds, 0.0, 1.0)
+            damp = 1.0 - ds * (1.0 - damp_min)  # ds=0 => 1.0; ds=1 => damp_min
             off *= damp
+        elif conflict_detected:
+            off *= damp_min
 
         # Map offset to stocks delta
         try:
@@ -317,7 +367,43 @@ class SharpePrimaryAllocator:
         amp = cls._clamp(amp, 0.0, 25.0)
 
         risk_score = off / 0.5 if 0.5 != 0 else 0.0  # [-1..1]
-        delta = int(round(risk_score * amp))
+        risk_score = cls._clamp(risk_score, -1.0, 1.0)
+
+        # Non-linear + asymmetric mapping to reduce whipsaw:
+        # - risk-on (positive) moves slower
+        # - risk-off (negative) moves faster
+        mode = str(ap.get("mapping_mode") or "asymmetric_power").strip()
+        eff = risk_score
+        if mode == "asymmetric_power":
+            try:
+                exp_up = float(ap.get("exp_up") or 1.35)
+            except Exception:
+                exp_up = 1.35
+            try:
+                exp_down = float(ap.get("exp_down") or 0.85)
+            except Exception:
+                exp_down = 0.85
+            try:
+                scale_up = float(ap.get("scale_up") or 0.9)
+            except Exception:
+                scale_up = 0.9
+            try:
+                scale_down = float(ap.get("scale_down") or 1.1)
+            except Exception:
+                scale_down = 1.1
+
+            exp_up = cls._clamp(exp_up, 0.2, 3.0)
+            exp_down = cls._clamp(exp_down, 0.2, 3.0)
+            scale_up = cls._clamp(scale_up, 0.0, 2.0)
+            scale_down = cls._clamp(scale_down, 0.0, 2.0)
+
+            if risk_score >= 0:
+                eff = (risk_score ** exp_up) * scale_up
+            else:
+                eff = -((abs(risk_score) ** exp_down) * scale_down)
+
+        eff = cls._clamp(float(eff), -1.0, 1.0)
+        delta = int(round(amp * eff))
 
         # Distribute delta across safe buckets proportionally to base weights (smoother).
         safe_total = 100 - base["stocks"]

@@ -32,6 +32,7 @@ class EnsembleAdjustment(BaseModel):
     final_multiplier_offset: float
     primary_expert: str
     conflict_detected: bool
+    disagreement_score: Optional[float] = None
     resolution: str
     contributions: Optional[List[Dict[str, Any]]] = None
 
@@ -444,6 +445,7 @@ def run_ensemble_committee(
         "final_multiplier_offset": float(adjudicated.get("final_multiplier_offset") or 0.0),
         "primary_expert": str(adjudicated.get("primary_expert") or (experts[0] if experts else "")),
         "conflict_detected": bool(adjudicated.get("conflict_detected") or False),
+        "disagreement_score": float(adjudicated.get("disagreement_score") or 0.0),
         "resolution": str(adjudicated.get("resolution") or ""),
         "contributions": adjudicated.get("contributions") or [],
     }
@@ -482,8 +484,18 @@ def run_ensemble_committee(
     except Exception:
         final_offset = 0.0
     conflict = bool((adj or {}).get("conflict_detected") or False)
+    ds = (adj or {}).get("disagreement_score")
+    try:
+        ds_f = float(ds) if ds is not None else None
+    except Exception:
+        ds_f = None
 
-    alloc_det = SharpePrimaryAllocator.allocate(regime_id, final_offset, conflict_detected=conflict)
+    alloc_det = SharpePrimaryAllocator.allocate(
+        regime_id,
+        final_offset,
+        conflict_detected=conflict,
+        disagreement_score=ds_f,
+    )
     target_alloc = _normalize_target_allocation(alloc_det)
 
     secondary.setdefault("metadata", {})
@@ -493,6 +505,7 @@ def run_ensemble_committee(
         "regime_id": regime_id,
         "final_multiplier_offset": round(final_offset, 3),
         "conflict_detected": conflict,
+        "disagreement_score": (round(float(ds_f), 3) if isinstance(ds_f, (int, float)) else None),
     }
 
     def _safe_f(v):

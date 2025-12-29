@@ -101,7 +101,8 @@ class BacktestEngine:
 
     def compute_metrics(self, equity_curve: pd.Series) -> Dict[str, float]:
         """Compute standard performance metrics."""
-        returns = equity_curve.pct_change().dropna()
+        # Avoid future pandas default fill behavior changes.
+        returns = equity_curve.pct_change(fill_method=None).dropna()
         if len(returns) == 0:
             return {}
             
@@ -111,6 +112,13 @@ class BacktestEngine:
         
         vol = returns.std() * np.sqrt(252)
         sharpe = (cagr - 0.03) / vol if vol > 0 else 0 # Assume 3% risk-free
+
+        # Sortino ratio (downside deviation, MAR=0, risk-free=3% annual)
+        # Downside deviation: sqrt(mean(min(0, r - MAR)^2)) * sqrt(252)
+        mar_daily = 0.0
+        downside = np.minimum(0.0, returns.values - mar_daily)
+        downside_dev = float(np.sqrt(np.mean(np.square(downside))) * np.sqrt(252)) if len(downside) > 0 else 0.0
+        sortino = (cagr - 0.03) / downside_dev if downside_dev > 0 else 0.0
         
         drawdown = 1 - equity_curve / equity_curve.cummax()
         max_dd = drawdown.max()
@@ -120,6 +128,8 @@ class BacktestEngine:
             "cagr": float(cagr),
             "volatility": float(vol),
             "sharpe_ratio": float(sharpe),
+            "downside_volatility": float(downside_dev),
+            "sortino_ratio": float(sortino),
             "max_drawdown": float(max_dd)
         }
 

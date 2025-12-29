@@ -78,6 +78,11 @@ allocation_policy:
   objective: sharpe
   amplitude: 8
   conflict_damping: 0.7
+  mapping_mode: asymmetric_power
+  exp_up: 1.35
+  exp_down: 0.85
+  scale_up: 0.9
+  scale_down: 1.1
   min_cash: 5
   max_cash: 30
   regime_bases:
