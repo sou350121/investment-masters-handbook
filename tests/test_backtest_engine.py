@@ -52,7 +52,7 @@ def test_mode_b_mapping():
     dates = pd.date_range("2024-01-01", periods=20, freq="B")
     prices = pd.DataFrame({
         "SPY": np.ones(20),
-        "IEF": np.ones(20),
+        "SHY": np.ones(20),
         "GLD": np.ones(20),
         "BIL": np.ones(20)
     }, index=dates)

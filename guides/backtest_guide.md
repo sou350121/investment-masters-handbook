@@ -50,7 +50,7 @@ python scripts/run_backtest_biweekly.py \
 ```
 
 ### Arguments
-- `--tickers`: Comma-separated list (default: `SPY,IEF,GLD,BIL`).
+- `--tickers`: Comma-separated list (default: `SPY,SHY,GLD,BIL`). Order is **Stocks,Bonds,Gold,Cash**.
 - `--step_days`: Rebalancing interval in trading days (default: `10`).
 - `--model`: LLM model to use (default: `gpt-4o`).
 - `--results_dir`: Where to save outputs (default: `results`).

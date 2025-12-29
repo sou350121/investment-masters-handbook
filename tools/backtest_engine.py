@@ -30,6 +30,16 @@ class BacktestEngine:
         """Generate a list of rebalance dates every N trading days."""
         return [prices_index[i] for i in range(0, len(prices_index), step_trading_days)]
 
+    @staticmethod
+    def default_ticker_map() -> Dict[str, str]:
+        """
+        Default bucket -> ticker mapping.
+
+        We default bonds to short-duration treasuries (SHY) for better stability
+        under tightening regimes; cash uses BIL as a practical proxy.
+        """
+        return {"stocks": "SPY", "bonds": "SHY", "gold": "GLD", "cash": "BIL"}
+
     def _get_cache_path(self, run_id: str, date_str: str, prompt_hash: str) -> str:
         cache_dir = os.path.join(self.results_dir, run_id, "llm_cache")
         if not os.path.exists(cache_dir):
@@ -140,7 +150,8 @@ class BacktestEngine:
         news_data: pd.DataFrame,
         vectorstore: Any,
         step_days: int = 10,
-        initial_alloc: Dict[str, float] = None
+        initial_alloc: Dict[str, float] = None,
+        ticker_map: Optional[Dict[str, str]] = None,
     ) -> Tuple[pd.Series, pd.DataFrame]:
         """Run Backtest Mode A: Committee driven."""
         if initial_alloc is None:
@@ -153,12 +164,7 @@ class BacktestEngine:
         equity_curve = pd.Series(index=prices.index, dtype=float)
         history = []
         
-        ticker_map = {
-            "stocks": "SPY",
-            "bonds": "IEF",
-            "gold": "GLD",
-            "cash": "BIL"
-        }
+        ticker_map = ticker_map or self.default_ticker_map()
         
         # Fill missing values if any
         prices = prices.ffill()
@@ -206,7 +212,8 @@ class BacktestEngine:
         prices: pd.DataFrame,
         signals_data: pd.DataFrame,
         step_days: int = 10,
-        initial_alloc: Dict[str, float] = None
+        initial_alloc: Dict[str, float] = None,
+        ticker_map: Optional[Dict[str, str]] = None,
     ) -> Tuple[pd.Series, pd.DataFrame]:
         """Run Backtest Mode B: Strategy Signal driven."""
         if initial_alloc is None:
@@ -219,12 +226,7 @@ class BacktestEngine:
         equity_curve = pd.Series(index=prices.index, dtype=float)
         history = []
         
-        ticker_map = {
-            "stocks": "SPY",
-            "bonds": "IEF",
-            "gold": "GLD",
-            "cash": "BIL"
-        }
+        ticker_map = ticker_map or self.default_ticker_map()
         
         prices = prices.ffill()
         

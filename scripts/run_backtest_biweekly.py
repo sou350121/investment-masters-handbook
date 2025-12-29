@@ -21,7 +21,7 @@ def main():
     parser.add_argument("--signals_csv", type=str, help="Path to strategy signals CSV (for mode B/AB)")
     parser.add_argument("--start", type=str, default="2024-01-01", help="Start date (YYYY-MM-DD)")
     parser.add_argument("--end", type=str, default="2024-12-31", help="End date (YYYY-MM-DD)")
-    parser.add_argument("--tickers", type=str, default="SPY,IEF,GLD,BIL", help="Comma-separated tickers for Stocks,Bonds,Gold,Cash")
+    parser.add_argument("--tickers", type=str, default="SPY,SHY,GLD,BIL", help="Comma-separated tickers for Stocks,Bonds,Gold,Cash")
     parser.add_argument("--step_days", type=int, default=10, help="Rebalance every N trading days")
     
     # LLM Config
@@ -50,7 +50,11 @@ def main():
     engine = BacktestEngine(results_dir=args.results_dir, llm_config=llm_cfg)
     
     # 2. Load Prices
-    tickers = args.tickers.split(",")
+    tickers = [t.strip() for t in args.tickers.split(",") if t.strip()]
+    if len(tickers) != 4:
+        print("Error: --tickers must provide exactly 4 tickers in order: Stocks,Bonds,Gold,Cash")
+        sys.exit(2)
+    ticker_map = {"stocks": tickers[0], "bonds": tickers[1], "gold": tickers[2], "cash": tickers[3]}
     prices = engine.load_prices(tickers, args.start, args.end)
     
     # 3. Load Inputs
@@ -82,7 +86,7 @@ def main():
     
     if args.mode in ["A", "AB"]:
         print("\n>>> Running Backtest A (Committee)...")
-        curve_a, hist_a = engine.run_backtest_A(args.run_id, prices, news_data, vs, step_days=args.step_days)
+        curve_a, hist_a = engine.run_backtest_A(args.run_id, prices, news_data, vs, step_days=args.step_days, ticker_map=ticker_map)
         metrics_a = engine.compute_metrics(curve_a)
         
         curve_a.to_csv(os.path.join(run_dir, "equity_curve_A.csv"))
@@ -94,7 +98,7 @@ def main():
 
     if args.mode in ["B", "AB"]:
         print("\n>>> Running Backtest B (Strategy Signals)...")
-        curve_b, hist_b = engine.run_backtest_B(args.run_id, prices, signals_data, step_days=args.step_days)
+        curve_b, hist_b = engine.run_backtest_B(args.run_id, prices, signals_data, step_days=args.step_days, ticker_map=ticker_map)
         metrics_b = engine.compute_metrics(curve_b)
         
         curve_b.to_csv(os.path.join(run_dir, "equity_curve_B.csv"))
@@ -115,7 +119,7 @@ def main():
             f.write("## Performance Metrics\n\n")
             f.write("| Metric | Mode A (Committee) | Mode B (Signals) |\n")
             f.write("| :--- | :---: | :---: |\n")
-            for m in ["total_return", "cagr", "volatility", "sharpe_ratio", "max_drawdown"]:
+            for m in ["total_return", "cagr", "volatility", "downside_volatility", "sharpe_ratio", "sortino_ratio", "max_drawdown"]:
                 val_a = results["A"].get(m, 0)
                 val_b = results["B"].get(m, 0)
                 f.write(f"| {m} | {val_a:.4f} | {val_b:.4f} |\n")

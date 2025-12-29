@@ -108,6 +108,12 @@ curl -sL "https://raw.githubusercontent.com/sou350121/investment-masters-handboo
 
 详细使用说明请参考：[`guides/backtest_guide.md`](guides/backtest_guide.md)
 
+**默认 ETF 代理（四桶）**：
+- stocks: `SPY`
+- bonds: `SHY`（短久期国债，更稳健；可用 `--tickers` 覆盖）
+- gold: `GLD`
+- cash: `BIL`
+
 ---
 
 ## 📊 投资大师速览
