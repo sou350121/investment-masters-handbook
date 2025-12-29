@@ -15,6 +15,7 @@
   - `GET /api/backtest/runs/{run_id}`：返回 metrics / equity / history / comparison / run_config
 - [ ] CLI 回测脚本写出 `run_config.json`（包含 start/end/step_days/tickers 等），供 Web 展示
 - [ ] Web UI 新增「回测历史」Tab：展示 flow + run list + 指标卡片 + 曲线 + timeline
+- [ ] 纯静态模式：Web UI 不依赖 `/api/backtest/*`，改为读取 `web/public/backtests/index.json` 与 `web/public/backtests/<run_id>/` 下的真实回测输出文件
 - [ ] 验证命令通过：
   - `pytest -q`
 
@@ -30,5 +31,6 @@
 
 ## 进度日志（每次 Agent session 追加）
 - 2025-12-29: 初始化 Story；实现回测历史工作台（API + Web UI）。
+
 
 

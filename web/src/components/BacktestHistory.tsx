@@ -23,8 +23,6 @@ import {
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { BACKTEST_DEMO } from '@/lib/imh/backtest_demo';
-
 type Metrics = Record<string, any>;
 
 type BacktestRunSummary = {
@@ -76,17 +74,37 @@ function fmtNum(v: any, digits = 3) {
   return x.toFixed(digits);
 }
 
-function getAuthHeaders(): Record<string, string> {
-  const headers: Record<string, string> = {};
-  try {
-    if (typeof window !== 'undefined') {
-      const t = (window.localStorage.getItem('imh_api_token') || '').trim();
-      if (t) headers.Authorization = `Bearer ${t}`;
+function splitCsvLine(line: string): string[] {
+  const out: string[] = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        const next = line[i + 1];
+        if (next === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        cur += ch;
+      }
+    } else {
+      if (ch === ',') {
+        out.push(cur);
+        cur = '';
+      } else if (ch === '"') {
+        inQuotes = true;
+      } else {
+        cur += ch;
+      }
     }
-  } catch {
-    // ignore
   }
-  return headers;
+  out.push(cur);
+  return out;
 }
 
 function Sparkline({
@@ -239,8 +257,7 @@ export default function BacktestHistory() {
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'A' | 'B'>('A');
-  const [dataSource, setDataSource] = useState<'api' | 'demo'>('api');
-  const [demoNotice, setDemoNotice] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const flow = useMemo(
     () => [
@@ -254,39 +271,120 @@ export default function BacktestHistory() {
     [],
   );
 
+  const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '/imh').replace(/\/$/, '');
+
   async function loadRuns() {
     setLoadingRuns(true);
     setError(null);
     try {
-      const resp = await fetch('/api/backtest/runs', {
-        headers: { ...getAuthHeaders() },
-      });
-      const ct = (resp.headers.get('content-type') || '').toLowerCase();
-      if (resp.status === 404 || ct.includes('text/html')) {
-        // Older backend / no backtest API: fall back to offline demo dataset.
-        setDataSource('demo');
-        setDemoNotice('后端未启用 backtest API，已自动切换到 Demo 数据（基于此前回测生成）。');
-        const demoRuns = Array.from((BACKTEST_DEMO?.runs || []) as readonly any[]);
-        setRuns(demoRuns as unknown as BacktestRunSummary[]);
-        return;
-      }
+      const resp = await fetch(`${basePath}/backtests/index.json`, { cache: 'no-store' });
       if (!resp.ok) {
         const body = await resp.text().catch(() => '');
-        throw new Error(`加载回测 runs 失败（HTTP ${resp.status}）${body ? `: ${body}` : ''}`);
+        throw new Error(`加载静态回测索引失败（HTTP ${resp.status}）${body ? `: ${body}` : ''}`);
       }
       const data = await resp.json();
       setRuns(Array.isArray(data?.runs) ? data.runs : []);
-      setDataSource('api');
-      setDemoNotice(null);
+      setNotice(`数据源：静态快照（${basePath}/backtests/）`);
     } catch (e: any) {
-      // If API is unreachable, also fall back to demo instead of hard failing.
-      setDataSource('demo');
-      setDemoNotice('后端 backtest API 不可用，已自动切换到 Demo 数据。');
-      const demoRuns = Array.from((BACKTEST_DEMO?.runs || []) as readonly any[]);
-      setRuns(demoRuns as unknown as BacktestRunSummary[]);
+      setError(e?.message || '加载静态回测索引失败');
+      setRuns([]);
+      setNotice(null);
     } finally {
       setLoadingRuns(false);
     }
+  }
+
+  async function fetchJson(path: string): Promise<any | null> {
+    try {
+      const resp = await fetch(path, { cache: 'no-store' });
+      if (!resp.ok) return null;
+      return await resp.json();
+    } catch {
+      return null;
+    }
+  }
+
+  async function fetchText(path: string): Promise<string | null> {
+    try {
+      const resp = await fetch(path, { cache: 'no-store' });
+      if (!resp.ok) return null;
+      return await resp.text();
+    } catch {
+      return null;
+    }
+  }
+
+  function parseEquityCsv(csvText: string | null, maxPoints = 900): EquityPoint[] {
+    if (!csvText) return [];
+    const lines = csvText.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+    if (lines.length <= 1) return [];
+    const out: EquityPoint[] = [];
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
+      const parts = splitCsvLine(line);
+      if (parts.length < 2) continue;
+      const date = String(parts[0] || '').trim();
+      const equity = Number(parts[1]);
+      if (!date || !Number.isFinite(equity)) continue;
+      out.push({ date, equity });
+    }
+    if (maxPoints > 0 && out.length > maxPoints) {
+      const step = Math.max(1, Math.floor((out.length + maxPoints - 1) / maxPoints));
+      const ds = out.filter((_p, idx) => idx % step === 0);
+      if (ds.length && ds[ds.length - 1].date !== out[out.length - 1].date) ds.push(out[out.length - 1]);
+      return ds;
+    }
+    return out;
+  }
+
+  function safeParseAllocation(raw: any): Allocation | undefined {
+    if (!raw) return undefined;
+    if (typeof raw === 'object') return raw as Allocation;
+    const s = String(raw).trim();
+    if (!s) return undefined;
+    // Try JSON first
+    try {
+      const v = JSON.parse(s);
+      if (v && typeof v === 'object') return v as Allocation;
+    } catch {
+      // ignore
+    }
+    // Try python-dict-like: {'stocks': 55, 'bonds': 25, ...}
+    try {
+      const j = s.replace(/'/g, '"');
+      const v = JSON.parse(j);
+      if (v && typeof v === 'object') return v as Allocation;
+    } catch {
+      return undefined;
+    }
+  }
+
+  function parseHistoryCsv(csvText: string | null, maxRows = 800): HistoryRow[] {
+    if (!csvText) return [];
+    const lines = csvText.split(/\r?\n/);
+    if (lines.length < 2) return [];
+    const header = splitCsvLine(lines[0]).map((h) => h.trim());
+    const out: HistoryRow[] = [];
+    for (let i = 1; i < lines.length; i++) {
+      if (maxRows > 0 && out.length >= maxRows) break;
+      const line = lines[i];
+      if (!line || !line.trim()) continue;
+      const cols = splitCsvLine(line);
+      const row: any = {};
+      for (let j = 0; j < header.length; j++) {
+        const k = header[j] || `c${j}`;
+        row[k] = cols[j] ?? '';
+      }
+      if (row.equity !== undefined) {
+        const x = Number(row.equity);
+        if (Number.isFinite(x)) row.equity = x;
+      }
+      if (row.allocation !== undefined) {
+        row.allocation = safeParseAllocation(row.allocation);
+      }
+      out.push(row as HistoryRow);
+    }
+    return out;
   }
 
   async function loadDetail(runId: string) {
@@ -294,39 +392,67 @@ export default function BacktestHistory() {
     setError(null);
     setDetail(null);
     try {
-      if (dataSource === 'demo') {
-        const details = (BACKTEST_DEMO?.details || {}) as unknown as Record<string, any>;
-        const d = details[runId] as any;
-        if (!d) throw new Error('Demo 数据中找不到该 run');
-        setDetail(d as BacktestRunDetail);
-        const modes = Object.keys(d?.metrics || {});
-        if (modes.includes('A')) setMode('A');
-        else if (modes.includes('B')) setMode('B');
-        return;
-      }
-      const resp = await fetch(`/api/backtest/runs/${encodeURIComponent(runId)}`, {
-        headers: { ...getAuthHeaders() },
-      });
-      const ct = (resp.headers.get('content-type') || '').toLowerCase();
-      if (resp.status === 404 || ct.includes('text/html')) {
-        setDataSource('demo');
-        setDemoNotice('后端未启用 backtest API，已自动切换到 Demo 数据。');
-        const details = (BACKTEST_DEMO?.details || {}) as unknown as Record<string, any>;
-        const d = details[runId] as any;
-        if (!d) throw new Error('Demo 数据中找不到该 run');
-        setDetail(d as BacktestRunDetail);
-        const modes = Object.keys(d?.metrics || {});
-        if (modes.includes('A')) setMode('A');
-        else if (modes.includes('B')) setMode('B');
-        return;
-      }
-      if (!resp.ok) {
-        const body = await resp.text().catch(() => '');
-        throw new Error(`加载回测详情失败（HTTP ${resp.status}）${body ? `: ${body}` : ''}`);
-      }
-      const data = (await resp.json()) as BacktestRunDetail;
-      setDetail(data);
-      const modes = Object.keys(data?.metrics || {});
+      const runBase = `${basePath}/backtests/${encodeURIComponent(runId)}`;
+      const [
+        config,
+        metricsA,
+        metricsB,
+        equityCsvA,
+        equityCsvB,
+        historyCsvA,
+        historyCsvB,
+        comparisonMd,
+      ] = await Promise.all([
+        fetchJson(`${runBase}/run_config.json`),
+        fetchJson(`${runBase}/metrics_A.json`),
+        fetchJson(`${runBase}/metrics_B.json`),
+        fetchText(`${runBase}/equity_curve_A.csv`),
+        fetchText(`${runBase}/equity_curve_B.csv`),
+        fetchText(`${runBase}/history_A.csv`),
+        fetchText(`${runBase}/history_B.csv`),
+        fetchText(`${runBase}/comparison.md`),
+      ]);
+
+      const files: Record<string, boolean> = {
+        metrics_A: !!metricsA,
+        metrics_B: !!metricsB,
+        equity_curve_A: !!equityCsvA,
+        equity_curve_B: !!equityCsvB,
+        history_A: !!historyCsvA,
+        history_B: !!historyCsvB,
+        comparison: !!comparisonMd,
+        run_config: !!config,
+      };
+
+      const metrics: Record<string, Metrics> = {};
+      if (metricsA) metrics.A = metricsA;
+      if (metricsB) metrics.B = metricsB;
+
+      const equity: Record<string, EquityPoint[]> = {};
+      const eqA = parseEquityCsv(equityCsvA);
+      const eqB = parseEquityCsv(equityCsvB);
+      if (eqA.length) equity.A = eqA;
+      if (eqB.length) equity.B = eqB;
+
+      const history: Record<string, HistoryRow[]> = {};
+      const hA = parseHistoryCsv(historyCsvA);
+      const hB = parseHistoryCsv(historyCsvB);
+      if (hA.length) history.A = hA;
+      if (hB.length) history.B = hB;
+
+      const d: BacktestRunDetail = {
+        run_id: runId,
+        root: 'static',
+        files,
+        config: config || {},
+        metrics,
+        equity,
+        history,
+        comparison_md: comparisonMd,
+      };
+
+      setDetail(d);
+      const modes = Object.keys(d?.metrics || {});
       if (modes.includes('A')) setMode('A');
       else if (modes.includes('B')) setMode('B');
     } catch (e: any) {
@@ -351,7 +477,7 @@ export default function BacktestHistory() {
             📈 回测历史工作台
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            把 `results/&lt;run_id&gt;/` 的指标、曲线与 rebalance history 变成可视化证据链（方便复盘与迭代参数）。
+            把 `web/public/backtests/&lt;run_id&gt;/` 的真实回测输出（指标、曲线与 rebalance history）变成可视化证据链（方便复盘与迭代参数）。
           </Typography>
         </Box>
         <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadRuns} disabled={loadingRuns}>
@@ -382,12 +508,9 @@ export default function BacktestHistory() {
         </Alert>
       )}
 
-      {demoNotice && (
+      {notice && (
         <Alert severity="info" sx={{ mb: 2, borderRadius: 3 }}>
-          {demoNotice}{' '}
-          <Typography component="span" variant="caption" sx={{ fontWeight: 900 }}>
-            （dataSource: {dataSource}）
-          </Typography>
+          {notice}
         </Alert>
       )}
 
@@ -407,7 +530,7 @@ export default function BacktestHistory() {
             </Box>
           ) : runs.length === 0 ? (
             <Alert severity="info" sx={{ borderRadius: 3 }}>
-              还没有检测到回测输出。先运行一次：`python scripts/run_backtest_biweekly.py ...`（会生成 `results/&lt;run_id&gt;/`）。
+              还没有检测到静态回测快照。把 `results/&lt;run_id&gt;/` 原样拷贝到 `web/public/backtests/&lt;run_id&gt;/`，然后运行：`python scripts/build_static_backtests_index.py`
             </Alert>
           ) : (
             <List dense disablePadding>

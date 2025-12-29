@@ -24,7 +24,7 @@
   - `web/src/components/BacktestHistory.tsx`
   - `InvestorList` 增加「回测历史」Tab
 - 回测脚本增强：`scripts/run_backtest_biweekly.py` 写出 `run_config.json`
-- 兼容旧后端：前端在 backtest API 404 时自动切到内置 Demo 数据（不强制用户重启服务）
+- 纯静态真实快照：前端不依赖 `/api/backtest/*`，改为读取 `web/public/backtests/` 下的真实 run 输出（配套 `scripts/build_static_backtests_index.py` 生成 `index.json`）
 - 验证：`pytest -q`
 
 
