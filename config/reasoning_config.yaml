@@ -71,22 +71,22 @@ expert_categories:
   bill_ackman: value
   joel_greenblatt: quant
 
-# Deterministic primary allocation policy (Sharpe-first)
+# Deterministic primary allocation policy (Sortino-tuned)
 # The backend will generate `primary.target_allocation` from the adjudicator's
 # `final_multiplier_offset` and `conflict_detected` to reduce LLM numeric noise.
 allocation_policy:
-  objective: sharpe
-  amplitude: 8
-  conflict_damping: 0.7
+  objective: sortino
+  amplitude: 4
+  conflict_damping: 0.4
   mapping_mode: asymmetric_power
   exp_up: 1.35
   exp_down: 0.85
   scale_up: 0.9
   scale_down: 1.1
   min_cash: 5
-  max_cash: 30
+  max_cash: 20
   regime_bases:
-    neutral: { stocks: 60, bonds: 20, gold: 10, cash: 10 }
+    neutral: { stocks: 55, bonds: 25, gold: 10, cash: 10 }
     bull: { stocks: 70, bonds: 15, gold: 5, cash: 10 }
     crisis: { stocks: 40, bonds: 30, gold: 15, cash: 15 }
     stagflation: { stocks: 50, bonds: 20, gold: 20, cash: 10 }

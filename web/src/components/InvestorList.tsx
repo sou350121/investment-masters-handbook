@@ -120,6 +120,7 @@ export default function InvestorList({
     final_multiplier_offset: number;
     primary_expert: string;
     conflict_detected: boolean;
+    disagreement_score?: number;
     resolution: string;
     contributions?: EnsembleContribution[];
   };
@@ -553,18 +554,14 @@ export default function InvestorList({
   const saveApiToken = () => {
     if (typeof window === 'undefined') return;
     const trimmed = apiToken.trim();
-    // Prevent common confusion: OpenRouter keys typically look like "sk-or-..."
-    if (trimmed.startsWith('sk-or-')) {
-      setToast({
-        open: true,
-        text: '检测到你粘贴的是 OpenRouter Key（sk-or-...）。这里是 IMH_API_TOKEN（接口口令），不要放 LLM Key。',
-      });
-      return;
-    }
+    const looksLikeLlmKey = trimmed.startsWith('sk-') || trimmed.startsWith('or-');
     try {
       window.localStorage.setItem('imh_api_token', trimmed);
       setApiTokenSaved(true);
-      setToast({ open: true, text: 'Token 已保存（仅本机浏览器）' });
+      setToast({
+        open: true,
+        text: `Token 已保存（仅本机浏览器）${looksLikeLlmKey ? '；检测到 LLM API Key，会作为本次会诊请求的 Key 透传给后端（后端不落盘）' : ''}`,
+      });
       setTimeout(() => setApiTokenSaved(false), 1500);
     } catch {
       setToast({ open: true, text: '保存 Token 失败（浏览器禁止 localStorage？）' });
@@ -1418,6 +1415,9 @@ export default function InvestorList({
                           <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.25 }}>
                             confidence: {confPct}%
                           </Typography>
+                        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.25 }}>
+                          默认执行 ETF 代理：SPY（股）/ SHY（债）/ GLD（金）/ BIL（现金）
+                        </Typography>
 
                           <Box sx={{ mt: 1.25 }}>
                             <Stack spacing={0.75}>
@@ -1470,6 +1470,41 @@ export default function InvestorList({
                               ))}
                             </Stack>
 
+                            {(sec.metadata?.primary_allocator_inputs || sec.metadata?.primary_allocator_policy) && (
+                              <Paper variant="outlined" sx={{ p: 1.5, borderRadius: 2, mb: 2 }}>
+                                <Typography variant="caption" color="text.secondary" fontWeight={800}>
+                                  Allocator（primary 由后端确定性生成）
+                                </Typography>
+                                <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                                  generated_by: {String(sec.metadata?.primary_generated_by || 'unknown')} · objective:{' '}
+                                  {String(
+                                    sec.metadata?.primary_allocator_inputs?.objective ||
+                                      sec.metadata?.primary_allocator_policy?.objective ||
+                                      'unknown',
+                                  )}{' '}
+                                  · regime: {String(sec.metadata?.primary_allocator_inputs?.regime_id || 'unknown')}
+                                </Typography>
+                                {sec.metadata?.primary_allocator_policy && (
+                                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                                    amp={String(sec.metadata.primary_allocator_policy?.amplitude)} · conflict_damping=
+                                    {String(sec.metadata.primary_allocator_policy?.conflict_damping)} · cash=
+                                    {String(sec.metadata.primary_allocator_policy?.min_cash)}-
+                                    {String(sec.metadata.primary_allocator_policy?.max_cash)} · mapping=
+                                    {String(sec.metadata.primary_allocator_policy?.mapping_mode)}
+                                  </Typography>
+                                )}
+                                {sec.metadata?.primary_allocator_policy?.regime_base && (
+                                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                                    base({String(sec.metadata?.primary_allocator_inputs?.regime_id || '')}): 股
+                                    {String(sec.metadata.primary_allocator_policy.regime_base.stocks)}/债
+                                    {String(sec.metadata.primary_allocator_policy.regime_base.bonds)}/金
+                                    {String(sec.metadata.primary_allocator_policy.regime_base.gold)}/现
+                                    {String(sec.metadata.primary_allocator_policy.regime_base.cash)}
+                                  </Typography>
+                                )}
+                              </Paper>
+                            )}
+
                             {sec.ensemble_adjustment && (
                               <Paper variant="outlined" sx={{ p: 1.5, borderRadius: 2, mb: 2 }}>
                                 <Typography variant="caption" color="text.secondary" fontWeight={800}>
@@ -1478,6 +1513,11 @@ export default function InvestorList({
                                 <Typography variant="body2" fontWeight={900}>
                                   final_multiplier_offset: {Number(sec.ensemble_adjustment.final_multiplier_offset).toFixed(3)}
                                 </Typography>
+                                {typeof sec.ensemble_adjustment.disagreement_score === 'number' && (
+                                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                                    disagreement_score: {Number(sec.ensemble_adjustment.disagreement_score).toFixed(3)}
+                                  </Typography>
+                                )}
                                 {sec.metadata?.regime_id_inferred && (
                                   <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
                                     regime_id_inferred: {String(sec.metadata.regime_id_inferred)}

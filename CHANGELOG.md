@@ -47,6 +47,19 @@
 
 - **README 排版升级**：参考 TradeVoyage 风格，强化导航、快速开始、API 段落与项目结构展示（并同步修正投资人数/规则数等统计口径）。
 
+## [1.8.2] - 2025-12-29
+
+### 📈 Sortino 优化：默认参数“出厂即最优”（以 SHY 为债券底盘）
+
+- **默认债券 proxy 调整**：回测与执行代理默认使用 `SHY`（短久期国债）替代 `IEF`，作为更稳健的 bonds 底盘（可用 `--tickers` 覆盖）。
+- **allocator 参数写入配置**：将最佳 Sortino 网格搜索结果写入 `config/reasoning_config.yaml` 的 `allocation_policy`（objective=sortino），并同步更新 neutral base。
+- **可解释性增强**：`/api/rag/ensemble` 的 `secondary.metadata` 新增 `primary_allocator_policy` 快照，方便前端展示“系统用的到底是哪组参数”。
+
+### 🎨 Web 前端同步升级
+
+- **Token 登录修复**：允许保存 `sk-or-...` 等 LLM API Key（NOFX BYOK），并提示其仅本地保存、请求时透传后端不落盘。
+- **执行代理更明确**：一级输出旁展示默认 ETF 代理（SPY/SHY/GLD/BIL），并在二级输出中展示 allocator policy 与 `disagreement_score`。
+
 ## [1.7.0] - 2025-12-23
 
 ### 🚀 重磅更新：场景沙盒 (Scenario Sandbox) & 首页 UX 革命

@@ -347,6 +347,7 @@ def run_ensemble_committee(
     from tools.llm_bridge import LLMBridge, extract_json_block
     from tools.reasoning_core import (
         get_master_personality,
+        ALLOCATION_POLICY,
         EnsembleAdjudicator,
         ExpertOpinion as AdjudicatorOpinion,
         SharpePrimaryAllocator,
@@ -500,12 +501,27 @@ def run_ensemble_committee(
 
     secondary.setdefault("metadata", {})
     secondary["metadata"]["primary_generated_by"] = "allocator_sharpe_v1"
+    ap = ALLOCATION_POLICY or {}
+    objective = str(ap.get("objective") or "sharpe")
     secondary["metadata"]["primary_allocator_inputs"] = {
-        "objective": "sharpe",
+        "objective": objective,
         "regime_id": regime_id,
         "final_multiplier_offset": round(final_offset, 3),
         "conflict_detected": conflict,
         "disagreement_score": (round(float(ds_f), 3) if isinstance(ds_f, (int, float)) else None),
+    }
+    secondary["metadata"]["primary_allocator_policy"] = {
+        "objective": objective,
+        "amplitude": ap.get("amplitude"),
+        "conflict_damping": ap.get("conflict_damping"),
+        "mapping_mode": ap.get("mapping_mode"),
+        "exp_up": ap.get("exp_up"),
+        "exp_down": ap.get("exp_down"),
+        "scale_up": ap.get("scale_up"),
+        "scale_down": ap.get("scale_down"),
+        "min_cash": ap.get("min_cash"),
+        "max_cash": ap.get("max_cash"),
+        "regime_base": (ap.get("regime_bases") or {}).get(regime_id),
     }
 
     def _safe_f(v):
