@@ -35,8 +35,29 @@ from tools.rag_core import (
 
 from tools.llm_bridge import LLMBridge, LLMBridgeError, extract_json_block
 from tools.reasoning_core import get_master_personality, EnsembleAdjudicator, ExpertOpinion as AdjudicatorOpinion
+from services.feedback_system import FeedbackCollector, FeedbackAnalyzer
 
 app = FastAPI(title="Investment Masters RAG API")
+
+# 反饋系統全局實例
+_feedback_collector: Optional[FeedbackCollector] = None
+_feedback_analyzer: Optional[FeedbackAnalyzer] = None
+
+
+def get_feedback_collector() -> FeedbackCollector:
+    """獲取反饋收集器單例"""
+    global _feedback_collector
+    if _feedback_collector is None:
+        _feedback_collector = FeedbackCollector()
+    return _feedback_collector
+
+
+def get_feedback_analyzer() -> FeedbackAnalyzer:
+    """獲取反饋分析器單例"""
+    global _feedback_analyzer
+    if _feedback_analyzer is None:
+        _feedback_analyzer = FeedbackAnalyzer(get_feedback_collector())
+    return _feedback_analyzer
 
 # 全局向量库实例
 vectorstore = None
@@ -1201,12 +1222,24 @@ def _compute_overlay(policy: Dict[str, Any], regime_id: str, scenarios: List[str
 
 
 @app.post("/api/policy/gate", response_model=PolicyGateResponse)
-async def policy_gate(req: PolicyGateRequest):
+async def policy_gate(req: PolicyGateRequest, auto_fill_features: bool = True):
+    """
+    Policy Gate - 評估市場狀態並提供風險調整建議
+    
+    Args:
+        req: PolicyGateRequest (text, features, portfolio_state, constraints)
+        auto_fill_features: 是否自動填充缺失的市場特徵 (從實時數據)
+    """
     if not req.text or not req.text.strip():
         raise HTTPException(status_code=400, detail="text is required")
 
     if vectorstore is None:
         raise HTTPException(status_code=503, detail="Vectorstore not ready")
+    
+    # 自動填充缺失的市場特徵
+    if auto_fill_features:
+        features = await _auto_fill_features(req.features or {})
+        req.features = features
 
     policy = _load_policy()
     regime = _score_regimes(policy, req.features or {})
@@ -1332,6 +1365,98 @@ async def policy_gate(req: PolicyGateRequest):
     )
 
 
+# ============================================
+# 反饋 API 端點
+# ============================================
+class FeedbackRequest(BaseModel):
+    """反饋請求"""
+    session_id: str
+    query: str
+    response_id: str
+    feedback_type: str  # "thumbs_up", "thumbs_down", "rating"
+    rating: Optional[int] = None  # 1-5 分
+    comment: Optional[str] = None
+
+
+class FeedbackResponse(BaseModel):
+    """反饋響應"""
+    success: bool
+    feedback_id: str
+    message: str
+
+
+@app.post("/api/feedback", response_model=FeedbackResponse)
+async def submit_feedback(req: FeedbackRequest):
+    """
+    提交用戶反饋
+    
+    Args:
+        req: FeedbackRequest (session_id, query, response_id, feedback_type, rating, comment)
+    
+    Returns:
+        FeedbackResponse (success, feedback_id, message)
+    """
+    try:
+        collector = get_feedback_collector()
+        
+        record = collector.submit_feedback(
+            session_id=req.session_id,
+            query=req.query,
+            response_id=req.response_id,
+            feedback_type=req.feedback_type,
+            rating=req.rating,
+            comment=req.comment
+        )
+        
+        return FeedbackResponse(
+            success=True,
+            feedback_id=record["id"],
+            message="反饋已保存"
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"反饋提交失敗：{e}")
+
+
+@app.get("/api/feedback/stats", response_model=Dict[str, Any])
+async def get_feedback_stats(days: int = 7):
+    """
+    獲取反饋統計數據
+    
+    Args:
+        days: 統計天數
+    
+    Returns:
+        統計數據字典 (total_feedback, average_rating, nps, thumbs_up_ratio, etc.)
+    """
+    try:
+        analyzer = get_feedback_analyzer()
+        stats = analyzer.analyze(days=days)
+        return stats
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"獲取統計失敗：{e}")
+
+
+@app.get("/api/feedback/report")
+async def get_feedback_report(days: int = 7):
+    """
+    獲取反饋分析報告
+    
+    Args:
+        days: 報告天數
+    
+    Returns:
+        文本報告
+    """
+    try:
+        analyzer = get_feedback_analyzer()
+        report = analyzer.generate_report(days=days)
+        return {"report": report, "days": days}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"生成報告失敗：{e}")
+
+
 @app.get("/")
 async def web_index():
     """
@@ -1355,6 +1480,60 @@ if WEB_OUT_DIR.exists():
     # IMPORTANT: mount /imh BEFORE /, otherwise / will swallow /imh and cause 404 for /imh/* assets.
     app.mount("/imh", StaticFiles(directory=str(WEB_OUT_DIR), html=True), name="web_imh")
     app.mount("/", StaticFiles(directory=str(WEB_OUT_DIR), html=True), name="web")
+
+# ============================================
+# 實時數據集成
+# ============================================
+async def _auto_fill_features(features: Dict[str, float]) -> Dict[str, float]:
+    """
+    自動填充缺失的市場特徵
+    
+    從實時數據管道獲取缺失的關鍵指標:
+    - vix: 市場波動率
+    - inflation: 通膨率
+    - rates: 聯邦基金利率
+    - treasury_10y: 10 年期國債收益率
+    - sp500_pe_ratio: S&P500 本益比
+    
+    Args:
+        features: 用戶提供的特徵
+    
+    Returns:
+        填充後的特徵字典
+    """
+    # 需要填充的字段
+    required_fields = ["vix", "inflation", "rates", "treasury_10y", "sp500_pe_ratio"]
+    missing_fields = [f for f in required_fields if f not in features]
+    
+    if not missing_fields:
+        # 沒有缺失字段，直接返回
+        return features
+    
+    try:
+        # 獲取實時數據
+        from .realtime_data import get_pipeline
+        pipeline = get_pipeline()
+        await pipeline.start()
+        
+        try:
+            realtime_features = await pipeline.get_all_features()
+            
+            # 只填充缺失的字段 (不覆蓋用戶提供的值)
+            for field in missing_fields:
+                if field in realtime_features:
+                    features[field] = realtime_features[field]
+                    print(f"✅ 自動填充 {field}: {realtime_features[field]}")
+            
+            return features
+            
+        finally:
+            await pipeline.stop()
+            
+    except Exception as e:
+        print(f"⚠️ 自動填充特徵失敗：{e}")
+        # 降級：返回原始特徵 (不填充)
+        return features
+
 
 if __name__ == "__main__":
     import uvicorn
