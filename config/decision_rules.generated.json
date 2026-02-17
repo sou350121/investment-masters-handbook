@@ -1,506 +1,884 @@
 {
   "rules": [
     {
-      "because": "激進投資標的",
+      "because": "这种资产是伯克希尔长期资本部署的最佳温床",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:001",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "考虑全资收购或控股",
+      "when": "目标是具备 30 年以上寿命的基础设施资产 AND 监管收益率可预测"
+    },
+    {
+      "because": "数字化能显著降低边际成本并增强护城河",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:002",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "即使 PE 略高于传统价值股也可研究",
+      "when": "商业模式是“收费公路”型 (如支付、分销、物流) AND 正在进行成功的数字化升级"
+    },
+    {
+      "because": "风险定价的本质是在别人不敢定价时提供流动性",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:003",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "扩大承保规模并提高溢价",
+      "when": "保险市场出现巨灾后的恐慌性定价 AND 我们有充足的资本金"
+    },
+    {
+      "because": "伯克希尔的价值在于其独特的“去中心化所有者文化”",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:004",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "给予其 100% 的决策授权",
+      "when": "子公司 CEO 具备 20 年以上的行业专注度 AND 表现出卓越的再投资纪律"
+    },
+    {
+      "because": "现代护城河更多由数据和用户习惯而非实物资产构成",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:005",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "视为跨世代价值投资机会",
+      "when": "发现具备强网络效应的平台型公司其核心数据指标依然健康但股价因短期因素回调"
+    },
+    {
+      "because": "这是在为未来 50 年的现金流做防御性布局",
+      "investor_id": "berkshire_successors",
+      "kind": "entry",
+      "rule_id": "berkshire_successors:entry:006",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "长期看好并支持其留存利润",
+      "when": "某传统行业领头羊正在利用其现金流优势进行能源转型 (如 BHE)"
+    },
+    {
+      "because": "规则的改变会摧毁长周期资产的估值基础",
+      "investor_id": "berkshire_successors",
+      "kind": "exit",
+      "rule_id": "berkshire_successors:exit:001",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "考虑停止资本投入或撤出",
+      "when": "监管环境发生不可逆的敌对性转变 (如取消公用事业的合理收益保证)"
+    },
+    {
+      "because": "这种颠覆通常是结构性的且不可挽回",
+      "investor_id": "berkshire_successors",
+      "kind": "exit",
+      "rule_id": "berkshire_successors:exit:002",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "逐步减仓或卖出相关资产",
+      "when": "发现科技创新使得原有的“物理壁垒”变得不再重要 (如分布式能源挑战中心化电网)"
+    },
+    {
+      "because": "在保险业，规模往往是灾难的序曲",
+      "investor_id": "berkshire_successors",
+      "kind": "exit",
+      "rule_id": "berkshire_successors:exit:003",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "立即更换管理层或收缩业务",
+      "when": "保险业务的承保经理开始为了追求“排名”或“市场份额”而降低定价标准"
+    },
+    {
+      "because": "这背离了伯克希尔的核心原则：专注与理性",
+      "investor_id": "berkshire_successors",
+      "kind": "exit",
+      "rule_id": "berkshire_successors:exit:004",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "视为资本配置能力退化的信号，择机退出",
+      "when": "某持仓公司的管理层开始频繁进行高溢价、无协同效应的“多元化”并购"
+    },
+    {
+      "because": "低利率会扭曲风险定价，导致昂贵的错误",
+      "investor_id": "berkshire_successors",
+      "kind": "risk_management",
+      "rule_id": "berkshire_successors:risk_management:001",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "维持高比例现金，不为买而买",
+      "when": "整体市场处于极端低利率环境 (TINA: There Is No Alternative)"
+    },
+    {
+      "because": "依赖政治的护城河不是真正的护城河",
+      "investor_id": "berkshire_successors",
+      "kind": "risk_management",
+      "rule_id": "berkshire_successors:risk_management:002",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "将此部分收益从估值模型中剔除",
+      "when": "某项投资的成功高度依赖于未来的政策补贴或一次性税收优惠"
+    },
+    {
+      "because": "伯克希尔必须始终保持“金融堡垒”的稳固性",
+      "investor_id": "berkshire_successors",
+      "kind": "risk_management",
+      "rule_id": "berkshire_successors:risk_management:003",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "强制母公司注资以置换债务或缩减杠杆",
+      "when": "子公司的债务结构中短期债务占比过高"
+    },
+    {
+      "because": "缺乏竞争边界的科技投资等同于投机",
+      "investor_id": "berkshire_successors",
+      "kind": "risk_management",
+      "rule_id": "berkshire_successors:risk_management:004",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "归入“太难”一类，暂不操作",
+      "when": "在评估科技股时无法用“一句话”说明其 10 年后的竞争对手是谁"
+    },
+    {
+      "because": "接班人时代的决策应更多依赖流程与团队理性而非个人魅力",
+      "investor_id": "berkshire_successors",
+      "kind": "risk_management",
+      "rule_id": "berkshire_successors:risk_management:005",
+      "source_file": "investors\\berkshire_successors.md",
+      "then": "引入独立团队进行“魔鬼代言人”式的反向审查",
+      "when": "发现自己对某个投资标的产生了情感依赖或“偶像崇拜”"
+    },
+    {
+      "because": "这种生意是“通胀保护器”，且其护城河能随时间加深",
+      "investor_id": "bill_ackman",
+      "kind": "entry",
+      "rule_id": "bill_ackman:entry:001",
+      "source_file": "investors\\bill_ackman.md",
+      "then": "将其视为核心重仓股，在回撤时坚定买入",
+      "when": "业务逻辑简单 AND 客户有极高的复购率 AND FCF 收益率 > 5% AND 具备涨价能力"
+    },
+    {
+      "because": "改变一个好公司的管理层是解锁价值最直接的方式",
+      "investor_id": "bill_ackman",
+      "kind": "entry",
+      "rule_id": "bill_ackman:entry:002",
+      "source_file": "investors\\bill_ackman.md",
+      "then": "建立激进头寸，寻求董事会席位并推动管理层改革",
+      "when": "某公司的管理层在资本配置上表现极其糟糕 (如在高位进行大宗并购) BUT 业务极佳"
+    },
+    {
+      "because": "这是对剩余股东最有利的资本分配方式",
+      "investor_id": "bill_ackman",
+      "kind": "entry",
+      "rule_id": "bill_ackman:entry:003",
+      "source_file": "investors\\bill_ackman.md",
+      "then": "增加持仓权重",
+      "when": "自由现金流 (FCF) 被用于高效率的股份回购 (即股价低于内在价值时)"
+    },
+    {
+      "because": "这种非对称的赔率可以在灾难发生时为整个组合提供“反向弹药”",
+      "investor_id": "bill_ackman",
+      "kind": "entry",
+      "rule_id": "bill_ackman:entry:004",
+      "source_file": "investors\\bill_ackman.md",
+      "then": "投入少量资金 (如组合的 0.5%) 买入信贷违约对冲或利率对冲",
+      "when": "观察到信贷市场利差 (Credit Spreads) 处于历史低位 AND 存在潜在的全球性系统风险"
+    },
+    {
+      "because": "集中投资的前提是核心逻辑必须坚不可摧，逻辑断裂是唯一的出场点",
+      "investor_id": "bill_ackman",
+      "kind": "entry",
+      "rule_id": "bill_ackman:entry:005",
+      "source_file": "investors\\bill_ackman.md",
+      "then": "无论亏损多重，承认错误并迅速认输",
+      "when": "核心重仓股的竞争环境发生了根本性恶化 (如数字支付彻底颠覆了传统支付)"
+    },
+    {
+      "because": "这种极度的治理错位意味着巨大的价值解锁空间",
+      "investor_id": "carl_icahn",
+      "kind": "entry",
+      "rule_id": "carl_icahn:entry:001",
+      "source_file": "investors\\carl_icahn.md",
+      "then": "视为理想的激进目标，开始秘密建仓",
+      "when": "股价 < 账面价值 (P/B < 1) OR 现金流强劲但被用于平庸的再投资 AND 管理层正在领取天价薪酬"
+    },
+    {
+      "because": "法律壁垒是管理层最后的防线，突破它才能真正获得控制权",
+      "investor_id": "carl_icahn",
+      "kind": "entry",
+      "rule_id": "carl_icahn:entry:002",
+      "source_file": "investors\\carl_icahn.md",
+      "then": "在介入前必须聘请最顶尖的法律团队寻找漏洞",
+      "when": "目标公司存在“毒丸计划” (Poison Pill) 或分级董事会"
+    },
+    {
+      "because": "代理权战争的本质是股东投票权的博弈，散户的支持至关重要",
+      "investor_id": "carl_icahn",
+      "kind": "entry",
+      "rule_id": "carl_icahn:entry:003",
+      "source_file": "investors\\carl_icahn.md",
+      "then": "立即联系并组成利益联盟",
+      "when": "观察到其他机构投资者也对当前管理层表示不满"
+    },
+    {
+      "because": "市场往往会给予垂直领域的纯粹公司更高的估值倍数",
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:001",
-      "source_file": "investors/carl_icahn.md",
-      "then": "深入研究",
-      "when": "估值折價（股價 vs 資產/同業）AND 治理問題"
+      "source_file": "investors\\carl_icahn.md",
+      "then": "强迫管理层进行业务分拆 (Spin-off)",
+      "when": "某多元化集团的各个分部之和 (SOTP) 远高于当前市值"
     },
     {
-      "because": "治理改善潛力",
+      "because": "阻止管理层浪费钱也是一种创造价值的方式",
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:002",
-      "source_file": "investors/carl_icahn.md",
-      "then": "有介入空間",
-      "when": "管理層薪酬過高 OR 資本配置失誤"
+      "source_file": "investors\\carl_icahn.md",
+      "then": "立即通过诉讼或公开抗议阻止该交易",
+      "when": "发现管理层试图进行一项会摊薄股东权益且没有明显协同效应的并购"
     },
     {
-      "because": "價值釋放路徑",
+      "because": "激进投资者的利润来自于“修复过程”，修复完成后超额收益将递减",
       "investor_id": "carl_icahn",
       "kind": "other",
       "rule_id": "carl_icahn:other:003",
-      "source_file": "investors/carl_icahn.md",
-      "then": "有催化劑潛力",
-      "when": "可分拆/回購/出售資產釋放價值"
+      "source_file": "investors\\carl_icahn.md",
+      "then": "考虑获利了结，寻找下一个失能的猎物",
+      "when": "公司实现了价值重估 (股价达到合理水平) 且激进目标已达成"
     },
     {
-      "because": "可執行性高",
-      "investor_id": "carl_icahn",
+      "because": "指数级成本下降会创造爆发性需求，而传统估值模型通常会低估这种增速",
+      "investor_id": "cathie_wood",
+      "kind": "entry",
+      "rule_id": "cathie_wood:entry:001",
+      "source_file": "investors\\cathie_wood.md",
+      "then": "将该领域的领先者列入核心持仓",
+      "when": "某项技术的成本下降速度符合赖茨定律 AND 该技术对应的潜在市场 (TAM) > 1000亿美元"
+    },
+    {
+      "because": "“现任者陷阱”会导致转型失败，创新者的纯粹性是其最大的优势",
+      "investor_id": "cathie_wood",
+      "kind": "entry",
+      "rule_id": "cathie_wood:entry:002",
+      "source_file": "investors\\cathie_wood.md",
+      "then": "坚决不买入，并继续支持该行业的原生颠覆者",
+      "when": "某传统行业领军者正在通过大规模研发投入试图转型 BUT 其核心激励机制仍依赖旧业务"
+    },
+    {
+      "because": "宏观波动是给长期主义者送钱的礼物",
+      "investor_id": "cathie_wood",
+      "kind": "entry",
+      "rule_id": "cathie_wood:entry:003",
+      "source_file": "investors\\cathie_wood.md",
+      "then": "利用回撤进行集中调仓，买入那些预期年化收益率提升至 15% 以上的标的",
+      "when": "市场因为宏观担忧导致高成长股发生 20% 以上的非理性下跌 AND 基本面创新逻辑未受损"
+    },
+    {
+      "because": "创新投资是对“最前沿”的博弈，二流技术在指数级世界中没有生存空间",
+      "investor_id": "cathie_wood",
+      "kind": "exit",
+      "rule_id": "cathie_wood:exit:001",
+      "source_file": "investors\\cathie_wood.md",
+      "then": "无论当前亏损多重，立即止损并切换至新的领先者",
+      "when": "发现某项技术的替代方案已经出现且成本下降曲线更陡峭"
+    },
+    {
+      "because": "在高波动领域，如果没有足够的预期收益作为缓冲，持有成本将不可接受",
+      "investor_id": "cathie_wood",
+      "kind": "exit",
+      "rule_id": "cathie_wood:exit:002",
+      "source_file": "investors\\cathie_wood.md",
+      "then": "削减该头寸，将资金转移到预期收益率更高 (15%+) 的创新品种",
+      "when": "投资组合的预期年化收益率 (基于 5 年模型) 降至 10% 以下"
+    },
+    {
+      "because": "宏大的叙事能吸引大量廉价资金，从而在基本面变好之前创造出“融资护城河”",
+      "investor_id": "chamath_palihapitiya",
       "kind": "other",
-      "rule_id": "carl_icahn:other:004",
-      "source_file": "investors/carl_icahn.md",
-      "then": "法律障礙低",
-      "when": "無毒丸/分級董事會/超級投票權"
+      "rule_id": "chamath_palihapitiya:other:001",
+      "source_file": "investors\\chamath_palihapitiya.md",
+      "then": "考虑以激进的资本结构 (如 SPAC 或大规模融资) 介入",
+      "when": "某项目致力于解决人类核心问题 (如能源、长寿) AND 具备强大的“创始人叙事能力”"
     },
     {
-      "because": "達到 13D 披露門檻後施壓",
-      "investor_id": "carl_icahn",
+      "because": "查马斯深知“窗口期”的重要性，资本必须在容易获得的时候拿走",
+      "investor_id": "chamath_palihapitiya",
       "kind": "other",
-      "rule_id": "carl_icahn:other:005",
-      "source_file": "investors/carl_icahn.md",
-      "then": "逐步累積至 5-15%",
-      "when": "篩選通過 AND 有介入空間"
+      "rule_id": "chamath_palihapitiya:other:002",
+      "source_file": "investors\\chamath_palihapitiya.md",
+      "then": "利用流动性通过减持或再次融资来巩固资产负债表",
+      "when": "市场情绪处于顶峰 AND 散户对某叙事极度狂热"
     },
     {
-      "because": "有影響力後才有效",
-      "investor_id": "carl_icahn",
+      "because": "没有技术深度的叙事在周期逆转时会率先崩塌",
+      "investor_id": "chamath_palihapitiya",
       "kind": "other",
-      "rule_id": "carl_icahn:other:006",
-      "source_file": "investors/carl_icahn.md",
-      "then": "進入介入階段",
-      "when": "累積足夠股份"
+      "rule_id": "chamath_palihapitiya:other:003",
+      "source_file": "investors\\chamath_palihapitiya.md",
+      "then": "保持极度警惕，除非其能在补贴消失前建立技术壁垒",
+      "when": "某公司的核心竞争力仅在于“监管套利”或“补贴驱动”"
     },
     {
-      "because": "公開壓力",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:007",
-      "source_file": "investors/carl_icahn.md",
-      "then": "公開信 + 提名董事 + 股東提案",
-      "when": "建倉完成"
+      "because": "所有的叙事杠杆在加息面前都会发生剧烈的去杠杆反应",
+      "investor_id": "chamath_palihapitiya",
+      "kind": "exit",
+      "rule_id": "chamath_palihapitiya:exit:001",
+      "source_file": "investors\\chamath_palihapitiya.md",
+      "then": "立即大幅削减长久期、无盈利的资产头寸，转向具有现金流支撑的防守标的",
+      "when": "利率环境发生结构性逆转 (如从 0% 升至 3%+)"
     },
     {
-      "because": "通過股東投票決定",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:008",
-      "source_file": "investors/carl_icahn.md",
-      "then": "代理權戰爭（proxy fight）",
-      "when": "管理層抵抗"
+      "because": "叙事型投资的核心是“信任”，一旦信任链条断裂，资产价值会向零锚定",
+      "investor_id": "chamath_palihapitiya",
+      "kind": "exit",
+      "rule_id": "chamath_palihapitiya:exit:002",
+      "source_file": "investors\\chamath_palihapitiya.md",
+      "then": "判定叙事已死，寻找流动性出口",
+      "when": "创始人开始关注个人名声高于项目进度，或者在面临危机时推卸责任"
     },
     {
-      "because": "合作優於對抗",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:009",
-      "source_file": "investors/carl_icahn.md",
-      "then": "協商具體改革方案",
-      "when": "談判進展"
-    },
-    {
-      "because": "論點兌現",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:010",
-      "source_file": "investors/carl_icahn.md",
-      "then": "賣出",
-      "when": "價值釋放（分拆/回購/出售/被收購）"
-    },
-    {
-      "because": "時間成本",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:011",
-      "source_file": "investors/carl_icahn.md",
-      "then": "重新評估是否退出",
-      "when": "對抗失敗 AND 無進展"
-    },
-    {
-      "because": "機會成本",
-      "investor_id": "carl_icahn",
-      "kind": "other",
-      "rule_id": "carl_icahn:other:012",
-      "source_file": "investors/carl_icahn.md",
-      "then": "可以換倉",
-      "when": "有更好機會"
-    },
-    {
-      "because": "真正的低估機會",
+      "because": "这是一个简单的、具备高回报率的复利机器",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:001",
-      "source_file": "investors/charlie_munger.md",
-      "then": "考慮買入",
-      "when": "便宜因為短期負面 AND 護城河未損 AND 問題可逆"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:001",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "进入高度关注列表",
+      "when": "商业模式可以用 2 句话讲清楚 AND 过去 10 年 ROIC 持续 > 18%"
     },
     {
-      "because": "能力圈內的好生意",
+      "because": "注意力偏误常导致这类优质标的被错误定价",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:002",
-      "source_file": "investors/charlie_munger.md",
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:002",
+      "source_file": "investors\\charlie_munger.md",
       "then": "深入研究",
-      "when": "商業模式 2 句話可解釋 AND ROIC > 15% 持續 10 年+"
+      "when": "价格便宜是因为“无聊”或“分析师不覆盖” AND 现金流非常稳健"
     },
     {
-      "because": "注意力偏誤創造的機會",
+      "because": "这是芒格眼中的“杠铃式机会”：风险极低，收益极高",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:003",
-      "source_file": "investors/charlie_munger.md",
-      "then": "深入研究",
-      "when": "市場忽視（無聊/分析師不覆蓋）AND 現金流穩定"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:003",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "重仓买入",
+      "when": "市场出现极度恐慌 (Panic Selling) AND 目标公司护城河未变 AND 具备足够现金"
     },
     {
-      "because": "最好的買入時機",
+      "because": "长期看，投资就是投资于人",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:004",
-      "source_file": "investors/charlie_munger.md",
-      "then": "重注機會",
-      "when": "恐慌拋售 AND 好公司 AND 暫時困境"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:004",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "在估值合理时分批入场",
+      "when": "发现管理层具备罕见的“理性”和“诚信” AND 业务在能力圈内"
     },
     {
-      "because": "能力圈外",
+      "because": "这种护城河会随着规模扩大而自我加强",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:005",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "無法理解商業模式"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:005",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "买入并持有",
+      "when": "某公司具备强大的“网络效应”或“极高转换成本” AND 渗透率仍有空间"
     },
     {
-      "because": "激勵結構決定行為",
+      "because": "这种边际效应的改善是复利的关键来源",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:006",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "管理層激勵與股東不一致"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:006",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "确认其具备规模优势后买入",
+      "when": "公司的 SG&A 占比随营收增长而下降 AND 净利率持续改善"
     },
     {
-      "because": "投機",
+      "because": "市场认知偏差创造了超额收益空间",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:007",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "需要「信仰」未來才能合理化"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:007",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "逆向思考并买入",
+      "when": "发现多项心理偏误正在导致市场无视某个利好消息"
     },
     {
-      "because": "連內行都說不清的要避開",
+      "because": "这是管理层资本配置能力的最高体现",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:008",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "複雜且不透明"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:008",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "强烈看好",
+      "when": "企业正在将所有现金用于回购股价远低于内在价值的股票"
     },
     {
-      "because": "衰退時可能破產",
+      "because": "这是世界上最好的融资方式：免息且无偿",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:009",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "槓桿過高（負債/資產 > 50%）"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:009",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "优先考虑",
+      "when": "商业模式具备“负营运资本”特性 (先收钱，后服务，如会员费)"
     },
     {
-      "because": "價值陷阱",
+      "because": "竞争减弱通常意味着利润率回升",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:010",
-      "source_file": "investors/charlie_munger.md",
-      "then": "不買",
-      "when": "行業結構性衰退"
+      "kind": "entry",
+      "rule_id": "charlie_munger:entry:010",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "关注龙头企业的盈利扩张机会",
+      "when": "行业出现结构性整合，龙头企业正在收购弱小对手"
     },
     {
-      "because": "論點錯了就走",
+      "because": "芒格认为不懂的东西最容易让人变蠢",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:011",
-      "source_file": "investors/charlie_munger.md",
-      "then": "賣出",
-      "when": "買入論點不再成立"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:001",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "绝不购买",
+      "when": "无法理解商业模式 (能力圈红线)"
     },
     {
-      "because": "競爭優勢消失",
+      "because": "激励机制决定了最终的结果",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:012",
-      "source_file": "investors/charlie_munger.md",
-      "then": "賣出",
-      "when": "護城河被侵蝕 AND 無改善跡象"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:002",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "绝不购买",
+      "when": "管理层激励与股东利益明显错位 (如高管在大规模并购前大幅减持)"
     },
     {
-      "because": "風險收益不對稱",
+      "because": "统计学上，高增长极难持续，容错空间太小",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:013",
-      "source_file": "investors/charlie_munger.md",
-      "then": "考慮減倉",
-      "when": "估值過高 AND 已無安全邊際"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:003",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "不买",
+      "when": "估值需要“信仰”未来 10 年不间断的高增长才能合理化"
     },
     {
-      "because": "確認偏誤",
+      "because": "复杂性往往是掩盖平庸或欺诈的工具",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:014",
-      "source_file": "investors/charlie_munger.md",
-      "then": "暫停，主動找反駁論點",
-      "when": "只看到利好信息"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:004",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "放弃",
+      "when": "业务极其复杂，财报充满了“经调整”的非 GAAP 指标"
     },
     {
-      "because": "從眾效應",
+      "because": "这是价值陷阱，护城河已毁",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:015",
-      "source_file": "investors/charlie_munger.md",
-      "then": "暫停，獨立分析",
-      "when": "「大家都在買」"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:005",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "即使便宜也不买",
+      "when": "所在行业正在经历结构性技术颠覆 (如报纸面临互联网)"
     },
     {
-      "because": "過度自信",
+      "because": "杠杆是导致永久性损失的主因",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:016",
-      "source_file": "investors/charlie_munger.md",
-      "then": "謙虛，問「市場知道什麼我不知道的」",
-      "when": "「我比市場聰明」"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:006",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "不买",
+      "when": "公司的债务总额 > 股东权益的 2 倍 (除非是稳健的银行)"
     },
     {
-      "because": "錨定效應",
+      "because": "芒格讨厌虚荣，看重诚实",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:017",
-      "source_file": "investors/charlie_munger.md",
-      "then": "忘記成本，重新評估",
-      "when": "被成本價錨定"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:007",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "避开",
+      "when": "管理层喜欢在媒体前高调承诺宏大愿景而非讨论业务风险"
     },
     {
-      "because": "損失厭惡",
+      "because": "这是一种“糟糕的生意”，没有定价权",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:018",
-      "source_file": "investors/charlie_munger.md",
-      "then": "論點對不對？與成本無關",
-      "when": "虧損不想賣，盈利急著賣"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:008",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "不买",
+      "when": "产品不具备差异化，且陷入了无止境的价格战"
     },
     {
-      "because": "承諾一致性",
+      "because": "只要资本市场感冒，公司就会得肺炎",
       "investor_id": "charlie_munger",
-      "kind": "other",
-      "rule_id": "charlie_munger:other:019",
-      "source_file": "investors/charlie_munger.md",
-      "then": "新信息改變判斷就改",
-      "when": "已經說了會買，不想反悔"
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:009",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "不买",
+      "when": "公司的成长完全依赖于持续不断的外部融资"
     },
     {
-      "because": "不是數據挖掘",
+      "because": "系统性风险太高，缺乏制衡",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:010",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "谨慎或不买",
+      "when": "公司的关键决策依赖于一个“具有领袖气质但不受约束”的独裁者"
+    },
+    {
+      "because": "长期复利的根基已经消失",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:001",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "立即卖出",
+      "when": "护城河被侵蚀 AND 无改善迹象 (如技术被颠覆)"
+    },
+    {
+      "because": "“如果你在厨房里发现一只蟑螂，那绝对不止一只”",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:002",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "卖出",
+      "when": "发现管理层有不诚实行为或道德瑕疵"
+    },
+    {
+      "because": "均值回归是无法抗拒的物理规律",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:003",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "考虑卖出",
+      "when": "估值达到疯狂水平 (如 PE > 历史均值 3 倍且隐喻增速不可持续)"
+    },
+    {
+      "because": "投资就是对机会成本的管理",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:004",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "换仓",
+      "when": "发现了更好的、更有把握的投资机会 (机会成本更高)"
+    },
+    {
+      "because": "公司灵魂正在丢失",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:005",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "减仓或卖出",
+      "when": "公司开始违背原本成功的商业逻辑 (如 Costco 开始追求高毛利)"
+    },
+    {
+      "because": "商业模式的底层逻辑已变",
+      "investor_id": "charlie_munger",
+      "kind": "exit",
+      "rule_id": "charlie_munger:exit:006",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "卖出",
+      "when": "宏观环境发生剧变 (如长期通胀导致重资产行业无法通过折旧更新设备)"
+    },
+    {
+      "because": "社会认同偏误已达到临界点",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:011",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "提高错误敏感度，增加现金储备",
+      "when": "市场处于“大家都在谈论股票”的狂热阶段"
+    },
+    {
+      "because": "芒格认为过度分散是对无知的补偿",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:012",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "重新审视，集中于最有把握的 3-5 只",
+      "when": "组合过于分散 (超过 10 只股票)"
+    },
+    {
+      "because": "你还没有看清可能的失败方式",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:013",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "暂停交易",
+      "when": "决策前没有进行“逆向思考” (Inversion)"
+    },
+    {
+      "because": "此时的决策是生理性的而非理性的",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:014",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "强制停止操作 24 小时",
+      "when": "发现自己处于“剥夺超级反应”中 (因为亏损而想急着回本)"
+    },
+    {
+      "because": "系统性风险往往隐藏在这些细节中",
+      "investor_id": "charlie_munger",
+      "kind": "risk_management",
+      "rule_id": "charlie_munger:risk_management:015",
+      "source_file": "investors\\charlie_munger.md",
+      "then": "给予 50% 以上的估值折价或避开",
+      "when": "公司债务存在“交叉违约”条款或复杂的表外担保"
+    },
+    {
+      "because": "跨市场的稳健性是过滤数据噪音的唯一标准",
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:001",
-      "source_file": "investors/cliff_asness.md",
-      "then": "可以納入",
-      "when": "因子有學術研究支持 AND 有經濟學邏輯 AND 跨市場有效"
+      "source_file": "investors\\cliff_asness.md",
+      "then": "将其视为“稳健因子”纳入组合",
+      "when": "因子在过去 50 年中在不同国家、不同资产类别中均有效"
     },
     {
-      "because": "可能是過擬合",
+      "because": "极端的定价错位预示着即将到来的剧烈均值回归",
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:002",
-      "source_file": "investors/cliff_asness.md",
-      "then": "謹慎",
-      "when": "因子只在回測中有效 BUT 無法解釋為什麼"
+      "source_file": "investors\\cliff_asness.md",
+      "then": "考虑适度增加价值因子的敞口，并减少动量因子的权重",
+      "when": "价值因子的估值价差 (Spread) 处于历史 95 分位以上"
     },
     {
-      "because": "擁擠會降低未來收益",
+      "because": "因子投资最终是扣除成本后的净收益博弈",
       "investor_id": "cliff_asness",
       "kind": "other",
       "rule_id": "cliff_asness:other:003",
-      "source_file": "investors/cliff_asness.md",
-      "then": "減少暴露",
-      "when": "因子近期表現很好 AND 變得擁擠"
+      "source_file": "investors\\cliff_asness.md",
+      "then": "优化执行算法或减少该因子的配置比例",
+      "when": "动量因子的换手率导致的交易成本 > 预期收益率的 50%"
     },
     {
-      "because": "因子有艱難期",
+      "because": "因子投资的目标是收割“因子风险”，而非承担不必要的行业赌注",
       "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:004",
-      "source_file": "investors/cliff_asness.md",
-      "then": "接受高波動",
-      "when": "單一因子暴露"
+      "kind": "risk_management",
+      "rule_id": "cliff_asness:risk_management:001",
+      "source_file": "investors\\cliff_asness.md",
+      "then": "进行行业中性化调整",
+      "when": "组合中单一行业的风险暴露超过总风险的 30%"
     },
     {
-      "because": "因子間負相關",
+      "because": "因子的痛苦期正是其长期溢价的来源（门票钱）",
       "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:005",
-      "source_file": "investors/cliff_asness.md",
-      "then": "期望更平滑收益",
-      "when": "多因子組合"
+      "kind": "risk_management",
+      "rule_id": "cliff_asness:risk_management:002",
+      "source_file": "investors\\cliff_asness.md",
+      "then": "保持纪律，继续持有，甚至在回撤中坚守",
+      "when": "市场共识认为“价值投资已经永久性失效”"
     },
     {
-      "because": "可能是極端時期",
+      "because": "寻找不相关的收益流是组合构建的最高艺术",
       "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:006",
-      "source_file": "investors/cliff_asness.md",
-      "then": "檢查市場環境",
-      "when": "因子之間相關性上升"
+      "kind": "risk_management",
+      "rule_id": "cliff_asness:risk_management:003",
+      "source_file": "investors\\cliff_asness.md",
+      "then": "进行小规模测试，观察其与价值/动量的相关性",
+      "when": "发现某个新的因子（如某种另类动量）在加入组合后能显著降低整体波动"
     },
     {
-      "because": "維持因子暴露",
-      "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:007",
-      "source_file": "investors/cliff_asness.md",
-      "then": "再平衡",
-      "when": "偏離目標權重超過閾值"
+      "because": "这种周期错配是获得超额回报的最快路径",
+      "investor_id": "donald_trump",
+      "kind": "entry",
+      "rule_id": "donald_trump:entry:001",
+      "source_file": "investors\\donald_trump.md",
+      "then": "极力争取收购并利用高杠杆介入",
+      "when": "目标资产处于黄金地段 AND 价格因前持有人财务困难而处于周期低点"
     },
     {
-      "because": "成本控制",
-      "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:008",
-      "source_file": "investors/cliff_asness.md",
-      "then": "不交易",
-      "when": "交易成本 > 再平衡收益"
+      "because": "品牌杠杆的边际成本为零且风险极低",
+      "investor_id": "donald_trump",
+      "kind": "entry",
+      "rule_id": "donald_trump:entry:002",
+      "source_file": "investors\\donald_trump.md",
+      "then": "即使不投入本金也要参与",
+      "when": "项目具有“地标潜质” (High Visibility) AND 我能通过品牌授权获取分成"
     },
     {
-      "because": "抓住強信號",
-      "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:009",
-      "source_file": "investors/cliff_asness.md",
-      "then": "可以提前再平衡",
-      "when": "因子信號極端強"
+      "because": "政府背书能大幅降低融资难度与成本",
+      "investor_id": "donald_trump",
+      "kind": "entry",
+      "rule_id": "donald_trump:entry:003",
+      "source_file": "investors\\donald_trump.md",
+      "then": "将此作为核心筹码去与银行谈判",
+      "when": "某项交易能获得政府支持 (如税务减免、基础设施配套)"
     },
     {
-      "because": "長期均值回歸",
-      "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:010",
-      "source_file": "investors/cliff_asness.md",
-      "then": "增加價值暴露",
-      "when": "價值 spread 極度擴張（如 2020）"
+      "because": "价值发现与运营提升是地产投资的护城河",
+      "investor_id": "donald_trump",
+      "kind": "entry",
+      "rule_id": "donald_trump:entry:004",
+      "source_file": "investors\\donald_trump.md",
+      "then": "快速买入并进行品牌化改造",
+      "when": "某项资产的租金收益明显被低估 AND 仅需通过“门面翻新”即可提升溢价"
     },
     {
-      "because": "動量反轉風險",
-      "investor_id": "cliff_asness",
-      "kind": "other",
-      "rule_id": "cliff_asness:other:011",
-      "source_file": "investors/cliff_asness.md",
-      "then": "減少動量暴露",
-      "when": "動量崩潰（如 2009.03）"
+      "because": "高杠杆模型在流动性危机中极其脆弱",
+      "investor_id": "donald_trump",
+      "kind": "exit",
+      "rule_id": "donald_trump:exit:001",
+      "source_file": "investors\\donald_trump.md",
+      "then": "提前进行长期债务再融资或择机出售非核心资产",
+      "when": "地产市场出现流动性极度枯竭的预兆 AND 融资利率开始大幅上行"
+    },
+    {
+      "because": "失去气势会导致后续核心利益的崩塌",
+      "investor_id": "donald_trump",
+      "kind": "exit",
+      "rule_id": "donald_trump:exit:002",
+      "source_file": "investors\\donald_trump.md",
+      "then": "表现出极度愤怒并准备随时掀桌子退出",
+      "when": "合作伙伴在谈判中反复推翻已达成的非核心条款"
+    },
+    {
+      "because": "注意力的消耗成本往往高于资产本身的价值",
+      "investor_id": "donald_trump",
+      "kind": "exit",
+      "rule_id": "donald_trump:exit:003",
+      "source_file": "investors\\donald_trump.md",
+      "then": "寻求剥离资产或引入更有本地影响力的接盘者",
+      "when": "某项目陷入了长期的法律诉讼或官僚审批泥潭且无好转迹象"
+    },
+    {
+      "because": "现金流断裂是地产大亨唯一的毁灭方式",
+      "investor_id": "donald_trump",
+      "kind": "risk_management",
+      "rule_id": "donald_trump:risk_management:001",
+      "source_file": "investors\\donald_trump.md",
+      "then": "必须通过再融资或资产注入增加现金缓冲",
+      "when": "项目的债务覆盖率 (DSCR) 低于 1.2 且市场处于下行通道"
+    },
+    {
+      "because": "虚荣是商业决策中最昂贵的负债",
+      "investor_id": "donald_trump",
+      "kind": "risk_management",
+      "rule_id": "donald_trump:risk_management:002",
+      "source_file": "investors\\donald_trump.md",
+      "then": "强迫自己回归第一性原理：利润 = 收入 - 支出",
+      "when": "发现自己正在为了“虚荣心”而过度竞争某个不产生利润的项目"
+    },
+    {
+      "because": "政策风险是无法通过判断力完全对冲的",
+      "investor_id": "donald_trump",
+      "kind": "risk_management",
+      "rule_id": "donald_trump:risk_management:003",
+      "source_file": "investors\\donald_trump.md",
+      "then": "将此部分风险通过合约条款转移给合作伙伴",
+      "when": "某个投资项目过分依赖单一政治人物或临时政策"
+    },
+    {
+      "because": "杠杆是一把双刃剑，它能让你致富也能让你迅速出局",
+      "investor_id": "donald_trump",
+      "kind": "risk_management",
+      "rule_id": "donald_trump:risk_management:004",
+      "source_file": "investors\\donald_trump.md",
+      "then": "停止一切新下注，直到现金流回归稳健",
+      "when": "资产负债率超过 80% 且资产属于非流动性类别"
     },
     {
       "because": "不懂不做 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "buy",
-      "rule_id": "duan_yongping:buy:001",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "entry",
+      "rule_id": "duan_yongping:entry:001",
+      "source_file": "investors\\duan_yongping.md",
       "then": "在能力圈内",
       "when": "能2句话说清商业模式 AND 有差异化/定价权"
     },
     {
       "because": "买股票就是买公司 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "buy",
-      "rule_id": "duan_yongping:buy:002",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "entry",
+      "rule_id": "duan_yongping:entry:002",
+      "source_file": "investors\\duan_yongping.md",
       "then": "考虑买入",
       "when": "好公司 AND 价格合理 AND 愿意持有10年"
     },
     {
       "because": "自由现金流是真金白银 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "buy",
-      "rule_id": "duan_yongping:buy:003",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "entry",
+      "rule_id": "duan_yongping:entry:003",
+      "source_file": "investors\\duan_yongping.md",
       "then": "好生意",
       "when": "ROIC > 15% 持续多年 AND 不需大量再投资"
     },
     {
       "because": "好生意也需要好管理 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "buy",
-      "rule_id": "duan_yongping:buy:004",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "entry",
+      "rule_id": "duan_yongping:entry:004",
+      "source_file": "investors\\duan_yongping.md",
       "then": "管理层可信",
       "when": "管理层诚信 AND 与股东利益一致 AND 能力强"
     },
     {
       "because": "安全边际 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "buy",
-      "rule_id": "duan_yongping:buy:005",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "entry",
+      "rule_id": "duan_yongping:entry:005",
+      "source_file": "investors\\duan_yongping.md",
       "then": "好价格",
       "when": "价格 < 内在价值 × 0.7 AND 好公司"
     },
     {
       "because": "不懂不做 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "avoid",
-      "rule_id": "duan_yongping:avoid:001",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "risk_management",
+      "rule_id": "duan_yongping:risk_management:001",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "无法用2句话解释如何赚钱"
     },
     {
       "because": "不是好生意 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "avoid",
-      "rule_id": "duan_yongping:avoid:002",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "risk_management",
+      "rule_id": "duan_yongping:risk_management:002",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "需要不断融资才能活"
     },
     {
       "because": "骗过一次会骗第二次 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "avoid",
-      "rule_id": "duan_yongping:avoid:003",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "risk_management",
+      "rule_id": "duan_yongping:risk_management:003",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "管理层有诚信问题"
     },
     {
       "because": "价格太贵 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "avoid",
-      "rule_id": "duan_yongping:avoid:004",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "risk_management",
+      "rule_id": "duan_yongping:risk_management:004",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "估值需要\"信仰\"支撑"
     },
     {
       "because": "没有护城河 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "avoid",
-      "rule_id": "duan_yongping:avoid:005",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "risk_management",
+      "rule_id": "duan_yongping:risk_management:005",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不买",
       "when": "竞争激烈无差异化"
     },
     {
       "because": "好公司变坏了 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "sell",
-      "rule_id": "duan_yongping:sell:001",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "exit",
+      "rule_id": "duan_yongping:exit:001",
+      "source_file": "investors\\duan_yongping.md",
       "then": "卖出",
       "when": "商业模式被破坏 OR 护城河消失"
     },
     {
       "because": "无法信任 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "sell",
-      "rule_id": "duan_yongping:sell:002",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "exit",
+      "rule_id": "duan_yongping:exit:002",
+      "source_file": "investors\\duan_yongping.md",
       "then": "立即卖出",
       "when": "管理层出现诚信问题"
     },
     {
       "because": "价格太贵（但好公司可以多拿）(段永平)",
       "investor_id": "duan_yongping",
-      "kind": "sell",
-      "rule_id": "duan_yongping:sell:003",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "exit",
+      "rule_id": "duan_yongping:exit:003",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以考虑卖出",
       "when": "估值极度高估（如 PE > 50 且增速放缓）"
     },
     {
       "because": "机会成本 (段永平)",
       "investor_id": "duan_yongping",
-      "kind": "sell",
-      "rule_id": "duan_yongping:sell:004",
-      "source_file": "investors/duan_yongping.md",
+      "kind": "exit",
+      "rule_id": "duan_yongping:exit:004",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以换仓",
       "when": "有更好的机会 AND 确定性更高"
     },
@@ -509,7 +887,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:001",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "继续持有",
       "when": "好公司 AND 估值合理 AND 长期逻辑未变"
     },
@@ -518,7 +896,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:002",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "持有或加仓",
       "when": "股价下跌 BUT 基本面未变"
     },
@@ -527,7 +905,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:003",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "继续持有",
       "when": "短期业绩波动 BUT 长期竞争力未变"
     },
@@ -536,7 +914,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:004",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "可以重仓",
       "when": "确定性高 AND 了解深入 AND 价格好"
     },
@@ -545,7 +923,7 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:005",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "不做",
       "when": "杠杆 OR 借钱"
     },
@@ -554,331 +932,241 @@
       "investor_id": "duan_yongping",
       "kind": "other",
       "rule_id": "duan_yongping:other:006",
-      "source_file": "investors/duan_yongping.md",
+      "source_file": "investors\\duan_yongping.md",
       "then": "减仓",
       "when": "仓位让你睡不着觉"
     },
     {
-      "because": "能計算期望值和凱利比例",
+      "because": "期望值为正，但需留出错误空间",
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:001",
-      "source_file": "investors/ed_thorp.md",
-      "then": "可以考慮",
-      "when": "勝率可量化 AND 賠率可估算 AND 歷史數據充足"
+      "source_file": "investors\\ed_thorp.md",
+      "then": "建议最大下注比例为 10% (全凯利)",
+      "when": "胜率 (p) > 55% AND 赔率 (b) 为 1:1"
     },
     {
-      "because": "正期望 + 風險調整後收益合理",
+      "because": "过度乐观的估计是破产的头号原因",
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:002",
-      "source_file": "investors/ed_thorp.md",
-      "then": "策略可行",
-      "when": "期望值 > 0 AND 夏普比率 > 1"
+      "source_file": "investors\\ed_thorp.md",
+      "then": "将下注比例减半或更低 (Fractional Kelly)",
+      "when": "无法准确估计胜率或赔率"
     },
     {
-      "because": "沒有數學基礎的交易是賭博",
+      "because": "生存高于一切，增长率的前提是不出场",
       "investor_id": "ed_thorp",
       "kind": "other",
       "rule_id": "ed_thorp:other:003",
-      "source_file": "investors/ed_thorp.md",
-      "then": "不做",
-      "when": "無法量化優勢"
+      "source_file": "investors\\ed_thorp.md",
+      "then": "立即缩小头寸，无论期望值多高",
+      "when": "单笔亏损可能导致 20% 以上的本金永久性消失"
     },
     {
-      "because": "保守比激進更能活下來",
+      "because": "均值回归是量化投资中最强大的物理定律",
       "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:004",
-      "source_file": "investors/ed_thorp.md",
-      "then": "用半凱利計算倉位",
-      "when": "有明確優勢 AND 勝率/賠率已知"
+      "kind": "risk_management",
+      "rule_id": "ed_thorp:risk_management:001",
+      "source_file": "investors\\ed_thorp.md",
+      "then": "建立统计套利头寸",
+      "when": "两项强相关资产的价差偏离历史均值 3 个标准差以上 AND 无基本面背离"
     },
     {
-      "because": "估計誤差會放大風險",
+      "because": "极佳的 Alpha 往往伴随着极小的承载量",
       "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:005",
-      "source_file": "investors/ed_thorp.md",
-      "then": "用 1/4 凱利或更低",
-      "when": "估計不確定性高"
+      "kind": "risk_management",
+      "rule_id": "ed_thorp:risk_management:002",
+      "source_file": "investors\\ed_thorp.md",
+      "then": "密切关注容量限制 (Capacity)",
+      "when": "策略的夏普比率 (Sharpe Ratio) > 3 AND 交易频率极高"
     },
     {
-      "because": "相關性在極端時會上升",
+      "because": "杠杆在危机中会迅速收缩，导致被迫平仓",
       "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:006",
-      "source_file": "investors/ed_thorp.md",
-      "then": "總倉位要調低",
-      "when": "策略之間有相關性"
-    },
-    {
-      "because": "可能是模型失效或市場異常",
-      "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:007",
-      "source_file": "investors/ed_thorp.md",
-      "then": "減少倉位 50%",
-      "when": "單月虧損達到限制（如 5%）"
-    },
-    {
-      "because": "可能有未知風險",
-      "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:008",
-      "source_file": "investors/ed_thorp.md",
-      "then": "暫停交易，檢查模型",
-      "when": "回撤超過歷史最大"
-    },
-    {
-      "because": "無法按計劃退出",
-      "investor_id": "ed_thorp",
-      "kind": "other",
-      "rule_id": "ed_thorp:other:009",
-      "source_file": "investors/ed_thorp.md",
-      "then": "減少倉位",
-      "when": "流動性下降"
+      "kind": "risk_management",
+      "rule_id": "ed_thorp:risk_management:003",
+      "source_file": "investors\\ed_thorp.md",
+      "then": "强制进行全天候流动性压力测试",
+      "when": "杠杆比例达到 4 倍以上"
     },
     {
       "because": "弱者体系：先假设市场是对的",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:001",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:001",
+      "source_file": "investors\\feng_liu.md",
       "then": "分析担心是否被夸大",
       "when": "股价下跌 > 30% AND 市场担心因素可量化"
     },
     {
       "because": "市场可能过度反应短期利空",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:002",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:002",
+      "source_file": "investors\\feng_liu.md",
       "then": "逆向机会",
       "when": "市场担心因素是周期性/一次性 AND 长期逻辑未变"
     },
     {
       "because": "市场可能是对的",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:003",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:003",
+      "source_file": "investors\\feng_liu.md",
       "then": "PASS",
       "when": "市场担心因素是结构性/不可逆"
     },
     {
       "because": "赔率优先于胜率",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:004",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:004",
+      "source_file": "investors\\feng_liu.md",
       "then": "值得下注",
       "when": "赔率 > 3:1 AND 胜率 > 30%"
     },
     {
       "because": "期望收益可能不够",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:005",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:005",
+      "source_file": "investors\\feng_liu.md",
       "then": "谨慎",
       "when": "赔率 < 2:1 即使胜率 > 70%"
     },
     {
       "because": "价格已反映悲观预期",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:006",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:006",
+      "source_file": "investors\\feng_liu.md",
       "then": "左侧买入",
       "when": "估值处于历史底部区间 AND 基本面有边际改善迹象"
     },
     {
       "because": "可能有我不知道的利空",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:007",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:007",
+      "source_file": "investors\\feng_liu.md",
       "then": "不要抄底",
       "when": "股价新低 AND 找不到合理解释"
     },
     {
       "because": "不止损是弱者体系核心",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:008",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:008",
+      "source_file": "investors\\feng_liu.md",
       "then": "持有或加仓",
       "when": "买入后继续下跌 AND 长期逻辑未变"
     },
     {
       "because": "认错要快",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:009",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:009",
+      "source_file": "investors\\feng_liu.md",
       "then": "卖出",
       "when": "买入逻辑被证伪（长期逻辑改变）"
     },
     {
       "because": "赔率变差",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:010",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:010",
+      "source_file": "investors\\feng_liu.md",
       "then": "逐步减仓",
       "when": "股价涨到合理估值 AND 没有更多上涨空间"
     },
     {
       "because": "机会成本",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:011",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:011",
+      "source_file": "investors\\feng_liu.md",
       "then": "换仓",
       "when": "有更好的赔率机会"
     },
     {
       "because": "最好的机会出现在最差的时刻",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:012",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:012",
+      "source_file": "investors\\feng_liu.md",
       "then": "买入优质股",
       "when": "市场极度恐慌 AND 好公司被无差别抛售"
     },
     {
       "because": "弱者体系需要\"熬\"的能力",
       "investor_id": "feng_liu",
-      "kind": "buy",
-      "rule_id": "feng_liu:buy:013",
-      "source_file": "investors/feng_liu.md",
+      "kind": "entry",
+      "rule_id": "feng_liu:entry:013",
+      "source_file": "investors\\feng_liu.md",
       "then": "不适用弱者体系",
       "when": "使用杠杆"
     },
     {
-      "because": "反身性開始自我強化",
+      "because": "反身性正循环会推动价格远超所谓的“内在价值”",
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:001",
-      "source_file": "investors/george_soros.md",
-      "then": "順勢建倉",
-      "when": "趨勢啟動（基本面改善 + 認知跟上）"
+      "source_file": "investors\\george_soros.md",
+      "then": "进入“自我强化”观察期，顺势加码",
+      "when": "观察到资产价格上涨正在通过某些机制 (如提高抵押物价值、降低融资成本) 改善其实际基本面"
     },
     {
-      "because": "趨勢會超預期",
+      "because": "泡沫的破裂往往不需要重大利空，只需要上涨动力的衰竭",
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:002",
-      "source_file": "investors/george_soros.md",
-      "then": "持有/加碼",
-      "when": "自我強化階段（價格 → 基本面 → 更多買盤）"
+      "source_file": "investors\\george_soros.md",
+      "then": "寻找“最后一根稻草”催化剂，准备反向做空",
+      "when": "认知的偏见已达到极限 (例如所有人都在谈论“新范式”) AND 关键基本面数据开始出现背离"
     },
     {
-      "because": "接近反轉點",
+      "because": "这种上涨是纯粹的幻觉，缺乏反身性的根基，随时可能崩塌",
       "investor_id": "george_soros",
       "kind": "other",
       "rule_id": "george_soros:other:003",
-      "source_file": "investors/george_soros.md",
-      "then": "警惕、縮倉",
-      "when": "測試極限（認知過度樂觀，價格脫離基本面）"
+      "source_file": "investors\\george_soros.md",
+      "then": "保持怀疑并建立轻量对冲",
+      "when": "某个市场的上涨完全是由“认知的错误”驱动，且这种错误并未反馈到基本面的改善"
     },
     {
-      "because": "反身性向下",
+      "because": "央行的外汇储备是有限的，而市场的子弹是无限的",
       "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:004",
-      "source_file": "investors/george_soros.md",
-      "then": "反向做空或等待",
-      "when": "崩潰階段（現實戳破認知）"
+      "kind": "risk_management",
+      "rule_id": "george_soros:risk_management:001",
+      "source_file": "investors\\george_soros.md",
+      "then": "发动大规模货币攻击，利用远期和杠杆最大化暴露",
+      "when": "某个国家试图维持与其经济基本面完全背离的固定汇率 AND 外汇储备持续下降"
     },
     {
-      "because": "不可持續必將崩潰",
+      "because": "活下来是第一位的，只有活着才有下一次攻击的机会",
       "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:005",
-      "source_file": "investors/george_soros.md",
-      "then": "做空該貨幣",
-      "when": "固定匯率制 AND 外儲耗竭 AND 經濟失衡"
+      "kind": "risk_management",
+      "rule_id": "george_soros:risk_management:002",
+      "source_file": "investors\\george_soros.md",
+      "then": "立即止损清仓，而不是寻找支持自己正确的证据",
+      "when": "市场走势与你的核心假设发生背离 AND 账户出现超出预期的亏损"
     },
     {
-      "because": "高勝率機會",
+      "because": "市场可以保持非理性很久，直到你破产",
       "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:006",
-      "source_file": "investors/george_soros.md",
-      "then": "重注",
-      "when": "政策/匯率明顯不可持續 AND 有催化劑"
-    },
-    {
-      "because": "泡沫必破",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:007",
-      "source_file": "investors/george_soros.md",
-      "then": "準備做空",
-      "when": "信用泡沫（槓桿 → 資產價格 → 更多槓桿）AND 流動性開始收緊"
-    },
-    {
-      "because": "活著比對重要",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:008",
-      "source_file": "investors/george_soros.md",
-      "then": "立即止損",
-      "when": "論點被證偽 OR 虧損超過預設止損"
-    },
-    {
-      "because": "錯誤時迅速止損",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:009",
-      "source_file": "investors/george_soros.md",
-      "then": "快砍，不等",
-      "when": "錯了"
-    },
-    {
-      "because": "先投資再調查",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:010",
-      "source_file": "investors/george_soros.md",
-      "then": "小倉位測試",
-      "when": "確信度不夠"
-    },
-    {
-      "because": "難得機會",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:011",
-      "source_file": "investors/george_soros.md",
-      "then": "可用槓桿重倉",
-      "when": "高確信 + 失衡明顯 + 有催化劑"
-    },
-    {
-      "because": "對了加碼，錯了快砍",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:012",
-      "source_file": "investors/george_soros.md",
-      "then": "小倉位",
-      "when": "測試假設階段"
-    },
-    {
-      "because": "嚴格控制回撤",
-      "investor_id": "george_soros",
-      "kind": "other",
-      "rule_id": "george_soros:other:013",
-      "source_file": "investors/george_soros.md",
-      "then": "減倉",
-      "when": "最大回撤 > 容忍度"
+      "kind": "risk_management",
+      "rule_id": "george_soros:risk_management:003",
+      "source_file": "investors\\george_soros.md",
+      "then": "减仓至“能睡着觉”的水平，再次审视是否存在未被察觉的反身性环路",
+      "when": "发现自己的投资假设在逻辑上依然成立，但市场价格正在剧烈反向运行"
     },
     {
       "because": "Greg 偏好",
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:001",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "深入研究",
       "when": "長期可預測現金流（10+ 年）AND 監管環境穩定"
     },
@@ -887,7 +1175,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:002",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "符合框架",
       "when": "資本密集 BUT 回報穩定（受管制行業）"
     },
@@ -896,7 +1184,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:003",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "符合框架",
       "when": "資產生命週期 > 20 年"
     },
@@ -905,7 +1193,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:004",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "加分項",
       "when": "再投資空間大 AND 能持續部署資本"
     },
@@ -914,7 +1202,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:005",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "用受管制回報率法 合理估值 = Rate Base × 允許回報率",
       "when": "公用事業"
     },
@@ -923,7 +1211,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:006",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "用長週期 DCF（20-30 年） 貼現率 7-9%（公用事業較低風險）",
       "when": "資本密集型"
     },
@@ -932,7 +1220,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:007",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "可能高估（除非有顯著增長）",
       "when": "公用事業 P/E > 20x"
     },
@@ -941,7 +1229,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:008",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "可能低估（除非有監管風險）",
       "when": "公用事業 P/E < 12x"
     },
@@ -950,7 +1238,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:009",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "短期概念炒作（新能源泡沫股）"
     },
@@ -959,7 +1247,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:010",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "謹慎",
       "when": "依賴政府補貼"
     },
@@ -968,7 +1256,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:011",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "技術快速迭代行業"
     },
@@ -977,7 +1265,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:012",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "監管不確定性高"
     },
@@ -986,7 +1274,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:013",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "不投資",
       "when": "需要持續融資才能存活"
     },
@@ -995,7 +1283,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:014",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "良好投資",
       "when": "可再生能源 + 長期購電協議（PPA）"
     },
@@ -1004,7 +1292,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:015",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "保留",
       "when": "天然氣（過渡燃料）"
     },
@@ -1013,7 +1301,7 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:016",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "退出",
       "when": "煤炭"
     },
@@ -1022,1071 +1310,1386 @@
       "investor_id": "greg_abel",
       "kind": "other",
       "rule_id": "greg_abel:other:017",
-      "source_file": "investors/greg_abel.md",
+      "source_file": "investors\\greg_abel.md",
       "then": "觀望",
       "when": "核能"
     },
     {
-      "because": "極端後必回歸",
+      "because": "资本过剩必然导致糟糕的投资决策，风险正在积聚",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:001",
-      "source_file": "investors/howard_marks.md",
-      "then": "積極進場，強調存續力",
-      "when": "信用凍結 + 恐慌拋售 + 估值極低 (底部)"
+      "kind": "exit",
+      "rule_id": "howard_marks:exit:001",
+      "source_file": "investors\\howard_marks.md",
+      "then": "切换至防守模式，减持高息债暴露，增加高质量、高流动性资产",
+      "when": "信用利差 (Credit Spreads) 处于历史极低水平 AND 劣质公司能以极低成本发债"
     },
     {
-      "because": "週期上升",
+      "because": "最大的风险往往来自大家认为没有风险的时候",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:002",
-      "source_file": "investors/howard_marks.md",
-      "then": "持有，選擇優質高β",
-      "when": "利差收窄 + 風險偏好回升 (復甦)"
+      "kind": "exit",
+      "rule_id": "howard_marks:exit:002",
+      "source_file": "investors\\howard_marks.md",
+      "then": "将此视为最高级别的危险信号",
+      "when": "市场共识认为“风险不存在”或“风险是可控的”"
     },
     {
-      "because": "週期見頂",
+      "because": "被迫卖出创造了偏离内在价值最远的买点",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:003",
-      "source_file": "investors/howard_marks.md",
-      "then": "減碼/防守，增現金",
-      "when": "槓桿激增 + 低質資產熱捧 + 散戶湧入 (過熱)"
+      "kind": "exit",
+      "rule_id": "howard_marks:exit:003",
+      "source_file": "investors\\howard_marks.md",
+      "then": "启动逆向调查，寻找那些具备充足现金流能够活过危机的标的",
+      "when": "发现市场参与者因为恐惧而进行“不计代价”的被迫卖出 (Forced Selling)"
     },
     {
-      "because": "還沒到底",
+      "because": "简单的第一层逻辑通常已经被市场完全定价",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:004",
-      "source_file": "investors/howard_marks.md",
-      "then": "保留彈藥，等更便宜",
-      "when": "違約攀升 + 去槓桿 + 信用收緊 (下行)"
+      "kind": "risk_management",
+      "rule_id": "howard_marks:risk_management:001",
+      "source_file": "investors\\howard_marks.md",
+      "then": "必须进行“第二层思考”：目前的股价已经反映了多少这类利好？还有什么利空是被大家忽略的？",
+      "when": "某个投资建议看起来非常有吸引力且逻辑顺滑"
     },
     {
-      "because": "別人恐懼時貪婪",
+      "because": "优秀的投资不依赖于完美的未来，而依赖于价格对不确定性的足额补偿",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:005",
-      "source_file": "investors/howard_marks.md",
-      "then": "考慮買入",
-      "when": "恐懼指數極高 + 估值極低"
+      "kind": "risk_management",
+      "rule_id": "howard_marks:risk_management:002",
+      "source_file": "investors\\howard_marks.md",
+      "then": "即使宏观前景不明朗，也应考虑建立头寸",
+      "when": "投资机会的下行空间是可控的 (通过抵押物或清算价值) 而上行空间巨大 (非对称)"
     },
     {
-      "because": "別人貪婪時恐懼",
+      "because": "绝不能为了收益而牺牲风险控制的底线",
       "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:006",
-      "source_file": "investors/howard_marks.md",
-      "then": "考慮減倉",
-      "when": "貪婪指數極高 + 估值極高"
+      "kind": "risk_management",
+      "rule_id": "howard_marks:risk_management:003",
+      "source_file": "investors\\howard_marks.md",
+      "then": "坚决停止该交易",
+      "when": "发现自己为了追求收益而不得不降低对“安全边际”的要求"
     },
     {
-      "because": "週期規律不變",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:007",
-      "source_file": "investors/howard_marks.md",
-      "then": "提高警惕",
-      "when": "共識認為「這次不一樣」"
-    },
-    {
-      "because": "追求非對稱回報",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:008",
-      "source_file": "investors/howard_marks.md",
-      "then": "不買",
-      "when": "下檔保護不足"
-    },
-    {
-      "because": "風險 ≠ 波動",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:009",
-      "source_file": "investors/howard_marks.md",
-      "then": "不買或減倉",
-      "when": "最壞情況會導致永久虧損"
-    },
-    {
-      "because": "生存優先",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:010",
-      "source_file": "investors/howard_marks.md",
-      "then": "減少暴露",
-      "when": "自身現金比重無法撐過極端"
-    },
-    {
-      "because": "風險定價不足",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:011",
-      "source_file": "investors/howard_marks.md",
-      "then": "減少信用暴露",
-      "when": "利差過窄（歷史低位）"
-    },
-    {
-      "because": "風險溢價過高",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:012",
-      "source_file": "investors/howard_marks.md",
-      "then": "增加信用暴露",
-      "when": "利差極寬（歷史高位）AND 非系統性危機"
-    },
-    {
-      "because": "週期轉向",
-      "investor_id": "howard_marks",
-      "kind": "other",
-      "rule_id": "howard_marks:other:013",
-      "source_file": "investors/howard_marks.md",
-      "then": "提高質量要求",
-      "when": "違約率開始攀升"
-    },
-    {
-      "because": "數據品質是基礎",
+      "because": "这很可能是过拟合 (Overfitting) 的产物，而非真实的模式",
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:001",
-      "source_file": "investors/james_simons.md",
-      "then": "可以開始研究",
-      "when": "數據乾淨 + 無前視偏差 + 夠長"
+      "source_file": "investors\\james_simons.md",
+      "then": "立即废弃该信号",
+      "when": "某个信号 (Signal) 在回测中表现卓越 BUT 无法通过“样本外 (Out-of-Sample)”测试"
     },
     {
-      "because": "泛化能力確認",
+      "because": "错误的信号输入会导致整个系统的资本分配出现偏差",
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:002",
-      "source_file": "investors/james_simons.md",
-      "then": "減少過擬合風險",
-      "when": "樣本外測試 + 多市場驗證通過"
+      "source_file": "investors\\james_simons.md",
+      "then": "禁止将该数据源纳入生产环境",
+      "when": "数据清洗后的信噪比 (Signal-to-Noise Ratio) 低于最小阈值"
     },
     {
-      "because": "真實成本",
+      "because": "这通常意味着该特定的统计模式已被市场发现并被套利消失",
       "investor_id": "james_simons",
       "kind": "other",
       "rule_id": "james_simons:other:003",
-      "source_file": "investors/james_simons.md",
-      "then": "策略可行",
-      "when": "考慮滑點 + 佣金後仍有正期望"
+      "source_file": "investors\\james_simons.md",
+      "then": "触发自动减仓机制",
+      "when": "模型的夏普比率 (Sharpe Ratio) 持续低于历史均值的 50%"
     },
     {
-      "because": "容量限制",
+      "because": "人的情绪是量化投资最大的敌手，系统化执行是成功的唯一保证",
       "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:004",
-      "source_file": "investors/james_simons.md",
-      "then": "可以部署",
-      "when": "策略容量 > 預期資金規模"
+      "kind": "exit",
+      "rule_id": "james_simons:exit:001",
+      "source_file": "investors\\james_simons.md",
+      "then": "强制坐稳，让算法继续运行",
+      "when": "市场发生剧烈波动且直觉告诉你“现在应该卖出”"
     },
     {
-      "because": "紀律是量化核心",
+      "because": "信息差是 Alpha 的核心来源",
       "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:005",
-      "source_file": "investors/james_simons.md",
-      "then": "嚴格執行，不因情緒改變",
-      "when": "規則制定完成"
+      "kind": "exit",
+      "rule_id": "james_simons:exit:002",
+      "source_file": "investors\\james_simons.md",
+      "then": "投入无限资源进行清洗并将其与现有模型融合",
+      "when": "发现新的非传统数据源 (Alternative Data) 且具有预测性"
     },
     {
-      "because": "驗證優先",
+      "because": "在高频领域，执行效率就是生命",
       "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:006",
-      "source_file": "investors/james_simons.md",
-      "then": "先歷史回測",
-      "when": "有想法"
+      "kind": "exit",
+      "rule_id": "james_simons:exit:003",
+      "source_file": "investors\\james_simons.md",
+      "then": "强制拆分订单或减少该策略的权重",
+      "when": "单笔交易的市场冲击 (Market Impact) 超过预期获利的 30%"
     },
     {
-      "because": "小注多試",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:007",
-      "source_file": "investors/james_simons.md",
-      "then": "小倉位測試",
-      "when": "不確定"
+      "because": "这种“双优”组合在统计学上具有极高的胜率，能同时兼顾商业质量与买入成本",
+      "investor_id": "joel_greenblatt",
+      "kind": "entry",
+      "rule_id": "joel_greenblatt:entry:001",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "将其作为核心候选标的进行深入研究或直接按配比买入",
+      "when": "某公司的资本回报率 (ROIC) 处于全市场前 20% 且盈余收益率 (Earnings Yield) 同样处于前 20%"
     },
     {
-      "because": "數據 > 直覺",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:008",
-      "source_file": "investors/james_simons.md",
-      "then": "可以執行（不需要「理解」為什麼）",
-      "when": "統計顯著"
+      "because": "分拆后的公司通常面临不计代价的抛售，而这正是产生超额收益的“特殊情况”",
+      "investor_id": "joel_greenblatt",
+      "kind": "entry",
+      "rule_id": "joel_greenblatt:entry:002",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "密切关注分拆后的初期抛压，寻找由于机构强制调仓导致的低价买入机会",
+      "when": "某大型公司宣布进行业务分拆 (Spinoff) 且被分拆出来的子公司业务简单但非核心"
     },
     {
-      "because": "市場 regime change",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:009",
-      "source_file": "investors/james_simons.md",
-      "then": "減倉或停用",
-      "when": "模型衰減信號"
+      "because": "量化价值投资的核心在于“纪律化的调仓”，而非对单一标的的长期迷信",
+      "investor_id": "joel_greenblatt",
+      "kind": "entry",
+      "rule_id": "joel_greenblatt:entry:003",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "卖出该头寸并替换为当前排名更高的标的，而不考虑个人的感情因素",
+      "when": "组合中某只股票持仓已满一年且神奇公式排名显著下降"
     },
     {
-      "because": "嚴格風控",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:010",
-      "source_file": "investors/james_simons.md",
-      "then": "不執行",
-      "when": "單筆風險 > 閾值"
+      "because": "价格是风险的倒数，当好生意的收益率极具吸引力时，时间是你的朋友",
+      "investor_id": "joel_greenblatt",
+      "kind": "risk_management",
+      "rule_id": "joel_greenblatt:risk_management:001",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "忽略宏观新闻的干扰，严格按排名买入那些被错杀的好公司",
+      "when": "市场处于极端恐慌阶段，导致大量高质量公司的盈余收益率飙升至历史高点"
     },
     {
-      "because": "控制整體風險",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:011",
-      "source_file": "investors/james_simons.md",
-      "then": "再平衡",
-      "when": "組合風險 > 預算"
+      "because": "只有可持续的、来自核心业务的资本回报才具有预测价值",
+      "investor_id": "joel_greenblatt",
+      "kind": "risk_management",
+      "rule_id": "joel_greenblatt:risk_management:002",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "在计算神奇公式排名时应剔除该收益，以免被虚高的指标误导",
+      "when": "发现某公司的 ROIC 异常高但主要归功于一次性的非经常性收益"
     },
     {
-      "because": "持續驗證",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:012",
-      "source_file": "investors/james_simons.md",
-      "then": "實時監控 + 模型衰減檢測",
-      "when": "策略上線"
+      "because": "特殊情况投资应寻找“一眼可见”的逻辑错位，而非赌博式的预测",
+      "investor_id": "joel_greenblatt",
+      "kind": "risk_management",
+      "rule_id": "joel_greenblatt:risk_management:003",
+      "source_file": "investors\\joel_greenblatt.md",
+      "then": "即使传闻中的收益巨大，也应选择放弃或仅极小规模参与",
+      "when": "发现某特殊情况投资机会 (如重组) 的逻辑极其复杂且无法用常识推演"
     },
     {
-      "because": "及時發現問題",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:013",
-      "source_file": "investors/james_simons.md",
-      "then": "檢查模型 + 數據",
-      "when": "回報偏離預期"
-    },
-    {
-      "because": "沒有永久有效的策略",
-      "investor_id": "james_simons",
-      "kind": "other",
-      "rule_id": "james_simons:other:014",
-      "source_file": "investors/james_simons.md",
-      "then": "停用 + 重新研究",
-      "when": "模型持續失效"
-    },
-    {
-      "because": "共識錯誤是超額回報來源",
+      "because": "共识往往是滞后的，只有原始数据能反映真相",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:001",
-      "source_file": "investors/michael_burry.md",
-      "then": "深入研究",
-      "when": "共識明顯錯誤 AND 有數據/邏輯支持"
+      "kind": "risk_management",
+      "rule_id": "michael_burry:risk_management:001",
+      "source_file": "investors\\michael_burry.md",
+      "then": "忽略所有噪音，启动详细的空头调查",
+      "when": "卖方报告一致看好 AND 估值处于历史高位 AND 核心财务数据 (如经营现金流) 开始恶化"
     },
     {
-      "because": "極端低估",
+      "because": "这种极端的低估通常预示着巨大的修复潜力",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:002",
-      "source_file": "investors/michael_burry.md",
-      "then": "考慮買入",
-      "when": "股價像「路殺」(road kill) AND 資產價值仍在"
+      "kind": "risk_management",
+      "rule_id": "michael_burry:risk_management:002",
+      "source_file": "investors\\michael_burry.md",
+      "then": "视为潜在的“路杀”资产进入候选名单",
+      "when": "某公司的 EV/EBITDA < 3 AND 业务在可见的 3 年内不会破产"
     },
     {
-      "because": "硬底保護",
+      "because": "细节决定了在极端情况下的生存能力",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:003",
-      "source_file": "investors/michael_burry.md",
-      "then": "考慮買入",
-      "when": "清算價值 > 市值 AND 有催化劑"
+      "kind": "risk_management",
+      "rule_id": "michael_burry:risk_management:003",
+      "source_file": "investors\\michael_burry.md",
+      "then": "赋予该资产极高的风险溢价，甚至直接排除",
+      "when": "发现贷款合同或招股说明书中存在显著的法律或结构性风险"
     },
     {
-      "because": "集中在最好的機會",
+      "because": "指数基金的机械性买入创造了结构性的低估区",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:004",
-      "source_file": "investors/michael_burry.md",
-      "then": "重倉",
-      "when": "高確信 AND 論點獨立驗證"
+      "kind": "entry",
+      "rule_id": "michael_burry:entry:001",
+      "source_file": "investors\\michael_burry.md",
+      "then": "寻找那些被指数排除但基本面卓越的小型股",
+      "when": "市场出现“被动投资 (Index Fund) 泡沫” (资金无差别流入指数成分股，导致估值错位)"
     },
     {
-      "because": "泡沫終會破",
+      "because": "充足的流动性可以延后泡沫的破裂时间，甚至改变博弈逻辑",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:005",
-      "source_file": "investors/michael_burry.md",
-      "then": "考慮做空",
-      "when": "估值極端 AND 需要「信仰」合理化"
+      "kind": "entry",
+      "rule_id": "michael_burry:entry:002",
+      "source_file": "investors\\michael_burry.md",
+      "then": "重新评估空头逻辑，必要时立即止损",
+      "when": "做空某个标的 AND 该公司开始进行大规模的股份回购或寻找到了新的长期融资"
     },
     {
-      "because": "共識盲點",
+      "because": "市场保持非理性的时间往往比你的头寸能支撑的时间长",
       "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:006",
-      "source_file": "investors/michael_burry.md",
-      "then": "深入研究做空機會",
-      "when": "結構性風險被市場忽視（如 2005 次貸）"
+      "kind": "entry",
+      "rule_id": "michael_burry:entry:003",
+      "source_file": "investors\\michael_burry.md",
+      "then": "必须控制仓位规模 (Size) 且做好“太早” 2-3 年的心理准备",
+      "when": "在泡沫顶点做空"
     },
     {
-      "because": "最危險的標的",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:007",
-      "source_file": "investors/michael_burry.md",
-      "then": "做空候選",
-      "when": "流動性收緊 AND 高槓桿/負現金流公司"
+      "because": "政策红利的非线性释放往往被市场短期低估",
+      "investor_id": "nancy_pelosi",
+      "kind": "entry",
+      "rule_id": "nancy_pelosi:entry:001",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "考虑建立多头仓位或买入远期价内期权",
+      "when": "某项行业扶持法案已通过委员会初审 AND 目标公司是该行业唯一的全球性竞争者"
     },
     {
-      "because": "不依賴賣方",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:008",
-      "source_file": "investors/michael_burry.md",
-      "then": "獨立驗證",
-      "when": "賣方報告說好"
+      "because": "官方背书的现金流是极其稳健的护城河",
+      "investor_id": "nancy_pelosi",
+      "kind": "entry",
+      "rule_id": "nancy_pelosi:entry:002",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "立即将其列入核心观察名单并分批介入",
+      "when": "某大型科技公司获得国防部/能源部价值超过其年度营收 10% 的核心合同"
     },
     {
-      "because": "找不一致",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:009",
-      "source_file": "investors/michael_burry.md",
-      "then": "對照財務數據與行業趨勢",
-      "when": "管理層說法"
+      "because": "政策反转带来的估值修复通常是爆发性的",
+      "investor_id": "nancy_pelosi",
+      "kind": "entry",
+      "rule_id": "nancy_pelosi:entry:003",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "寻找在该领域受压制最久、估值最低的龙头公司",
+      "when": "宏观政策导向由“严监管”转向“促增长” (如降息或放宽准入)"
     },
     {
-      "because": "測試共識",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:010",
-      "source_file": "investors/michael_burry.md",
-      "then": "問「為什麼？共識哪裡錯？」",
-      "when": "市場定價"
+      "because": "这种动向通常预示着长期博弈逻辑的成立",
+      "investor_id": "nancy_pelosi",
+      "kind": "entry",
+      "rule_id": "nancy_pelosi:entry:004",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "深入研究对应的立法议程是否包含该公司的关键利好",
+      "when": "公开披露显示某“政策敏感型”账户在低位连续增持某成长股"
     },
     {
-      "because": "可能長期被「打臉」",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:011",
-      "source_file": "investors/michael_burry.md",
-      "then": "確保資金續航",
-      "when": "論點兌現需要數年"
+      "because": "政策驱动型的投资逻辑一旦证伪，估值会迅速回归平庸",
+      "investor_id": "nancy_pelosi",
+      "kind": "exit",
+      "rule_id": "nancy_pelosi:exit:001",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "立即减仓或平掉高杠杆期权",
+      "when": "核心扶持政策遭遇强力立法阻碍或预算大幅缩减"
     },
     {
-      "because": "無限虧損風險",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:012",
-      "source_file": "investors/michael_burry.md",
-      "then": "嚴格控制倉位",
-      "when": "做空"
+      "because": "政治风险的下限极低且难以预测",
+      "investor_id": "nancy_pelosi",
+      "kind": "exit",
+      "rule_id": "nancy_pelosi:exit:002",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "认赔出局，不等待政策转机",
+      "when": "目标公司卷入严重的跨国政治纠纷且面临制裁风险"
     },
     {
-      "because": "時機是最難的",
-      "investor_id": "michael_burry",
-      "kind": "other",
-      "rule_id": "michael_burry:other:013",
-      "source_file": "investors/michael_burry.md",
-      "then": "可以承受但要有預案",
-      "when": "時機太早"
+      "because": "市场总是倾向于提前交易预期",
+      "investor_id": "nancy_pelosi",
+      "kind": "exit",
+      "rule_id": "nancy_pelosi:exit:003",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "锁定利润，寻找下一个尚未被市场充分定价的法案方向",
+      "when": "某项政策红利已完全在股价中兑现 (如法案签署后的利好出尽)"
     },
     {
-      "because": "成長被合理定價",
+      "because": "政策博弈不是赌博，必须保留生存资金",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:001",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "必须通过反向期权或跨行业配置进行对冲",
+      "when": "单一政策变动会导致组合回撤超过 20%"
+    },
+    {
+      "because": "盲从是产生亏损的最快路径",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:002",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "停止操作，直到理清法案细则与时间表",
+      "when": "发现自己完全依赖于“跟单”而非自主的政策逻辑分析"
+    },
+    {
+      "because": "延迟披露的信息具有强烈的时效性腐蚀",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:003",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "严禁追高，等待下一个披露窗口或技术回撤",
+      "when": "披露报告显示交易发生至今股价已上涨超过 30%"
+    },
+    {
+      "because": "宏观重力法则（Gravity of Macro）通常大于局部政策红利",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:004",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "即使有政策利好也要控制仓位",
+      "when": "市场处于极端加息周期且整体流动性枯竭"
+    },
+    {
+      "because": "公众看到的披露永远是过去的投影",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:005",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "必须在所有研究报告中加入“信息延迟风险”提示",
+      "when": "你在分析此类交易"
+    },
+    {
+      "because": "政策变量的波动往往超乎常理",
+      "investor_id": "nancy_pelosi",
+      "kind": "risk_management",
+      "rule_id": "nancy_pelosi:risk_management:006",
+      "source_file": "investors\\nancy_pelosi.md",
+      "then": "设定极其严格的止损点 (如 10%)",
+      "when": "你试图利用此类信息进行短期投机"
+    },
+    {
+      "because": "低波动率是脆弱性的积累期，廉价的保险是实现凸性收益的前提",
+      "investor_id": "nassim_taleb",
+      "kind": "exit",
+      "rule_id": "nassim_taleb:exit:001",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "买入 6-12 个月后的 OTM 看跌期权作为“反脆弱保险”",
+      "when": "市场处于极低波动率的“虚假稳定”状态 AND 深度虚值期权 (OTM Puts) 溢价极低"
+    },
+    {
+      "because": "即使 90% 的博弈都亏损，剩下的 10% 成功足以产生指数级回报",
+      "investor_id": "nassim_taleb",
+      "kind": "exit",
+      "rule_id": "nassim_taleb:exit:002",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "小规模、多频率地参与此类博弈",
+      "when": "某项投资机会的潜在损失是已知的且有限的 (如 1.0) AND 潜在收益是未知的且巨大的 (如 100.0)"
+    },
+    {
+      "because": "在极端陆，这种结构必然会因为“一次意外”而清零",
+      "investor_id": "nassim_taleb",
+      "kind": "exit",
+      "rule_id": "nassim_taleb:exit:003",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "坚决避开该资产，且不参与任何相关借贷",
+      "when": "发现某个系统或工具（如高杠杆算法）表现出明显的“凹性”特征（平稳中小赚，一旦崩溃全亏）"
+    },
+    {
+      "because": "概率是虚幻的，而暴露 (Exposure) 是真实的",
+      "investor_id": "nassim_taleb",
+      "kind": "other",
+      "rule_id": "nassim_taleb:other:001",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "废弃该逻辑，转而问自己：如果发生崩溃，我能承受吗？",
+      "when": "你的决策逻辑依赖于“未来概率的精确计算” (例如假设崩盘概率是 0.01%)"
+    },
+    {
+      "because": "复杂系统的简化是崩溃的前兆（脆弱性正在集中）",
+      "investor_id": "nassim_taleb",
+      "kind": "other",
+      "rule_id": "nassim_taleb:other:002",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "增加对冲头寸",
+      "when": "观察到由于单一技术或政策导致的市场“过度简化”和“集中化”"
+    },
+    {
+      "because": "保护已经实现的获利是杠杆策略的另一端",
+      "investor_id": "nassim_taleb",
+      "kind": "other",
+      "rule_id": "nassim_taleb:other:003",
+      "source_file": "investors\\nassim_taleb.md",
+      "then": "立即提取大部分本金转入极安全资产 (国债/现金)，只留利润继续博弈",
+      "when": "在黑天鹅事件中获得了巨额盈利"
+    },
+    {
+      "because": "这种组合在现代经济中具有极高的缩放潜力和极低的边际成本",
+      "investor_id": "naval_ravikant",
+      "kind": "entry",
+      "rule_id": "naval_ravikant:entry:001",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "极力买入/投资，并长期持有",
+      "when": "创始人具备“特殊知识” AND 能够利用“代码/媒体”建立零许可杠杆"
+    },
+    {
+      "because": "这种杠杆具有高度的脆弱性，且难以在不增加管理复杂性的情况下进行扩张",
+      "investor_id": "naval_ravikant",
+      "kind": "entry",
+      "rule_id": "naval_ravikant:entry:002",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "保持警惕或避开",
+      "when": "一个项目依赖于大量的低廉劳动力或受监管的资本杠杆"
+    },
+    {
+      "because": "所有显著的收益都来自长期复利，而复利的前提是信任的无损传递",
+      "investor_id": "naval_ravikant",
+      "kind": "entry",
+      "rule_id": "naval_ravikant:entry:003",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "立即终止合作，不再进行任何后续投入",
+      "when": "合作伙伴表现出短视行为或在微小利益上不诚实"
+    },
+    {
+      "because": "真正的致富需要脱离时间与报酬的线性关系",
+      "investor_id": "naval_ravikant",
+      "kind": "exit",
+      "rule_id": "naval_ravikant:exit:001",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "寻找机会将其置换为具有无限上涨潜力的“期权型资产”",
+      "when": "某项资产的上涨空间是有限的 (如租金、工资) AND 投入的精力是持续的"
+    },
+    {
+      "because": "地位游戏会扭曲你的判断力，导致你在估值顶部追逐群体共识",
+      "investor_id": "naval_ravikant",
+      "kind": "exit",
+      "rule_id": "naval_ravikant:exit:002",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "强制离场或减少关注",
+      "when": "市场陷入狂热 AND 你发现自己开始关心社交媒体上的排名或地位"
+    },
+    {
+      "because": "平静是最高级的财富，焦虑说明你并不真正理解或拥有该项资产",
+      "investor_id": "naval_ravikant",
+      "kind": "exit",
+      "rule_id": "naval_ravikant:exit:003",
+      "source_file": "investors\\naval_ravikant.md",
+      "then": "卖出直到你可以安睡为止",
+      "when": "某项投资需要你频繁查看报价以获得心理安宁"
+    },
+    {
+      "because": "市场尚未完全定价其成长性，且财务结构安全",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:001",
-      "source_file": "investors/peter_lynch.md",
-      "then": "考慮買入",
-      "when": "PEG < 1 AND 增速可持續"
+      "kind": "entry",
+      "rule_id": "peter_lynch:entry:001",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "视为“快速增长股”潜在标的，分批买入",
+      "when": "盈利增长率 (G) > 20% AND PE < 盈利增长率 (即 PEG < 1) AND 负债率 < 30%"
     },
     {
-      "because": "可能被低估",
+      "because": "稳定增长股的估值溢价有限，获利了结是保持活力的关键",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:002",
-      "source_file": "investors/peter_lynch.md",
-      "then": "深入研究",
-      "when": "PEG < 0.5 AND 增速穩定"
+      "kind": "entry",
+      "rule_id": "peter_lynch:entry:002",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "卖出并寻找下一个被低估的稳定增长股",
+      "when": "某公司是“稳定增长股” (Stalwart) AND 股价涨幅已达 50% AND PEG 接近 2.0"
     },
     {
-      "because": "理解是投資基礎",
+      "because": "这种情况下你相当于免费买到了公司的业务",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:003",
-      "source_file": "investors/peter_lynch.md",
-      "then": "在能力圈內",
-      "when": "能 2 分鐘講清楚公司做什麼 AND 為何賺錢"
+      "kind": "entry",
+      "rule_id": "peter_lynch:entry:003",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "视为“资产型股票” (Asset Play) 进行深度调查",
+      "when": "公司账面现金 > 负债 AND 现金/股价比例 > 30%"
     },
     {
-      "because": "小型股優勢",
+      "because": "周期股的低 PE 往往出现在盈利顶峰，预示着行业即将下行",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:004",
-      "source_file": "investors/peter_lynch.md",
-      "then": "機會（未被發現）",
-      "when": "機構持股低 AND 基本面好"
+      "kind": "exit",
+      "rule_id": "peter_lynch:exit:001",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "考虑卖出",
+      "when": "投资标的是“周期股” (Cyclical) AND 市盈率 (PE) 处于历史极低点 AND 媒体全是利好"
     },
     {
-      "because": "管理層看好",
+      "because": "风险最剧烈的时期已过，修复空间巨大",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:005",
-      "source_file": "investors/peter_lynch.md",
-      "then": "正面信號",
-      "when": "內部人在買入"
+      "kind": "exit",
+      "rule_id": "peter_lynch:exit:002",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "建立初始仓位",
+      "when": "投资标的是“困境反转股” (Turnaround) AND 负债结构得到重组 AND 核心业务现金流转正"
     },
     {
-      "because": "成長有限",
+      "because": "管理层正在稀释股东价值并增加复杂性风险",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:006",
-      "source_file": "investors/peter_lynch.md",
-      "then": "看股息，不期待資本增值",
-      "when": "慢速成長股"
+      "kind": "exit",
+      "rule_id": "peter_lynch:exit:003",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "立即将其从候选名单中剔除",
+      "when": "发现某公司正在进行“恶性多元化” (收购非核心业务)"
     },
     {
-      "because": "穩定複利",
+      "because": "成长股最危险的是成长动力的丧失",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:007",
-      "source_file": "investors/peter_lynch.md",
-      "then": "核心持倉，回檔買漲多賣",
-      "when": "穩定成長股"
+      "kind": "entry",
+      "rule_id": "peter_lynch:entry:004",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "无论当前盈亏，立即卖出",
+      "when": "买入后的“故事”发生改变 (例如快速增长股的同店销售增长率连续两个季度下滑)"
     },
     {
-      "because": "高潛力高風險",
+      "because": "寻找被低估标的的优势已经消失",
       "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:008",
-      "source_file": "investors/peter_lynch.md",
-      "then": "重點追蹤增速是否持續",
-      "when": "快速成長股"
-    },
-    {
-      "because": "週期規律",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:009",
-      "source_file": "investors/peter_lynch.md",
-      "then": "低 PE 不一定便宜，逆週期佈局",
-      "when": "週期股"
-    },
-    {
-      "because": "不確定性大",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:010",
-      "source_file": "investors/peter_lynch.md",
-      "then": "控制倉位，高賠率低勝率",
-      "when": "困境反轉股"
-    },
-    {
-      "because": "市場忽視",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:011",
-      "source_file": "investors/peter_lynch.md",
-      "then": "挖掘隱藏價值（土地、品牌、現金）",
-      "when": "資產型"
-    },
-    {
-      "because": "為成長付太多",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:012",
-      "source_file": "investors/peter_lynch.md",
-      "then": "考慮賣出",
-      "when": "PEG > 2"
-    },
-    {
-      "because": "買入論點不成立",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:013",
-      "source_file": "investors/peter_lynch.md",
-      "then": "賣出",
-      "when": "故事變了（成長停滯、競爭加劇）"
-    },
-    {
-      "because": "成長股失去成長",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:014",
-      "source_file": "investors/peter_lynch.md",
-      "then": "重新評估",
-      "when": "增速持續下滑"
-    },
-    {
-      "because": "不理解",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:015",
-      "source_file": "investors/peter_lynch.md",
-      "then": "不買",
-      "when": "無法 2 分鐘講清楚公司"
-    },
-    {
-      "because": "太貴",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:016",
-      "source_file": "investors/peter_lynch.md",
-      "then": "不買",
-      "when": "PEG > 2"
-    },
-    {
-      "because": "財務風險",
-      "investor_id": "peter_lynch",
-      "kind": "other",
-      "rule_id": "peter_lynch:other:017",
-      "source_file": "investors/peter_lynch.md",
-      "then": "不買",
-      "when": "負債過高 AND 利息保障倍數低"
+      "kind": "entry",
+      "rule_id": "peter_lynch:entry:005",
+      "source_file": "investors\\peter_lynch.md",
+      "then": "考虑退出",
+      "when": "机构持股比例从 < 10% 增长到 > 60% AND 股价已反映此利好"
     },
     {
       "because": "得寡头者得天下",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:001",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:001",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "行业值得关注",
       "when": "行业CR3 > 50% AND 龙头市占率持续提升"
     },
     {
       "because": "格局未定，价格战风险",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:002",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:002",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "回避该行业",
       "when": "行业CR3 < 30% AND 玩家众多"
     },
     {
       "because": "品牌是真护城河",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:003",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:003",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "公司有品牌溢价能力（提价不掉量）"
     },
     {
       "because": "渠道为王",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:004",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:004",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "公司有渠道优势 AND 竞争对手3年内无法复制"
     },
     {
       "because": "结构性成本优势持久",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:005",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:005",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "护城河有效",
       "when": "成本优势来自规模/地理/资源 AND 非暂时性"
     },
     {
       "because": "PEG > 1 为成长付太多溢价",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:006",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:006",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "估值偏贵",
       "when": "PE > 30x AND 增速 < 30%"
     },
     {
       "because": "便宜的好公司",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:007",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:007",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "好价格",
       "when": "PE < 15x AND ROE > 15% AND 护城河完好"
     },
     {
       "because": "人弃我取",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:008",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:008",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "逆向机会",
       "when": "股价因短期利空下跌 > 30% AND 长期逻辑未变"
     },
     {
       "because": "别人恐惧我贪婪",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:009",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:009",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "布局时机",
       "when": "市场极度悲观 AND 机构仓位处于历史低位"
     },
     {
       "because": "不和市场对着干太久",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:010",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:010",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "降低仓位",
       "when": "估值处于历史高位 AND 市场情绪亢奋"
     },
     {
       "because": "便宜可能更便宜",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:011",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:011",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "卖出",
       "when": "公司基本面恶化（护城河受损）"
     },
     {
       "because": "机会成本考量",
       "investor_id": "qiu_guolu",
-      "kind": "sell",
-      "rule_id": "qiu_guolu:sell:012",
-      "source_file": "investors/qiu_guolu.md",
+      "kind": "exit",
+      "rule_id": "qiu_guolu:exit:012",
+      "source_file": "investors\\qiu_guolu.md",
       "then": "换仓",
       "when": "找到更好的标的 AND 当前持仓性价比下降"
     },
     {
-      "because": "最佳環境",
+      "because": "债务周期的泡沫阶段正在接近顶部，去杠杆风险激增",
+      "investor_id": "ray_dalio",
+      "kind": "risk_management",
+      "rule_id": "ray_dalio:risk_management:001",
+      "source_file": "investors\\ray_dalio.md",
+      "then": "减少对高杠杆权益类资产的暴露，增加避险头寸",
+      "when": "观察到信贷扩张速度远超生产率增长 AND 债务利息支出占总收入比例 > 20%"
+    },
+    {
+      "because": "法币购买力的贬值是长期债务周期后期的必然结果",
+      "investor_id": "ray_dalio",
+      "kind": "risk_management",
+      "rule_id": "ray_dalio:risk_management:002",
+      "source_file": "investors\\ray_dalio.md",
+      "then": "增加黄金、商品或通胀保值债券 (TIPS) 的权重",
+      "when": "央行开始大规模印钞 (QE) AND 实际利率 (Real Rates) < 0"
+    },
+    {
+      "because": "维持风险暴露的平衡是抵御“不可知未来”的圣杯",
+      "investor_id": "ray_dalio",
+      "kind": "risk_management",
+      "rule_id": "ray_dalio:risk_management:003",
+      "source_file": "investors\\ray_dalio.md",
+      "then": "通过再平衡恢复风险平价权重",
+      "when": "组合中各资产贡献的风险 (波动率) 不均衡 (例如股票贡献了 90% 的波动)"
+    },
+    {
+      "because": "市场尚未对“通胀惊奇”进行定价",
+      "investor_id": "ray_dalio",
+      "kind": "entry",
+      "rule_id": "ray_dalio:entry:001",
+      "source_file": "investors\\ray_dalio.md",
+      "then": "买入通胀敏感资产 (商品、黄金)",
+      "when": "市场定价的通胀预期 < 实际宏观数据趋势"
+    },
+    {
+      "because": "这是对传统股债组合最具破坏性的象限",
+      "investor_id": "ray_dalio",
+      "kind": "entry",
+      "rule_id": "ray_dalio:entry:002",
+      "source_file": "investors\\ray_dalio.md",
+      "then": "核心持仓应转向大宗商品和黄金，减持债券",
+      "when": "经济进入“滞胀”阶段 (增长↓ + 通胀↑)"
+    },
+    {
+      "because": "痛苦 + 反思 = 进步；没有反思的亏损是单纯的负资产",
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:001",
-      "source_file": "investors/ray_dalio.md",
-      "then": "偏重股票、公司債",
-      "when": "增長↑ + 通膨↓ (溫和擴張)"
+      "source_file": "investors\\ray_dalio.md",
+      "then": "必须启动“根本原因分析” (Root Cause Analysis)，找出对应的系统性逻辑漏洞",
+      "when": "投资出现显著亏损"
     },
     {
-      "because": "通膨受益資產",
+      "because": "系统化投资能排除情绪干扰，确保在不同周期下的执行一致性",
       "investor_id": "ray_dalio",
       "kind": "other",
       "rule_id": "ray_dalio:other:002",
-      "source_file": "investors/ray_dalio.md",
-      "then": "偏重商品、TIPS、新興股票",
-      "when": "增長↑ + 通膨↑ (過熱)"
+      "source_file": "investors\\ray_dalio.md",
+      "then": "暂停交易并强制将逻辑写成代码/算法",
+      "when": "发现自己的投资判断高度依赖直觉而非可回测的规则"
     },
     {
-      "because": "最難環境，需要實體資產保護",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:003",
-      "source_file": "investors/ray_dalio.md",
-      "then": "偏重商品、黃金、TIPS",
-      "when": "增長↓ + 通膨↑ (滯脹)"
+      "because": "现金流是逃离老鼠赛跑的燃料",
+      "investor_id": "robert_kiyosaki",
+      "kind": "entry",
+      "rule_id": "robert_kiyosaki:entry:001",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "考虑买入",
+      "when": "目标投资标的在扣除贷款和运营成本后每月产生净现金流"
     },
     {
-      "because": "避險資產、久期獲益",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:004",
-      "source_file": "investors/ray_dalio.md",
-      "then": "偏重長期國債、現金",
-      "when": "增長↓ + 通膨↓ (衰退/通縮)"
+      "because": "真实价值在危机中会回归其作为“诚实货币”的地位",
+      "investor_id": "robert_kiyosaki",
+      "kind": "entry",
+      "rule_id": "robert_kiyosaki:entry:002",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "增加实物或冷钱包持仓",
+      "when": "市场处于极度恐慌且硬资产 (金/银/币) 价格因流动性挤兑而大幅下跌"
     },
     {
-      "because": "週期上升期",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:005",
-      "source_file": "investors/ray_dalio.md",
-      "then": "做多風險資產",
-      "when": "早期擴張（低槓桿、信用易得）"
+      "because": "合法避税是富人加速财富积累的核心秘密",
+      "investor_id": "robert_kiyosaki",
+      "kind": "entry",
+      "rule_id": "robert_kiyosaki:entry:003",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "优先将其作为杠杆扩张的工具",
+      "when": "某项房地产交易能利用 1031 延迟纳税或获得政府税收抵免"
     },
     {
-      "because": "週期見頂",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:006",
-      "source_file": "investors/ray_dalio.md",
-      "then": "減曝險、增現金/黃金",
-      "when": "泡沫階段（槓桿激增、估值脫離基本面）"
+      "because": "拥有系统而非拥有工作才是自由的关键",
+      "investor_id": "robert_kiyosaki",
+      "kind": "entry",
+      "rule_id": "robert_kiyosaki:entry:004",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "即使初期不赚钱也要尝试建立",
+      "when": "一个商业机会允许我从“自雇者” (S) 转向“系统拥有者” (B)"
     },
     {
-      "because": "週期下行",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:007",
-      "source_file": "investors/ray_dalio.md",
-      "then": "防守，等待政策底",
-      "when": "去槓桿（違約攀升、信用收縮）"
+      "because": "吞噬现金流的“资产”实际上是恶性肿瘤",
+      "investor_id": "robert_kiyosaki",
+      "kind": "exit",
+      "rule_id": "robert_kiyosaki:exit:001",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "立即斩仓出售或进行债务重组",
+      "when": "某项资产的现金流由正转负且长期趋势不可逆 (如地段彻底衰落)"
     },
     {
-      "because": "政策轉向利好風險資產",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:008",
-      "source_file": "investors/ray_dalio.md",
-      "then": "做多硬資產、股票",
-      "when": "再通脹（央行大規模刺激）"
+      "because": "债务利息的增加会迅速抹平资产的收益空间",
+      "investor_id": "robert_kiyosaki",
+      "kind": "exit",
+      "rule_id": "robert_kiyosaki:exit:002",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "减少高杠杆负债，持有更多流动性头寸",
+      "when": "法币体系出现暂时的虚假繁荣且通胀预期极低 (利率大幅上升)"
     },
     {
-      "because": "維持分散效果",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:009",
-      "source_file": "investors/ray_dalio.md",
-      "then": "再平衡",
-      "when": "各資產貢獻風險不均衡"
+      "because": "杠杆能让你飞，也能让你在风暴中摔得最惨",
+      "investor_id": "robert_kiyosaki",
+      "kind": "risk_management",
+      "rule_id": "robert_kiyosaki:risk_management:001",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "停止一切新下注并寻求减债",
+      "when": "资产负债率导致每月现金流无法覆盖 3 个月以上的运营支出"
     },
     {
-      "because": "分散失效",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:010",
-      "source_file": "investors/ray_dalio.md",
-      "then": "增加現金、減少暴露",
-      "when": "相關性在極端時上升"
+      "because": "缺乏知识的投资不是投资，是赌博",
+      "investor_id": "robert_kiyosaki",
+      "kind": "risk_management",
+      "rule_id": "robert_kiyosaki:risk_management:002",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "立即平仓，回归财商学习",
+      "when": "发现自己正在购买“别人推荐”的股票而自己完全不理解其财务报表"
     },
     {
-      "because": "生存優先",
-      "investor_id": "ray_dalio",
-      "kind": "other",
-      "rule_id": "ray_dalio:other:011",
-      "source_file": "investors/ray_dalio.md",
-      "then": "減少風險暴露",
-      "when": "壓力測試顯示回撤 > 容忍度"
+      "because": "即便是好资产也可能遭遇特定政策或周期的毁灭性打击",
+      "investor_id": "robert_kiyosaki",
+      "kind": "risk_management",
+      "rule_id": "robert_kiyosaki:risk_management:003",
+      "source_file": "investors\\robert_kiyosaki.md",
+      "then": "必须进行“相关性对冲”",
+      "when": "所有的蛋都放在同一个篮子里 (如只有房地产或只有比特币)"
     },
     {
-      "because": "足夠的下檔保護",
+      "because": "安全边际提供了抵御错误、运气不佳或市场波动的缓冲",
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:001",
-      "source_file": "investors/seth_klarman.md",
-      "then": "考慮買入",
-      "when": "安全邊際 > 30-50%（價格 vs 保守估值）"
+      "source_file": "investors\\seth_klarman.md",
+      "then": "进入深度研究阶段",
+      "when": "价格 < 保守清算价值 (Liquidation Value) 的 70% OR 价格 < 保守 DCF 估值的 60%"
     },
     {
-      "because": "被迫賣壓創造機會",
+      "because": "价值投资不应建立在对未来的完美预测之上",
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:002",
-      "source_file": "investors/seth_klarman.md",
-      "then": "深入研究",
-      "when": "便宜因為結構性賣壓（指數剔除、評級下調）AND 基本面未變"
+      "source_file": "investors\\seth_klarman.md",
+      "then": "必须对估值进行 50% 以上的折价处理",
+      "when": "估值依赖于乐观的增长假设或永久性高利润率"
     },
     {
-      "because": "特殊情況機會",
+      "because": "强制抛售是创造极度低估的源泉",
       "investor_id": "seth_klarman",
       "kind": "other",
       "rule_id": "seth_klarman:other:003",
-      "source_file": "investors/seth_klarman.md",
-      "then": "深入研究",
-      "when": "困境債 AND 資產價值 > 債券價格 AND 有催化劑"
+      "source_file": "investors\\seth_klarman.md",
+      "then": "立即进行逆向分析",
+      "when": "发现某项资产的抛售是由于“非基本面因素” (如评级下调导致的强制清仓、指数剔除)"
     },
     {
-      "because": "Baupost 最活躍的時候",
+      "because": "现金是未来的弹药，保护本金是第一要务",
       "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:004",
-      "source_file": "investors/seth_klarman.md",
-      "then": "積極尋找機會",
-      "when": "恐慌/危機時期 AND 有現金儲備"
+      "kind": "entry",
+      "rule_id": "seth_klarman:entry:001",
+      "source_file": "investors\\seth_klarman.md",
+      "then": "增加现金比例，即使这意味着短期内跑输指数",
+      "when": "市场处于整体高估值水平 AND 找不到符合安全边际的标的"
     },
     {
-      "because": "流動性折價",
+      "because": "这是持有现金数年等待的终极时刻",
       "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:005",
-      "source_file": "investors/seth_klarman.md",
-      "then": "深入研究",
-      "when": "冷門資產 AND 無人關注 AND 有價值"
+      "kind": "entry",
+      "rule_id": "seth_klarman:entry:002",
+      "source_file": "investors\\seth_klarman.md",
+      "then": "动用“现金期权”，分批买入那些具备生存能力的复杂资产",
+      "when": "危机爆发且优质资产出现 40% 以上的无差别跌幅"
     },
     {
-      "because": "等待機會的期權",
+      "because": "即使公司破产，你的本金也能通过抵押物清偿获得保护",
       "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:006",
-      "source_file": "investors/seth_klarman.md",
-      "then": "提高現金比例（可達 30-50%）",
-      "when": "估值普遍高估 AND 缺乏安全邊際"
+      "kind": "risk_management",
+      "rule_id": "seth_klarman:risk_management:001",
+      "source_file": "investors\\seth_klarman.md",
+      "then": "视为低风险、高收益的理想机会",
+      "when": "投资困境债 (Distressed Debt) AND 处于担保链最顶端 (Senior Secured) AND 抵押物重置成本 > 债务总额"
     },
     {
-      "because": "不為部署而降低標準",
+      "because": "市场结构性失衡通常会在分拆初期达到顶点",
       "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:007",
-      "source_file": "investors/seth_klarman.md",
-      "then": "不部署",
-      "when": "機會不夠好"
+      "kind": "risk_management",
+      "rule_id": "seth_klarman:risk_management:002",
+      "source_file": "investors\\seth_klarman.md",
+      "then": "关注分拆后的头三周，寻找机构抛售带来的买点",
+      "when": "发现某公司即将进行分拆 (Spin-off) AND 该业务具备独立的护城河"
     },
     {
-      "because": "現金是彈藥",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:008",
-      "source_file": "investors/seth_klarman.md",
-      "then": "大膽部署",
-      "when": "危機到來 AND 有現金"
-    },
-    {
-      "because": "保護不足",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:009",
-      "source_file": "investors/seth_klarman.md",
-      "then": "不買",
-      "when": "安全邊際 < 30%"
-    },
-    {
-      "because": "價值陷阱",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:010",
-      "source_file": "investors/seth_klarman.md",
-      "then": "不買",
-      "when": "便宜因為基本面惡化 AND 無改善跡象"
-    },
-    {
-      "because": "最壞情況不可接受",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:011",
-      "source_file": "investors/seth_klarman.md",
-      "then": "不買",
-      "when": "下檔保護不明確"
-    },
-    {
-      "because": "無法承受鎖定",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:012",
-      "source_file": "investors/seth_klarman.md",
-      "then": "不買",
-      "when": "流動性極差 AND 無法長期持有"
-    },
-    {
-      "because": "安全邊際消失",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:013",
-      "source_file": "investors/seth_klarman.md",
-      "then": "賣出",
-      "when": "達到內在價值"
-    },
-    {
-      "because": "價值實現",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:014",
-      "source_file": "investors/seth_klarman.md",
-      "then": "等待/部分獲利",
-      "when": "有催化劑讓市場重新定價"
-    },
-    {
-      "because": "論點改變",
-      "investor_id": "seth_klarman",
-      "kind": "other",
-      "rule_id": "seth_klarman:other:015",
-      "source_file": "investors/seth_klarman.md",
-      "then": "重新評估，可能賣出",
-      "when": "基本面惡化"
-    },
-    {
-      "because": "流動性推動市場",
+      "because": "流动性的闸门一旦打开，资产价格将无视基本面向上重估",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:001",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "做多風險資產",
-      "when": "淨流動性（Fed B/S − TGA − RRP）上升 AND 估值合理"
+      "kind": "risk_management",
+      "rule_id": "stanley_druckenmiller:risk_management:001",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "开启全速做多模式，集中配置于高 Beta 科技或成长股",
+      "when": "净流动性 (Fed B/S - TGA - RRP) 持续三个月为正 AND 美联储态度转鸽"
     },
     {
-      "because": "流動性改善先反映在股市",
+      "because": "抽走流动性就像撤走桌子，盘子一定会碎",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:002",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "先佈局成長股",
-      "when": "Fed 轉向（緊→鬆）信號確認"
+      "kind": "risk_management",
+      "rule_id": "stanley_druckenmiller:risk_management:002",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "无论盈利预期多好，必须减仓至少 50%",
+      "when": "观察到美联储开始 QT (缩表) AND 财政部 TGA 账户余额增加 (抽走流动性)"
     },
     {
-      "because": "看對方向要敢下注",
+      "because": "衰退风险正在被定价，利率终将见顶",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:003",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "重倉 10-25%",
-      "when": "確信度 90%+ AND 邏輯一句話講清楚"
+      "kind": "risk_management",
+      "rule_id": "stanley_druckenmiller:risk_management:003",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "开始建立长期国债多头，并寻找过度扩张的行业进行做空",
+      "when": "市场处于加息末期 AND 观察到收益率曲线 (2y-10y) 深度倒挂"
     },
     {
-      "because": "歷史規律",
+      "because": "这种高确信度的机会每年只会出现一两次，必须重注",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:004",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "做多長期國債",
-      "when": "最後一次加息確認"
+      "kind": "exit",
+      "rule_id": "stanley_druckenmiller:exit:001",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "动用杠杆或重仓至组合的 20% 以上",
+      "when": "宏观逻辑、流动性趋势和技术走势三者共振 (Confluence)"
     },
     {
-      "because": "雙殺風險",
+      "because": "资本的完整性远比证明自己是对的更重要",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:005",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "減倉或做空",
-      "when": "淨流動性下降 AND 高估值"
+      "kind": "exit",
+      "rule_id": "stanley_druckenmiller:exit:002",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "立即斩仓，重新审视宏观逻辑是否被由于未察觉的变量破坏",
+      "when": "建立头寸后，市场走势与判断相反且亏损超过 5%"
     },
     {
-      "because": "市場內部轉弱",
+      "because": "真正的机会应该是简洁明了且被市场迅速验证的",
       "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:006",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "警惕，考慮減倉",
-      "when": "方向做多 BUT 市場寬度惡化（< 50% 股票 > 200MA）"
+      "kind": "exit",
+      "rule_id": "stanley_druckenmiller:exit:003",
+      "source_file": "investors\\stanley_druckenmiller.md",
+      "then": "卖出",
+      "when": "你发现自己需要写一页纸的理由来解释为什么某项投资现在还没涨"
     },
     {
-      "because": "還沒想清楚",
-      "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:007",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "減倉",
-      "when": "需要多重假設才能支持邏輯"
-    },
-    {
-      "because": "錯了快認錯",
-      "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:008",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "立即止損",
-      "when": "論點被證偽 OR 價格確認反向"
-    },
-    {
-      "because": "時機問題而非方向問題",
-      "investor_id": "stanley_druckenmiller",
-      "kind": "other",
-      "rule_id": "stanley_druckenmiller:other:009",
-      "source_file": "investors/stanley_druckenmiller.md",
-      "then": "可以持有/加倉",
-      "when": "虧損但論點仍成立 AND 流動性未變"
-    },
-    {
-      "because": "提供安全邊際，回報優於無風險利率",
+      "because": "提供足够安全边际且核心竞争力稳固",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:001",
-      "source_file": "investors/warren_buffett.md",
-      "then": "考慮買入",
-      "when": "盈餘收益率 > 10Y國債 × 1.5 AND 護城河完好"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:001",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "建立初始仓位",
+      "when": "股东盈余收益率 (Owner Earnings / Market Cap) > 10年期国债收益率 + 4% AND 护城河评级为“宽 (Wide)”"
     },
     {
-      "because": "可能是複利機器",
+      "because": "价格远低于价值，安全边际极高",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:002",
-      "source_file": "investors/warren_buffett.md",
-      "then": "深入研究",
-      "when": "FCF Yield > 8% AND ROIC > 15% 持續 5 年+"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:002",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "强烈买入",
+      "when": "股价 < 内在价值的 70% (提供 30% 安全边际)"
     },
     {
-      "because": "市場過度反應暫時性問題",
+      "because": "这是一个具备复利能力的优质公司",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:003",
-      "source_file": "investors/warren_buffett.md",
-      "then": "機會窗口",
-      "when": "短期負面新聞 AND 護城河未損 AND 股價下跌 > 30%"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:003",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "进入候选池",
+      "when": "过去 10 年 ROIC 平均 > 15% AND 营收增速 > 5% AND PE < 15"
     },
     {
-      "because": "週期性低估",
+      "because": "管理层正在低价增厚股东价值",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:004",
-      "source_file": "investors/warren_buffett.md",
-      "then": "考慮買入",
-      "when": "P/E < 歷史均值 - 1σ AND 護城河未變 AND 管理層誠信"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:004",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "视为利好信号",
+      "when": "公司宣布大规模回购 AND 股价低于历史均值 PE"
     },
     {
-      "because": "可能是隱藏的好公司",
+      "because": "市场情绪驱动的错杀",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:005",
-      "source_file": "investors/warren_buffett.md",
-      "then": "深入研究",
-      "when": "「無聊」的生意 AND 分析師不關注 AND FCF 穩定"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:005",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "买入",
+      "when": "遭遇非基本面引起的股价 30%+ 暴跌 (如指数调整、暂时性负面新闻) AND 检查护城河未损"
     },
     {
-      "because": "競爭優勢消失",
+      "because": "降低了管理层平庸带来的长期风险",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:006",
-      "source_file": "investors/warren_buffett.md",
-      "then": "賣出",
-      "when": "護城河被侵蝕 AND 無改善跡象"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:006",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "优先考虑",
+      "when": "业务模型简单到“即使是个傻瓜都能经营” (因为总有一天傻瓜会接手)"
     },
     {
-      "because": "安全邊際消失",
+      "because": "这是对抗通胀的最佳护城河",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:007",
-      "source_file": "investors/warren_buffett.md",
-      "then": "考慮減倉",
-      "when": "估值 > 內在價值 × 1.5"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:007",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "在估值合理时买入",
+      "when": "公司具备强大的定价权 (涨价而不流失客户)"
     },
     {
-      "because": "無法信任",
+      "because": "利润被真实转化为现金，而非纸面富贵",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:008",
-      "source_file": "investors/warren_buffett.md",
-      "then": "立即賣出",
-      "when": "管理層誠信問題"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:008",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "财务真实性通过，可买入",
+      "when": "自由现金流 (FCF) 长期 > 净利润"
     },
     {
-      "because": "機會成本",
+      "because": "公司不仅便宜还附赠大量现金",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:009",
-      "source_file": "investors/warren_buffett.md",
-      "then": "換倉",
-      "when": "有更好的機會 AND 當前持倉估值合理但不便宜"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:009",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "具备极强抗风险能力，估值吸引力增加",
+      "when": "净现金 (Net Cash) 占市值比例 > 20%"
     },
     {
-      "because": "能力圈外",
+      "because": "诚信是长期合作的前提",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:010",
-      "source_file": "investors/warren_buffett.md",
-      "then": "不買",
-      "when": "無法用 2 句話解釋商業模式"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:010",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "增加管理层评分",
+      "when": "管理层在年报中诚实讨论错误而非避重就轻"
     },
     {
-      "because": "投機而非投資",
+      "because": "市场因恐惧而集体非理性",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:011",
-      "source_file": "investors/warren_buffett.md",
-      "then": "不買",
-      "when": "需要「信仰」未來才能合理化估值"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:011",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "寻找错杀机会",
+      "when": "某行业面临普遍抛售 AND 该行业龙头公司的护城河并未受损"
     },
     {
-      "because": "燒錢模式",
+      "because": "公司不需要为了留在原地而疯狂烧钱",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:012",
-      "source_file": "investors/warren_buffett.md",
-      "then": "不買",
-      "when": "FCF 長期為負 AND 無明確盈利路徑"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:012",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "说明资产质量极佳，作为买入加分项",
+      "when": "公司的维持性资本支出占折旧比例长期 < 80%"
     },
     {
-      "because": "衰退時破產風險",
+      "because": "管理层与股东利益一致",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:013",
-      "source_file": "investors/warren_buffett.md",
-      "then": "不買",
-      "when": "高槓桿 AND 短期債務 > 現金"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:013",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "激励对齐，增加买入信心",
+      "when": "核心管理层拥有大量公司股票 AND 其报酬主要与长期 ROIC 挂钩"
     },
     {
-      "because": "激勵錯位信號",
+      "because": "现金流极其稳定",
       "investor_id": "warren_buffett",
-      "kind": "other",
-      "rule_id": "warren_buffett:other:014",
-      "source_file": "investors/warren_buffett.md",
-      "then": "不買",
-      "when": "管理層頻繁質押股票 OR 高調承諾"
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:014",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "在经济低迷期寻找买点",
+      "when": "产品是“生活必需品” (如公用事业、基础消费) AND 具有天然垄断属性"
+    },
+    {
+      "because": "账面资产低估了真实财富",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:015",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "内在价值可能更高",
+      "when": "企业拥有“未记录的资产” (如极低成本取得的地产、长期低价租约)"
+    },
+    {
+      "because": "盈利能力的边际改善空间巨大",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:016",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "说明规模效应显著，护城河在加深",
+      "when": "销售、通用及行政费用 (SG&A) 占毛利比例持续下降"
+    },
+    {
+      "because": "这种生意的确定性极高",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:017",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "可支付稍高的溢价",
+      "when": "公司拥有“特许经营权”属性 (不受监管、必需、无替代、无竞争)"
+    },
+    {
+      "because": "别人恐惧时正是贪婪时",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:018",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "保持“贪婪”心态，分批入场",
+      "when": "市场极度悲观导致优质股被无差别抛售"
+    },
+    {
+      "because": "这是卓越护城河的明证",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:019",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "竞争力极强，是买入理想标的",
+      "when": "净利增长主要来自市场份额扩大而非行业普涨"
+    },
+    {
+      "because": "这是完美的轻资产复利机器",
+      "investor_id": "warren_buffett",
+      "kind": "entry",
+      "rule_id": "warren_buffett:entry:020",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "这是巴菲特眼中的“皇冠上的明珠”",
+      "when": "公司能在不增加额外资本投入的情况下提高利润"
+    },
+    {
+      "because": "长期盈利根基已毁",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:001",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "无论盈亏立即卖出",
+      "when": "护城河出现结构性破坏 (如技术颠覆、竞争对手永久性获得成本优势)"
+    },
+    {
+      "because": "预期回报率已降至极低水平",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:002",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "考虑获利了结或减仓",
+      "when": "估值 > 内在价值的 150% (透支未来 10 年增长)"
+    },
+    {
+      "because": "这是资本配置恶化的强烈信号",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:003",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "卖出",
+      "when": "管理层开始进行帝国扩张式的、无护城河的跨行并购"
+    },
+    {
+      "because": "将资金调配至预期回报更高的地方",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:004",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "换仓",
+      "when": "发现更好的投资机会 (机会成本明显更高) AND 当前持仓已达到合理估值"
+    },
+    {
+      "because": "组织基因的退化是崩溃的先兆",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:005",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "逐步退出",
+      "when": "公司文化发生恶化 (从合伙人文化转变为官僚文化)"
+    },
+    {
+      "because": "价格战将不可避免地侵蚀利润",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:006",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "卖出",
+      "when": "公司的核心产品变得可被替代 (Commoditized)"
+    },
+    {
+      "because": "管理层正在牺牲未来换取短期股价",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:007",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "警惕并卖出",
+      "when": "为了短期利润而削减必要的维持性资本支出"
+    },
+    {
+      "because": "财务风险正在指数级上升",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:008",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "减仓或清仓以保安全",
+      "when": "公司的债务结构发生恶化 (如大量短期高息债)"
+    },
+    {
+      "because": "人的因素在大规模资本配置中至关重要",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:009",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "重新评估并考虑卖出",
+      "when": "曾经看好的管理层核心成员离职 AND 接班人能力存疑"
+    },
+    {
+      "because": "护城河正在变窄",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:010",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "意味着定价权丧失，考虑离开",
+      "when": "核心业务的毛利率出现持续 3 年以上的下滑"
+    },
+    {
+      "because": "泡沫破裂时劣质资产跌幅最惨",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:011",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "清理掉组合中的劣质资产",
+      "when": "市场进入极度疯狂期 AND 即使是平庸公司的估值也达到了天际"
+    },
+    {
+      "because": "透明度丧失是危险的信号",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:012",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "视为欺诈风险，卖出",
+      "when": "公司开始频繁更改会计准则或审计师"
+    },
+    {
+      "because": "这种增长往往是虚假的",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:013",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "警惕渠道压货，获利了结",
+      "when": "营收高度增长但应收账款增速远超营收增速"
+    },
+    {
+      "because": "资产负债表正在被透支",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:014",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "这是不可持续的庞氏特征，卖出",
+      "when": "公司分红或回购的资金来源主要是债务而非 FCF"
+    },
+    {
+      "because": "政策红线可能毁灭整个商业模式",
+      "investor_id": "warren_buffett",
+      "kind": "exit",
+      "rule_id": "warren_buffett:exit:015",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "卖出",
+      "when": "行业法律监管发生根本性利空变化"
+    },
+    {
+      "because": "衰退时利息支出可能压垮现金流",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:001",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "视为高杠杆风险，除非是受监管的公用事业",
+      "when": "债务总额 / 股东盈余 > 5 倍"
+    },
+    {
+      "because": "不懂的东西是最大的风险源",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:002",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "绝不购买 (能力圈红线)",
+      "when": "无法理解公司的衍生品头寸或表外负债"
+    },
+    {
+      "because": "缺乏议价能力且脆弱性极高",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:003",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "给予估值 30% 以上的折价",
+      "when": "公司利润高度依赖单一客户或单一供应商"
+    },
+    {
+      "because": "公司一直在“为了留在原地而奔跑”",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:004",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "谨慎对待，不视为稳定护城河",
+      "when": "研发支出 (R&D) 必须保持极高比例才能维持现状 (如某些生物制药)"
+    },
+    {
+      "because": "整体下行风险正在积聚",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:005",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "增加现金储备，提高买入门槛",
+      "when": "市场处于整体过热状态 (巴菲特指标：股市总市值 / GDP > 150%)"
+    },
+    {
+      "because": "这通常是管理层试图掩盖真实亏损的手段",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:006",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "排除在投资范围之外",
+      "when": "公司频繁使用“经调整后的 EBITDA”来粉饰报表"
+    },
+    {
+      "because": "股东权益正在被隐形侵蚀",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:007",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "将此成本从股东盈余中扣除后再估值",
+      "when": "员工期权稀释每年 > 2%"
+    },
+    {
+      "because": "通胀会变成一种“隐形资本税”",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:008",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "避开此类重资产行业",
+      "when": "公司在通胀环境下无法转嫁成本"
+    },
+    {
+      "because": "一次性巨额赔偿可能导致破产",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:009",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "维持极高安全边际或避开",
+      "when": "核心业务面临潜在的巨额法律赔偿风险 (如香烟、石棉案例)"
+    },
+    {
+      "because": "习惯性犯错的人不值得托付资金",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:010",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "哪怕估值便宜也不买",
+      "when": "管理层过去有多次资本配置失败的记录 (如高买低卖、盲目并购)"
+    },
+    {
+      "because": "复杂性往往是混乱或欺诈的掩护",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:011",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "放弃，遵循“简单”原则",
+      "when": "公司的组织结构过于复杂，以至于需要几百页财报才能看懂"
+    },
+    {
+      "because": "这种盈利是不可持续的",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:012",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "必须剔除这些噪音后再看核心盈利",
+      "when": "净利润中包含大量一次性投资收益 (如卖出资产)"
+    },
+    {
+      "because": "营运资本效率正在恶化",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:013",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "内部流动性可能枯竭",
+      "when": "现金周转周期 (Cash Conversion Cycle) 出现异常拉长"
+    },
+    {
+      "because": "诚实的管理层应该让股东知道风险",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:014",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "这是管理层缺乏诚信的信号",
+      "when": "股东信中只报喜不报忧"
+    },
+    {
+      "because": "这通常是资本配置最差的时机",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:015",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "警惕周期下半场的巨额亏损",
+      "when": "公司在周期高位进行最大规模的扩产"
+    },
+    {
+      "because": "低估值必须建立在保守假设之上",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:016",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "估值过于激进，调高门槛",
+      "when": "估值假设中的贴现率低于 10% (除非是极度稳健的公用事业)"
+    },
+    {
+      "because": "这种无形资产可能在一夜之间归零",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:017",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "警惕潜在的商誉减值雷",
+      "when": "公司的商誉 (Goodwill) 占总资产比例 > 50%"
+    },
+    {
+      "because": "杠杆会强制你在最差的时机出场",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:018",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "永久性亏损风险极大，绝不操作",
+      "when": "在不确定的宏观环境下依赖保证金交易"
+    },
+    {
+      "because": "护城河必须能经受时间的考验",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:019",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "护城河不可靠",
+      "when": "产品的使用寿命极短且易受时尚/口味变化影响"
+    },
+    {
+      "because": "它在不断吞噬股东的财富",
+      "investor_id": "warren_buffett",
+      "kind": "risk_management",
+      "rule_id": "warren_buffett:risk_management:020",
+      "source_file": "investors\\warren_buffett.md",
+      "then": "这是典型的“吞金兽”，必须远离",
+      "when": "公司不仅业务平庸且需要不断投入资金"
     }
   ],
   "version": "1.0"

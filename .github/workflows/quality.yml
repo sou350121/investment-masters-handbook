@@ -37,6 +37,10 @@ jobs:
         run: |
           python scripts/scan_sensitive.py
 
+      - name: Validate task docs (minimal context)
+        run: |
+          python scripts/validate_tasks.py
+
       - name: Generate artifacts and ensure repo is clean
         run: |
           python scripts/generate_artifacts.py

@@ -3,170 +3,124 @@ investor_id: george_soros
 full_name: George Soros
 chinese_name: 乔治·索罗斯
 fund: Quantum Fund
-aum: "Peak $25B"
+nationality: 美国（匈牙利裔）
+intro_zh: 宏观对冲基金先驱，量子基金创始人。以“反身性”理论闻名，认为市场参与者的偏见会改变基本面，从而创造自我强化的趋势或灾难性的崩盘。他擅长在政策失衡和汇率错位中寻找攻击点，是“打破英格兰银行的人”。
 style:
-  - macro
-  - reflexivity
-  - currency_attack
-  - leverage
+  - macro_reflexivity
+  - currency_speculation
+  - global_imbalance
+  - survival_discipline
 applicable_scenarios:
-  - currency_trading
-  - macro_imbalances
-  - reflexivity_analysis
-  - crisis_trading
+  - currency_crisis
+  - policy_inflection_points
+  - bubble_bursting
+  - reflexivity_loops
 market_conditions:
   currency_crisis: critical
   policy_divergence: critical
   bubble: high
+  high_volatility: high
 decision_weight:
   stock_pick: 0.3
-  macro_timing: 0.9
-  risk_check: 0.7
-  portfolio: 0.5
+  macro_timing: 0.95
+  risk_check: 0.8
+  portfolio: 0.7
 tags:
   - 反身性
-  - 货币交易
+  - 繁荣-萧条
   - 政策失衡
-  - 杠杆
+  - 生存优先
+  - 杠杆博弈
 related_investors:
-  similar: [stanley_druckenmiller]
+  similar: [stanley_druckenmiller, bill_ackman]
   complementary: [ray_dalio, howard_marks]
 ---
 
-# George Soros 投资框架
+# George Soros 投资框架：反身性与失衡博弈
 
-## QUICK_FACTS
-- **基金**：Quantum Fund（1973-2011 主动管理）
-- **规模**：峰值 $25B
-- **核心风格**：反身性 + 攻击失衡 + 生存优先
-- **最佳适用**：货币交易、宏观失衡、危机交易
+> "我之所以富有，是因为我知道自己什么时候错了。" —— 乔治·索罗斯
 
-> **风格**：宏观投机、货币攻击、反身性理论
+## 📋 索罗斯决策工具箱 (The Reflexivity Toolkit)
 
-## 核心原则
-1. **反身性（Reflexivity）**：市场参与者的认知影响基本面，基本面又反过来影响认知，形成自我强化/崩溃回圈。
-2. **找失衡**：寻找认知与现实的巨大落差；当落差不可持续时下重注。
-3. **先投资再调查**：建立初始仓位测试假设，对了加码，错了快砍。
-4. **生存优先**：错误时迅速止损；「活著」比「对」重要。
-5. **杠杆放大**：在高确信时使用杠杆；但严格控制最大回撤。
+### 1. 反身性理论 (Theory of Reflexivity)
+- **核心逻辑**：认知（认知功能）改变现实（参与功能），现实又反过来影响认知。
+- **自我强化**：上涨吸引买盘，买盘改善公司信用/融资能力，从而改善基本面，引发进一步上涨。
+- **泡沫序列**：1. 趋势尚未确认；2. 自我强化期；3. 测试期；4. 坚信期（由于基本面看似变好了）；5. 破裂期。
 
-## 反身性应用框架
-| 阶段 | 特征 | 行动 |
-|------|------|------|
-| 趋势启动 | 基本面改善 + 认知开始跟上 | 顺势建仓 |
-| 自我强化 | 价格上涨 → 改善基本面 → 更多买盘 | 持有/加码 |
-| 测试极限 | 认知过度乐观，价格脱离基本面 | 警惕、缩仓 |
-| 崩溃 | 现实戳破认知，抛售潮 | 反向做空或等待 |
+### 2. 寻找“肥差” (The Fat Pitch)
+- 寻找政策意图与市场现实之间的**剧烈错位**。
+- 最典型机会：固定汇率制度下的货币错估。
 
-## 经典战役
-| 年份 | 事件 | 逻辑 |
-|------|------|------|
-| 1992 | 做空英镑（黑色星期三） | 英国利率与 ERM 挂钩不可持续 |
-| 1997 | 亚洲金融危机 | 固定汇率 + 经常帐赤字 + 外债 |
-| 2008 | 做空美国银行股 | 次贷泡沫 + 杠杆过高 |
-
-## 快速检查清单
-- **失衡存在吗？** 政策/汇率/信用是否明显不可持续？
-- **反身性方向？** 趋势在自我强化还是即将反转？
-- **催化剂？** 什么事件会戳破认知？
-- **止损点？** 错了怎么跑？最大损失可接受吗？
-- **杠杆水位？** 仓位规模与确信度匹配吗？
-
-## 与宏观/流动性的连结
-- **固定汇率制**：当央行耗尽外储，汇率脱钩是高胜率机会。
-- **信用泡沫**：杠杆 → 资产价格 → 更多杠杆；直到流动性收紧。
-- **央行政策分歧**：利差 + 资本流动 → 货币趋势。
-- **危机传染**：一个市场崩溃 → 流动性抽离 → 传染其他新兴市场。
-
-## 经典语录
-- "Markets are constantly in a state of uncertainty and flux, and money is made by discounting the obvious and betting on the unexpected."
-- "It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong."
-- "The worse a situation becomes, the less it takes to turn it around."
-
-## DECISION_RULES（决策规则）
-
-### 反身性交易规则
-```
-IF 趨勢啟動（基本面改善 + 認知跟上）
-   THEN 順勢建倉
-   BECAUSE 反身性開始自我強化
-
-IF 自我強化階段（價格 → 基本面 → 更多買盤）
-   THEN 持有/加碼
-   BECAUSE 趨勢會超預期
-
-IF 測試極限（認知過度樂觀，價格脫離基本面）
-   THEN 警惕、縮倉
-   BECAUSE 接近反轉點
-
-IF 崩潰階段（現實戳破認知）
-   THEN 反向做空或等待
-   BECAUSE 反身性向下
-```
-
-### 失衡交易规则
-```
-IF 固定匯率制 AND 外儲耗竭 AND 經濟失衡
-   THEN 做空該貨幣
-   BECAUSE 不可持續必將崩潰
-
-IF 政策/匯率明顯不可持續 AND 有催化劑
-   THEN 重注
-   BECAUSE 高勝率機會
-
-IF 信用泡沫（槓桿 → 資產價格 → 更多槓桿）AND 流動性開始收緊
-   THEN 準備做空
-   BECAUSE 泡沫必破
-```
-
-### 生存规则
-```
-IF 論點被證偽 OR 虧損超過預設止損
-   THEN 立即止損
-   BECAUSE 活著比對重要
-
-IF 錯了
-   THEN 快砍，不等
-   BECAUSE 錯誤時迅速止損
-
-IF 確信度不夠
-   THEN 小倉位測試
-   BECAUSE 先投資再調查
-```
-
-### 仓位规则
-```
-IF 高確信 + 失衡明顯 + 有催化劑
-   THEN 可用槓桿重倉
-   BECAUSE 難得機會
-
-IF 測試假設階段
-   THEN 小倉位
-   BECAUSE 對了加碼，錯了快砍
-
-IF 最大回撤 > 容忍度
-   THEN 減倉
-   BECAUSE 嚴格控制回撤
-```
+### 3. 先投资，再调查 (Invest First, Investigate Later)
+- 索罗斯通过建立头寸来“感受”市场。如果背痛消失或市场反馈符合预期，则加码。
 
 ---
 
-## RED_FLAGS（危险信号）
-- [ ] 反身性进入测试极限阶段
-- [ ] 认知与现实落差开始收窄
-- [ ] 自己的论点被证伪
-- [ ] 亏损超过预设止损点
+## 🚫 绝对禁止清单 (The NEVER List)
+- **绝不在证明自己错误后死守头寸**：止损要快，甚至要比别人更快。
+- **绝不忽视“背痛” (身体信号)**：当市场走势让你感到生理上的不适时，说明你的假设可能已经失效。
+- **绝不认为市场是理性的**：市场总是处于扭曲状态，不要试图用线性数学去预测非线性反馈。
+- **绝不在流动性枯竭时增加杠杆**：杠杆是攻击工具，但在退潮时它是致命的自杀绳。
+- **绝不参与没有“反身性”支持的平庸博弈**：如果认知的改变无法驱动基本面的改变，这种机会不值得大举进攻。
 
 ---
 
-## RELATED_INVESTORS（相关投资人）
-- **类似风格**：Stanley Druckenmiller（宏观）
-- **互补参考**：Ray Dalio（周期）、Howard Marks（风险）
+## 📅 压力测试：市场拐点处的反应
+### 1. 泡沫末端 (The Peak of the Bubble)
+- **反应**：极度警惕，寻找“最后一根稻草”。
+- **动作**：不仅减仓，还要寻找催化剂准备反向做空。
+
+### 2. 汇率挂钩压力期 (Fixed Exchange Rate Stress)
+- **反应**：评估央行外汇储备的损耗速度。
+- **动作**：如果政治意图与经济基本面（如通胀、经常帐）彻底背离，发动规模化攻击。
 
 ---
 
-## TODO / 待补
-- 1992 英镑做空细节时间线。
-- 反身性在加密/Meme 股的应用案例。
+## 📖 经典案例研究 (Case Studies)
 
+### 1. 1992 年做空英镑：黑色星期三
+- **背景**：英国加入欧洲汇率机制 (ERM)，但其经济衰退与高利率挂钩不可持续。
+- **动作**：德鲁肯米勒建议“全力以赴”，索罗斯不仅做空，还用了巨额杠杆。
+- **教训**：当政府在保汇率和保经济之间只能选一个时，市场总会赢。
 
+### 2. 1997 年亚洲金融危机
+- **背景**：东南亚国家固定汇率+外债过高+地产泡沫。
+- **动作**：通过反身性分析，意识到泰国泰铢的贬值会引发区域连锁反应。
+
+### 3. 2008 年：生存与反击
+- **背景**：次贷危机爆发。
+- **动作**：虽然初期对方向有误判，但迅速止损并反向布局，最终在混乱中获得了正收益。
+
+---
+
+## 💡 决策规则 (DECISION_RULES)
+
+### 反身性与趋势规则 (Reflexivity & Trends)
+```text
+IF 观察到资产价格上涨正在通过某些机制 (如提高抵押物价值、降低融资成本) 改善其实际基本面
+   THEN 进入“自我强化”观察期，顺势加码
+   BECAUSE 反身性正循环会推动价格远超所谓的“内在价值”
+
+IF 认知的偏见已达到极限 (例如所有人都在谈论“新范式”) AND 关键基本面数据开始出现背离
+   THEN 寻找“最后一根稻草”催化剂，准备反向做空
+   BECAUSE 泡沫的破裂往往不需要重大利空，只需要上涨动力的衰竭
+
+IF 某个市场的上涨完全是由“认知的错误”驱动，且这种错误并未反馈到基本面的改善
+   THEN 保持怀疑并建立轻量对冲
+   BECAUSE 这种上涨是纯粹的幻觉，缺乏反身性的根基，随时可能崩塌
+```
+
+### 政策失衡与生存规则 (Imbalance & Survival)
+```text
+IF 某个国家试图维持与其经济基本面完全背离的固定汇率 AND 外汇储备持续下降
+   THEN 发动大规模货币攻击，利用远期和杠杆最大化暴露
+   BECAUSE 央行的外汇储备是有限的，而市场的子弹是无限的
+
+IF 市场走势与你的核心假设发生背离 AND 账户出现超出预期的亏损
+   THEN 立即止损清仓，而不是寻找支持自己正确的证据
+   BECAUSE 活下来是第一位的，只有活着才有下一次攻击的机会
+
+IF 发现自己的投资假设在逻辑上依然成立，但市场价格正在剧烈反向运行
+   THEN 减仓至“能睡着觉”的水平，再次审视是否存在未被察觉的反身性环路
+   BECAUSE 市场可以保持非理性很久，直到你破产
+```

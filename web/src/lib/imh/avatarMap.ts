@@ -13,6 +13,11 @@ export const AVATAR_FILENAME_BY_ID: Record<string, string> = {
   carl_icahn: 'carl_icahn.jpg',
   james_simons: 'james_simons.jpg',
   greg_abel: 'greg_abel.jpg',
+  naval_ravikant: 'naval_ravikant.jpg',
+  donald_trump: 'donald_trump.jpg',
+  nancy_pelosi: 'nancy_pelosi.jpg',
+  robert_kiyosaki: 'robert_kiyosaki.jpg',
+  chamath_palihapitiya: 'chamath_palihapitiya.jpg',
   // peter_lynch: '',
   // stanley_druckenmiller: '',
   // michael_burry: '',
@@ -35,3 +40,9 @@ export function getAvatarUrl(investor: Pick<Investor, 'id'>) {
   }
   return `${basePath}/avatars/${filename}`;
 }
+
+
+
+
+
+
